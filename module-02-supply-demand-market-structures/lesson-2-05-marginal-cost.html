@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 2.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 2</div>
+        <div style="font-size: 12px; color: #666;">Supply, Demand, and Market Structures</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.05</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Marginal Cost</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Marginal Cost</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">How does a bakery know when to stop baking more bread?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Whatever legal structure a business chooses, it eventually faces the same question every single day: should we make one more unit? <strong>Marginal cost</strong> is the tool that answers it.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> calculate marginal cost from a simple total-cost example.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why the marginal cost curve is U-shaped.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> connect marginal cost to how firms decide wages and pay structures.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; THE COST OF ONE MORE UNIT</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If you were running a small lemonade stand, would you keep making more cups even after your arm got tired and the line died down? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That instinct is exactly right economically &mdash; the cost of one more cup (your time, tired arm, unsold lemonade) can exceed what one more cup earns you. Stopping is the profitable move.">&#9995;&#65039; No, I'd stop</button>
+                <button data-response="Worth testing against today's reading: at some point the extra cost of squeezing one more lemon outweighs what you'd earn selling it. That tipping point is exactly what marginal cost measures.">&#128181; Yes, keep going for more sales</button>
+                <button data-response="That's the right instinct, formalized: marginal cost analysis is just a precise way of answering 'is one more worth it?'">&#129300; Depends on how much I'm making per cup</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Defining Marginal Cost</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Marginal cost</strong> is the added expense of producing one more unit &mdash; not the total cost of everything made so far, just the <strong>incremental</strong> cost of the next one. If a bakery's costs rise from $200 for 100 loaves to $202 for 101 loaves, the marginal cost of that loaf is $2. If it sells for $3, that loaf is worth baking. The moment marginal cost catches up to price, the firm has found its most profitable output level; producing beyond that point means each new unit actually loses money, which economists call <strong>diminishing returns</strong>.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why Marginal Cost Drives Pricing</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Firms compare marginal cost to <strong>marginal revenue</strong> constantly. Airlines have very low marginal cost per extra passenger once a flight is already scheduled (fuel and crew are already paid for), which is exactly why last-minute discount fares can still be profitable. Streaming services have almost zero marginal cost per new subscriber, since the content already exists, which is why those business models are so <strong>scalable</strong>. Retailers like grocery chains weigh the marginal cost of stocking one more unit against expected sales to set promotions without eroding margins.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Marginal Cost and How Workers Get Paid</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Labor is often the biggest piece of marginal cost. If hiring one more worker raises output enough that the extra revenue exceeds the extra wage, a firm can justify paying more &mdash; through <strong>piece-rate pay</strong>, commissions, or bonuses tied to that added output. This is why workers whose effort visibly moves marginal revenue (a salesperson closing extra deals, an assembly-line worker adding measurable output) tend to see pay tied more directly to production than workers in less directly measurable roles.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The U-Shaped Marginal Cost Curve</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Marginal cost is not constant. Early on, producing more usually gets <em>cheaper</em> per unit, because fixed costs like machinery spread across more output: <strong>economies of scale</strong>. Eventually, though, diminishing returns take over: overtime pay, more worn-out equipment, <strong>cumbersome</strong> coordination all push marginal cost back up. Plotted on a graph, this produces a U-shape: cost falls, bottoms out, then rises. The bottom of that U is where a firm produces most efficiently &mdash; and it is never the same point for every industry or every season.</p>
+
+        <div class="optima-widget ow-slider">
+            <div class="widget-kicker">&#9889; TRY IT &middot; RUN THE BAKERY'S NUMBERS</div>
+            <div class="widget-question">This bakery's total cost to bake a given number of loaves follows a simple pattern: costs stay low per loaf up to a point, then rise as ovens get pushed past capacity. Drag the slider to change how many loaves are baked and watch the marginal cost of the next loaf.</div>
+            <input type="range" min="50" max="200" value="100" step="10" id="mc-slider" style="width:100%;" />
+            <div style="font-size:16px;color:#0E1C42;margin-top:10px;">Loaves baked so far: <output id="mc-slider-out"></output></div>
+            <div id="mc-slider-msg" style="font-size:15px;color:#1a2340;margin-top:8px;line-height:1.5;"></div>
+            <script>
+            (function () {
+                var s = document.getElementById('mc-slider'), o = document.getElementById('mc-slider-out'), m = document.getElementById('mc-slider-msg');
+                function render() {
+                    var v = parseInt(s.value, 10);
+                    o.textContent = v;
+                    if (v <= 90) { m.textContent = 'Marginal cost of the next loaf: roughly $1.50. Ovens are running under capacity, so each extra loaf is cheap to add.'; }
+                    else if (v <= 130) { m.textContent = 'Marginal cost of the next loaf: roughly $2.00. Ovens are near full, efficient capacity — this is close to the bottom of the U-shaped curve.'; }
+                    else { m.textContent = 'Marginal cost of the next loaf: roughly $4.00 and climbing. Overtime wages and oven strain are pushing cost per loaf back up — diminishing returns have set in.'; }
+                }
+                s.addEventListener('input', render); render();
+            })();
+            </script>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Marginal Cost</strong> &mdash; the added expense of producing one more unit of a good or service.<br>
+        <strong>Deployment</strong> &mdash; putting resources, technology, or personnel into use.<br>
+        <strong>Incremental</strong> &mdash; a gradual, step-by-step increase or addition.<br>
+        <strong>Optimally</strong> &mdash; in the most effective or efficient way possible.<br>
+        <strong>Diminishing Returns</strong> &mdash; the principle that adding more input eventually produces smaller increases in output.<br>
+        <strong>Scalable</strong> &mdash; able to grow or expand efficiently without losing effectiveness.<br>
+        <strong>Marginal Revenue</strong> &mdash; the additional income gained from selling one more unit.<br>
+        <strong>Piece-Rate Pay</strong> &mdash; a wage system where workers are paid based on the number of items produced.<br>
+        <strong>Variable</strong> &mdash; a factor or cost that changes depending on production levels or conditions.<br>
+        <strong>Commission-Based Compensation</strong> &mdash; a pay structure where workers earn income based on sales generated.<br>
+        <strong>Batch Production</strong> &mdash; a manufacturing method where goods are produced in groups rather than continuously.<br>
+        <strong>Cumbersome</strong> &mdash; awkward, heavy, or difficult to manage.<br>
+        <strong>Replenishment</strong> &mdash; restocking or supplying goods to maintain inventory levels.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 2.05 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on marginal cost and the U-shaped curve.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time you see a "buy one, get one half off" deal, ask what that tells you about the store's marginal cost of that extra item. Next lesson turns to the people who take on the risk of starting these businesses in the first place.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.05 &middot; Marginal Cost</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 2.01</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 2</div>
+        <div style="font-size: 12px; color: #666;">Supply, Demand, and Market Structures</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.01</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Supply and Demand</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.01</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Supply and Demand</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">How do millions of separate decisions add up to a single market price?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Module 1 gave you the vocabulary of scarcity and choice. Module 2 puts that vocabulary to work on the mechanism that actually coordinates a market economy without anyone planning it centrally: <strong>supply and demand</strong>.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish a change in quantity demanded/supplied from a change in demand/supply itself.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name the determinants that shift a demand curve or a supply curve.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how markets move toward equilibrium after a shortage or surplus.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; MOVEMENT ALONG A CURVE VS. A SHIFT OF THE CURVE</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">When your favorite item goes on sale, do you tend to buy more of it right away? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That's a change in quantity demanded &mdash; the price dropped, so you moved along your own demand curve. Nothing about your underlying preferences changed.">&#128176; Yes, I stock up</button>
+                <button data-response="Fair &mdash; a lower price doesn't guarantee more purchases if your own needs or preferences haven't changed. That distinction is exactly what this lesson is about.">&#129335; Not really</button>
+                <button data-response="That's worth noticing: it depends on the item. Economists ask the same question about markets as a whole, which is why they separate quantity demanded from demand itself.">&#129300; Depends on the item</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Supply, Demand, and the Price That Balances Them</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Supply</strong> is producers' willingness and ability to offer a good at different prices; <strong>demand</strong> is consumers' willingness and ability to buy it at different prices. Neither operates alone: supply decisions anticipate demand, and demand responds to what is available and at what price. Price is the signal that keeps the two in conversation &mdash; rising prices tell producers "make more," falling prices tell them "make less," while doing the opposite for how much consumers are willing to buy.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Quantity Demanded vs. Demand Itself</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A change in <strong>quantity demanded</strong> is movement along the existing <strong>demand curve</strong>, caused only by a change in the good's own price &mdash; coffee drops from $3 to $2 and people buy more of it, full stop. A change in <strong>demand</strong> is a shift of the entire curve, caused by a <strong>determinant of demand</strong> other than price: income, tastes, expectations, population, or the price of a <strong>substitute</strong> or <strong>complement</strong>. Rising income shifts the whole curve right (more bought at every price); a trendy new competitor product can shift it left. A business that misreads a demand shift as a price problem, or vice versa, will pick the wrong fix.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Quantity Supplied vs. Supply Itself</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The same logic applies to producers. A change in <strong>quantity supplied</strong> is movement along the existing supply curve from a price change alone &mdash; wheat prices rise, so farmers plant more <strong>acreage</strong>. A change in <strong>supply</strong> is a shift of the whole curve from a <strong>determinant of supply</strong>: technology, production costs, government policy, or a <strong>negative shock</strong> like drought. New farm technology shifts supply right (more at every price); a drought or a new tax shifts it left, a <strong>contraction</strong> in what producers can offer regardless of price.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Equilibrium: Where the Market Settles</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Equilibrium</strong> is the price and quantity where what buyers want to buy exactly matches what sellers want to sell &mdash; no built-in pressure to move. Markets rarely sit still there for long: a <strong>shortage</strong> (quantity demanded exceeds quantity supplied) pushes prices up, which both discourages some buyers and rewards producers for expanding output. A <strong>surplus</strong> (quantity supplied exceeds quantity demanded, risking <strong>overstocking</strong>) pushes prices down, clearing unsold inventory while discouraging overproduction. This is what makes supply and demand <strong>disequilibrium</strong> self-correcting &mdash; no central planner has to intervene for the market to find its way back toward balance.</p>
+
+        <div class="optima-widget ow-slider">
+            <div class="widget-kicker">&#9889; TRY IT &middot; FIND EQUILIBRIUM</div>
+            <div class="widget-question">Drag the slider to set a market price for a good. Watch what happens to the gap between quantity supplied and quantity demanded.</div>
+            <input type="range" min="1" max="10" value="5" step="1" id="eq-slider" style="width:100%;" />
+            <div style="font-size:16px;color:#0E1C42;margin-top:10px;">Price level: <output id="eq-slider-out"></output></div>
+            <div id="eq-slider-msg" style="font-size:15px;color:#1a2340;margin-top:8px;line-height:1.5;"></div>
+            <script>
+            (function () {
+                var s = document.getElementById('eq-slider'), o = document.getElementById('eq-slider-out'), m = document.getElementById('eq-slider-msg');
+                function render() {
+                    var v = parseInt(s.value, 10);
+                    o.textContent = v;
+                    if (v <= 3) { m.textContent = 'Price is low: quantity demanded is high but quantity supplied is low. That gap is a shortage — expect upward pressure on price.'; }
+                    else if (v >= 8) { m.textContent = 'Price is high: quantity supplied is high but quantity demanded is low. That gap is a surplus — expect downward pressure on price.'; }
+                    else { m.textContent = 'Price is near the middle of the range: quantity demanded and quantity supplied are close to matching — this is close to equilibrium.'; }
+                }
+                s.addEventListener('input', render); render();
+            })();
+            </script>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Supply</strong> &mdash; producers' willingness and ability to offer goods and services for sale at different prices.<br>
+        <strong>Demand</strong> &mdash; consumers' willingness and ability to purchase goods and services at various prices.<br>
+        <strong>Price</strong> &mdash; the amount of money required to buy a good or service in the market.<br>
+        <strong>Inventory</strong> &mdash; the stock of goods or materials a business has on hand for sale or production.<br>
+        <strong>Substitutes</strong> &mdash; products that can replace each other; a price rise in one raises demand for the other.<br>
+        <strong>Quantity Demanded / Quantity Supplied</strong> &mdash; the specific amount consumers will buy, or producers will sell, at a particular price.<br>
+        <strong>Demand Curve</strong> &mdash; a graph showing the relationship between price and quantity demanded.<br>
+        <strong>Price Point</strong> &mdash; a specific price at which a product is offered for sale.<br>
+        <strong>Determinants of Demand / Supply</strong> &mdash; non-price factors that shift the demand or supply curve.<br>
+        <strong>Complements</strong> &mdash; goods used together; a price rise in one decreases demand for the other.<br>
+        <strong>Diversify</strong> &mdash; to expand into new products, markets, or strategies to reduce risk.<br>
+        <strong>Cyclical</strong> &mdash; changes in economic activity that follow regular periods of growth and decline.<br>
+        <strong>Acreage</strong> &mdash; the amount of land used for a specific type of agricultural production.<br>
+        <strong>Negative Shock</strong> &mdash; an unexpected event that reduces supply, demand, or overall economic performance.<br>
+        <strong>Contraction</strong> &mdash; a decrease in economic activity, production, or supply.<br>
+        <strong>Equilibrium / Equilibrium Price</strong> &mdash; the condition, and the price, at which quantity demanded equals quantity supplied.<br>
+        <strong>Surplus / Shortage</strong> &mdash; quantity supplied exceeding quantity demanded, or the reverse, at a given price.<br>
+        <strong>Overstocking</strong> &mdash; holding more inventory than needed to meet demand.<br>
+        <strong>Outmigration</strong> &mdash; the movement of people leaving a region, which can reduce local demand.<br>
+        <strong>Disequilibrium</strong> &mdash; a state in which supply and demand are not balanced.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 2.01 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on supply, demand, and equilibrium.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time a price changes around you, ask whether it's a movement along a curve or a shift of the curve itself. Next lesson looks at how the number of sellers in a market changes this whole picture.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.01 &middot; Supply and Demand</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

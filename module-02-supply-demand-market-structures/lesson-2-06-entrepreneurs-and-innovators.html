@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 2.06</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 2</div>
+        <div style="font-size: 12px; color: #666;">Supply, Demand, and Market Structures</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.06</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Contributions of Entrepreneurs and Innovators</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.06</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Contributions of Entrepreneurs and Innovators</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Can one invention reshape an entire economy &mdash; and its moral history at the same time?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This module closes by putting a human face on everything you've studied: entrepreneurship, factors of production, and competition all trace back to real people who took real risks. Some of those stories are triumphant. At least one is genuinely tragic. Both kinds are part of the record.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> trace how the cotton gin transformed the U.S. economy, including its human cost.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name entrepreneurs, inventors, and immigrant laborers who built major American industries.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> compare historical innovation (the cotton gin, the railroad) to a modern parallel (the smartphone, streaming platforms).</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; INNOVATION HAS ALWAYS HAD TWO SIDES</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">Think of a piece of technology that changed how people live. Do you think its inventor could have predicted every consequence, good and bad? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That's a fair instinct, and it's exactly the tension in today's reading &mdash; Eli Whitney could not have predicted how the cotton gin would deepen slavery even as it boosted productivity.">&#128064; Probably not &mdash; most consequences are unforeseeable</button>
+                <button data-response="Some consequences are foreseeable, which raises real questions about responsibility. Keep that question in mind as you read about the cotton gin below.">&#9878;&#65039; Some consequences should have been foreseeable</button>
+                <button data-response="That honesty is exactly the right posture for studying economic history &mdash; it resists the temptation to tell only the triumphant half of the story.">&#129300; I don't know, and I think that's honest</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Cotton Gin: Productivity and Its Cost</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1793, the United States was a mostly <strong>agrarian</strong> economy. Eli Whitney's <strong>cotton gin</strong> let one worker clean as much cotton in a day as dozens could by hand, making cotton America's most valuable export and tying the young economy into global trade with Britain's textile mills. But the gin did not reduce the demand for enslaved labor as some hoped &mdash; it increased it. Rising cotton profits pushed planters to expand plantations and enslave more people; the enslaved population nearly tripled between 1790 and 1860. One invention accelerated economic growth and deepened one of the gravest moral wrongs in U.S. history at the same time. Studying economics honestly means holding both facts together, not choosing the comfortable half.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Knowledge as Innovation: Benjamin Banneker</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Not every contribution was mechanical. Benjamin Banneker, a free Black mathematician and astronomer, published <strong>almanacs</strong> (1792 to 1797) that farmers relied on for planting and harvest timing, and helped survey the boundaries of the new capital, Washington, D.C. His work is a reminder that economic progress has always depended on knowledge and civic contribution as much as on machines.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Immigrant Labor and Industrial Leadership</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Andrew Carnegie arrived from Scotland as a child and built Carnegie Steel into the backbone of American railroads, bridges, and skyscrapers, later funding libraries and universities <strong>philanthropically</strong>. But industrial leadership alone could not have built the country's infrastructure: thousands of Chinese laborers, working under brutal conditions, built the transcontinental railroad through mountains and desert, alongside Irish laborers on the eastern segments, often facing discrimination and <strong>nativist</strong> hostility even as their work physically connected the nation's markets for the first time.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Entrepreneurs and Inventors Who Built American Industry</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Madam C.J. Walker built a beauty and haircare company for African American women, becoming one of the nation's first self-made female millionaires while employing and training thousands of women. Henry Ford's assembly line made automobiles affordable to ordinary Americans. Granville Woods, holder of over 50 patents, invented the <strong>multiplex telegraph</strong> that let train stations communicate with moving trains, improving railway safety. Thomas Edison and Alexander Graham Bell's inventions defined how people would work and communicate for a century. Later, Roberto Goizueta's leadership at Coca-Cola showed that innovation can also mean strategic global expansion, not just a new machine.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Modern Parallel: Digital Entrepreneurship</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Steve Jobs combined <strong>aesthetics</strong> and function to redefine computing, music, and communication through Apple. Sheryl Sandberg helped build Facebook into a global advertising and data platform; Susan Wojcicki grew YouTube into a dominant force in entertainment and education. A <strong>proliferation</strong> of start-ups, coding bootcamps, and business <strong>incubators</strong> continues this pattern today. The parallel to Whitney's cotton gin or Carnegie's steel is direct: new technology restructures commerce and daily life, creates new markets, and raises new questions all over again &mdash; the pattern of American economic history repeats, even as the technology changes.</p>
+
+        <div class="flip-grid" style="margin-top: 18px;">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Eli Whitney</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Invented the cotton gin (1793), which boosted cotton production but deepened reliance on enslaved labor.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Andrew Carnegie</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Scottish immigrant who built Carnegie Steel, then funded libraries and universities philanthropically.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Madam C.J. Walker</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Built a beauty products company for African American women; one of the first self-made female millionaires in the U.S.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Granville Woods</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Held over 50 patents; invented the multiplex telegraph, improving railway safety and communication.</div></div></div>
+        </div>
+        <button class="widget-reset" style="margin-top:14px;">Reset all cards</button>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Cotton Gin</strong> &mdash; a machine invented by Eli Whitney in 1793 that quickly separated cotton fibers from seeds, greatly increasing production efficiency.<br>
+        <strong>Agrarian</strong> &mdash; relating to farming or a society based primarily on cultivating land.<br>
+        <strong>Almanac</strong> &mdash; an annual publication with calendars, weather forecasts, astronomical data, and other information for farming or daily life.<br>
+        <strong>Philanthropic</strong> &mdash; devoted to promoting the welfare of others, often through charitable donations.<br>
+        <strong>Nativism</strong> &mdash; a political and social attitude favoring native-born inhabitants over immigrants.<br>
+        <strong>Multiplex Telegraph</strong> &mdash; Granville Woods's invention allowing train stations to communicate directly with moving trains.<br>
+        <strong>Aesthetics</strong> &mdash; the study or appreciation of beauty, design, and artistic expression.<br>
+        <strong>Monetization</strong> &mdash; the process of turning an asset, service, or product into a source of income.<br>
+        <strong>Proliferation</strong> &mdash; a rapid, widespread increase in number or availability.<br>
+        <strong>Incubator</strong> &mdash; an organization or program supporting new businesses through resources and mentorship.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 2.06 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on entrepreneurs and innovators across U.S. economic history.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; MODULE 2 WRAP</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've now seen how supply and demand, market structure, competition strategy, and business organization all come together in the actual decisions real entrepreneurs and inventors made. Module 3 turns to something every one of those decisions eventually runs into: money itself.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.06 &middot; Contributions of Entrepreneurs and Innovators</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      document.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      document.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      document.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

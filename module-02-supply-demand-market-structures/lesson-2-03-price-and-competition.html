@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 2.03</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 2</div>
+        <div style="font-size: 12px; color: #666;">Supply, Demand, and Market Structures</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.03</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Price and Competition</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.03</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Price and Competition</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Why doesn't Apple just lower its prices to beat every competitor?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">You now know the four market structures. Today's question is what firms actually <em>do</em> inside those structures to win customers: compete on price, compete on everything except price, or &mdash; as most real firms do &mdash; blend both.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish price competition from nonprice competition with real examples.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain the risks of relying on price competition alone.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> identify how a firm I know blends price and nonprice strategy.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; TWO WAYS TO WIN A CUSTOMER</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">When you choose one brand over another that does basically the same thing, what usually tips the decision? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="Price is the most direct lever a firm can pull, and it works especially well when products are hard to tell apart.">&#128181; Whichever is cheaper</button>
+                <button data-response="That's nonprice competition working on you &mdash; brand, quality, and experience are exactly what firms build to earn loyalty beyond the price tag.">&#127775; The brand, quality, or experience</button>
+                <button data-response="Most real purchases blend both, which is exactly the strategy most successful firms use too.">&#9878;&#65039; Some mix of both</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Price Competition</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Price competition</strong> means winning customers mainly by charging less. It thrives where products are standardized and buyers are price-sensitive: grocery chains built on <strong>bulk purchasing</strong> and minimal <strong>frills</strong>, budget airlines that strip services to the essentials, e-commerce platforms using pricing <strong>algorithms</strong> to stay cheapest in real time. It democratizes access to goods, but it also compresses <strong>profit margins</strong> and can push firms toward under-investment in quality or workers if pursued too aggressively.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Nonprice Competition</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Nonprice competition</strong> means winning customers through quality, design, service, or brand identity instead of a lower price &mdash; a tech company built on design and ecosystem rather than being the cheapest, a coffee chain <strong>curating</strong> an in-store experience rather than competing on the price of a cup. It builds loyalty that survives a price increase, and it drives innovation, but it requires sustained investment in brand and product, not just cost-cutting.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Most Firms Blend Both</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In practice, price is often the "hook" that gets a customer's attention, and nonprice differentiation is what keeps them. Streaming services set an accessible subscription price, then compete on original content and recommendations. Retailers combine weekly discounts with a distinct store experience. Fast food chains run value menus while investing in loyalty apps and brand personality. Firms often shift the balance with conditions: price competition tends to matter more when consumers are cautious (a downturn); nonprice <strong>prestige</strong> and <strong>precedence</strong> tend to matter more when the economy is growing and customers have more to spend.</p>
+
+        <div class="flip-grid" style="margin-top: 18px;">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Market Share</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">The portion of total sales in a market controlled by one company or product.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Commodity</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A basic good interchangeable with others of the same type, like oil or wheat &mdash; the kind of product where price competition dominates.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Intangible</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Something that cannot be physically touched but still has value, like reputation or brand identity &mdash; what nonprice competition sells.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Exclusivity</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Limiting access to a product or service to create a sense of uniqueness or privilege &mdash; a common nonprice tactic.</div></div></div>
+        </div>
+        <button class="widget-reset" style="margin-top:14px;">Reset all cards</button>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Market Share</strong> &mdash; the portion of total sales in a market controlled by a particular company or product.<br>
+        <strong>Bulk Purchasing</strong> &mdash; buying large quantities of goods at once, often at a discount.<br>
+        <strong>Frills</strong> &mdash; extra features or services added to a product beyond its basic function.<br>
+        <strong>E-Commerce</strong> &mdash; the buying and selling of goods or services over the internet.<br>
+        <strong>Algorithm</strong> &mdash; a step-by-step set of rules or calculations used to solve problems or make decisions.<br>
+        <strong>Profit Margin</strong> &mdash; the percentage of revenue that remains as profit after expenses.<br>
+        <strong>Permeate</strong> &mdash; to spread throughout or penetrate every part of something.<br>
+        <strong>Habitually</strong> &mdash; done regularly or by established routine.<br>
+        <strong>Lean</strong> &mdash; operating with minimal waste, focused on efficiency.<br>
+        <strong>Democratize</strong> &mdash; to make something accessible to more people.<br>
+        <strong>Discretionary</strong> &mdash; spending or actions that are optional rather than necessary.<br>
+        <strong>Cultivate</strong> &mdash; to develop or nurture something over time.<br>
+        <strong>Commodity</strong> &mdash; a basic good interchangeable with others of the same type.<br>
+        <strong>Aspirational</strong> &mdash; inspiring people to strive for it because it represents higher status.<br>
+        <strong>Intangible</strong> &mdash; something without physical form that still has value, like reputation.<br>
+        <strong>Curate</strong> &mdash; to carefully select and organize items for presentation or appeal.<br>
+        <strong>Exclusivity</strong> &mdash; limiting access to create a sense of uniqueness or privilege.<br>
+        <strong>Witty</strong> &mdash; clever, humorous, quick-thinking.<br>
+        <strong>Replicate</strong> &mdash; to copy or reproduce something, aiming for the same results.<br>
+        <strong>Precedence</strong> &mdash; being considered more important or prioritized over something else.<br>
+        <strong>Prestige</strong> &mdash; the respect or high status that comes from success, quality, or reputation.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 2.03 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on price and nonprice competition.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Pick one brand you're loyal to and name exactly what keeps you coming back: is it price, or something nonprice? Next lesson turns to how businesses themselves get organized and structured.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.03 &middot; Price and Competition</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      document.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      document.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      document.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>
