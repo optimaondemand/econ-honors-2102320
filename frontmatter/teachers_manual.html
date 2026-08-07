@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Economics Honors - Teacher's Manual</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+    color: #20242C;
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+    padding: 24px 32px 48px;
+    max-width: 1100px;
+  }
+  h1 { font-size: 22px; color: #152642; margin: 0 0 4px 0; }
+  .sub { font-size: 13px; color: #5B6472; margin-bottom: 20px; }
+  h2 { font-size: 18px; color: #152642; border-left: 4px solid #3D6FA6; padding-left: 10px; margin: 30px 0 12px 0; }
+  h3 { font-size: 15px; color: #152642; margin: 22px 0 8px 0; }
+  p { margin: 0 0 10px 0; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th { background: #152642; color: #fff; font-size: 12px; text-align: left; padding: 7px 9px; }
+  td { font-size: 13px; padding: 6px 9px; border-bottom: 1px solid #D0D9E8; vertical-align: top; }
+  tr:nth-child(even) td { background: #F5F6F8; }
+  .lesson-card { border: 1px solid #D0D9E8; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; background: #FFFFFF; }
+  .lesson-num { font-size: 11px; letter-spacing: .04em; color: #3D6FA6; font-weight: 700; text-transform: uppercase; }
+  .lesson-title { font-size: 16px; color: #152642; font-weight: 700; margin: 2px 0 6px 0; }
+  .standard-pill { display: inline-block; background: #EEF1F5; color: #152642; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-right: 4px; }
+  .gap-pill { display: inline-block; background: #FDECEC; color: #8A1F16; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-right: 4px; }
+  .added-pill { display: inline-block; background: #D8F0DD; color: #1A6B3D; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-right: 4px; }
+  .items-row { font-size: 12.5px; color: #5B6472; margin-top: 6px; }
+  .note-box { background: #FBF1DD; border: 1px solid #D9A94A; border-radius: 6px; padding: 14px 18px; margin: 16px 0; font-size: 13.5px; color: #5C4319; }
+  .note-box b { color: #8A5A12; }
+  .info-box { background: #EAF2FA; border: 1px solid #8FB8DE; border-radius: 6px; padding: 14px 18px; margin: 16px 0; font-size: 13.5px; color: #1F4E79; }
+  code { background: #F0F0F0; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+  .module-header { background: #152642; color: #fff; padding: 10px 16px; border-radius: 6px; font-size: 15px; margin: 26px 0 14px 0; }
+</style>
+</head>
+<body>
+
+<h1>Teacher's Manual</h1>
+<div class="sub">Economics Honors (Florida 2102320) &middot; Teacher-facing only, hidden from students &middot; companion to the <a href="https://optimaondemand.github.io/econ-honors-2102320/frontmatter/standards_matrix.html">Standards Alignment Matrix</a></div>
+
+<div class="info-box">
+<b>What this manual is for.</b> A quick-orientation guide for any teacher picking up this course &mdash; what each lesson teaches, which standard(s) it satisfies, what's confirmed-complete versus deferred, and a comprehensive standard-by-standard index so you can find every lesson and assessment that touches a given benchmark. This is a rebuild/rehost of an existing Canvas sandbox course into Optima's current delivery model; content decisions and their rationale are tracked in this build's <code>plan.md</code> decision log &mdash; this manual summarizes, it does not replace that log.
+</div>
+
+<div class="note-box">
+<b>Read this before you touch the gradebook.</b>
+<ul style="margin:8px 0 0 20px; padding:0;">
+  <li><b>All 24 lesson Assignments are full Tier-3-shaped items</b> (written response, individually rubric-graded) &mdash; a <b>deliberate, confirmed override</b> of <code>optima-canvas-assignments</code>' usual Tier-3 ratio cap, matching the source course exactly. This is expected, not a defect. See <code>plan.md</code> decision-log item 7.</li>
+  <li><b>No due/lock/unlock dates are set anywhere.</b> The source's dates were stale placeholders from an unrelated term and were not carried over. Set real dates before running this course live.</li>
+  <li><b>Module 5's five Reading Quizzes and the Module 5 Test are empty, unpublished shells</b> &mdash; the source itself never authored questions for them. This mirrors the source; it is not a build gap. If you want Module 5 to have working quizzes, new questions need to be authored from scratch.</li>
+  <li><b>Virtue threads were proposed per module in <code>CLAUDE.md</code> but were never adopted</b> &mdash; this build made a deliberate call not to spend time on them. Treat the proposals there as inactive, not pending.</li>
+  <li><b>The 24 VR Lesson Resources activities are not built.</b> The source's VR pages were empty stubs; authoring new platform-agnostic VR activities was deferred, not declined. See <code>plan.md</code> Finding A.</li>
+  <li><b>Grading weights are already configured:</b> Module Tests 40%, Reading Quizzes 25%, Writing Assignments 25%, Module Projects 10%.</li>
+</ul>
+</div>
+
+<h2>Per-Lesson Guide</h2>
+<p style="font-size:13px; color:#5B6472;">Every lesson carries the same four-item pattern: Lesson Page &middot; Reading Quiz &middot; Writing Assignment &middot; VR Activity (deferred, see above). Standard codes below are for your reference only &mdash; they never appear on the student-facing page.</p>
+
+<div class="module-header">Module 1 &middot; Introduction to Economics and Production</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 1.01</div>
+  <div class="lesson-title">What is Economics?</div>
+  <span class="standard-pill">SS.912.E.2.1</span>
+  <div class="items-row">Assignment: <b>Decision Dissection</b> (newly authored this build to match a surviving rubric &mdash; the source never wired an Assignment item to this lesson). Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 1.02</div>
+  <div class="lesson-title">Scarcity, Choice, and Opportunity Cost</div>
+  <span class="gap-pill">SS.912.E.1.2 &mdash; gap</span>
+  <div class="items-row">Assignment: <b>Reel Choices</b> (from source). <b>Known gap:</b> the lesson mentions "Production Possibilities Frontier" once, as a one-line definition, misspelled "Fronter." The standard requires graphical PPC analysis, which this lesson does not do. Deferred, not fixed this build. The typo is worth fixing whenever this lesson is next touched.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 1.03</div>
+  <div class="lesson-title">Factors of Production</div>
+  <span class="standard-pill">SS.912.E.1.1</span> <span class="standard-pill">SS.912.E.2.5</span> <span class="gap-pill">E.1.2 shared gap</span>
+  <div class="items-row">Assignment: <b>Factor Factory</b> (newly authored this build to match a surviving rubric). Full for E.1.1/E.2.5; shares the E.1.2 PPC gap with 1.02.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 1.04</div>
+  <div class="lesson-title">Economic Systems</div>
+  <span class="standard-pill">SS.912.E.1.3</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 1.05</div>
+  <div class="lesson-title">Broad Economic Goals</div>
+  <span class="standard-pill">SS.912.E.2.1</span>
+  <div class="items-row">Assignment from source. Full standard coverage. Closes Module 1 &mdash; Module Test and Project follow.</div>
+</div>
+
+<div class="module-header">Module 2 &middot; Supply, Demand, and Market Structures</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 2.01</div>
+  <div class="lesson-title">Supply and Demand</div>
+  <span class="standard-pill">SS.912.E.1.4</span>
+  <div class="items-row">Assignment: <b>Markets in Motion</b> (newly authored this build to match a surviving rubric). Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 2.02</div>
+  <div class="lesson-title">Market Structures</div>
+  <span class="standard-pill">SS.912.E.1.6</span> <span class="standard-pill">SS.912.E.2.6</span>
+  <div class="items-row">Assignment from source. Full coverage. Terminology note: the lesson uses "perfect competition"; the standard's own term is "pure competition." Synonyms &mdash; not a coverage gap, but worth aligning the lesson's primary term if this lesson is revised.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 2.03</div>
+  <div class="lesson-title">Price and Competition</div>
+  <span class="standard-pill">SS.912.E.1.8</span> <span class="gap-pill">SS.912.E.1.9 &mdash; gap</span>
+  <div class="items-row">Assignment from source. Full for E.1.8. <b>Known gap:</b> the source's own Module Map indexes E.1.9 (wage determination) to this lesson, but the lesson never discusses it. Deferred, not fixed this build &mdash; needs new content on labor supply/demand and productivity-based pay.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 2.04</div>
+  <div class="lesson-title">Business Organizations</div>
+  <span class="standard-pill">SS.912.E.1.5</span>
+  <div class="items-row">Assignment: <b>Business Blueprint</b> (newly authored this build to match a surviving rubric). Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 2.05</div>
+  <div class="lesson-title">Marginal Cost</div>
+  <span class="standard-pill">SS.912.E.1.7</span> <span class="standard-pill">SS.912.E.2.5</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 2.06</div>
+  <div class="lesson-title">Contributions of Entrepreneurs and Innovators</div>
+  <span class="standard-pill">SS.912.E.2.3</span>
+  <div class="items-row">Assignment: <b>Innovation Nation</b> (newly authored this build to match a surviving rubric). Full standard coverage. Closes Module 2 &mdash; Module Test and Project follow. Quarter 1 ends here in the sample fall-semester pacing.</div>
+</div>
+
+<div class="module-header">Module 3 &middot; Money, Banking, and Financial Markets</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 3.01</div>
+  <div class="lesson-title">Characteristics and Functions of Money</div>
+  <span class="standard-pill">SS.912.E.1.13</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 3.02</div>
+  <div class="lesson-title">Federal Reserve and Monetary Policy</div>
+  <span class="standard-pill">SS.912.E.1.11</span> <span class="standard-pill">SS.912.E.2.10</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 3.03</div>
+  <div class="lesson-title">Banking and Financial Institutions</div>
+  <span class="standard-pill">SS.912.E.1.14</span> <span class="standard-pill">SS.912.E.1.15</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 3.04</div>
+  <div class="lesson-title">Personal Budgeting and Credit</div>
+  <span class="standard-pill">SS.912.E.1.16</span>
+  <div class="items-row">Assignment from source. Full standard coverage. Closes Module 3 &mdash; Module Test and Project follow.</div>
+</div>
+
+<div class="module-header">Module 4 &middot; Government Policy and Economic Stability</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 4.01</div>
+  <div class="lesson-title">Fiscal Policy and Tax Systems</div>
+  <span class="standard-pill">SS.912.E.1.10</span> <span class="standard-pill">SS.912.E.2.8</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 4.02</div>
+  <div class="lesson-title">Government Spending, Deficits, and National Debt</div>
+  <span class="standard-pill">SS.912.E.2.9</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 4.03</div>
+  <div class="lesson-title">The Business Cycle</div>
+  <span class="standard-pill">SS.912.E.1.12</span> <span class="standard-pill">SS.912.E.2.7</span> <span class="standard-pill">SS.912.E.3.1</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 4.04</div>
+  <div class="lesson-title">Economic Policymaking and Externalities</div>
+  <span class="standard-pill">SS.912.E.2.2</span> <span class="standard-pill">SS.912.E.2.4</span> <span class="standard-pill">SS.912.E.2.11</span> <span class="standard-pill">SS.912.E.3.4</span> <span class="added-pill">SS.912.G.3.3 &mdash; added</span>
+  <div class="items-row">Assignment from source. Full coverage for the E-strand standards. <b>G.3.3 (renewable/non-renewable resources, geographic/comparative treatment) was confirmed and a short dedicated passage was added this build</b> &mdash; previously only scattered examples inside the externalities discussion. Closes Module 4 &mdash; Module Test and Project follow.</div>
+</div>
+
+<div class="module-header">Module 5 &middot; International Economics and Trade</div>
+
+<div class="note-box" style="margin-bottom:16px;"><b>Module 5 quiz status:</b> the Reading Quizzes for 5.01&ndash;5.05 and the Module 5 Test exist as empty, unpublished shells &mdash; the source itself never authored any questions for them. This is not something this build broke; it's inherited exactly as found.</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 5.01</div>
+  <div class="lesson-title">Comparative and Absolute Advantage</div>
+  <span class="standard-pill">SS.912.E.3.2</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 5.02</div>
+  <div class="lesson-title">Trade Barriers and Free Trade Zones</div>
+  <span class="standard-pill">SS.912.E.3.3</span> <span class="standard-pill">SS.912.G.4.4</span>
+  <div class="items-row">Assignment from source. Full standard coverage.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 5.03</div>
+  <div class="lesson-title">Circular Flow in an Open Market Economy</div>
+  <span class="standard-pill">SS.912.E.2.12</span>
+  <div class="items-row">Assignment from source. Full standard coverage &mdash; exceptionally thorough, hits every required element (households, firms, government, financial institutions, product/factor markets, international trade).</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 5.04</div>
+  <div class="lesson-title">Economic Development: Developed vs. Developing Nations</div>
+  <span class="standard-pill">SS.912.E.3.5</span> <span class="standard-pill">SS.912.G.2.2</span> <span class="standard-pill">SS.912.G.4.4</span> <span class="added-pill">SS.912.HC.11.4 &mdash; added</span>
+  <div class="items-row">Assignment from source. Full coverage for E.3.5/G.2.2/G.4.4. <b>HC.11.4 (private property rights) was confirmed and expanded this build</b> to cover all three required clarifications: personal incentives, individual-to-societal prosperity, and a GDP-per-capita comparison between nations with and without strong property rights. This standard was not indexed anywhere in the source &mdash; it was added to the state standard after the source course was built.</div>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 5.05</div>
+  <div class="lesson-title">Historical Economic Thought</div>
+  <span class="standard-pill">SS.912.E.3.6</span>
+  <div class="items-row">Assignment from source. Full standard coverage. Closes Module 5 &mdash; Module Test (empty shell, see note above) and the "Great Depression and New Deal" Project follow. Course ends here in the sample fall-semester pacing.</div>
+</div>
+
+<h2>Comprehensive Standards Index</h2>
+<p style="font-size:13px; color:#5B6472;">Every benchmark this course touches, and every lesson that satisfies it. Two benchmarks (marked) were added to the state standard after the source course was built and required new content this build; two others (marked gap) remain open.</p>
+
+<table>
+<tr><th>Standard</th><th>Lesson(s)</th><th>Status</th></tr>
+<tr><td>SS.912.E.1.1</td><td>1.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.2</td><td>1.02, 1.03</td><td class="gap">Gap &mdash; deferred</td></tr>
+<tr><td>SS.912.E.1.3</td><td>1.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.4</td><td>2.01</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.5</td><td>2.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.6</td><td>2.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.7</td><td>2.05</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.8</td><td>2.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.9</td><td>2.03</td><td>Gap &mdash; deferred</td></tr>
+<tr><td>SS.912.E.1.10</td><td>4.01</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.11</td><td>3.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.12</td><td>4.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.13</td><td>3.01</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.14</td><td>3.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.15</td><td>3.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.16</td><td>3.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.1</td><td>1.01, 1.05</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.2</td><td>4.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.3</td><td>2.06</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.4</td><td>4.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.5</td><td>1.03, 2.05</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.6</td><td>2.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.7</td><td>4.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.8</td><td>4.01</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.9</td><td>4.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.10</td><td>3.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.11</td><td>4.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.12</td><td>5.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.1</td><td>4.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.2</td><td>5.01</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.3</td><td>5.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.4</td><td>4.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.5</td><td>5.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.6</td><td>5.05</td><td>Full</td></tr>
+<tr><td>SS.912.G.2.2</td><td>5.04</td><td>Full</td></tr>
+<tr><td>SS.912.G.3.3</td><td>4.04</td><td>Added this build</td></tr>
+<tr><td>SS.912.G.4.4</td><td>5.02, 5.04</td><td>Full</td></tr>
+<tr><td>SS.912.HC.11.4</td><td>5.04</td><td>Added this build</td></tr>
+</table>
+
+<h2>Teacher Resources Inventory (per module, hidden modules)</h2>
+<p style="font-size:13px; color:#5B6472;">Each "Module N - Teacher Resources (DO NOT PUBLISH)" module carries a Module Map, a 10-question Socratic Discussion set, reading-quiz answer keys, and rubric attachments &mdash; all rebuilt intact from the source. Nothing was dropped. Two orphaned files in the source (an abandoned draft revision, referencing no real module) were correctly excluded.</p>
+
+<h2>Assignment Groups &amp; Weighting</h2>
+<table>
+<tr><th>Group</th><th>Weight</th><th>Holds</th></tr>
+<tr><td>Module Tests</td><td>40%</td><td>5 tests, one per module (renamed from source's "Exams")</td></tr>
+<tr><td>Reading Quizzes</td><td>25%</td><td>24 quizzes, one per lesson (renamed from source's "Quizzes"; Module 5's are empty shells, see above)</td></tr>
+<tr><td>Writing Assignments</td><td>25%</td><td>24 assignments, one per lesson, individually rubric-graded</td></tr>
+<tr><td>Module Projects</td><td>10%</td><td>5 culminating projects, one per module</td></tr>
+</table>
+<p style="font-size:12px; color:#5B6472;">Rebuilt from the source's own weighting scheme (weights summed to exactly 100% in the source, strong evidence weighting was intentional there too). <code>apply_assignment_group_weights</code> is turned on for this course.</p>
+
+<p style="font-size:12px; color:#5B6472; margin-top:30px;">Full detail behind every item above, including the Canvas build session's decision log and known API quirks for this Canvas instance, lives in this build's <code>plan.md</code> and <code>CLAUDE.md</code> (course folder <code>11CivicsEconomicsHonors/03_Build/</code>).</p>
+
+</body>
+</html>
