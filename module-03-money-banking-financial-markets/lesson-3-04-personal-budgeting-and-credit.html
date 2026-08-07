@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 3.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 3</div>
+        <div style="font-size: 12px; color: #666;">Money, Banking, and Financial Markets</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.04</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Personal Budgeting and Credit</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Personal Budgeting and Credit</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Everything you've learned about banks and money becomes real the moment it's your paycheck.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This module closes Module 3 by turning banking and credit into a skill you can use immediately: building a one-year <strong>budget</strong> and a plan for financing a major purchase responsibly.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish net income from gross pay, and fixed from variable expenses.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how down payment and loan term change the total cost of a loan.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe why reviewing a budget monthly matters as much as building it.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; BUILDING A REAL BUDGET</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If you got your first paycheck tomorrow, what's the first thing you'd want to know before spending any of it? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="Knowing your net income (what's actually left after taxes and deductions) is exactly step one of building a real budget &mdash; gross pay overestimates what you can spend.">&#128181; How much is actually mine after taxes</button>
+                <button data-response="Fixed expenses (rent, loan payments, insurance) come first in any real budget, because missing them has the most serious consequences.">&#127968; What bills I absolutely have to pay first</button>
+                <button data-response="Setting a savings goal before spending is exactly the discipline this lesson teaches &mdash; treating savings as a bill you owe yourself, not a leftover.">&#127919; How much I should save before spending anything</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Know Your Real Income</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Start with your <strong>gross pay</strong> (total earnings before anything is withheld), then subtract <strong>deductions</strong> &mdash; taxes, Social Security, <strong>health insurance premiums</strong>, retirement contributions &mdash; to find your <strong>net income</strong>, the actual money you can budget with. A $60,000 salary might sound like $5,000 a month, but net income often lands closer to $3,800 to $4,200. Budgeting off gross pay instead of net income is one of the most common ways people overcommit their money.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Fixed vs. Variable Expenses</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Fixed expenses</strong> (rent, loan payments, insurance, utilities) stay roughly the same every month and must be prioritized, since missing them damages your credit or your housing. <strong>Variable expenses</strong> (groceries, transportation, <strong>discretionary spending</strong> on entertainment or dining out) change month to month and are the flexible part of a budget &mdash; the place to cut back first when money is tight.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Short-Term and Long-Term Goals</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Short-term goals (an <strong>emergency fund</strong>, paying off a small credit card balance) are reachable within a year. Long-term goals (a home down payment, retirement) take years of sustained contribution. A common recommendation is setting aside 10 to 20 percent of net income for savings, split across an emergency fund, <strong>planned savings</strong> for predictable future costs, and retirement or <strong>investment savings</strong> that benefit from decades of compound growth.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Financing a Major Purchase</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">For a big purchase like a car, a bigger <strong>down payment</strong> lowers both your monthly payment and the total interest you pay. A shorter <strong>loan term</strong> raises the monthly payment but lowers total interest; a longer term does the reverse. Your credit score directly affects the interest rate a lender offers &mdash; better credit history from on-time payments means a lower rate and real savings over the life of the loan. Financial experts generally recommend keeping total monthly debt payments below 36 percent of income.</p>
+
+        <div class="optima-widget ow-slider">
+            <div class="widget-kicker">&#9889; TRY IT &middot; SAME LOAN, DIFFERENT TERM</div>
+            <div class="widget-question">A $12,000 car loan at 5% interest. Drag the slider to change the loan term and see how the monthly payment and total interest paid trade off against each other.</div>
+            <input type="range" min="36" max="72" value="48" step="12" id="loan-slider" style="width:100%;" />
+            <div style="font-size:16px;color:#0E1C42;margin-top:10px;">Loan term: <output id="loan-slider-out"></output> months</div>
+            <div id="loan-slider-msg" style="font-size:15px;color:#1a2340;margin-top:8px;line-height:1.5;"></div>
+            <script>
+            (function () {
+                var s = document.getElementById('loan-slider'), o = document.getElementById('loan-slider-out'), m = document.getElementById('loan-slider-msg');
+                var table = {
+                    36: { pay: 360, interest: 960 },
+                    48: { pay: 276, interest: 1248 },
+                    60: { pay: 227, interest: 1620 },
+                    72: { pay: 193, interest: 1896 }
+                };
+                function render() {
+                    var v = parseInt(s.value, 10);
+                    o.textContent = v;
+                    var t = table[v];
+                    m.textContent = 'Approximate monthly payment: $' + t.pay + '. Approximate total interest paid over the life of the loan: $' + t.interest + '. Notice: the shorter term costs more per month but far less in total interest.';
+                }
+                s.addEventListener('input', render); render();
+            })();
+            </script>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Review, Adjust, Monitor</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A budget is not a one-time exercise. Compare actual spending to your plan every month, called "reconciling." Overspending usually gets fixed by trimming discretionary categories first. Underspending is an opportunity to redirect the surplus into savings rather than letting it disappear. Apps like Mint or YNAB automate this tracking, but a spreadsheet works just as well &mdash; what matters is the habit of checking in, not the tool.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Budget</strong> &mdash; a financial plan outlining expected income and expenses over a set period.<br>
+        <strong>Weathering</strong> &mdash; successfully enduring difficult financial or personal challenges.<br>
+        <strong>Salary</strong> &mdash; a fixed regular payment, usually annual, from an employer for work performed.<br>
+        <strong>U.S. Bureau of Labor Statistics</strong> &mdash; a federal agency reporting data on employment, wages, and other labor-market measures.<br>
+        <strong>Freelance</strong> &mdash; working independently, often on short-term contracts, rather than as a permanent employee.<br>
+        <strong>Stipend</strong> &mdash; a fixed sum paid regularly to support work, training, or education.<br>
+        <strong>Net Income</strong> &mdash; take-home pay after taxes and other deductions.<br>
+        <strong>Deduction</strong> &mdash; money withheld from gross pay for taxes, insurance, or retirement.<br>
+        <strong>Health Insurance Premium</strong> &mdash; the regular payment made to maintain health coverage.<br>
+        <strong>Gross Pay</strong> &mdash; total earnings before deductions.<br>
+        <strong>Fixed Expenses</strong> &mdash; regular costs that stay the same each month, such as rent or insurance.<br>
+        <strong>Variable Expenses</strong> &mdash; costs that fluctuate month to month, such as groceries or entertainment.<br>
+        <strong>Discretionary Spending</strong> &mdash; money spent on non-essential items or activities.<br>
+        <strong>Gadget</strong> &mdash; a small, often electronic device for a specific function.<br>
+        <strong>Impulsive</strong> &mdash; acting quickly without planning, often describing spending decisions.<br>
+        <strong>Emergency Fund</strong> &mdash; savings set aside for unexpected expenses.<br>
+        <strong>Planned Savings</strong> &mdash; money reserved for known future expenses.<br>
+        <strong>Investment / Retirement Savings</strong> &mdash; funds allocated to grow wealth over time or provide income after work.<br>
+        <strong>Down Payment</strong> &mdash; an upfront payment on a large purchase that reduces the amount borrowed.<br>
+        <strong>Loan Term</strong> &mdash; the length of time agreed to repay a loan.<br>
+        <strong>Inaccessible</strong> &mdash; not easily reached or obtained.<br>
+        <strong>High-Yield Savings Account</strong> &mdash; a savings account offering a higher interest rate than standard accounts.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 3.04 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on budgeting and credit planning.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; MODULE 3 WRAP</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've now traced money from what makes it work, to the Fed that manages its supply, to the banks that distribute it, to your own budget. Module 4 zooms out to how government policy shapes the whole economy you're now equipped to navigate personally.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.04 &middot; Personal Budgeting and Credit</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
