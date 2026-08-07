@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 5.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .compare-card { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 16px 18px; flex: 1; min-width: 220px; }
+    .compare-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 5</div>
+        <div style="font-size: 12px; color: #666;">International Economics and Trade</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 5.04</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Economic Development: Developed vs. Developing Nations</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 5.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Economic Development: Developed vs. Developing Nations</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Same peninsula, same people, same starting point in 1945. Wildly different outcomes.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Trade explains how nations exchange what they produce. It doesn't explain why some nations produce so much more than others. Today's lesson looks at what actually separates developed from developing economies &mdash; and at one factor, <strong>property rights</strong>, that turns out to matter more than almost anything else.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name the structural differences between developed and developing economies.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how secure property rights create personal incentives that add up to societal prosperity.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> compare the United States to other developed and developing economies on real indicators.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; WHAT SEPARATES DEVELOPED FROM DEVELOPING</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If you had to guess the single biggest factor separating rich and poor nations, would you guess natural resources, education, or something about their laws and institutions? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="Natural resources matter less than you'd think &mdash; resource-poor Japan and Singapore are both wealthy, while some resource-rich nations remain poor. Watch for why below.">&#127757; Natural resources</button>
+                <button data-response="Education (human capital) is genuinely central, and this lesson covers it directly &mdash; but notice how it connects to institutions too, since schools need stable funding and governance to function well.">&#127891; Education / human capital</button>
+                <button data-response="That instinct points straight at today's deeper focus: property rights and institutions, which shape whether people have any reason to invest, build, or innovate in the first place.">&#9878;&#65039; Laws and institutions</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Structural Differences</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Developed economies run diversified, knowledge-intensive industries that <strong>buffer</strong> them from swings in <strong>commodity markets</strong>; developing economies often depend on agriculture or raw materials with <strong>low-value-added exports</strong>, leaving them exposed to external shocks. Human capital differs sharply: near-universal quality education and strong public health in developed nations versus uneven schooling and underfunded health systems elsewhere, which <strong>hampers</strong> productivity and slows industrialization. Infrastructure (reliable power, digital connectivity, transport) lowers <strong>logistical costs</strong> in developed economies and raises them everywhere infrastructure is weak. History and geography leave lasting marks too: colonial-era <strong>extraction</strong> patterns and <strong>land tenure systems</strong>, landlocked geography, or harsh climates all shape outcomes independent of a country's current policy choices.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Property Rights: The Deeper Foundation</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Underneath all of these differences sits something more basic: whether a country's legal system reliably protects <strong>property rights</strong> &mdash; the ability to own, use, and benefit from what you build, invest in, or create, with real legal protection against seizure. This matters for three connected reasons.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>First, personal incentives.</strong> If a farmer, entrepreneur, or inventor cannot be confident that the gains from their own effort and investment will actually belong to them, the rational choice is to invest less, innovate less, and hold wealth in forms that are easy to hide or move rather than in productive, visible assets like a business or a farm. Secure property rights are what make the personal gamble of investing worthwhile in the first place.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Second, individual incentives add up to societal prosperity.</strong> When millions of individuals each have a real incentive to invest, improve their land, start a business, or develop new ideas, those small decisions aggregate into exactly the kind of broad-based productivity growth described above: deeper financial markets, more <strong>R&amp;D</strong>, more foreign direct investment, since investors also need confidence that their capital won't simply be seized. Weak property rights and <strong>burdensome</strong> bureaucracy don't just hurt one investor; they suppress this aggregation effect economy-wide.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Third, the real-world gap is visible in GDP per capita.</strong> The clearest natural experiment in modern economic history is the Korean peninsula: North and South Korea started in 1945 from the same population, culture, and history, then diverged sharply based on their economic and legal systems. Decades later, South Korea's income per person is many times higher than North Korea's, largely because South Korea built an economy on enforceable private property and market incentives while North Korea did not. The comparison isolates institutions and property rights specifically, since almost everything else about the two populations started out the same.</p>
+
+        <div class="compare-row">
+            <div class="compare-card">
+                <div style="font-size: 13px; color: #c7922c; margin-bottom: 8px;">STRONG PROPERTY RIGHTS</div>
+                <div style="font-size: 15px; color: #1a2340; line-height: 1.6;">Individuals invest, innovate, and build because they can keep and pass on what they create. Capital flows in. Productivity compounds over decades.</div>
+            </div>
+            <div class="compare-card">
+                <div style="font-size: 13px; color: #c7922c; margin-bottom: 8px;">WEAK PROPERTY RIGHTS</div>
+                <div style="font-size: 15px; color: #1a2340; line-height: 1.6;">Investment and innovation carry the constant risk of seizure or expropriation. Capital moves elsewhere or hides. Productivity stagnates.</div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The U.S. Compared to Other Nations</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The United States combines very high <strong>per-capita income</strong> with deep <strong>venture capital</strong> markets and leading research universities, but carries higher inequality and a less complete public health safety net than many peer developed nations like Germany or the Nordic countries, whose vocational training and social supports trade some labor-market flexibility for more stability. China achieved rapid industrialization through state-led investment and urbanization, lifting hundreds of millions out of poverty, and now faces the challenge of shifting to consumption- and innovation-led growth. India has become a major services and technology hub while still building out infrastructure and skills for its large workforce. Resource-rich developing nations sometimes face "<strong>Dutch disease</strong>," where a commodity boom actually harms other industries by driving up their currency's value; countries like Bangladesh and Rwanda show that real progress is possible even without abundant natural resources, through export industries and governance reform respectively.</p>
+
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; TRY IT &middot; DEVELOPED OR DEVELOPING INDICATOR?</div>
+            <div class="widget-question">Does each indicator typically describe a developed economy or a developing one?</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right &mdash; deep, liquid financial markets funding innovation and business growth are typical of developed economies." data-hint="Ask: does this describe strong institutional and financial depth, or the opposite?">
+                <div class="widget-row-prompt">1. Deep, liquid financial markets that channel household savings efficiently into business investment.</div>
+                <div class="widget-options">
+                    <button data-choice="0">More typical of a developed economy</button>
+                    <button data-choice="1">More typical of a developing economy</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right &mdash; heavy reliance on a narrow set of raw material exports is the classic developing-economy vulnerability described in this lesson." data-hint="Ask: is this economy diversified, or dependent on a narrow set of exports?">
+                <div class="widget-row-prompt">2. Heavy dependence on exporting one or two raw commodities, with revenue swinging widely with world prices.</div>
+                <div class="widget-options">
+                    <button data-choice="0">More typical of a developed economy</button>
+                    <button data-choice="1">More typical of a developing economy</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right &mdash; enforceable property rights and low corruption are exactly the institutional foundation associated with developed economies." data-hint="Ask: does this describe strong legal protection for what people build and invest in?">
+                <div class="widget-row-prompt">3. Strong, predictable legal protection for property rights, with low corruption and reliable enforcement of contracts.</div>
+                <div class="widget-options">
+                    <button data-choice="0">More typical of a developed economy</button>
+                    <button data-choice="1">More typical of a developing economy</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Buffering</strong> &mdash; reducing or softening the impact of shocks on an economy.<br>
+        <strong>Commodity Markets</strong> &mdash; markets where raw materials are bought and sold, influenced by global supply and demand.<br>
+        <strong>Linkage</strong> &mdash; an economic connection where growth in one sector stimulates another.<br>
+        <strong>Low-Value-Added Exports</strong> &mdash; goods exported with minimal processing, generating little additional income.<br>
+        <strong>Capacity</strong> &mdash; the maximum potential of an economy or system to produce.<br>
+        <strong>Hamper</strong> &mdash; to obstruct or slow the progress of an activity.<br>
+        <strong>Logistical Costs</strong> &mdash; expenses for transportation, storage, and distribution.<br>
+        <strong>Transaction Costs</strong> &mdash; the costs of making an economic exchange.<br>
+        <strong>R&amp;D</strong> &mdash; Research and Development.<br>
+        <strong>Burdensome</strong> &mdash; excessively difficult or costly to manage.<br>
+        <strong>Boom-Bust Cycles</strong> &mdash; rapid growth followed by sudden decline.<br>
+        <strong>Extraction</strong> &mdash; removing natural resources from the environment for economic use.<br>
+        <strong>Land Tenure Systems</strong> &mdash; the rules determining ownership and usage rights to land.<br>
+        <strong>Globalization</strong> &mdash; increasing international interconnectedness in trade and finance.<br>
+        <strong>Convergence</strong> &mdash; poorer economies growing faster than richer ones, narrowing income gaps.<br>
+        <strong>Entrench</strong> &mdash; to firmly establish a pattern so it becomes difficult to change.<br>
+        <strong>Global Value Chains</strong> &mdash; international production networks spanning multiple countries.<br>
+        <strong>Extractive Enclaves</strong> &mdash; sectors dominated by resource extraction, isolated from the broader economy.<br>
+        <strong>Urbanization</strong> &mdash; population shifting from rural areas to cities.<br>
+        <strong>Agglomeration Economies</strong> &mdash; productivity benefits when firms and workers cluster geographically.<br>
+        <strong>Sequencing</strong> &mdash; the deliberate order of policies or reforms.<br>
+        <strong>Prudent</strong> &mdash; acting with careful judgment and foresight.<br>
+        <strong>Per-Capita Income</strong> &mdash; average income per person in a country.<br>
+        <strong>Venture Capital</strong> &mdash; high-risk investment funds for startups with growth potential.<br>
+        <strong>Current-Account Deficits</strong> &mdash; a country importing more than it exports, creating a financing gap.<br>
+        <strong>Commodity Dependence</strong> &mdash; relying heavily on a few raw materials for export earnings.<br>
+        <strong>"Dutch Disease"</strong> &mdash; resource exports causing currency appreciation that harms other industries.<br>
+        <strong>Harmonization</strong> &mdash; aligning laws or standards across countries to ease trade.<br>
+        <strong>Perpetuate</strong> &mdash; to cause something to continue indefinitely.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 5.04 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on economic development and property rights.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time you read about a country's economy, ask what its property rights situation actually is &mdash; it explains more than almost any other single fact. Our final lesson looks back at the thinkers who first worked all of this out.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 5.04 &middot; Economic Development: Developed vs. Developing Nations</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

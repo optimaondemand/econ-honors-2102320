@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 5.01</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 5</div>
+        <div style="font-size: 12px; color: #666;">International Economics and Trade</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 5.01</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Comparative and Absolute Advantage</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 5.01</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Comparative and Absolute Advantage</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Why does Japan, with almost no natural resources, thrive in global trade?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Module 5 opens international economics with the question at the heart of all trade: why do nations exchange goods instead of trying to make everything themselves? The answer runs through two ideas: <strong>absolute advantage</strong> and <strong>comparative advantage</strong>.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish absolute advantage from comparative advantage.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why a country can benefit from trade even without being "best" at anything.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> trace how specialization and trade grow the total "economic pie."</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; TWO KINDS OF ADVANTAGE</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If you're genuinely better than a friend at every single subject in school, does it still make sense to split group project tasks? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That's exactly the comparative advantage insight: even the most capable person benefits from focusing where their relative edge is biggest and letting others handle the rest.">&#129309; Yes, splitting still makes sense</button>
+                <button data-response="That instinct is what absolute advantage alone would predict &mdash; but it turns out to be wrong once you factor in opportunity cost, which is exactly today's twist.">&#9995;&#65039; No, just do it all yourself</button>
+                <button data-response="That intuition is exactly right, and today's reading gives you the economic reasoning (opportunity cost) behind why it's right.">&#129300; Depends on time, not just skill</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Absolute Advantage: Who Produces More</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A country has <strong>absolute advantage</strong> when it produces more of a good with the same resources than another country can &mdash; usually from a natural edge like <strong>petroleum</strong> reserves (Saudi Arabia) or ideal climate for coffee (Colombia). It's a simple, direct measure of raw efficiency. But absolute advantage alone can't explain real trade patterns: if it were the whole story, the most efficient countries would produce everything and less efficient countries would be shut out entirely. That's not what happens, which is where the more powerful idea comes in.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Comparative Advantage: Who Gives Up the Least</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Comparative advantage</strong> is based on <strong>opportunity cost</strong>, not raw output. David Ricardo's classic 1800s example: Portugal is more efficient than England at producing both wine and cloth, but its edge is bigger in wine. England gives up less by making cloth than by making wine. So both countries gain when Portugal specializes in wine and England specializes in cloth and they trade &mdash; even though Portugal could out-produce England at everything. Comparative advantage means being the "least bad" at something relative to your own alternatives, not the literal best at anything.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Real Nations, Real Specialization</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The U.S. specializes in high-tech goods thanks to <strong>capital investment</strong> and an educated workforce; India in software services thanks to a large pool of English-speaking, lower-cost labor; Brazil in agriculture thanks to climate. Japan is the sharpest example: it imports almost all its own oil and raw materials, yet became one of the world's most advanced economies by finding its <strong>niche</strong> in automobiles, electronics, and precision machinery, then trading manufactured goods for the resources it lacks. Singapore, with almost no land or raw materials at all, became a global trading hub through <strong>specialization</strong> in shipping, finance, and technology &mdash; proof that comparative advantage is about efficiency and focus, not natural endowment.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What Specialization Actually Buys You</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A smartphone's supply chain shows <strong>efficiency gains</strong> in action: Taiwan leads in <strong>semiconductor</strong> design, South Korea in screens, the U.S. in software, China in assembly and <strong>logistics</strong>. No single country is "best" at every stage, but the finished product is more advanced and affordable than any one nation could produce alone. This is what economists mean by growing the "economic pie" through <strong>interdependence</strong> &mdash; though the gains aren't evenly spread: domestic industries that face new import competition (U.S. textile and steel workers, for example) can genuinely suffer, which is why economists generally pair praise for trade's overall gains with support for policies that help displaced workers adjust.</p>
+
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; TRY IT &middot; ABSOLUTE OR COMPARATIVE?</div>
+            <div class="widget-question">Which concept does each example best illustrate?</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right &mdash; producing more with the same inputs is a direct measure of absolute advantage." data-hint="Ask: is this about raw output, or about what's given up?">
+                <div class="widget-row-prompt">1. Country A produces 50 tons of steel with the same labor and machinery that Country B uses to produce only 30 tons.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Absolute advantage</button>
+                    <button data-choice="1">Comparative advantage</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right &mdash; Portugal is more efficient at both goods, but specializes where its opportunity cost is lowest. That's comparative advantage." data-hint="Ask: is this country the literal best at everything, and does it specialize anyway based on what it gives up?">
+                <div class="widget-row-prompt">2. Portugal, though more efficient at producing both wine and cloth than England, specializes in wine because its opportunity cost there is lower.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Absolute advantage</button>
+                    <button data-choice="1">Comparative advantage</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right &mdash; Japan lacks the raw resources for absolute advantage in energy, yet thrives by specializing where its relative efficiency is highest." data-hint="Ask: does this country lack natural resources yet still succeed through specialization?">
+                <div class="widget-row-prompt">3. Japan, despite importing almost all of its oil and raw materials, becomes a world leader in automobiles and electronics.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Absolute advantage</button>
+                    <button data-choice="1">Comparative advantage</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Absolute Advantage</strong> &mdash; the ability to produce more of a good with the same resources than another producer.<br>
+        <strong>Comparative Advantage</strong> &mdash; the ability to produce a good at a lower opportunity cost than another, even if less efficient overall.<br>
+        <strong>Petroleum</strong> &mdash; a naturally occurring liquid fossil fuel, refined into gasoline, diesel, and plastics.<br>
+        <strong>Niche</strong> &mdash; a specialized segment of a market where a product or business meets specific needs.<br>
+        <strong>Opportunity Cost</strong> &mdash; the value of the next-best alternative given up when a choice is made.<br>
+        <strong>Specialization</strong> &mdash; focusing on producing a limited range of goods to increase efficiency.<br>
+        <strong>Efficiency Gains</strong> &mdash; improvements allowing more output with the same or fewer resources.<br>
+        <strong>Capital Investment</strong> &mdash; money spent on machinery, technology, or infrastructure to increase future production.<br>
+        <strong>Semiconductor</strong> &mdash; a material, often silicon, used to make electronic circuits and microchips.<br>
+        <strong>Logistics</strong> &mdash; the planning and coordination of moving goods or resources efficiently.<br>
+        <strong>Interdependence</strong> &mdash; mutual reliance between people, businesses, or countries for goods or resources.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 5.01 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on absolute and comparative advantage.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time you check where a product was made, try to guess what comparative advantage that country is drawing on. Next lesson asks what happens when governments put up barriers to this kind of trade.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 5.01 &middot; Comparative and Absolute Advantage</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

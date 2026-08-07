@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 5.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 5</div>
+        <div style="font-size: 12px; color: #666;">International Economics and Trade</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 5.05</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Historical Economic Thought</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 5.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Historical Economic Thought</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Every idea in this course came from somewhere. Who thought of it first, and why?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This final lesson steps back to look at economics itself as an ongoing conversation, not a fixed set of rules. Every concept you've studied &mdash; supply and demand, opportunity cost, fiscal policy, trade &mdash; came out of a real argument between real thinkers responding to real crises.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name the major schools of economic thought and their central claims.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why the Great Depression and 1970s stagflation each forced a rethinking of prior theory.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why economics is best understood as an evolving conversation, not a settled science.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; AN EVOLVING CONVERSATION, NOT FIXED RULES</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">After a whole semester of economics, does it feel more like a settled science with fixed answers, or an ongoing argument that's still being worked out? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That instinct will get tested today &mdash; nearly every idea in this course was a direct response to, or rejection of, the idea before it.">&#128172; More like a settled science</button>
+                <button data-response="That's exactly the framing this final lesson makes explicit &mdash; each school of thought below was built by arguing with the one before it.">&#128300; More like an ongoing argument</button>
+                <button data-response="That honest mix is probably the most accurate answer of all &mdash; some tools (supply and demand) are settled; how to use them in a crisis rarely is.">&#9878;&#65039; Some of both</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Classical Foundation</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Adam Smith's <em>The Wealth of Nations</em> (1776) introduced the <strong>"invisible hand"</strong>: people pursuing their own self-interest end up serving society's needs too, and specialization (his pin-factory example) multiplies productivity. David Ricardo built comparative advantage directly on Smith's foundation &mdash; the same idea you studied in Lesson 5.01. Thomas Malthus warned that population could outpace food supply, a concern later eased by agricultural technology but still relevant to modern sustainability debates.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Marginal Revolution and Marx's Challenge</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Late-19th-century economists redefined value around <strong>marginal utility</strong> &mdash; the satisfaction from one more unit of something, which is why the tenth slice of pizza is worth less to you than the first. Alfred Marshall formalized the supply and demand curves you've used all semester. At the same time, Karl Marx argued industrial capitalism exploited workers (the <strong>proletariat</strong>) for the benefit of capital owners (the <strong>bourgeoisie</strong>), and envisioned collective ownership of the <strong>means of production</strong>. His predicted collapse of capitalism didn't happen as he described, but his critique of inequality and power still shapes political debate today.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Keynes and the Great Depression</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The <strong>Great Depression</strong> broke the classical assumption that markets always self-correct. John Maynard Keynes argued economies could get "stuck" if households and businesses were too cautious to spend, and that government spending could "unstick" them &mdash; directly shaping FDR's <strong>New Deal</strong> and the fiscal policy tools you studied in Module 4. The "<strong>neoclassical synthesis</strong>" later blended Keynesian short-run demand management with neoclassical long-run market theory. Milton Friedman's <strong>monetarism</strong> pushed back, arguing that controlling the money supply mattered more than government spending, and that the Fed's own mistakes had worsened the Depression.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Stagflation Breaks the Consensus</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">1970s stagflation (high unemployment and high inflation at once) embarrassed both Keynesians and monetarists, since neither approach alone fixed both problems together. This pushed new schools forward: the <strong>new classical school</strong> argued people anticipate government policy and adjust their behavior to cancel it out; New Keynesians countered that wages and prices are <strong>"sticky"</strong> and slow to adjust, leaving real room for policy to matter. The Austrian School (Hayek, von Mises) blamed artificially cheap credit for boom-and-bust <strong>bubbles</strong> and distrusted centralized economic planning altogether.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Where Economics Stands Today</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Modern economics is <strong>pluralistic</strong>: <strong>institutional economics</strong> studies how laws and culture shape outcomes; <strong>ecological economists</strong> warn that unlimited growth strains environmental limits; <strong>public choice theory</strong> applies self-interest reasoning to politicians themselves; behavioral economists (Kahneman, Thaler) study how real people deviate from perfectly rational models, leading to policy "nudges" like automatic retirement enrollment. Central banks today, including the Federal Reserve, blend rational-expectations thinking with the reality of sticky prices &mdash; proof that this "conversation" never actually ended, it just kept adding participants.</p>
+
+        <div class="flip-grid" style="margin-top: 18px;">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Adam Smith</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">The "invisible hand" and division of labor. Self-interest, channeled through markets, benefits society.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Karl Marx</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Argued industrial capitalism exploited workers, and envisioned collective ownership of production.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">John Maynard Keynes</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Argued government spending could pull an economy out of a demand-driven slump. Shaped the New Deal.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Milton Friedman</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Led monetarism: controlling the money supply, not government spending, is the key to economic stability.</div></div></div>
+        </div>
+        <button class="widget-reset" style="margin-top:14px;">Reset all cards</button>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>"Invisible Hand"</strong> &mdash; Adam Smith's idea that self-interest, pursued through markets, unintentionally benefits society.<br>
+        <strong>Marginal Utility</strong> &mdash; the extra satisfaction gained from consuming one additional unit of a good.<br>
+        <strong>Formalism</strong> &mdash; an approach relying heavily on abstract mathematical models.<br>
+        <strong>Bourgeoisie / Proletariat</strong> &mdash; in Marxist theory, the class that owns capital, and the working class that sells its labor.<br>
+        <strong>Means of Production</strong> &mdash; the resources and tools used to produce goods and services.<br>
+        <strong>Institutional Economics</strong> &mdash; a school studying how laws, customs, and institutions shape economic outcomes.<br>
+        <strong>Consumer Culture</strong> &mdash; a way of life where identity and status are tied to buying and displaying goods.<br>
+        <strong>Great Depression</strong> &mdash; the 1930s global economic crisis marked by mass unemployment and bank failures.<br>
+        <strong>New Deal</strong> &mdash; FDR's programs responding to the Great Depression.<br>
+        <strong>Neoclassical Synthesis</strong> &mdash; a mid-20th-century framework blending Keynesian and neoclassical ideas.<br>
+        <strong>Monetarism</strong> &mdash; Milton Friedman's theory emphasizing control of the money supply.<br>
+        <strong>"Stickiness"</strong> &mdash; the tendency of wages or prices to adjust slowly toward equilibrium.<br>
+        <strong>New Classical School</strong> &mdash; an approach stressing rational expectations and limited scope for policy.<br>
+        <strong>Bubble</strong> &mdash; a rapid asset price rise fueled by speculation, followed by a sharp collapse.<br>
+        <strong>Ecological Economists</strong> &mdash; economists studying growth's interaction with environmental limits.<br>
+        <strong>Public Choice Theory</strong> &mdash; applying economic reasoning to politics and self-interested officials.<br>
+        <strong>Optimal</strong> &mdash; the most efficient or effective outcome given available resources.<br>
+        <strong>Structuralism</strong> &mdash; a perspective emphasizing deep institutional and structural factors in development.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 5.05 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the history of economic thought.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Module 5 Test</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Covers trade, the circular flow, economic development, and the history of economic thought.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Module 5 Project: Great Depression and New Deal</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">The course's culminating project, connecting the Depression-era history from this lesson to the fiscal and monetary tools studied all semester.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; COURSE CLOSING</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You started this course with scarcity and opportunity cost. You're ending it with an entire history of the arguments those two ideas set off. That is what studying economics well actually looks like: not memorizing settled answers, but learning to reason clearly about a conversation that is still very much alive.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 5.05 &middot; Historical Economic Thought</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      document.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      document.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      document.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

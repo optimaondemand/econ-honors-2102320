@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 5.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 5</div>
+        <div style="font-size: 12px; color: #666;">International Economics and Trade</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 5.02</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Trade Barriers and Free Trade Zones</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 5.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Trade Barriers and Free Trade Zones</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">If free trade grows the economic pie, why do governments keep restricting it?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Comparative advantage says specialization and trade make everyone richer. Real governments still impose <strong>tariffs</strong>, <strong>quotas</strong>, and <strong>subsidies</strong> anyway &mdash; and other governments go the opposite direction with free trade zones. Today is about why both happen.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name common trade barriers and why governments impose them anyway.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how free trade zones like the EU or USMCA integrate economies.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> weigh protectionism against free trade using concentrated benefits vs. diffuse costs.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; RESTRICTING TRADE VS. OPENING IT</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If a tariff raises prices for millions of consumers but saves a few thousand jobs in one industry, do you think that trade-off is worth it? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That instinct tracks most economists' view &mdash; but the reading explains why the trade-off persists anyway: the saved jobs are concentrated and politically loud, while the higher prices are diffuse and barely noticed by any one consumer.">&#9878;&#65039; Probably not worth it overall</button>
+                <button data-response="Protecting real jobs and communities is a real value, even if it comes with broader costs &mdash; that's exactly the political logic behind protectionism this lesson explains.">&#128100; Worth it, to protect real jobs</button>
+                <button data-response="That's exactly right, and it's exactly why economists and policymakers still argue about this after centuries of the same debate.">&#129300; Depends how you weigh concentrated vs. spread-out costs</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Trade Barriers: Restricting the Flow</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong>tariff</strong> is a tax on imports, either specific (a flat dollar amount) or <strong>ad valorem</strong> (a percentage of value). A <strong>quota</strong> caps the physical quantity that can enter. <strong>Subsidies</strong> give domestic producers an artificial cost advantage. All three undermine the efficiency gains of comparative advantage by keeping resources from flowing to their most productive uses &mdash; yet they persist because benefits are concentrated on a vocal, organized industry while costs (higher prices, less choice) are <strong>diffuse</strong> across millions of consumers who barely notice.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why Governments Impose Barriers Anyway</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Protecting "infant industries" not yet able to compete globally is one rationale (19th-century U.S. textiles and steel). National security is another: overdependence on imports for oil, food, or medical supplies became a visible concern during COVID-19 supply chain disruptions. <strong>Foreign policy</strong> is a third: <strong>sanctions</strong> and <strong>embargoes</strong> (against apartheid-era South Africa, or Russia more recently) use trade restriction as pressure without military force. And domestic politics matters directly: workers facing import competition <strong>lobby</strong> for protection because their job losses are immediate and visible, while free trade's gains are diffuse and easy to overlook.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Free Trade Zones: Opening the Flow</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Bilateral</strong> agreements involve two countries; <strong>multilateral</strong> blocs involve many. The <strong>European Union</strong> is the deepest example: beyond eliminating tariffs, it <strong>harmonizes</strong> regulations, allows free movement of labor and capital, and shares a common currency. The <strong>USMCA</strong> (which replaced <strong>NAFTA</strong>) lets a car be designed in the U.S., sourced from Mexico, and assembled in Canada without steep tariffs. Consumers get lower prices and more variety; businesses get access to far larger markets, which drives <strong>efficiency gains</strong> and innovation. Beyond economics, deep trade <strong>integration</strong> gives nations a real incentive to stay at peace, since conflict would disrupt valuable ties &mdash; the EU's post-WWII peace is often cited as exactly this dynamic in action.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Free Trade Has Real Costs Too</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Domestic industries that can't compete with cheaper imports genuinely suffer: factories close, jobs get <strong>outsourced</strong>, workers are <strong>displaced</strong>. Smaller countries within a trade <strong>bloc</strong> sometimes worry about being overshadowed by dominant members. And regulatory harmonization can create pressure toward weaker labor or environmental standards, sometimes called a "race to the bottom." None of this erases free trade's net gains, but it explains why the debate between protectionism and openness never fully resolves &mdash; both sides are responding to something real.</p>
+
+        <div class="flip-grid" style="margin-top: 18px;">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Tariff</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A tax on imported goods, either a flat amount or a percentage of value, that raises their price relative to domestic products.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Quota</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A government-imposed limit on the physical quantity of a good that can be imported.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Embargo</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A government order banning trade entirely with a specific country, often as a foreign-policy tool.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Free Trade Zone</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">An agreement between two or more countries to lower or eliminate trade restrictions between them.</div></div></div>
+        </div>
+        <button class="widget-reset" style="margin-top:14px;">Reset all cards</button>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Tariff</strong> &mdash; a tax imposed on imported goods.<br>
+        <strong>Quota</strong> &mdash; a government-imposed limit on the quantity of a good that can be imported.<br>
+        <strong>Subsidy</strong> &mdash; financial assistance from the government to support businesses or industries.<br>
+        <strong>Protectionism</strong> &mdash; economic policies restricting imports to shield domestic industries.<br>
+        <strong>Ad Valorem</strong> &mdash; a tax calculated as a percentage of a good's value.<br>
+        <strong>Bureaucratic</strong> &mdash; related to the administrative rules of government agencies.<br>
+        <strong>Diffuse</strong> &mdash; spread out rather than concentrated in one place.<br>
+        <strong>Foreign Policy</strong> &mdash; a nation's strategy for dealing with other countries.<br>
+        <strong>Sanction</strong> &mdash; a penalty or restriction to influence a country's behavior.<br>
+        <strong>Embargo</strong> &mdash; a government order banning trade with a specific country.<br>
+        <strong>Lobby</strong> &mdash; to attempt to influence lawmakers to support specific policies.<br>
+        <strong>Fragmenting</strong> &mdash; breaking into smaller parts, often weakening overall unity.<br>
+        <strong>Bilateral / Multilateral</strong> &mdash; involving two parties, or three or more.<br>
+        <strong>European Union (EU)</strong> &mdash; a political and economic union of European countries.<br>
+        <strong>USMCA / NAFTA</strong> &mdash; the trade agreements governing free trade among the U.S., Mexico, and Canada.<br>
+        <strong>Transformative</strong> &mdash; causing major, lasting change.<br>
+        <strong>Integration</strong> &mdash; combining parts into a unified whole.<br>
+        <strong>Outsource</strong> &mdash; to obtain goods or services from an outside supplier, often abroad.<br>
+        <strong>Displaced</strong> &mdash; forced to move or replaced, often referring to job loss.<br>
+        <strong>Bloc</strong> &mdash; a group of countries acting together for shared purposes.<br>
+        <strong>Harmonization</strong> &mdash; aligning rules or standards across countries to reduce differences.<br>
+        <strong>Counterpoint</strong> &mdash; an opposing viewpoint presented alongside another idea.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 5.02 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on trade barriers and free trade zones.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time you see a news story about a new tariff, ask who benefits (concentrated) and who pays (diffuse). Next lesson traces how money actually flows between households, firms, and government in an open economy.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 5.02 &middot; Trade Barriers and Free Trade Zones</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      document.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      document.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      document.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>
