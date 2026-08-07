@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 1.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-scale .widget-options { justify-content: space-between; }
+    .ow-scale .widget-options button { flex: 1; text-align: center; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 1</div>
+        <div style="font-size: 12px; color: #666;">Introduction to Economics and Production</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.02</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Scarcity, Choice, and Opportunity Cost</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Scarcity, Choice, and Opportunity Cost</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">What is opportunity cost, and why does it matter more than the price tag?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Lesson 1.01 introduced economics as the study of decisions under scarcity. Today you go one layer deeper into three ideas that never stop being useful: scarcity itself, the choices it forces, and the opportunity cost hiding inside every one of those choices.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why scarcity is permanent, not a temporary shortage.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> use cost-benefit analysis and utility to describe how a choice gets made.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> identify the opportunity cost in a personal, business, or government decision.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">The reading below, plus your notes from Lesson 1.01.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; SCARCITY AND CHOICE</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">When you hear the word "scarce," what comes to mind first? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="Money is the most familiar scarce resource, but by the end of this lesson you will see time and attention are just as scarce &mdash; and often harder to get back.">&#128181; Money</button>
+                <button data-response="Time is a sharp example &mdash; it is the one resource nobody can ever get more of, no matter how much they are willing to pay.">&#8987; Time</button>
+                <button data-response="A specific product running out is actually a shortage, not scarcity. Scarcity is the deeper, permanent condition behind shortages &mdash; this lesson draws that line clearly.">&#128230; A specific item running out</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Scarcity Is Permanent, Not Temporary</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Scarcity exists because resources &mdash; money, time, raw materials, labor, land, knowledge &mdash; are always limited, while human wants keep expanding. Farmland is finite even with modern machinery; oil, coal, and natural gas cannot be replaced at the rate they are extracted; every worker has only twenty-four hours in a day. This is different from a <strong>shortage</strong>, which is a temporary lack of one product. Scarcity is the permanent backdrop: no amount of innovation lets every want be met at once, which is why it is considered the starting point of all economics.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Choice: Deciding How to Use What You Have</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong>choice</strong> is how limited resources get allocated among competing wants. A student choosing between studying and going out, a business deciding whether to expand or invest in equipment, a government weighing education against defense spending &mdash; all of these are the same underlying act: setting priorities because time and money cannot cover every possibility. Every choice involves sacrifice; to pursue one goal is to set the other aside.</p>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 8px; padding: 16px 20px; margin: 16px 0;">
+            <div style="font-size: 14px; color: #0e1c42; line-height: 1.6;"><strong>Two tools economists use to evaluate a choice:</strong> <strong>cost-benefit analysis</strong> weighs what is gained against what is lost, and <strong>utility</strong> is the satisfaction a person gets from a good, service, or choice. They explain why two people facing the identical trade-off &mdash; a concert ticket versus saving for a phone &mdash; can rationally choose differently: they place different utility on each option.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; OPPORTUNITY COST</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Opportunity cost</strong> is the value of the next-best alternative given up when a choice is made. It is bigger than the money spent: if you spend $20 on a book, the opportunity cost is not the $20 itself but the movie night or savings contribution you gave up instead. Opportunity cost applies at every scale. A worker choosing extra shifts over family time gains income at the cost of relationships. A business that commits funds to new technology may have to give up a new product line. A government that funds a highway system may have fewer dollars for schools or hospitals. In every case, the true cost of a decision is not just what is spent, but what is forgone.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Time deserves special attention here, because unlike money it can never be replaced once spent. An hour of video games might be relaxing, but its opportunity cost is the studying, exercise, or rest that hour could have held instead. Recognizing this is what separates careless decision-making from thoughtful decision-making: nothing is truly free, and naming the cost you do not see is as important as naming the choice you do.</p>
+
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; TRY IT &middot; NAME THE CONCEPT</div>
+            <div class="widget-question">Read each scenario and identify which economic concept it best demonstrates.</div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right &mdash; the study time you did not get is the value of the next-best alternative you gave up." data-hint="Ask what the student gave up, not what they gained.">
+                <div class="widget-row-prompt">1. A student spends Friday night at a football game instead of studying for Monday's test.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Shortage</button>
+                    <button data-choice="1">Opportunity cost</button>
+                    <button data-choice="2">Diversification</button>
+                    <button data-choice="3">Productivity</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="3" data-fb="Right &mdash; comparing what is gained against what is lost before deciding is cost-benefit analysis." data-hint="Look for the word 'compares' &mdash; that is the giveaway for this tool.">
+                <div class="widget-row-prompt">2. A city council compares the projected benefits of a new park against its construction and upkeep costs before approving it.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Scarcity</button>
+                    <button data-choice="1">Utility</button>
+                    <button data-choice="2">Forgone resource</button>
+                    <button data-choice="3">Cost-benefit analysis</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right &mdash; two people can rationally make different choices because they get different satisfaction, or utility, from each option." data-hint="This is about why people's preferences differ, not about resources running out.">
+                <div class="widget-row-prompt">3. One classmate spends her allowance on concert tickets; another saves the same amount toward a laptop. Both feel good about their choice.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Utility</button>
+                    <button data-choice="1">Shortage</button>
+                    <button data-choice="2">Allocation of raw materials</button>
+                    <button data-choice="3">Extraction</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Scarcity</strong> &mdash; the condition that resources are limited while human wants are unlimited.<br>
+        <strong>Choice</strong> &mdash; the act of deciding how to use limited resources among competing needs or desires.<br>
+        <strong>Opportunity Cost</strong> &mdash; the value of the next best alternative given up when a choice is made.<br>
+        <strong>Raw Materials</strong> &mdash; basic natural substances, such as wood, oil, or minerals, used to make products.<br>
+        <strong>Finite</strong> &mdash; having limits; not endless.<br>
+        <strong>Extract</strong> &mdash; to remove or take out a resource, often from nature, for use in production.<br>
+        <strong>Productivity</strong> &mdash; the measure of how efficiently goods or services are produced.<br>
+        <strong>Shortage</strong> &mdash; a temporary lack of a product or resource.<br>
+        <strong>Invest</strong> &mdash; to put money, time, or effort into something with the expectation of future benefit or profit.<br>
+        <strong>Allocate</strong> &mdash; to distribute resources for a specific purpose.<br>
+        <strong>Cost-Benefit Analysis</strong> &mdash; a process of comparing the benefits of an action with its costs to decide if it is worthwhile.<br>
+        <strong>Utility</strong> &mdash; the satisfaction, usefulness, or benefit gained from consuming a good, service, or decision.<br>
+        <strong>Systematic</strong> &mdash; done according to a set plan, method, or organized process.<br>
+        <strong>Trade-Off</strong> &mdash; the sacrifice of one option in order to gain something else.<br>
+        <strong>Forgone</strong> &mdash; something given up or sacrificed when choosing another option.<br>
+        <strong>Diversify</strong> &mdash; to spread out resources or investments into different areas to reduce risk.<br>
+        <strong>Production Possibilities Frontier</strong> &mdash; a curve that shows the maximum combinations of two goods or services an economy can produce with its available resources and technology, illustrating trade-offs and opportunity costs.<br>
+        <strong>Budget</strong> &mdash; a plan for managing income and expenses over a certain period of time.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 1.02 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on scarcity, choice, and opportunity cost.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Notice the opportunity cost in your own decisions this week &mdash; not just what you spent, but what you gave up. That habit of thinking is what the rest of this module builds on.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.02 &middot; Scarcity, Choice, and Opportunity Cost</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button, .ow-scale .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 1.03</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 1</div>
+        <div style="font-size: 12px; color: #666;">Introduction to Economics and Production</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.03</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Factors of Production</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.03</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Factors of Production</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">What do you actually need to produce anything?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Lesson 1.02 showed that every choice involves a trade-off. Today's question is what economists say we are actually trading off: the four <strong>factors of production</strong> &mdash; land, labor, capital, and entrepreneurship &mdash; that combine to make every good and service that exists.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> define and give an example of land, labor, capital, and entrepreneurship.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why each factor is scarce and unevenly distributed.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> trace a real good or service back to the four factors that produced it.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; THE FOUR FACTORS</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">Pick something you used today &mdash; your phone, breakfast, a bus ride. What do you think went into making it possible? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="Materials are land in economic terms &mdash; the raw, natural inputs. You'll see exactly where that fits below.">&#127757; Raw materials</button>
+                <button data-response="People's work is labor &mdash; the human effort, physical or mental, behind the product. That's one of today's four factors.">&#128104; People's work</button>
+                <button data-response="Machines and tools are capital &mdash; human-made resources built specifically to aid production. You'll meet this factor below too.">&#9881;&#65039; Machines and tools</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Land: The Gift of Nature</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Land</strong> covers not just ground to build on, but every natural resource that comes from the Earth: fertile soil, forests, mineral deposits, fossil fuels, sunlight, wind, and water. Land is a "gift of nature" &mdash; it exists independent of human effort &mdash; but it is finite and unevenly distributed. Some regions have plentiful farmland and water; others have deserts or scarce rainfall. That unevenness shapes trade, energy policy, and national wealth, which is why decisions about how to allocate land (farming, industry, conservation) carry real long-term trade-offs like soil depletion or deforestation if mismanaged.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Labor: Human Effort, Physical and Mental</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Labor</strong> is the human effort applied to production &mdash; from a construction crew to a software developer. Like land, labor is scarce: limited hours in a day, and workers vary in skill and experience. That scarcity affects wages directly (specialized skills in short supply command higher pay) and forces businesses and governments to make trade-offs about where to deploy workers. Labor is also the one factor you can grow deliberately: investing in <strong>human capital</strong> through education and training raises what the same number of workers can produce, though that investment itself has an opportunity cost.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Capital: What Humans Build to Aid Production</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Capital</strong> is the human-made resources used in production &mdash; machinery, tools, factories, roads, computers. Unlike land, nothing about capital is naturally occurring; it exists because someone built it to make labor and land more productive. <strong>Physical capital</strong> (machines, buildings) and human capital (skills, expertise) both let an economy produce more with the same raw inputs. Capital is not unlimited either: it wears out, becomes <strong>obsolete</strong>, and competes for the same investment dollars as other priorities, so allocating it always involves opportunity cost.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Entrepreneurship: The Spark That Organizes the Other Three</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Entrepreneurship</strong> is the drive to innovate, take calculated risks, and combine land, labor, and capital into a working enterprise. Entrepreneurs spot opportunities, decide how to allocate scarce resources, and absorb the uncertainty of outcomes that are never guaranteed. Without entrepreneurial activity, resources can sit underutilized and innovation stalls &mdash; entrepreneurship is what actually puts the other three factors to work.</p>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 8px; padding: 16px 20px; margin: 16px 0;">
+            <div style="font-size: 14px; color: #0e1c42; line-height: 1.6;"><strong>Put it together:</strong> bread needs farmland and wheat (land), farmers and bakers (labor), ovens and delivery trucks (capital), and a bakery owner who organizes the whole process (entrepreneurship). Nations with more of each factor &mdash; and stronger entrepreneurial cultures &mdash; tend to produce more and enjoy higher standards of living.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; TAP TO REVIEW EACH FACTOR</div>
+        <div class="flip-grid">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Land</div><div class="ow-flip-back" style="font-size:15px;line-height:1.55;">Natural resources: soil, forests, minerals, fossil fuels, water, wind. A "gift of nature," finite and unevenly distributed.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Labor</div><div class="ow-flip-back" style="font-size:15px;line-height:1.55;">Human effort, physical or mental. Limited by hours in a day and by skill; grown through education and training (human capital).</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Capital</div><div class="ow-flip-back" style="font-size:15px;line-height:1.55;">Human-made tools of production: machinery, buildings, infrastructure, technology. Wears out and requires ongoing investment.</div></div></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Entrepreneurship</div><div class="ow-flip-back" style="font-size:15px;line-height:1.55;">The drive to innovate and organize land, labor, and capital into a working, risk-bearing enterprise.</div></div></div>
+        </div>
+        <button class="widget-reset" style="margin-top:14px;">Reset all cards</button>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Factors of Production</strong> &mdash; the basic resources (land, labor, capital, entrepreneurship) used to produce goods and services.<br>
+        <strong>Bauxite</strong> &mdash; a mineral ore that is the primary source of aluminum.<br>
+        <strong>Disparity</strong> &mdash; a significant difference or inequality between two or more things.<br>
+        <strong>Soil Depletion</strong> &mdash; the reduction of soil nutrients from overuse, erosion, or poor farming, making land less productive.<br>
+        <strong>Arable Land</strong> &mdash; land suitable for growing crops and farming.<br>
+        <strong>Variability</strong> &mdash; the degree to which something changes or is inconsistent over time.<br>
+        <strong>Input</strong> &mdash; a resource, such as labor, raw materials, or capital, used in the production process.<br>
+        <strong>Surplus</strong> &mdash; an excess amount of a resource or good beyond what is needed or demanded.<br>
+        <strong>Output</strong> &mdash; the total goods or services produced by an economy, business, or individual process.<br>
+        <strong>Human Capital</strong> &mdash; the skills, knowledge, and experience people have that increase their economic productivity.<br>
+        <strong>Physical Capital</strong> &mdash; man-made resources such as machinery, tools, buildings, and infrastructure used in production.<br>
+        <strong>Adaptability</strong> &mdash; the ability to adjust effectively to new conditions or changes.<br>
+        <strong>Stagnation</strong> &mdash; a period of little or no economic growth, development, or progress.<br>
+        <strong>Obsolete</strong> &mdash; no longer useful or in demand because something newer has replaced it.<br>
+        <strong>Foresight</strong> &mdash; the ability to anticipate future needs, problems, or opportunities.<br>
+        <strong>Profitable</strong> &mdash; producing financial gain or benefit greater than the costs involved.<br>
+        <strong>Fluctuating</strong> &mdash; constantly changing or shifting, often unpredictably.<br>
+        <strong>Regulatory</strong> &mdash; relating to rules or laws that control and guide economic or business activity.<br>
+        <strong>Venture</strong> &mdash; a business project or activity, often involving risk and uncertainty.<br>
+        <strong>Market Adoption</strong> &mdash; the process by which consumers begin to use and accept a new product or service.<br>
+        <strong>Initiative</strong> &mdash; the ability to take the first step in acting independently and starting projects or ideas.<br>
+        <strong>Underutilize</strong> &mdash; to use something less effectively or less fully than its potential allows.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 1.03 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on land, labor, capital, and entrepreneurship.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time you use or buy something, try naming its land, labor, capital, and entrepreneurship. That habit is the foundation for everything the rest of this module builds &mdash; especially how economies organize themselves, which is where we go next.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.03 &middot; Factors of Production</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var scope = reset.closest('.optima-widget') || document;
+      var scopeAll = reset.previousElementSibling ? reset.parentElement : document;
+      document.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      document.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      document.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

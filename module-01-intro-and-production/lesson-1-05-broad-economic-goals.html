@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 1.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-scale .widget-options { justify-content: space-between; }
+    .ow-scale .widget-options button { flex: 1; text-align: center; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 1</div>
+        <div style="font-size: 12px; color: #666;">Introduction to Economics and Production</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.05</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Broad Economic Goals</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Broad Economic Goals</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">What is every economic system actually trying to achieve?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Whatever system a nation runs, leaders and citizens share five underlying goals: efficiency, growth, freedom, fairness, and stability. No nation hits all five perfectly at once &mdash; this lesson is about seeing why they trade off against each other.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> define efficiency, growth, freedom, fairness, and stability as economic goals.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish productive efficiency from allocative efficiency.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why pursuing one economic goal often means trading off against another.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; FIVE GOALS, ONE SET OF TRADE-OFFS</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If you had to pick the single most important economic goal for a country to pursue, which would you lean toward right now? (No wrong answer &mdash; revisit this after the reading.)</div>
+            <div class="widget-options">
+                <button data-response="Growth expands what's possible for everyone, but watch for how the reading complicates this &mdash; unshared growth can still leave a society less fair or less stable.">&#128200; Growth</button>
+                <button data-response="Fairness matters enormously, but the reading will show you it's the hardest goal to even define, let alone measure &mdash; unlike GDP, there's no single number for 'fair.'">&#9878;&#65039; Fairness</button>
+                <button data-response="Stability keeps people able to plan for the future, but notice how it can be in tension with the risk-taking that drives growth and innovation.">&#128737;&#65039; Stability</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Efficiency</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Efficiency means getting the most out of scarce resources with the least waste. Economists split it in two: <strong>productive efficiency</strong> is producing at the lowest possible cost; <strong>allocative efficiency</strong> is directing resources toward what consumers actually want most. A factory that cuts scrap and energy use is gaining productive efficiency; an economy that shifts labor toward high-demand industries is gaining allocative efficiency. Clear property rights and competitive markets tend to support both; corruption and monopoly tend to undermine both.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Growth</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Growth is a sustained increase in a nation's capacity to produce, usually measured by <strong>GDP</strong>. Rising GDP funds better living standards, infrastructure, and services, and lets an economy keep up with a growing population; without it, <strong>stagnation</strong> sets in. South Korea and China are often cited as rapid-growth examples in recent decades. But growth is not automatically good for every other goal: rapid growth has also strained resources, deepened inequality, and worsened pollution in real cases, which is exactly why growth has to be weighed against fairness and stability, not pursued alone.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Freedom</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economic freedom is the right of individuals and businesses to make their own economic choices with minimal outside interference: what career to pursue, what to produce, what to buy. It fuels innovation and competition, but unrestricted freedom has also produced <strong>monopolistic</strong> practices (Standard Oil, US Steel, before antitrust enforcement) and abuses like unsafe labor conditions when no rules constrain it. Freedom, in other words, tends to need some limits to stay sustainable.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Fairness</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Fairness is the hardest goal to pin down because "fair" itself is contested. Some societies pursue <strong>equality of opportunity</strong> &mdash; the same starting point (education, healthcare, civil rights), with outcomes left to individual <strong>merit</strong>. Others pursue reduced income inequality directly, through <strong>redistributive</strong> tools like <strong>progressive taxation</strong> and <strong>minimum wage</strong> laws. Critics of redistribution worry it can blunt incentives to work or innovate; critics of leaving outcomes alone worry about cycles of poverty. Every modern economy sits somewhere between these positions.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Stability</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Stability means protecting individuals from sudden financial ruin and keeping the whole economy from swinging wildly between boom and bust, like the Great Depression or the 2008 financial crisis. Social safety nets (Social Security, Medicare, Medicaid, unemployment insurance) protect individuals; central banks like the <strong>Federal Reserve</strong> manage <strong>interest rates</strong> and the money supply to fight <strong>inflation</strong>, <strong>deflation</strong>, or <strong>recession</strong> at the national level. Confidence that the system is <strong>resilient</strong> is itself valuable: it is what makes people and businesses willing to invest, spend, and plan long-term.</p>
+
+        <div class="optima-widget ow-scale">
+            <div class="widget-kicker">&#9889; WHERE DOES THIS TRADE-OFF LAND?</div>
+            <div class="widget-question">A government cuts business regulation sharply to accelerate growth and expand economic freedom. Where does this trade-off land on the stability spectrum?</div>
+            <div class="widget-row" data-correct="3" data-fb="Right &mdash; fewer guardrails on fast-moving growth is a classic way stability gets traded away, even though growth and freedom both rise." data-hint="Think about what protects an economy from sudden swings, and what happens to that protection here.">
+                <div class="widget-options">
+                    <button data-choice="0">Strongly increases stability</button>
+                    <button data-choice="1">Slightly increases stability</button>
+                    <button data-choice="2">No effect on stability</button>
+                    <button data-choice="3">Weakens stability</button>
+                </div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Yield</strong> &mdash; the amount of output produced from a given amount of inputs.<br>
+        <strong>Service Sector</strong> &mdash; the part of the economy providing services rather than physical goods (healthcare, education, banking, tourism).<br>
+        <strong>Productive Efficiency</strong> &mdash; producing goods and services at the lowest possible cost using the least resources.<br>
+        <strong>Allocative Efficiency</strong> &mdash; distributing resources to produce what society most desires.<br>
+        <strong>Automation</strong> &mdash; using machines or technology to perform tasks once done by human labor.<br>
+        <strong>Gross Domestic Product (GDP)</strong> &mdash; the total monetary value of all goods and services produced within a country over a period of time.<br>
+        <strong>Stagnation</strong> &mdash; a period of little or no economic growth.<br>
+        <strong>Mechanization</strong> &mdash; introducing machines to perform work previously done by hand.<br>
+        <strong>Purchasing Power</strong> &mdash; the ability to buy goods and services with one's income or resources.<br>
+        <strong>Degradation</strong> &mdash; the decline in quality, condition, or value, often of natural resources or the environment.<br>
+        <strong>Monopolistic</strong> &mdash; a market structure where one firm dominates an industry, limiting competition.<br>
+        <strong>Cornerstone</strong> &mdash; a fundamental element on which something is built.<br>
+        <strong>Merit</strong> &mdash; deserving reward or opportunity based on ability, effort, or achievement.<br>
+        <strong>Redistributive</strong> &mdash; designed to reallocate wealth or resources, often to reduce inequality.<br>
+        <strong>Progressive Taxation</strong> &mdash; a tax system where higher incomes pay a larger percentage in taxes.<br>
+        <strong>Minimum Wage</strong> &mdash; the legally established lowest amount an employer can pay for labor.<br>
+        <strong>Inflation / Deflation</strong> &mdash; a general rise, or fall, in prices over time.<br>
+        <strong>Recession</strong> &mdash; a period of economic decline, typically two consecutive quarters of negative GDP growth.<br>
+        <strong>Federal Reserve</strong> &mdash; the U.S. central bank, which regulates money supply, interest rates, and financial stability.<br>
+        <strong>Interest Rate</strong> &mdash; the percentage a lender charges a borrower for the use of money.<br>
+        <strong>Resilient</strong> &mdash; able to recover quickly from difficulties or shocks.<br>
+        <strong>Volatility</strong> &mdash; the tendency for prices or conditions to change rapidly and unpredictably.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 1.05 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the five broad economic goals.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; MODULE 1 WRAP</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You now have the whole vocabulary of the course: scarcity, choice, opportunity cost, the four factors of production, the four economic systems, and the five goals every system is trying to balance. Module 2 puts this to work on the market itself, starting with supply and demand.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.05 &middot; Broad Economic Goals</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-scale .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 1.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 1</div>
+        <div style="font-size: 12px; color: #666;">Introduction to Economics and Production</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.04</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Economic Systems</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Economic Systems</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Who decides what gets made, how, and for whom?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Every society has land, labor, capital, and entrepreneurship to work with, but not every society organizes them the same way. The framework a society uses to answer <em>what, how,</em> and <em>for whom</em> to produce is its <strong>economic system</strong>. There are four: traditional, command, market, and mixed.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe how each of the four economic systems answers what, how, and for whom to produce.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> weigh the strengths and weaknesses of each system.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why nearly every modern nation runs a mixed economy.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; FOUR WAYS TO ORGANIZE AN ECONOMY</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">If you had to guess right now, who do you think makes most economic decisions in the U.S. &mdash; individuals and businesses, or the government? (No wrong answer &mdash; you'll test this below.)</div>
+            <div class="widget-options">
+                <button data-response="You're leaning market. Keep that instinct in mind as you read &mdash; but watch for how much the government still does in a system we still call 'mostly free-market.'">&#128100; Mostly individuals and businesses</button>
+                <button data-response="You're leaning command. As you read, notice how differently a command economy actually operates compared to the U.S. &mdash; the contrast will make the U.S. system clearer.">&#127970; Mostly the government</button>
+                <button data-response="Good instinct &mdash; 'a mix of both' is exactly where this lesson ends up. See if you can name specifically which parts are market and which are government by the end.">&#9878;&#65039; Some real mix of both</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Traditional Economy</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The oldest and most basic system, rooted in custom and passed down through generations &mdash; farming, hunting, and craft skills stay within families, and production is aimed at <strong>subsistence</strong> rather than surplus, with <strong>barter</strong> replacing money for exchange. It offers strong social <strong>cohesion</strong> and cultural continuity, but little technological change and slow adaptation to outside pressure. Found today mainly in rural or remote indigenous communities.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Command Economy</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The government makes the major decisions: what gets produced, how, and for whom, often through detailed <strong>quotas</strong>. Private property and <strong>enterprise</strong> are heavily restricted. Strengths: fast <strong>mobilization</strong> of resources for large projects and guaranteed basic services. Weaknesses: chronic <strong>inefficiency</strong>, shortages alongside surpluses, and restricted economic freedom, since planners cannot track real-time consumer demand. The Soviet Union industrialized rapidly this way but eventually collapsed under its own inefficiencies (1991); North Korea remains a rigid modern example.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Market Economy</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Supply and demand, not government planners, set production and prices. <strong>Property rights</strong> and <strong>voluntary exchange</strong> are central; the price system coordinates millions of individual decisions, and competition drives quality and innovation. Strength: high personal freedom and <strong>social mobility</strong>. Weakness: market failures &mdash; <strong>monopolies</strong>, and <strong>externalities</strong> like pollution &mdash; that an unregulated market has no built-in way to correct.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Mixed Market Economy</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Private enterprise still drives production, but government regulates, provides services the market undersupplies, and funds a <strong>social safety net</strong>. The United States blends free-market principles with regulation, labor law, public education, and programs like <strong>Social Security</strong>, <strong>Medicare</strong>, and <strong>Medicaid</strong>; European nations like Sweden and Germany lean further toward social welfare, funded by higher taxes. <strong>Antitrust laws</strong> curb monopolies; environmental and safety rules address externalities. The hard part is that no one agrees exactly where the balance between freedom and regulation should sit &mdash; that debate is ongoing in every mixed economy, including ours.</p>
+
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; TRY IT &middot; NAME THE SYSTEM</div>
+            <div class="widget-question">Which economic system does each example best describe?</div>
+
+            <div class="widget-row" data-correct="3" data-fb="Right &mdash; central planners set the production target, which is the defining feature of a command economy." data-hint="Look for who is making the decision: an individual business, or the state?">
+                <div class="widget-row-prompt">1. A government ministry sets a national quota for how many tons of steel each factory must produce this year.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Traditional economy</button>
+                    <button data-choice="1">Market economy</button>
+                    <button data-choice="2">Mixed economy</button>
+                    <button data-choice="3">Command economy</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right &mdash; skills passed down within a family, aimed at meeting the household's own needs, is the traditional model." data-hint="Look for inherited roles and production for one's own household, not for sale or export.">
+                <div class="widget-row-prompt">2. A family has fished the same coastal waters for six generations, teaching each child the trade, and keeps most of the catch for their own village.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Traditional economy</button>
+                    <button data-choice="1">Command economy</button>
+                    <button data-choice="2">Market economy</button>
+                    <button data-choice="3">Mixed economy</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="2" data-fb="Right &mdash; private businesses driven by regulation and a public safety net together is the mixed-economy signature." data-hint="Look for both a private business AND a government program operating side by side.">
+                <div class="widget-row-prompt">3. A private company sets its own prices and competes for customers, while a separate government program provides healthcare to citizens over 65.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Command economy</button>
+                    <button data-choice="1">Traditional economy</button>
+                    <button data-choice="2">Mixed economy</button>
+                    <button data-choice="3">Barter system</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Economic System</strong> &mdash; the structure by which a society organizes the production, distribution, and consumption of goods and services.<br>
+        <strong>Apprenticeship</strong> &mdash; learning a trade through hands-on experience under a skilled worker.<br>
+        <strong>Continuity</strong> &mdash; maintaining consistent practices or traditions over time without major interruption.<br>
+        <strong>Subsistence</strong> &mdash; producing or using only enough to meet basic survival needs, without surplus.<br>
+        <strong>Barter</strong> &mdash; the direct exchange of goods and services without using money.<br>
+        <strong>Standardize</strong> &mdash; to establish uniform rules or measurements to ensure consistency.<br>
+        <strong>Cohesion</strong> &mdash; the unity or bond that holds members of a group or society together.<br>
+        <strong>Quota</strong> &mdash; a set limit or required amount, often applied to production, trade, or sales.<br>
+        <strong>Enterprise</strong> &mdash; a business or organized economic activity aimed at producing goods or services.<br>
+        <strong>Mobilize</strong> &mdash; to organize and deploy resources or people for a specific purpose.<br>
+        <strong>Inefficiency</strong> &mdash; the failure to use resources in the best way, leading to waste or reduced output.<br>
+        <strong>Stifle</strong> &mdash; to hold back or prevent the growth of something.<br>
+        <strong>Chronic</strong> &mdash; persistent, long-lasting, or recurring over time.<br>
+        <strong>Capitalist</strong> &mdash; someone who supports or participates in an economic system based on private ownership and profit.<br>
+        <strong>Supply</strong> &mdash; the amount of a good or service producers are willing and able to offer at different prices.<br>
+        <strong>Demand</strong> &mdash; the desire and ability of consumers to purchase goods or services at various prices.<br>
+        <strong>Property Rights</strong> &mdash; the legal rights to own, control, and use resources, goods, or land.<br>
+        <strong>Voluntary Exchange</strong> &mdash; buyers and sellers freely trading goods or services to their mutual benefit.<br>
+        <strong>Social Mobility</strong> &mdash; the ability to move up or down within a society's economic or social hierarchy.<br>
+        <strong>Monopoly</strong> &mdash; a market in which a single seller dominates and controls the supply of a good or service.<br>
+        <strong>Externality</strong> &mdash; a side effect of economic activity that affects others not directly involved in the transaction.<br>
+        <strong>Social Safety Net</strong> &mdash; government programs designed to protect people from economic hardship.<br>
+        <strong>Social Security, Medicare, Medicaid</strong> &mdash; U.S. federal programs providing retirement/disability benefits, health coverage for seniors, and health coverage for low-income individuals, respectively.<br>
+        <strong>Robust</strong> &mdash; strong, durable, able to perform well under different conditions.<br>
+        <strong>Antitrust Laws</strong> &mdash; government regulations that prevent monopolies and promote fair competition.<br>
+        <strong>Exploitation</strong> &mdash; the unfair or unethical use of people or resources for personal or economic gain.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 1.04 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the four economic systems.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">No real economy is a pure type &mdash; every one you'll study this semester is some blend, tilted toward market or toward command. Next lesson asks what these systems are actually trying to achieve.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.04 &middot; Economic Systems</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
