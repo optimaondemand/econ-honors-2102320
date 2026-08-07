@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 4.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-scale .widget-options { justify-content: space-between; }
+    .ow-scale .widget-options button { flex: 1; text-align: center; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 4</div>
+        <div style="font-size: 12px; color: #666;">Government Policy and Economic Stability</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 4.02</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Government Spending, Deficits, and National Debt</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 4.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Government Spending, Deficits, and National Debt</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Is $20 trillion in debt a crisis, or just a number?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Last lesson covered how the government raises revenue and decides to spend. Today's question is what happens when spending and revenue don't match: <strong>deficits</strong>, <strong>surpluses</strong>, and the <strong>national debt</strong> they accumulate into.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish a deficit, a surplus, and the national debt.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why the debt-to-GDP ratio matters more than the raw debt figure.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe "crowding out" and why some borrowing is strategic while other borrowing is risky.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; SPENDING, DEFICITS, AND DEBT</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">When you hear "the national debt," do you picture a genuine emergency, a manageable ongoing cost, or something in between? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That instinct is worth testing against the debt-to-GDP ratio in this lesson: whether debt is a crisis depends heavily on the size of the economy carrying it, not the raw dollar figure alone.">&#9888;&#65039; A genuine emergency</button>
+                <button data-response="That's close to how many economists frame it: sovereign debt gets continuously rolled over, unlike a personal loan, which changes what 'manageable' means.">&#128203; A manageable ongoing cost</button>
+                <button data-response="That's the right instinct for a subject this contested &mdash; this lesson gives you the actual tools (debt-to-GDP, crowding out) to judge for yourself rather than just reacting to the headline number.">&#9878;&#65039; Somewhere in between, depending on details</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Government Spending's Three Buckets</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Operations (military, federal salaries, agencies) keep the government running day to day. <strong>Transfer payments</strong> (Social Security, Medicare, unemployment insurance) move income to individuals without requiring a good or service in return, and act as <strong>automatic stabilizers</strong> that cushion recessions. Public investments (highways, schools, research) build long-term productive capacity through <strong>multiplier effects</strong> that ripple beyond their initial cost. Revenue comes mostly from income taxes and <strong>payroll taxes</strong>, supplemented by excise taxes and tariffs.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Deficits, Surpluses, and Where the Debt Comes From</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong>budget deficit</strong> happens when spending exceeds revenue in a given year, financed by issuing <strong>Treasury securities</strong>; a <strong>budget surplus</strong> happens when revenue exceeds spending, as in the late 1990s tech-boom years, before deficits returned in the early 2000s from tax cuts, post-9/11 defense spending, and slower growth. The <strong>national debt</strong> is the running total of all past deficits not yet repaid, split between debt held by the public (individuals, foreign governments, pension funds) and <strong>intragovernmental</strong> debt (the government borrowing from its own trust funds like Social Security). Unlike a household loan, sovereign debt is <strong>perpetually</strong> rolled over: maturing securities get replaced with new ones rather than fully paid off.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why the Debt-to-GDP Ratio Matters More Than the Raw Number</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A $20 trillion debt against a $25 trillion economy (80% <strong>debt-to-GDP ratio</strong>) is far more manageable than the same $20 trillion against a $10 trillion economy (200%). After World War II, U.S. debt-to-GDP exceeded 100 percent, but rapid postwar growth brought the ratio down without a crisis &mdash; proof that strong growth, not just repayment, can shrink the burden. The 1970s stagflation and the slow 2008 recovery show the opposite: weak growth makes existing debt feel heavier even if the dollar amount doesn't change.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Real Cost: Interest and Crowding Out</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Interest payments on the debt are non-negotiable, unlike <strong>discretionary spending</strong> Congress can adjust yearly; missing them would mean a <strong>default</strong>, damaging U.S. <strong>creditworthiness</strong> globally. As debt and interest rates both rise, more of the budget goes to servicing old borrowing instead of current needs. Heavy government borrowing can also raise interest rates economy-wide by competing with households and businesses for credit, a phenomenon called <strong>"crowding out"</strong> that can make mortgages and business loans more expensive. There's also an <strong>intergenerational</strong> question: borrowing for infrastructure or education leaves future taxpayers a debt but also a lasting benefit; borrowing for short-term consumption leaves them the debt with little to show for it.</p>
+
+        <div class="optima-widget ow-scale">
+            <div class="widget-kicker">&#9889; WHERE DOES THIS BORROWING LAND?</div>
+            <div class="widget-question">The government borrows heavily to fund a multi-decade infrastructure and research investment that raises the economy's long-run productive capacity. How would you place this on a spectrum of fiscal risk?</div>
+            <div class="widget-row" data-correct="1" data-fb="Right &mdash; borrowing that expands future economic capacity, like infrastructure or R&D, is the kind of debt most economists consider strategic rather than risky, even though it still adds to the debt total." data-hint="Ask: does this spending leave future taxpayers with a lasting benefit, or just a bill?">
+                <div class="widget-options">
+                    <button data-choice="0">Very high risk</button>
+                    <button data-choice="1">Lower risk (strategic investment)</button>
+                    <button data-choice="2">Neutral</button>
+                    <button data-choice="3">High risk (short-term consumption)</button>
+                </div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; KEY VOCABULARY</div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.7; margin: 0;">
+        <strong>Federal Budget</strong> &mdash; a yearly financial plan outlining expected revenues and planned expenditures.<br>
+        <strong>Budget Balance / Deficit / Surplus</strong> &mdash; the difference between government revenue and spending; spending exceeding revenue; or revenue exceeding spending.<br>
+        <strong>Expenditure</strong> &mdash; money the government spends on goods, services, or obligations.<br>
+        <strong>National Debt</strong> &mdash; the total amount owed to creditors from accumulated deficits.<br>
+        <strong>Transfer Payments</strong> &mdash; payments to individuals without goods or services in return, such as Social Security.<br>
+        <strong>Payroll Taxes</strong> &mdash; taxes taken from wages to fund programs like Social Security and Medicare.<br>
+        <strong>Automatic Stabilizers</strong> &mdash; programs that adjust automatically to economic conditions and reduce fluctuations.<br>
+        <strong>Multiplier Effects</strong> &mdash; the principle that initial spending creates ripple effects of additional income and demand.<br>
+        <strong>Barometer</strong> &mdash; a tool or measure used to assess the direction of the economy.<br>
+        <strong>Treasury Securities</strong> &mdash; bonds, notes, and bills issued by the U.S. government to borrow money.<br>
+        <strong>Underpin</strong> &mdash; to serve as the foundation or support for something.<br>
+        <strong>Evaporate</strong> &mdash; to disappear gradually.<br>
+        <strong>Ledger</strong> &mdash; a record-keeping system tracking financial transactions.<br>
+        <strong>Intragovernmental</strong> &mdash; money the government owes itself, such as funds borrowed from trust accounts.<br>
+        <strong>Perpetually</strong> &mdash; continuing indefinitely without pause.<br>
+        <strong>Debt-to-GDP Ratio</strong> &mdash; a measure comparing total debt to the size of the economy.<br>
+        <strong>Fiscal Capacity</strong> &mdash; the government's ability to raise revenue to support spending.<br>
+        <strong>Discretionary Spending</strong> &mdash; spending approved annually by Congress, such as defense or education.<br>
+        <strong>Creditworthiness</strong> &mdash; the perceived ability of a borrower to repay debt.<br>
+        <strong>Default</strong> &mdash; failure to meet legal obligations of repaying debt on time.<br>
+        <strong>"Crowding Out"</strong> &mdash; the idea that heavy government borrowing can reduce private investment by raising interest rates.<br>
+        <strong>Intergenerational</strong> &mdash; affecting multiple generations, such as passing debt burdens to future taxpayers.<br>
+        <strong>Political Brinkmanship</strong> &mdash; pushing negotiations to the edge of crisis to force concessions.<br>
+        <strong>Debt Ceiling</strong> &mdash; the legal limit Congress sets on how much the federal government can borrow.
+        </p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 4.02 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on spending, deficits, and national debt.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; CARRY THIS FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Next time you see a debt headline, ask what the debt-to-GDP ratio is, not just the raw number. Next lesson turns to the natural rhythm of expansion and recession that fiscal and monetary policy are both trying to manage: the business cycle.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 4.02 &middot; Government Spending, Deficits, and National Debt</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-scale .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
