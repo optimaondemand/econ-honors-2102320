@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inside a Monthly Payment | Economics Honors Lab</title>
+<style>
+  :root { --navy:#0E1C42; --cyan:#55C8E8; --blue:#2196D0; --gold:#C7922C; --ink:#1a2340; --line:#D0D9E8; --pale:#F4F6FA; --int:#C7922C; --prin:#2196D0; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:14px; font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:#fff; }
+  .lab { max-width:880px; margin:0 auto; }
+  .kicker { font-size:11px; letter-spacing:.5px; color:var(--blue); margin-bottom:4px; }
+  h1 { font-size:21px; color:var(--navy); margin:0 0 6px; font-weight:600; }
+  .lede { font-size:15px; line-height:1.55; margin:0 0 14px; }
+  .panel { background:var(--pale); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 22px; }
+  @media (max-width:620px) { .grid { grid-template-columns:1fr; } }
+  .lbl { font-size:13px; color:#4a5575; margin-bottom:4px; }
+  .lbl strong { color:var(--navy); font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--blue); height:30px; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+  .seg button { background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:6px 11px; font:inherit; font-size:13px; color:var(--navy); cursor:pointer; }
+  .seg button:hover { border-color:var(--cyan); background:#F4FBFE; }
+  .seg button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .stats { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .stat { flex:1; min-width:150px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; text-align:center; }
+  .stat .n { font-size:24px; color:var(--navy); line-height:1.15; }
+  .stat .t { font-size:12px; color:#4a5575; margin-top:2px; }
+  .stat.hl { border-color:var(--gold); background:#FDF7EA; }
+  svg { width:100%; height:auto; display:block; }
+  .split { display:flex; height:34px; border-radius:8px; overflow:hidden; margin:8px 0; }
+  .split div { display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; transition:width .25s ease; white-space:nowrap; overflow:hidden; }
+  .legend { display:flex; gap:16px; font-size:12px; color:#4a5575; flex-wrap:wrap; }
+  .legend i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-2px; }
+  .verdict { margin-top:10px; padding:10px 14px; border-radius:8px; font-size:15px; line-height:1.5; border-left:4px solid var(--blue); background:#EAF6FC; }
+  .note { font-size:13px; color:#4a5575; line-height:1.5; margin-top:8px; }
+  .reset { background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:6px; padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+  .reset:hover { background:#FDF3E3; }
+</style>
+</head>
+<body>
+<div class="lab">
+  <div class="kicker">ECONOMICS HONORS LAB &middot; LESSON 8.03</div>
+  <h1>Inside a Monthly Payment</h1>
+  <p class="lede">Every payment on a fixed loan is the same size, but it is two things at once. Change the loan, then drag the month marker to see what a single payment is made of.</p>
+
+  <div class="panel">
+    <div class="grid">
+      <div>
+        <div class="lbl">Amount borrowed: <strong id="aLabel"></strong></div>
+        <input type="range" id="amt" min="50000" max="500000" step="1000" value="162000" aria-label="Amount borrowed" />
+      </div>
+      <div>
+        <div class="lbl">Fixed interest rate: <strong id="rLabel"></strong></div>
+        <input type="range" id="rate" min="0.5" max="10" step="0.125" value="3.875" aria-label="Interest rate in percent" />
+        <div class="seg" id="ratePre"></div>
+      </div>
+      <div>
+        <div class="lbl">Length of the loan</div>
+        <div class="seg" id="termSeg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat hl"><div class="n" id="sPay"></div><div class="t">monthly payment (principal and interest)</div></div>
+    <div class="stat"><div class="n" id="sTotal"></div><div class="t">paid back in total</div></div>
+    <div class="stat"><div class="n" id="sInt"></div><div class="t">of that is interest</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="lbl">Each month's payment, split into interest and principal. Drag the marker.</div>
+    <svg viewBox="0 0 640 230" id="chart" role="img" aria-label="Stacked chart of interest and principal in each monthly payment"></svg>
+    <input type="range" id="month" min="1" max="360" step="1" value="1" aria-label="Month of the loan" />
+    <div class="lbl" style="margin-top:2px">Payment number <strong id="mLabel"></strong></div>
+    <div class="split"><div id="spInt" style="background:var(--int)"></div><div id="spPrin" style="background:var(--prin)"></div></div>
+    <div class="legend"><span><i style="background:var(--int)"></i>interest: <b id="lInt"></b></span><span><i style="background:var(--prin)"></i>principal: <b id="lPrin"></b></span><span>still owed after this payment: <b id="lBal"></b></span></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="note">This lab shows one payment at a time on purpose. Building the whole schedule yourself, month after month, is the work of the assignment.</div>
+  </div>
+
+  <button class="reset" id="reset">Reset</button>
+</div>
+
+<script>
+(function () {
+  var DEF = { amt: 162000, rate: 3.875, term: 30, month: 1 };
+  var amt = DEF.amt, rate = DEF.rate, term = DEF.term, month = DEF.month;
+  var $ = function (id) { return document.getElementById(id); };
+  function usd(v, c) { return '$' + v.toLocaleString('en-US', { minimumFractionDigits: c ? 2 : 0, maximumFractionDigits: c ? 2 : 0 }); }
+
+  function payment(P, apr, years) {
+    var n = years * 12, i = apr / 100 / 12;
+    var raw = i === 0 ? P / n : P * i / (1 - Math.pow(1 + i, -n));
+    return Math.round(raw * 100) / 100;   // lenders round the payment to the cent
+  }
+  function state(P, apr, years, m) {   // balance before payment m, interest and principal in payment m
+    var i = apr / 100 / 12, pay = payment(P, apr, years), bal = P, k;
+    var intr = 0, prin = 0;
+    for (k = 1; k <= m; k++) { intr = bal * i; prin = pay - intr; bal -= prin; }
+    return { interest: intr, principal: prin, balance: Math.max(bal, 0) };
+  }
+
+  [2.875, 3.875, 4.875, 5.875].forEach(function (r) {
+    var b = document.createElement('button'); b.textContent = r + '%';
+    b.addEventListener('click', function () { rate = r; $('rate').value = r; render(); });
+    $('ratePre').appendChild(b);
+  });
+  [[10, '10 years'], [15, '15 years'], [20, '20 years'], [30, '30 years']].forEach(function (t) {
+    var b = document.createElement('button'); b.textContent = t[1]; b.dataset.t = t[0];
+    b.addEventListener('click', function () { term = t[0]; render(); });
+    $('termSeg').appendChild(b);
+  });
+  $('amt').addEventListener('input', function () { amt = Number(this.value); render(); });
+  $('rate').addEventListener('input', function () { rate = Number(this.value); render(); });
+  $('month').addEventListener('input', function () { month = Number(this.value); render(); });
+  $('reset').addEventListener('click', function () { amt = DEF.amt; rate = DEF.rate; term = DEF.term; month = DEF.month; $('amt').value = amt; $('rate').value = rate; render(); });
+
+  function drawChart(n, pay) {
+    var W = 640, H = 230, L = 50, R = 10, T = 12, B = 30;
+    function X(m) { return L + (m - 1) / Math.max(n - 1, 1) * (W - L - R); }
+    function Y(v) { return T + (1 - v / pay) * (H - T - B); }
+    var i = rate / 100 / 12, bal = amt, topPts = [], intrPts = [], m;
+    for (m = 1; m <= n; m++) { var it = bal * i; intrPts.push([X(m), Y(it)]); bal -= (pay - it); }
+    var s = '';
+    [0, 0.5, 1].forEach(function (f) {
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(pay * f) + '" y2="' + Y(pay * f) + '" stroke="#D0D9E8"/>';
+      s += '<text x="' + (L - 6) + '" y="' + (Y(pay * f) + 4) + '" font-size="11" fill="#4a5575" text-anchor="end">' + usd(Math.round(pay * f)) + '</text>';
+    });
+    var dInt = 'M' + X(1) + ' ' + Y(0) + ' ' + intrPts.map(function (p) { return 'L' + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + ' L' + X(n) + ' ' + Y(0) + ' Z';
+    // interest region sits at the bottom (0 up to interest), principal above it up to the full payment
+    var dPrin = 'M' + X(1) + ' ' + Y(pay) + ' L' + X(n) + ' ' + Y(pay) + ' ' + intrPts.slice().reverse().map(function (p) { return 'L' + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + ' Z';
+    s += '<path d="' + dPrin + '" fill="#2196D0" opacity="0.85"/>';
+    s += '<path d="' + dInt + '" fill="#C7922C" opacity="0.9"/>';
+    var yrs = Math.round(n / 12), step = yrs > 15 ? 5 : yrs > 10 ? 5 : 2;
+    for (var y = 0; y <= yrs; y += step) { var mm = Math.max(1, y * 12); var anc = X(mm) > W - 40 ? 'end' : 'middle'; s += '<text x="' + X(mm) + '" y="' + (H - 10) + '" font-size="11" fill="#4a5575" text-anchor="' + anc + '">' + (y === 0 ? 'start' : 'year ' + y) + '</text>'; }
+    s += '<line x1="' + X(month) + '" x2="' + X(month) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="#0E1C42" stroke-width="2.5"/>';
+    s += '<circle cx="' + X(month) + '" cy="' + T + '" r="6" fill="#0E1C42"/>';
+    $('chart').innerHTML = s;
+  }
+
+  function render() {
+    var n = term * 12;
+    month = Math.min(month, n);
+    var pay = payment(amt, rate, term), total = pay * n, intr = total - amt;
+    $('month').max = n; $('month').value = month;
+    $('aLabel').textContent = usd(amt);
+    $('rLabel').textContent = rate.toFixed(3).replace(/0$/, '') + '%';
+    $('termSeg').querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', Number(b.dataset.t) === term); });
+    $('ratePre').querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', parseFloat(b.textContent) === rate); });
+    $('sPay').textContent = usd(pay, true);
+    $('sTotal').textContent = usd(total, true);
+    $('sInt').textContent = usd(intr, true);
+    var st = state(amt, rate, term, month);
+    $('mLabel').textContent = month + ' of ' + n;
+    $('spInt').style.width = (st.interest / pay * 100) + '%';
+    $('spPrin').style.width = (st.principal / pay * 100) + '%';
+    $('spInt').textContent = st.interest / pay > 0.12 ? Math.round(st.interest / pay * 100) + '%' : '';
+    $('spPrin').textContent = st.principal / pay > 0.12 ? Math.round(st.principal / pay * 100) + '%' : '';
+    $('lInt').textContent = usd(st.interest, true);
+    $('lPrin').textContent = usd(st.principal, true);
+    $('lBal').textContent = usd(st.balance, true);
+    var share = Math.round(st.interest / pay * 100);
+    $('verdict').textContent = month === 1
+      ? 'In payment 1, ' + share + '% of what you pay is interest. Slide the marker right and watch the gold shrink as the loan is paid down.'
+      : 'By payment ' + month + ', interest is ' + share + '% of the payment. The payment did not change. The balance it is charged on did.';
+    drawChart(n, pay);
+    sendHeight();
+  }
+  function sendHeight() { try { parent.postMessage({ optimaWidgetHeight: document.documentElement.scrollHeight }, '*'); } catch (e) {} }
+  window.addEventListener('resize', sendHeight);
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Margin Trapdoor | Economics Honors Lab</title>
+<style>
+  :root { --navy:#0E1C42; --cyan:#55C8E8; --blue:#2196D0; --gold:#C7922C; --ink:#1a2340; --line:#D0D9E8; --pale:#F4F6FA; --good:#2A9D5C; --bad:#C0392B; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:14px; font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:#fff; }
+  .lab { max-width:880px; margin:0 auto; }
+  .kicker { font-size:11px; letter-spacing:.5px; color:var(--blue); margin-bottom:4px; }
+  h1 { font-size:21px; color:var(--navy); margin:0 0 6px; font-weight:600; }
+  .lede { font-size:15px; line-height:1.55; margin:0 0 14px; }
+  .panel { background:var(--pale); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+  .row { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .lbl { font-size:13px; color:#4a5575; margin-bottom:6px; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; }
+  .seg button, .preset { background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:7px 12px; font:inherit; font-size:14px; color:var(--navy); cursor:pointer; }
+  .seg button:hover, .preset:hover { border-color:var(--cyan); background:#F4FBFE; }
+  .seg button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+  input[type=range] { width:100%; accent-color:var(--blue); height:32px; }
+  .big { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .stat { flex:1; min-width:130px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; text-align:center; }
+  .stat .n { font-size:26px; color:var(--navy); line-height:1.15; transition:color .2s; }
+  .stat .t { font-size:12px; color:#4a5575; margin-top:2px; }
+  .stat.you { border-color:var(--gold); background:#FDF7EA; }
+  .bars { display:flex; align-items:flex-end; gap:16px; height:190px; padding:6px 10px 0; border-bottom:2px solid var(--navy); }
+  .bcol { flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; }
+  .bar { width:100%; max-width:110px; border-radius:6px 6px 0 0; transition:height .25s ease; min-height:2px; }
+  .bnum { font-size:14px; color:var(--navy); margin-bottom:4px; }
+  .blabels { display:flex; gap:16px; padding:6px 10px 0; }
+  .blabels div { flex:1; text-align:center; font-size:12px; color:#4a5575; }
+  .verdict { margin-top:12px; padding:10px 14px; border-radius:8px; font-size:15px; line-height:1.5; border-left:4px solid var(--blue); background:#EAF6FC; transition:all .2s; }
+  .verdict.bad { background:#FDECEC; border-left-color:var(--bad); }
+  .verdict.good { background:#E7F5EC; border-left-color:var(--good); }
+  svg { width:100%; height:auto; display:block; }
+  .note { font-size:13px; color:#4a5575; line-height:1.5; }
+  .reset { background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:6px; padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+  .reset:hover { background:#FDF3E3; }
+</style>
+</head>
+<body>
+<div class="lab">
+  <div class="kicker">ECONOMICS HONORS LAB &middot; LESSON 6.01</div>
+  <h1>The Margin Trapdoor</h1>
+  <p class="lede">You buy $1,000 of stock. Choose how much of your own money goes in, then move the price. Watch what happens to <strong>your</strong> money, the part that is not borrowed.</p>
+
+  <div class="panel">
+    <div class="row">
+      <div style="flex:1;min-width:230px">
+        <div class="lbl">Your down payment (the rest is borrowed)</div>
+        <div class="seg" id="downSeg"></div>
+      </div>
+      <div style="flex:1;min-width:230px">
+        <div class="lbl">Jump to a situation</div>
+        <div class="seg">
+          <button class="preset" data-p="10">Price up 10%</button>
+          <button class="preset" data-p="-10">Price down 10%</button>
+          <button class="preset" data-p="-20">Price down 20%</button>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <div class="lbl">Stock price change: <strong id="pLabel"></strong></div>
+      <input type="range" id="pSlider" min="-30" max="30" step="1" value="10" aria-label="Stock price change in percent" />
+    </div>
+  </div>
+
+  <div class="big">
+    <div class="stat"><div class="n" id="sWorth"></div><div class="t">stock is now worth</div></div>
+    <div class="stat"><div class="n" id="sLoan"></div><div class="t">you owe the lender</div></div>
+    <div class="stat you"><div class="n" id="sEquity"></div><div class="t" id="sEquityT"></div></div>
+    <div class="stat you"><div class="n" id="sRet"></div><div class="t">gain or loss on your own money</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="bars" id="bars">
+      <div class="bcol"><div class="bnum" id="nWorth"></div><div class="bar" id="bWorth" style="background:var(--blue)"></div></div>
+      <div class="bcol"><div class="bnum" id="nLoan"></div><div class="bar" id="bLoan" style="background:#8A94AD"></div></div>
+      <div class="bcol"><div class="bnum" id="nEq"></div><div class="bar" id="bEq" style="background:var(--gold)"></div></div>
+    </div>
+    <div class="blabels"><div>Stock value</div><div>Loan owed</div><div>Your equity</div></div>
+    <div class="verdict" id="verdict"></div>
+  </div>
+
+  <div class="panel">
+    <div class="lbl">Return on your own money for every price change. Gold is your choice. Gray is buying with no loan at all.</div>
+    <svg viewBox="0 0 600 240" id="chart" role="img" aria-label="Chart of return on your own money against stock price change"></svg>
+    <div class="note">The dollar gain or loss is the same either way. The loan only changes how small your own share is, so the same dollars become a much bigger percent.</div>
+  </div>
+
+  <button class="reset" id="reset">Reset</button>
+</div>
+
+<script>
+(function () {
+  var COST = 1000, DEF_DOWN = 10, DEF_P = 10;
+  var down = DEF_DOWN, p = DEF_P;
+  var downs = [10, 25, 50, 100];
+  var $ = function (id) { return document.getElementById(id); };
+  function money(v) { var s = Math.abs(Math.round(v)).toLocaleString('en-US'); return (v < 0 ? '-$' : '$') + s; }
+  function pct(v) { return (v > 0 ? '+' : v < 0 ? '-' : '') + Math.abs(Math.round(v)) + '%'; }
+
+  var seg = $('downSeg');
+  downs.forEach(function (d) {
+    var b = document.createElement('button');
+    b.textContent = d + '% down ($' + (COST * d / 100) + ')';
+    b.dataset.d = d;
+    b.addEventListener('click', function () { down = d; render(); });
+    seg.appendChild(b);
+  });
+  document.querySelectorAll('.preset').forEach(function (b) {
+    b.addEventListener('click', function () { p = Number(b.dataset.p); $('pSlider').value = p; render(); });
+  });
+  $('pSlider').addEventListener('input', function () { p = Number(this.value); render(); });
+  $('reset').addEventListener('click', function () { down = DEF_DOWN; p = DEF_P; $('pSlider').value = p; render(); });
+
+  function drawChart(own, cur) {
+    var W = 600, H = 240, L = 46, R = 12, T = 12, B = 30;
+    var yMin = -300, yMax = 300;
+    function X(v) { return L + (v + 30) / 60 * (W - L - R); }
+    function Y(v) { v = Math.max(yMin, Math.min(yMax, v)); return T + (yMax - v) / (yMax - yMin) * (H - T - B); }
+    var s = '';
+    [-300, -200, -100, 0, 100, 200, 300].forEach(function (g) {
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(g) + '" y2="' + Y(g) + '" stroke="' + (g === 0 ? '#0E1C42' : '#D0D9E8') + '" stroke-width="' + (g === 0 ? 1.5 : 1) + '"/>';
+      s += '<text x="' + (L - 6) + '" y="' + (Y(g) + 4) + '" font-size="11" fill="#4a5575" text-anchor="end">' + (g > 0 ? '+' : '') + g + '%</text>';
+    });
+    [-30, -20, -10, 0, 10, 20, 30].forEach(function (g) {
+      s += '<text x="' + X(g) + '" y="' + (H - 10) + '" font-size="11" fill="#4a5575" text-anchor="middle">' + (g > 0 ? '+' : '') + g + '%</text>';
+    });
+    s += '<line x1="' + X(0) + '" x2="' + X(0) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="#D0D9E8"/>';
+    function line(dn, color, w) {
+      var d = '';
+      for (var v = -30; v <= 30; v += 1) {
+        var r = (COST * v / 100) / (COST * dn / 100) * 100;
+        d += (v === -30 ? 'M' : 'L') + X(v).toFixed(1) + ' ' + Y(r).toFixed(1) + ' ';
+      }
+      return '<path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="' + w + '"/>';
+    }
+    s += line(100, '#8A94AD', 2.5);
+    s += line(own, '#C7922C', 3.5);
+    var rr = (COST * cur / 100) / (COST * own / 100) * 100;
+    s += '<circle cx="' + X(cur) + '" cy="' + Y(rr) + '" r="7" fill="#0E1C42" stroke="#fff" stroke-width="2"/>';
+    $('chart').innerHTML = s;
+  }
+
+  function render() {
+    var dp = COST * down / 100, loan = COST - dp;
+    var worth = COST * (1 + p / 100), eq = worth - loan;
+    var ret = (eq - dp) / dp * 100;
+    $('pLabel').textContent = pct(p);
+    seg.querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', Number(b.dataset.d) === down); });
+    $('sWorth').textContent = money(worth);
+    $('sLoan').textContent = money(loan);
+    $('sEquity').textContent = money(Math.max(eq, 0));
+    $('sEquityT').textContent = 'left of your ' + money(dp);
+    $('sRet').textContent = pct(ret);
+    $('sRet').style.color = ret < 0 ? '#C0392B' : ret > 0 ? '#1A6B3D' : '#0E1C42';
+    var max = 1400;
+    function h(v) { return Math.max(0, v) / max * 100 + '%'; }
+    $('bWorth').style.height = h(worth); $('nWorth').textContent = money(worth);
+    $('bLoan').style.height = h(loan); $('nLoan').textContent = money(loan);
+    $('bEq').style.height = h(Math.max(eq, 0)); $('nEq').textContent = money(Math.max(eq, 0));
+    var v = $('verdict'), msg, cls = '';
+    if (loan === 0) {
+      msg = 'No loan, so no trapdoor. A ' + pct(p) + ' move changes your money by ' + pct(ret) + '. The stock can fall a long way before you lose everything.';
+      cls = ret < 0 ? '' : 'good';
+    } else if (eq <= 0 && worth < loan) {
+      msg = 'Your own money is gone, and the stock is worth ' + money(loan - worth) + ' less than the loan. A lender in this spot demands more money at once (a margin call), or sells your stock to get paid back.';
+      cls = 'bad';
+    } else if (eq <= 0) {
+      msg = 'Your own money is gone. The stock is worth exactly what you owe.';
+      cls = 'bad';
+    } else if (p > 0) {
+      msg = 'The same borrowing that multiplies the gain: your ' + money(dp) + ' became ' + money(eq) + '. Notice how small a price rise it took.';
+      cls = 'good';
+    } else if (p < 0) {
+      msg = 'The price fell ' + Math.abs(p) + '%, but your own money fell ' + Math.abs(Math.round(ret)) + '%. Try the slider a little further left.';
+    } else {
+      msg = 'The price has not moved, so you are even. You still owe the loan. Now move the slider and watch your equity.';
+    }
+    v.textContent = msg; v.className = 'verdict ' + cls;
+    drawChart(down, p);
+    sendHeight();
+  }
+
+  function sendHeight() {
+    try { parent.postMessage({ optimaWidgetHeight: document.documentElement.scrollHeight }, '*'); } catch (e) {}
+  }
+  window.addEventListener('resize', sendHeight);
+  render();
+})();
+</script>
+</body>
+</html>

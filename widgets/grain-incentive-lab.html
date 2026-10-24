@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Farmer's Choice | Economics Honors Lab</title>
+<style>
+  :root { --navy:#0E1C42; --cyan:#55C8E8; --blue:#2196D0; --gold:#C7922C; --ink:#1a2340; --line:#D0D9E8; --red:#B23A2E; --green:#2A7D4F; --soil:#8B6B3E; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:14px; font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:#fff; }
+  .lab { max-width:880px; margin:0 auto; }
+  .kicker { font-size:11px; letter-spacing:.5px; color:var(--blue); margin-bottom:4px; }
+  h1 { font-size:21px; color:var(--navy); margin:0 0 6px; font-weight:600; }
+  .lede { font-size:15px; line-height:1.55; margin:0 0 12px; }
+  .toy { font-size:13px; background:#FDF3E3; border-left:4px solid var(--gold); border-radius:6px; padding:8px 12px; line-height:1.5; margin-bottom:14px; }
+  .tabs { display:flex; gap:0; margin-bottom:0; }
+  .tabs button { flex:1; font:inherit; font-size:15px; padding:11px 8px; border:1.5px solid var(--line); border-bottom:none; background:#EEF1F8; color:var(--navy); cursor:pointer; border-radius:10px 10px 0 0; }
+  .tabs button.on { background:#fff; border-color:var(--navy); border-bottom:none; position:relative; top:1px; z-index:2; }
+  .panel { background:#fff; border:1.5px solid var(--navy); border-radius:0 0 10px 10px; padding:14px 16px; margin-bottom:14px; }
+  .lbl { font-size:13px; color:#4a5575; margin-bottom:6px; }
+  input[type=range] { width:100%; accent-color:var(--soil); height:32px; }
+  .field { display:grid; grid-template-columns:1fr; gap:8px; margin:12px 0; }
+  .brow { display:flex; align-items:center; gap:10px; }
+  .brow .name { width:132px; font-size:13px; color:#4a5575; flex-shrink:0; }
+  .brow .track { flex:1; height:24px; background:#EDEFF5; border-radius:6px; overflow:hidden; position:relative; }
+  .brow .fill { height:100%; width:0; transition:width .3s ease; border-radius:6px; }
+  .brow .val { width:44px; text-align:right; font-size:15px; color:var(--navy); }
+  .verdict { padding:10px 14px; border-radius:8px; font-size:15px; line-height:1.5; border-left:4px solid var(--blue); background:#EAF6FC; }
+  .verdict.bad { background:#FDECEC; border-left-color:var(--red); }
+  .verdict.good { background:#E7F5EC; border-left-color:var(--green); }
+  svg { width:100%; height:auto; display:block; }
+  .realdata { display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:13px; color:#4a5575; line-height:1.5; margin-bottom:14px; padding:10px 14px; border:1px solid var(--line); border-radius:8px; }
+  .realdata b { color:var(--navy); font-size:15px; }
+  .reset { background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:6px; padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+  .reset:hover { background:#FDF3E3; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .seg button { background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:6px 11px; font:inherit; font-size:13px; color:var(--navy); cursor:pointer; }
+  .seg button:hover { border-color:var(--cyan); background:#F4FBFE; }
+</style>
+</head>
+<body>
+<div class="lab">
+  <div class="kicker">ECONOMICS HONORS LAB &middot; LESSON 7.02</div>
+  <h1>The Farmer's Choice</h1>
+  <p class="lede">You are one farmer. Your family needs grain to live, and every extra bushel costs more work than the one before it. The state wants your surplus. Change the rule and watch what you decide to grow.</p>
+  <div class="toy"><strong>A toy model, not data.</strong> The units are made up so the shape of the choice is easy to see. A farmer grows an extra bushel only while the reward for it is bigger than the work it takes. The real harvest numbers are at the bottom.</div>
+
+  <div class="tabs" role="tablist">
+    <button class="on" id="tabSeize" role="tab">Grain requisition (1918 to 1921)</button>
+    <button id="tabTax" role="tab">Fixed tax, then sell the rest (1921)</button>
+  </div>
+  <div class="panel">
+    <div id="ctrlSeize">
+      <div class="lbl">The state takes this share of everything you grow beyond your family's need: <strong id="xLabel"></strong></div>
+      <input type="range" id="x" min="0" max="100" step="5" value="30" aria-label="Share of surplus the state takes" />
+      <div class="seg"><button data-x="0">Take nothing</button><button data-x="30">A modest share</button><button data-x="60">More than half</button><button data-x="100">Take all of it</button></div>
+    </div>
+    <div id="ctrlTax" style="display:none">
+      <div class="lbl">The state asks for a fixed tax of <strong id="tLabel"></strong>. After that, every bushel you grow is yours to sell.</div>
+      <input type="range" id="t" min="0" max="6" step="0.5" value="2" aria-label="Fixed grain tax" />
+    </div>
+
+    <div class="field">
+      <div class="brow"><div class="name">You decide to grow</div><div class="track"><div class="fill" id="fGrow" style="background:var(--soil)"></div></div><div class="val" id="vGrow"></div></div>
+      <div class="brow"><div class="name">Family keeps (need)</div><div class="track"><div class="fill" id="fNeed" style="background:#B7A27A"></div></div><div class="val" id="vNeed"></div></div>
+      <div class="brow"><div class="name">Reaches the state</div><div class="track"><div class="fill" id="fState" style="background:var(--red)"></div></div><div class="val" id="vState"></div></div>
+      <div class="brow"><div class="name">Yours to sell</div><div class="track"><div class="fill" id="fSell" style="background:var(--green)"></div></div><div class="val" id="vSell"></div></div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </div>
+
+  <div class="panel" style="border-radius:10px;border-color:var(--line)">
+    <div class="lbl" id="chartLbl"></div>
+    <svg viewBox="0 0 600 230" id="chart" role="img" aria-label="Grain reaching the state at different requisition shares"></svg>
+  </div>
+
+  <div class="realdata">
+    <div><b>80.1</b> million tons<br />harvested, 1913</div>
+    <div style="font-size:22px;color:var(--gold)">&#10145;</div>
+    <div><b>46.5</b> million tons<br />harvested, 1920</div>
+    <div style="flex:1;min-width:200px">About a 42% drop, using the historian David Christian's figures from Lesson 7.02. War and civil war also wrecked farms and railroads, so policy was not the only cause. The model shows one force among several.</div>
+  </div>
+
+  <button class="reset" id="reset">Reset</button>
+</div>
+
+<script>
+(function () {
+  var P = 10, NEED = 4;   // reward per bushel before any state claim, family need
+  var mode = 'seize', x = 30, t = 2;
+  var $ = function (id) { return document.getElementById(id); };
+  function fmt(v) { return (Math.round(v * 10) / 10).toString(); }
+
+  function seizeOutcome(share) {
+    var keep = 1 - share / 100;
+    var grow = Math.max(NEED, keep * P);
+    var surplus = grow - NEED;
+    var state = share / 100 * surplus;
+    return { grow: grow, state: state, sell: surplus - state };
+  }
+  function taxOutcome(tax) {
+    var grow = P, surplus = grow - NEED;
+    var state = Math.min(tax, surplus);
+    return { grow: grow, state: state, sell: surplus - state };
+  }
+
+  function setMode(m) {
+    mode = m;
+    $('tabSeize').className = m === 'seize' ? 'on' : '';
+    $('tabTax').className = m === 'tax' ? 'on' : '';
+    $('ctrlSeize').style.display = m === 'seize' ? '' : 'none';
+    $('ctrlTax').style.display = m === 'tax' ? '' : 'none';
+    render();
+  }
+  $('tabSeize').addEventListener('click', function () { setMode('seize'); });
+  $('tabTax').addEventListener('click', function () { setMode('tax'); });
+  $('x').addEventListener('input', function () { x = Number(this.value); render(); });
+  $('t').addEventListener('input', function () { t = Number(this.value); render(); });
+  document.querySelectorAll('[data-x]').forEach(function (b) { b.addEventListener('click', function () { x = Number(b.dataset.x); $('x').value = x; render(); }); });
+  $('reset').addEventListener('click', function () { x = 30; t = 2; $('x').value = x; $('t').value = t; setMode('seize'); });
+
+  function drawChart() {
+    var W = 600, H = 230, L = 40, R = 12, T = 14, B = 34, yMax = 6.5;
+    function X(v) { return L + v / 100 * (W - L - R); }
+    function Y(v) { return T + (yMax - v) / yMax * (H - T - B); }
+    var s = '';
+    [0, 2, 4, 6].forEach(function (g) {
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(g) + '" y2="' + Y(g) + '" stroke="' + (g === 0 ? '#0E1C42' : '#D0D9E8') + '"/>';
+      s += '<text x="' + (L - 6) + '" y="' + (Y(g) + 4) + '" font-size="11" fill="#4a5575" text-anchor="end">' + g + '</text>';
+    });
+    [0, 25, 50, 75, 100].forEach(function (g) { s += '<text x="' + X(g) + '" y="' + (H - 14) + '" font-size="11" fill="#4a5575" text-anchor="middle">' + g + '%</text>'; });
+    s += '<text x="' + (L + (W - L - R) / 2) + '" y="' + (H - 1) + '" font-size="11" fill="#4a5575" text-anchor="middle">share of your surplus the state takes</text>';
+    var d = '';
+    for (var v = 0; v <= 100; v += 1) d += (v === 0 ? 'M' : 'L') + X(v).toFixed(1) + ' ' + Y(seizeOutcome(v).state).toFixed(1) + ' ';
+    s += '<path d="' + d + '" fill="none" stroke="#B23A2E" stroke-width="3.5"/>';
+    var tax = taxOutcome(t).state;
+    if (mode === 'tax') {
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(tax) + '" y2="' + Y(tax) + '" stroke="#2A7D4F" stroke-width="3" stroke-dasharray="7 5"/>';
+      s += '<text x="' + (W - R - 4) + '" y="' + (Y(tax) - 7) + '" font-size="12" fill="#1A6B3D" text-anchor="end">fixed tax: ' + fmt(tax) + ' reaches the state</text>';
+    } else {
+      s += '<circle cx="' + X(x) + '" cy="' + Y(seizeOutcome(x).state) + '" r="7" fill="#0E1C42" stroke="#fff" stroke-width="2"/>';
+    }
+    $('chart').innerHTML = s;
+    $('chartLbl').textContent = mode === 'seize'
+      ? 'Grain that actually reaches the state, for every requisition share. Find the peak. Then look at what happens at 100%.'
+      : 'The red curve is what requisition could ever deliver. The green dashed line is what your fixed tax delivers.';
+  }
+
+  function render() {
+    var o = mode === 'seize' ? seizeOutcome(x) : taxOutcome(t);
+    $('xLabel').textContent = x + '%';
+    $('tLabel').textContent = fmt(t) + ' bushels';
+    function bar(id, vid, v) { $(id).style.width = Math.min(100, v / 10.5 * 100) + '%'; $(vid).textContent = fmt(v); }
+    bar('fGrow', 'vGrow', o.grow); bar('fNeed', 'vNeed', NEED); bar('fState', 'vState', o.state); bar('fSell', 'vSell', o.sell);
+    var v = $('verdict'), msg, cls = '';
+    if (mode === 'seize') {
+      if (o.grow <= NEED + 0.001) {
+        msg = 'Beyond your own family\'s need, every bushel you grow would be taken, so it pays you nothing. You grow only what you must eat. Nothing reaches the cities. The policy built to feed them has shut off the supply.';
+        cls = 'bad';
+      } else if (x === 0) {
+        msg = 'With nothing taken you grow a lot. But the state also gets nothing, and the army and cities go hungry. Try raising the share.';
+      } else {
+        msg = 'You still grow extra, but less than before, because each extra bushel now rewards you less. Slide the share up and watch the red curve rise and then collapse.';
+        cls = o.state >= 0.85 ? 'good' : '';
+      }
+    } else {
+      if (t >= 6) { msg = 'The tax now takes every bushel of surplus. Push it any higher and the model breaks down, because there is nothing left to take. In real life, farmers would again see no reward for growing more.'; cls = 'bad'; }
+      else { msg = 'You grow the full amount, because the next bushel is all yours. The state gets a reliable ' + fmt(o.state) + ', and you still have ' + fmt(o.sell) + ' to sell. Compare that with the highest point on the red curve.'; cls = 'good'; }
+    }
+    v.textContent = msg; v.className = 'verdict ' + cls;
+    drawChart();
+    sendHeight();
+  }
+  function sendHeight() { try { parent.postMessage({ optimaWidgetHeight: document.documentElement.scrollHeight }, '*'); } catch (e) {} }
+  window.addEventListener('resize', sendHeight);
+  render();
+})();
+</script>
+</body>
+</html>

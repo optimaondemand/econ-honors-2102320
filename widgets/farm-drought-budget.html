@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Arithmetic of a Bad Year | Economics Honors Lab</title>
+<style>
+  :root { --navy:#0E1C42; --cyan:#55C8E8; --blue:#2196D0; --gold:#C7922C; --ink:#1a2340; --line:#D0D9E8; --pale:#F7F3EA; --bad:#C0392B; --good:#2A9D5C; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:14px; font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:#fff; }
+  .lab { max-width:880px; margin:0 auto; }
+  .kicker { font-size:11px; letter-spacing:.5px; color:var(--blue); margin-bottom:4px; }
+  h1 { font-size:21px; color:var(--navy); margin:0 0 6px; font-weight:600; }
+  .lede { font-size:15px; line-height:1.55; margin:0 0 14px; }
+  .panel { background:var(--pale); border:1px solid #E4D9BF; border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+  .lbl { font-size:13px; color:#4a5575; margin-bottom:6px; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; }
+  .seg button { background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:7px 12px; font:inherit; font-size:14px; color:var(--navy); cursor:pointer; }
+  .seg button:hover { border-color:var(--cyan); background:#F4FBFE; }
+  .seg button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+  input[type=range] { width:100%; accent-color:var(--gold); height:32px; }
+  .ledger { display:grid; grid-template-columns:1fr; gap:8px; }
+  .item { background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 12px; }
+  .item .top { display:flex; justify-content:space-between; font-size:15px; color:var(--navy); margin-bottom:6px; gap:8px; flex-wrap:wrap; }
+  .track { height:16px; background:#EDEFF5; border-radius:8px; overflow:hidden; }
+  .fill { height:100%; width:0; background:var(--good); border-radius:8px; transition:width .3s ease, background .2s; }
+  .fill.part { background:var(--gold); }
+  .fill.none { background:var(--bad); }
+  .tag { font-size:12px; }
+  .incomebar { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+  .incomebar .track { flex:1; height:26px; border-radius:6px; }
+  .incomebar .fill { background:var(--blue); border-radius:6px; }
+  .incomebar .num { font-size:20px; color:var(--navy); min-width:110px; text-align:right; }
+  .stats { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; }
+  .stat { flex:1; min-width:140px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; text-align:center; }
+  .stat .n { font-size:24px; color:var(--navy); line-height:1.15; }
+  .stat .t { font-size:12px; color:#4a5575; margin-top:2px; }
+  .verdict { margin-top:6px; padding:10px 14px; border-radius:8px; font-size:15px; line-height:1.5; border-left:4px solid var(--blue); background:#EAF6FC; }
+  .verdict.bad { background:#FDECEC; border-left-color:var(--bad); }
+  .verdict.good { background:#E7F5EC; border-left-color:var(--good); }
+  .years { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .yr { flex:1; min-width:62px; text-align:center; background:#fff; border:1px solid var(--line); border-radius:8px; padding:6px 4px; font-size:12px; color:#4a5575; }
+  .yr b { display:block; font-size:15px; color:var(--navy); font-weight:600; }
+  .yr.short b { color:var(--bad); }
+  .note { font-size:13px; color:#4a5575; line-height:1.5; margin-top:8px; }
+  .reset { background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:6px; padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+  .reset:hover { background:#FDF3E3; }
+</style>
+</head>
+<body>
+<div class="lab">
+  <div class="kicker">ECONOMICS HONORS LAB &middot; LESSON 6.04</div>
+  <h1>The Arithmetic of a Bad Year</h1>
+  <p class="lede">In a normal year this made-up farm sells $1,000 of wheat. The bills do not change when the rain does. Drag the harvest down and decide which bill gets paid first.</p>
+
+  <div class="panel">
+    <div class="lbl">This year's harvest, as a share of a normal crop: <strong id="hLabel"></strong></div>
+    <input type="range" id="harvest" min="0" max="120" step="5" value="100" aria-label="Harvest as a percent of normal" />
+    <div class="seg" style="margin-top:8px">
+      <button data-h="100">Normal year</button>
+      <button data-h="60">Poor year</button>
+      <button data-h="20">Drought year (the lesson's example)</button>
+      <button data-h="0">Total crop failure</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="lbl">If the money runs short, which bill do you pay first?</div>
+    <div class="seg" id="prio">
+      <button data-o="loan,seed,family">Loan first</button>
+      <button data-o="family,seed,loan">Family first</button>
+      <button data-o="seed,family,loan">Seed and fuel first</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="incomebar"><div style="font-size:14px;color:#4a5575;min-width:92px">Money in</div><div class="track"><div class="fill" id="incFill"></div></div><div class="num" id="incNum"></div></div>
+    <div class="ledger" id="ledger"></div>
+    <div class="stats">
+      <div class="stat"><div class="n" id="sShort"></div><div class="t">shortfall this year</div></div>
+      <div class="stat"><div class="n" id="sLoanShare"></div><div class="t">the $400 loan payment as a share of this year's income</div></div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+  </div>
+
+  <div class="panel">
+    <div class="lbl">What if the weather stays this bad? Years in a row: <strong id="nLabel"></strong></div>
+    <input type="range" id="nyears" min="1" max="5" step="1" value="1" aria-label="Number of years in a row" />
+    <div class="years" id="years"></div>
+    <div class="note" id="carry"></div>
+    <div class="note">This leaves out interest, which would make the pile larger. The shortfall has to come from somewhere: new borrowing, sold equipment, or sold land.</div>
+  </div>
+
+  <button class="reset" id="reset">Reset</button>
+</div>
+
+<script>
+(function () {
+  var NORMAL = 1000;
+  var BILLS = { loan: { name: 'Loan payment', amt: 400 }, seed: { name: 'Seed and fuel', amt: 300 }, family: { name: 'Feed and house the family', amt: 300 } };
+  var h = 100, order = ['loan', 'seed', 'family'], n = 1;
+  var $ = function (id) { return document.getElementById(id); };
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+
+  var ledger = $('ledger');
+  ['loan', 'seed', 'family'].forEach(function (k) {
+    var d = document.createElement('div'); d.className = 'item'; d.id = 'it-' + k;
+    d.innerHTML = '<div class="top"><span>' + BILLS[k].name + ' (' + money(BILLS[k].amt) + ')</span><span class="tag" id="tg-' + k + '"></span></div><div class="track"><div class="fill" id="fl-' + k + '"></div></div>';
+    ledger.appendChild(d);
+  });
+
+  $('harvest').addEventListener('input', function () { h = Number(this.value); render(); });
+  document.querySelectorAll('[data-h]').forEach(function (b) { b.addEventListener('click', function () { h = Number(b.dataset.h); $('harvest').value = h; render(); }); });
+  document.querySelectorAll('#prio button').forEach(function (b) { b.addEventListener('click', function () { order = b.dataset.o.split(','); render(); }); });
+  $('nyears').addEventListener('input', function () { n = Number(this.value); render(); });
+  $('reset').addEventListener('click', function () { h = 100; order = ['loan', 'seed', 'family']; n = 1; $('harvest').value = h; $('nyears').value = n; render(); });
+
+  function render() {
+    var income = NORMAL * h / 100, left = income;
+    $('hLabel').textContent = h + '% (' + money(income) + ' of wheat sold)';
+    $('incFill').style.width = Math.min(100, income / 1200 * 100) + '%';
+    $('incNum').textContent = money(income);
+    document.querySelectorAll('#prio button').forEach(function (b) { b.classList.toggle('on', b.dataset.o === order.join(',')); });
+    document.querySelectorAll('[data-h]').forEach(function (b) { b.classList.toggle('on', Number(b.dataset.h) === h); });
+    var short = 0;
+    order.forEach(function (k) {
+      var need = BILLS[k].amt, paid = Math.min(need, left); left -= paid; short += need - paid;
+      var pc = paid / need * 100, f = $('fl-' + k), tg = $('tg-' + k);
+      f.style.width = pc + '%'; f.className = 'fill' + (pc >= 100 ? '' : pc > 0 ? ' part' : ' none');
+      tg.textContent = pc >= 100 ? 'paid in full' : pc > 0 ? 'only ' + money(paid) + ' paid, ' + money(need - paid) + ' unpaid' : 'nothing paid, ' + money(need) + ' unpaid';
+      tg.style.color = pc >= 100 ? '#1A6B3D' : '#8A1F16';
+    });
+    // reorder the ledger to show the payment priority
+    order.forEach(function (k) { ledger.appendChild($('it-' + k)); });
+    $('sShort').textContent = money(short);
+    $('sShort').style.color = short > 0 ? '#C0392B' : '#1A6B3D';
+    $('sLoanShare').textContent = income > 0 ? Math.round(400 / income * 100) + '%' : 'no income';
+    var v = $('verdict'), msg, cls = '';
+    if (short === 0) {
+      msg = 'Everything is covered' + (income > NORMAL ? ', with ' + money(income - NORMAL) + ' to spare.' : '. Everything is tight, but it works.');
+      cls = 'good';
+    } else if (order[0] === 'loan') {
+      msg = 'Paying the loan first keeps the lender away, but it comes out of the family\'s food and the next crop\'s seed. A farmer who skips seed has no harvest to pay with next year.';
+      cls = 'bad';
+    } else if (order[order.length - 1] === 'loan' || order[1] === 'loan') {
+      msg = 'Protecting the family and the next planting leaves the loan unpaid. The lender can now start a foreclosure. Every choice here costs something, and this is why a dry year becomes a debt problem.';
+      cls = 'bad';
+    }
+    v.textContent = msg; v.className = 'verdict ' + cls;
+
+    $('nLabel').textContent = n;
+    var yr = '';
+    for (var i = 1; i <= 5; i++) {
+      var on = i <= n;
+      yr += '<div class="yr' + (on && short > 0 ? ' short' : '') + '" style="opacity:' + (on ? 1 : 0.35) + '">Year ' + i + '<b>' + (on ? (short > 0 ? '-' + money(short) : 'OK') : '') + '</b></div>';
+    }
+    $('years').innerHTML = yr;
+    $('carry').textContent = short > 0
+      ? 'After ' + n + ' year' + (n > 1 ? 's' : '') + ' like this, the farm is ' + money(short * n) + ' short, which is ' + (short * n / 1000).toFixed(1).replace('.0', '') + ' times a whole normal harvest.'
+      : 'At this harvest the farm covers its bills every year.';
+    sendHeight();
+  }
+  function sendHeight() { try { parent.postMessage({ optimaWidgetHeight: document.documentElement.scrollHeight }, '*'); } catch (e) {} }
+  window.addEventListener('resize', sendHeight);
+  render();
+})();
+</script>
+</body>
+</html>

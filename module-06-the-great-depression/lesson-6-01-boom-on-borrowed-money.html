@@ -45,6 +45,13 @@
     table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
     table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
     table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+
+    .ow-lab { background: #FFFFFF; border: 1px solid #D0D9E8; border-left: 5px solid #C7922C; border-radius: 8px; padding: 14px 16px; margin: 18px 0; }
+    .ow-lab .lab-kicker { font-size: 11px; color: #9a6a12; margin-bottom: 8px; letter-spacing: 0.4px; }
+    .ow-lab .lab-ask { font-size: 16px; color: #1a2340; line-height: 1.55; margin: 0 0 10px 0; }
+    .ow-lab iframe { width: 100%; height: 760px; border: 0; border-radius: 6px; display: block; background: #FFFFFF; }
+
+    .ow-sort .ow-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
 </style>
 </head>
 <body>
@@ -344,6 +351,38 @@
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><a class="gl" href="#g-installment-credit" title="Installment credit: Buying something now and paying for it in regular payments over time. (/in-STAWL-ment KRED-it/)"><strong>Installment credit</strong></a> is not evil. It is a tool. A family that buys a car on payments may get to work and earn more. But the tool has a rule built into it. Every payment you owe next year comes out of next year's income. If that income stops, the payments do not stop. They just pile up.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In the 1920s, millions of households took on payments like these at the same time. As long as jobs held and paychecks kept coming, the system looked solid. Nobody had tested what would happen if the paychecks shrank. That was the weak spot. It would stay hidden until something pressed on it.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economists often separate two kinds of borrowing. When a business borrows to buy a machine, the machine can earn the income that pays the loan back. When a household borrows to buy something it will use up, the payments must come out of income earned somewhere else. Neither kind is wrong. But an economy with a lot of the second kind is more exposed when incomes drop. In the 1920s there was plenty of both, and in any single case it is not always easy to tell which was which.</p>
+        <div class="optima-widget ow-sort">
+            <div class="widget-kicker">&#9889; SORT IT &middot; TWO KINDS OF BORROWING</div>
+            <div class="widget-question">For each loan, decide: can the thing it bought help earn the money to pay it back, or must the payments come out of income earned somewhere else?</div>
+            <div class="ow-row" data-ok="2" data-fb="Right. A machine that turns out goods to sell can earn the income that pays the loan." data-hint="Not quite. Think about whether the machine itself produces something that can be sold.">
+                <div class="widget-question">1. A business borrows to buy a machine that makes goods it can sell.</div>
+                <div class="widget-options">
+                    <button data-i="0">Paid from income earned somewhere else</button>
+                    <button data-i="1">Hard to say</button>
+                    <button data-i="2">Can help earn its own repayment</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-ok="0" data-fb="Yes. A radio gets used up. Every payment comes out of wages earned at a job." data-hint="Not quite. A radio does not bring in money. Where would the payments come from?">
+                <div class="widget-question">2. A family buys a radio on monthly payments.</div>
+                <div class="widget-options">
+                    <button data-i="0">Paid from income earned somewhere else</button>
+                    <button data-i="1">Can help earn its own repayment</button>
+                    <button data-i="2">Hard to say</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-ok="0,2" data-fb="Both answers can be defended. A tractor can earn income, but as wheat prices fell, farmers needed more land just to earn the same amount. In a single case it is not always easy to tell which kind of borrowing it was." data-hint="Reread the sentence about telling the two kinds apart. Pick the answer you can defend.">
+                <div class="widget-question">3. A Plains farmer borrows to buy a tractor and plow more wheat land in the 1920s.</div>
+                <div class="widget-options">
+                    <button data-i="0">Hard to say</button>
+                    <button data-i="1">Paid from income earned somewhere else</button>
+                    <button data-i="2">Can help earn its own repayment</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
         <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; LOOK BACK</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">In Module 3 you learned how banks and credit work. In Module 4 you studied the business cycle. Keep both in mind. A boom that rests on borrowing is more sensitive to a downturn, because borrowers owe fixed payments no matter what happens to their income.</div></div>
     </div>
 
@@ -357,7 +396,8 @@
         <table class="ow-table"><thead><tr><th>If the stock price...</th><th>Your stock is worth...</th><th>Your own $100 becomes...</th></tr></thead><tbody><tr><td>rises 10 percent</td><td>$1,100</td><td>$200. You doubled your money.</td></tr><tr><td>stays the same</td><td>$1,000</td><td>$100. You owe the loan, but you are even.</td></tr><tr><td>falls 10 percent</td><td>$900</td><td>$0. Your money is gone, and the stock is worth exactly what you owe.</td></tr></tbody></table>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A 10 percent rise doubled your money. A 10 percent fall erased it. That is why <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a> buying felt like magic on the way up and like a trapdoor on the way down. The same borrowing that multiplied the gains multiplied the losses by the same amount.</p>
         <details class="ow-reveal"><summary>Try this in your notebook before you click: what happens to the $1,000 example if the stock price falls 20 percent? Work out what the stock is worth and what you still owe.</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">The stock is now worth $800. You still owe the lender $900. You have lost your whole $100 and the stock no longer covers the loan. A lender in that spot would demand more money from you right away, which was called a <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a> call. If you could not pay it, the lender sold your stock to get its money back. Millions of small sales like that could push prices down further.</div></details>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Fed Faced a Hard Choice</h3>
+        <div class="ow-lab"><div class="lab-kicker">&#129514; LAB &middot; THE MARGIN TRAPDOOR</div><p class="lab-ask">Before you touch the slider: how far does the price have to fall to erase the buyer's own $100? Write your guess in your notebook, then test it.</p><iframe class="ow-lab-frame" src="../widgets/margin-trapdoor.html" title="The Margin Trapdoor" loading="lazy"></iframe></div>
+<h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Fed Faced a Hard Choice</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The leaders of the Federal Reserve saw the speculation, and they did not agree on what to do about it. In February 1929, the Federal Reserve Board wrote that the Federal Reserve Act did not "contemplate the use of the resources of the Federal Reserve Banks for the creation or extension of speculative credit." The Board wanted to pressure member banks directly not to lend to stock speculators.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The New York Fed, led by its governor George Harrison, wanted something different. It wanted to raise the <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a>. That is the interest rate the Fed charges banks that borrow from it. The Board turned down several of New York's requests. In August 1929, it finally gave in, and the New York <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a> reached 6 percent.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Both sides had a point. A higher rate makes all borrowing cost more, not just stock borrowing, so it can slow honest businesses along with the gamblers. Direct pressure is hard to carry out when banks can find other ways to lend. The Fed's history also says that rate increases in 1928 and 1929 slowed the economy. Because the United States was on the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>, that slowdown spread to other countries too. Hold onto that idea. It returns in the next lesson.</p>
@@ -511,6 +551,29 @@
     }
     var flip = e.target.closest('.ow-flip');
     if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+<script>
+(function () {
+  window.addEventListener('message', function (e) {
+    if (!e.data || !e.data.optimaWidgetHeight) return;
+    document.querySelectorAll('iframe.ow-lab-frame').forEach(function (f) {
+      if (f.contentWindow === e.source) f.style.height = (e.data.optimaWidgetHeight + 8) + 'px';
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.ow-sort .ow-row .widget-options button');
+    if (!b) return;
+    var row = b.closest('.ow-row');
+    var ok = row.getAttribute('data-ok').split(',').indexOf(b.getAttribute('data-i')) >= 0;
+    row.querySelectorAll('.widget-options button').forEach(function (x) { x.classList.remove('right', 'wrong'); });
+    b.classList.add(ok ? 'right' : 'wrong');
+    var f = row.querySelector('.widget-feedback');
+    f.textContent = ok ? row.getAttribute('data-fb') : row.getAttribute('data-hint');
+    f.classList.add('show');
   });
 })();
 </script>

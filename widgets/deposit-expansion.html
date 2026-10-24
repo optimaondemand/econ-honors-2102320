@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How Lending Creates Money | Economics Honors Lab</title>
+<style>
+  :root { --navy:#0E1C42; --cyan:#55C8E8; --blue:#2196D0; --gold:#C7922C; --ink:#1a2340; --line:#D0D9E8; --pale:#F4F6FA; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:14px; font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:#fff; }
+  .lab { max-width:880px; margin:0 auto; }
+  .kicker { font-size:11px; letter-spacing:.5px; color:var(--blue); margin-bottom:4px; }
+  h1 { font-size:21px; color:var(--navy); margin:0 0 6px; font-weight:600; }
+  .lede { font-size:15px; line-height:1.55; margin:0 0 12px; }
+  .today { font-size:13px; background:#EAF6FC; border-left:4px solid var(--blue); border-radius:6px; padding:8px 12px; line-height:1.5; margin-bottom:14px; }
+  .panel { background:var(--pale); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+  .lbl { font-size:13px; color:#4a5575; margin-bottom:6px; }
+  input[type=range] { width:100%; accent-color:var(--blue); height:32px; }
+  .btns { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .btns button { background:var(--navy); color:#fff; border:none; border-radius:8px; padding:9px 16px; font:inherit; font-size:14px; cursor:pointer; }
+  .btns button.alt { background:#fff; color:var(--navy); border:1.5px solid var(--line); }
+  .btns button:hover { filter:brightness(1.15); }
+  .btns button:disabled { opacity:.4; cursor:default; filter:none; }
+  .stats { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .stat { flex:1; min-width:140px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; text-align:center; }
+  .stat .n { font-size:24px; color:var(--navy); line-height:1.15; }
+  .stat .t { font-size:12px; color:#4a5575; margin-top:2px; }
+  .stat.hl { border-color:var(--gold); background:#FDF7EA; }
+  .stack { display:flex; flex-direction:column; gap:5px; }
+  .rd { display:flex; align-items:center; gap:8px; font-size:13px; animation:in .3s ease; }
+  .rd .rn { width:64px; color:#4a5575; flex-shrink:0; }
+  .rd .tr { flex:1; height:22px; background:#E6EAF2; border-radius:5px; overflow:hidden; display:flex; }
+  .rd .dep { background:var(--blue); height:100%; }
+  .rd .res { background:var(--gold); height:100%; }
+  .rd .am { width:176px; text-align:right; color:var(--navy); flex-shrink:0; }
+  @keyframes in { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
+  .legend { display:flex; gap:16px; font-size:12px; color:#4a5575; margin:8px 0 0; flex-wrap:wrap; }
+  .legend i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-2px; }
+  .progress { height:14px; background:#E6EAF2; border-radius:7px; overflow:hidden; margin:8px 0 4px; }
+  .progress div { height:100%; background:var(--blue); width:0; transition:width .3s ease; }
+  .note { font-size:13px; color:#4a5575; line-height:1.5; margin-top:6px; }
+  .reset { background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:6px; padding:6px 12px; font:inherit; font-size:12px; cursor:pointer; }
+  .reset:hover { background:#FDF3E3; }
+  @media (max-width:560px) { .rd .am { width:120px; font-size:12px; } .rd .rn { width:50px; } }
+</style>
+</head>
+<body>
+<div class="lab">
+  <div class="kicker">ECONOMICS HONORS LAB &middot; LESSON 8.02</div>
+  <h1>How Lending Creates Money</h1>
+  <p class="lede">You deposit $1,000. The bank keeps a fraction as reserves and lends out the rest. The borrower spends it, and the seller deposits it in another bank. Press the button and follow the money round by round.</p>
+  <div class="today"><strong>Textbook story, not today's rule.</strong> Since March 26, 2020, the Fed's required reserve ratio has been zero percent (Lesson 8.02). This lab shows how lending creates deposits when a bank keeps a fraction back. You choose the fraction.</div>
+
+  <div class="panel">
+    <div class="lbl">Share of each deposit the bank keeps as reserves: <strong id="rLabel"></strong></div>
+    <input type="range" id="ratio" min="5" max="50" step="5" value="10" aria-label="Reserve ratio in percent" />
+    <div class="btns">
+      <button id="next">Next round</button>
+      <button id="five" class="alt">Skip ahead 5 rounds</button>
+      <button id="all" class="alt">Run to the limit</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n" id="sRound"></div><div class="t">rounds so far</div></div>
+    <div class="stat hl"><div class="n" id="sTotal"></div><div class="t">total deposits so far</div></div>
+    <div class="stat"><div class="n" id="sLimit"></div><div class="t">the limit: $1,000 divided by the reserve ratio</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="lbl">Total deposits as a share of the limit</div>
+    <div class="progress"><div id="prog"></div></div>
+    <div class="stack" id="stack"></div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>lent out and re-deposited</span><span><i style="background:var(--gold)"></i>kept as reserves</span></div>
+    <div class="note" id="note"></div>
+  </div>
+
+  <button class="reset" id="reset">Reset</button>
+</div>
+
+<script>
+(function () {
+  var D0 = 1000, ratio = 10, rounds = 4;
+  var $ = function (id) { return document.getElementById(id); };
+  function money(v, c) { return '$' + v.toLocaleString('en-US', { minimumFractionDigits: c ? 2 : 0, maximumFractionDigits: c ? 2 : 0 }); }
+  function dep(i) { return D0 * Math.pow(1 - ratio / 100, i - 1); }
+  function total(n) { var s = 0; for (var i = 1; i <= n; i++) s += dep(i); return s; }
+  function limit() { return D0 / (ratio / 100); }
+
+  $('ratio').addEventListener('input', function () { ratio = Number(this.value); rounds = 4; render(); });
+  $('next').addEventListener('click', function () { rounds = Math.min(rounds + 1, 40); render(); });
+  $('five').addEventListener('click', function () { rounds = Math.min(rounds + 5, 40); render(); });
+  $('all').addEventListener('click', function () { rounds = 40; render(); });
+  $('reset').addEventListener('click', function () { ratio = 10; rounds = 4; $("ratio").value = 10; render(); });
+
+  function render() {
+    $('rLabel').textContent = ratio + '%';
+    var tot = total(rounds), lim = limit();
+    $('sRound').textContent = rounds;
+    $('sTotal').textContent = money(tot, true);
+    $('sLimit').textContent = money(lim, false);
+    $('prog').style.width = Math.min(100, tot / lim * 100) + '%';
+    var html = '', show = Math.min(rounds, 12), start = rounds - show + 1;
+    if (start > 1) html += '<div class="note" style="margin:0 0 4px">Showing the latest ' + show + ' of ' + rounds + ' rounds.</div>';
+    for (var i = start; i <= rounds; i++) {
+      var d = dep(i), kept = d * ratio / 100, w = d / D0 * 100;
+      html += '<div class="rd"><div class="rn">Round ' + i + '</div><div class="tr" style="width:100%"><div class="dep" style="width:' + (w * (1 - ratio / 100)) + '%"></div><div class="res" style="width:' + (w * ratio / 100) + '%"></div></div><div class="am">' + money(d, true) + ' deposited</div></div>';
+    }
+    $('stack').innerHTML = html;
+    var pct = Math.round(tot / lim * 100);
+    $('note').textContent = rounds >= 40
+      ? 'After many rounds the total has almost reached the limit of ' + money(lim, false) + '. The first $1,000 supported about ' + (lim / D0).toFixed(lim / D0 % 1 ? 1 : 0) + ' times as much in deposits. Each deposit is real spending power that did not exist before the loans were made.'
+      : 'Each round is ' + (100 - ratio) + '% of the one before, so the total keeps growing but more slowly. You are ' + pct + '% of the way to the limit. Try a smaller reserve ratio and see how the limit moves.';
+    sendHeight();
+  }
+  function sendHeight() { try { parent.postMessage({ optimaWidgetHeight: document.documentElement.scrollHeight }, '*'); } catch (e) {} }
+  window.addEventListener('resize', sendHeight);
+  render();
+})();
+</script>
+</body>
+</html>

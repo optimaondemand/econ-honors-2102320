@@ -45,6 +45,20 @@
     table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
     table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
     table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+
+    .ow-lab { background: #FFFFFF; border: 1px solid #D0D9E8; border-left: 5px solid #C7922C; border-radius: 8px; padding: 14px 16px; margin: 18px 0; }
+    .ow-lab .lab-kicker { font-size: 11px; color: #9a6a12; margin-bottom: 8px; letter-spacing: 0.4px; }
+    .ow-lab .lab-ask { font-size: 16px; color: #1a2340; line-height: 1.55; margin: 0 0 10px 0; }
+    .ow-lab iframe { width: 100%; height: 760px; border: 0; border-radius: 6px; display: block; background: #FFFFFF; }
+
+    .ow-order .ow-pool { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+    .ow-order .ow-pool button { text-align: left; background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 10px 14px; font-size: 15px; color: #0E1C42; cursor: pointer; font-family: inherit; line-height: 1.45; transition: all 0.15s; }
+    .ow-order .ow-pool button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .ow-order .ow-pool button.shake { background: #FBEAEA; border-color: #B84A4A; }
+    .ow-order ol.ow-line { margin: 10px 0 0 0; padding: 0; list-style: none; counter-reset: ow; }
+    .ow-order ol.ow-line li { counter-increment: ow; display: flex; gap: 12px; align-items: flex-start; background: #E6F4EA; border: 1px solid #2E7D4F; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 15px; color: #14432a; line-height: 1.45; }
+    .ow-order ol.ow-line li:before { content: counter(ow); min-width: 24px; height: 24px; border-radius: 50%; background: #2E7D4F; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ow-order .ow-when { display: block; font-size: 13px; color: #2c5a41; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -377,7 +391,8 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Arithmetic of a Bad Year</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is a made-up farm, with simple numbers, to show how one dry year turns into a crisis. In a normal year, the farm sells $1,000 worth of wheat. Of that, $400 goes to the loan payment, $300 to seed and fuel, and $300 to feed and house the family. Everything is tight, but it works.</p>
         <details class="ow-reveal"><summary>Try this in your notebook before you click: in a drought year, the farm harvests only one fifth of its normal crop, so it sells $200 of wheat. The costs stay the same. How large is the shortfall?</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">The farm needs $1,000 to cover its loan, its supplies, and its family. It has $200. The shortfall is $800. Notice that the loan payment alone is $400, twice the farm's whole income for the year. A farmer who cannot cover that gap must borrow more, sell equipment, or give up land. This is how a weather problem became a debt problem, and a debt problem became a <a class="gl" href="#g-foreclosure" title="foreclosure: When a lender takes and sells property, such as a farm or a house, because the borrower cannot pay the loan. (/for-KLOHZ-er/)"><strong>foreclosure</strong></a>.</div></details>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Property and the Free Society</h3>
+        <div class="ow-lab"><div class="lab-kicker">&#129514; LAB &middot; THE ARITHMETIC OF A BAD YEAR</div><p class="lab-ask">Set the harvest to the drought year from the example above, then change which bill gets paid first. Notice that every order leaves something unpaid.</p><iframe class="ow-lab-frame" src="../widgets/farm-drought-budget.html" title="The Arithmetic of a Bad Year" loading="lazy"></iframe></div>
+<h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Property and the Free Society</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Why does the idea of secure property matter so much in American thought? The founders believed that property, meaning your home, your land, and the fruits of your work, was a pillar of freedom. A person who owns something can say no to a boss, a landlord, or a ruler. A person with nothing has little to bargain with.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economists make a related point. People work harder, invest more, and take better care of land they are sure they can keep. If property is not secure, those habits weaken. You will see this argument again in Module 7. The Dust Bowl shows the other side of it. Property rights are not only about the law. They also depend on whether a family can afford to hold on, and a farm that blows away is a farm that no deed can protect.</p>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Government Responds</h3>
@@ -385,6 +400,14 @@
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">But notice what <a class="gl" href="#g-conservation" title="conservation: Protecting natural resources, such as soil and water, from waste and damage. (/kon-ser-VAY-shun/)"><strong>conservation</strong></a> did not do. It did not erase anyone's debts. A farmer who had planted better and still owed the bank was still in debt. That problem would need a different set of tools, and in Lesson 6.05 you will see what the government tried.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Think like an economist about the choice to stay or go. A family deciding whether to stay faced costs on both sides. Staying meant risking another failed crop. Leaving meant giving up land, equipment, and neighbors, often with no promise of work elsewhere. There was also a trap that economists call the sunk-cost trap: the more you have already put into a farm, the harder it feels to walk away. But money already spent is gone either way, and a good decision looks forward. That is easy to say and very hard to do.</p>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Plains also forced hard choices on families. Some stayed and endured. Others left, often with very little, for places they hoped would offer work. Those who stayed and those who left were both making decisions with terrible information. If you take one idea from this lesson, take this: the Dust Bowl was caused by weather, by farming practices, and by debt at the same time. Remove any one of them, and the story changes.</p>
+        <div class="optima-widget ow-order" id="ow-order">
+            <div class="widget-kicker">&#9889; PUT IT IN ORDER &middot; THE DUST BOWL TIMELINE</div>
+            <div class="widget-question">Click the events in the order they happened, earliest first. A wrong pick tells you it is not next yet.</div>
+            <div class="ow-pool" id="ord-pool"></div>
+            <ol class="ow-line" id="ord-line"></ol>
+            <div class="widget-feedback" id="ord-fb"></div>
+            <button class="widget-reset" id="ord-reset">Reset</button>
+        </div>
         <div class="optima-widget ow-check">
             <div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div>
             <div class="ow-row" data-correct="1" data-fb="Yes. Bennett points to the clearing of forests, the breaking of prairie sod, and overgrazing as the causes of the impoverishment." data-hint="Not quite. Reread the passage in Part 2 and look at what he says has taken place &quot;since&quot; certain human actions.">
@@ -515,6 +538,56 @@
     var flip = e.target.closest('.ow-flip');
     if (flip) { flip.classList.toggle('flipped'); return; }
   });
+})();
+</script>
+
+<script>
+(function () {
+  window.addEventListener('message', function (e) {
+    if (!e.data || !e.data.optimaWidgetHeight) return;
+    document.querySelectorAll('iframe.ow-lab-frame').forEach(function (f) {
+      if (f.contentWindow === e.source) f.style.height = (e.data.optimaWidgetHeight + 8) + 'px';
+    });
+  });
+
+  var EVENTS = [
+    { n: 1, t: 'Bennett and Chapline publish a federal circular warning that soil erosion is a national menace.', w: 'April 1928' },
+    { n: 2, t: 'A serious drought begins on the southern Plains.', w: '1931' },
+    { n: 3, t: 'Black Sunday: a wall of dust, 500 to 600 feet tall, reaches Dodge City.', w: 'April 14, 1935' },
+    { n: 4, t: 'Congress passes the Soil Conservation Act and creates the Soil Conservation Service.', w: 'April 27, 1935' },
+    { n: 5, t: 'Congress renames the agency the Natural Resources Conservation Service.', w: '1994' }
+  ];
+  var SHOWN = [3, 5, 1, 4, 2];
+  var next = 1;
+  var pool = document.getElementById('ord-pool'), line = document.getElementById('ord-line'), fb = document.getElementById('ord-fb');
+  function build() {
+    next = 1; pool.innerHTML = ''; line.innerHTML = ''; fb.classList.remove('show'); fb.textContent = '';
+    SHOWN.forEach(function (n) {
+      var ev = EVENTS[n - 1], b = document.createElement('button');
+      b.type = 'button'; b.textContent = ev.t; b.setAttribute('data-n', n);
+      pool.appendChild(b);
+    });
+  }
+  pool.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var n = parseInt(b.getAttribute('data-n'), 10);
+    if (n === next) {
+      var ev = EVENTS[n - 1], li = document.createElement('li');
+      li.innerHTML = '<span>' + ev.t + '<span class="ow-when">' + ev.w + '</span></span>';
+      line.appendChild(li); pool.removeChild(b); next++;
+      if (next > EVENTS.length) {
+        fb.textContent = 'That is the whole sequence. Notice the gap: the warning came in 1928, and the law came only after the dust reached Washington.';
+        fb.classList.add('show');
+      } else { fb.classList.remove('show'); }
+    } else {
+      b.classList.add('shake');
+      setTimeout(function () { b.classList.remove('shake'); }, 500);
+      fb.textContent = 'Not the next one yet. Ask what had to come first for this event to make sense.';
+      fb.classList.add('show');
+    }
+  });
+  document.getElementById('ord-reset').addEventListener('click', build);
+  build();
 })();
 </script>
 
