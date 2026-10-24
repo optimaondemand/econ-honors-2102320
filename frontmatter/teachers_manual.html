@@ -43,23 +43,26 @@
 <div class="sub">Economics Honors (Florida 2102320) &middot; Teacher-facing only, hidden from students &middot; companion to the <a href="https://optimaondemand.github.io/econ-honors-2102320/frontmatter/standards_matrix.html">Standards Alignment Matrix</a></div>
 
 <div class="info-box">
-<b>What this manual is for.</b> A quick-orientation guide for any teacher picking up this course &mdash; what each lesson teaches, which standard(s) it satisfies, what's confirmed-complete versus deferred, and a comprehensive standard-by-standard index so you can find every lesson and assessment that touches a given benchmark. This is a rebuild/rehost of an existing Canvas sandbox course into Optima's current delivery model; content decisions and their rationale are tracked in this build's <code>plan.md</code> decision log &mdash; this manual summarizes, it does not replace that log.
+<b>What this manual is for.</b> A quick-orientation guide for any teacher picking up this eight-module course &mdash; what each lesson teaches, which standard(s) it satisfies, what's confirmed-complete versus deferred, and a comprehensive standard-by-standard index so you can find every lesson and assessment that touches a given benchmark. This is a rebuild/rehost of an existing Canvas sandbox course into Optima's current delivery model; content decisions and their rationale are tracked in this build's <code>plan.md</code> decision log &mdash; this manual summarizes, it does not replace that log.
 </div>
 
 <div class="note-box">
 <b>Read this before you touch the gradebook.</b>
 <ul style="margin:8px 0 0 20px; padding:0;">
-  <li><b>All 24 lesson Assignments are full Tier-3-shaped items</b> (written response, individually rubric-graded) &mdash; a <b>deliberate, confirmed override</b> of <code>optima-canvas-assignments</code>' usual Tier-3 ratio cap, matching the source course exactly. This is expected, not a defect. See <code>plan.md</code> decision-log item 7.</li>
-  <li><b>No due/lock/unlock dates are set anywhere.</b> The source's dates were stale placeholders from an unrelated term and were not carried over. Set real dates before running this course live.</li>
-  <li><b>Module 5's five Reading Quizzes and the Module 5 Test are empty, unpublished shells</b> &mdash; the source itself never authored questions for them. This mirrors the source; it is not a build gap. If you want Module 5 to have working quizzes, new questions need to be authored from scratch.</li>
-  <li><b>Virtue threads were proposed per module in <code>CLAUDE.md</code> but were never adopted</b> &mdash; this build made a deliberate call not to spend time on them. Treat the proposals there as inactive, not pending.</li>
-  <li><b>The 24 VR Lesson Resources activities are not built.</b> The source's VR pages were empty stubs; authoring new platform-agnostic VR activities was deferred, not declined. See <code>plan.md</code> Finding A.</li>
-  <li><b>Grading weights are already configured:</b> Module Tests 40%, Reading Quizzes 25%, Writing Assignments 25%, Module Projects 10%.</li>
+  <li><b>Modules 1&ndash;5 lesson assignments are full Tier-3-shaped items</b> (written response, individually rubric-graded) &mdash; a <b>deliberate, confirmed override</b> of <code>optima-canvas-assignments</code>' usual Tier-3 ratio cap, matching the source course exactly. This is expected, not a defect. See <code>plan.md</code> decision-log item 7.</li>
+  <li><b>Modules 6&ndash;8 mix completion-scored and rubric-graded assignments</b> to ease grading load. Ten of the fourteen lesson assignments are completion-scored (10 points for complete, 5 for partly complete, 0 for missing or off-topic; spot-check a handful for good faith, do not grade every one). Four are rubric-graded: 6.06, 7.04, 8.03, and 8.04. The three Module Projects are rubric-graded.</li>
+  <li><b>No due, lock, or unlock dates are set anywhere.</b> Set real dates before running the course. The Suggested Schedule below is a reference only and never appears to students.</li>
+  <li><b>Exams.</b> The Quarter 1 Exam (Modules 1&ndash;4) is the last item in Module 4. The Quarter 2 Exam (Modules 5&ndash;8 only) and the Final Exam (all eight modules) are the last two items in Module 8. Each is 40 multiple-choice questions, 40 points, with answers shuffled. They sit in the Module Tests group. The answer keys are in the exam specifications in the build folder.</li>
+  <li><b>Module 5's quizzes now have real questions</b> (the source's empty shells were filled in a later remediation pass).</li>
+  <li><b>VR Lesson Resources pages exist for Lessons 1.01&ndash;5.05</b> (24 pages, platform-agnostic). Modules 6&ndash;8 do not have VR pages yet.</li>
+  <li><b>Primary sources.</b> Five primary-source exercises (4 questions, 10 points each) appear in Modules 6&ndash;8: Bennett and Chapline (6.04), Roosevelt's First Inaugural (6.05), the <i>Communist Manifesto</i> (7.01), the FOMC statement of March 16, 2022 (8.02), and the CFPB Loan Estimate (8.03). The passages are typeset quotations; scans were not located. Two planned sources (Irving Fisher, 1929; Hayek, 1945) were dropped.</li>
+  <li><b>Virtue threads were proposed per module in <code>CLAUDE.md</code> but were never adopted.</b> Treat them as inactive.</li>
+  <li><b>Grading weights are already configured:</b> Module Tests and Exams 40%, Reading Quizzes 25%, Writing Assignments 25%, Module Projects 10%.</li>
 </ul>
 </div>
 
 <h2>Per-Lesson Guide</h2>
-<p style="font-size:13px; color:#5B6472;">Every lesson carries the same four-item pattern: Lesson Page &middot; Reading Quiz &middot; Writing Assignment &middot; VR Activity (deferred, see above). Standard codes below are for your reference only &mdash; they never appear on the student-facing page.</p>
+<p style="font-size:13px; color:#5B6472;">Every lesson carries the same four-item pattern: Lesson Page &middot; Reading Quiz &middot; Writing Assignment &middot; VR Activity (Modules 1&ndash;5 only; see above). Standard codes below are for your reference only &mdash; they never appear on the student-facing page.</p>
 
 <div class="module-header">Module 1 &middot; Introduction to Economics and Production</div>
 
@@ -73,15 +76,15 @@
 <div class="lesson-card">
   <div class="lesson-num">Lesson 1.02</div>
   <div class="lesson-title">Scarcity, Choice, and Opportunity Cost</div>
-  <span class="gap-pill">SS.912.E.1.2 &mdash; gap</span>
-  <div class="items-row">Assignment: <b>Reel Choices</b> (from source). <b>Known gap:</b> the lesson mentions "Production Possibilities Frontier" once, as a one-line definition, misspelled "Fronter." The standard requires graphical PPC analysis, which this lesson does not do. Deferred, not fixed this build. The typo is worth fixing whenever this lesson is next touched.</div>
+  <span class="standard-pill">SS.912.E.1.2</span> <span class="added-pill">closed by supplementary assignment</span>
+  <div class="items-row">Assignment: <b>Reel Choices</b> (from source). <b>Closed:</b> the lesson itself only defines the Production Possibilities Frontier in one line, so the standard is met by the Module 1 supplementary assignment, "Reading and Analyzing the Production Possibilities Curve" (labeled diagram plus guided analysis).</div>
 </div>
 
 <div class="lesson-card">
   <div class="lesson-num">Lesson 1.03</div>
   <div class="lesson-title">Factors of Production</div>
-  <span class="standard-pill">SS.912.E.1.1</span> <span class="standard-pill">SS.912.E.2.5</span> <span class="gap-pill">E.1.2 shared gap</span>
-  <div class="items-row">Assignment: <b>Factor Factory</b> (newly authored this build to match a surviving rubric). Full for E.1.1/E.2.5; shares the E.1.2 PPC gap with 1.02.</div>
+  <span class="standard-pill">SS.912.E.1.1</span> <span class="standard-pill">SS.912.E.2.5</span> <span class="added-pill">E.1.2 closed by supplementary assignment</span>
+  <div class="items-row">Assignment: <b>Factor Factory</b> (newly authored this build to match a surviving rubric). Full coverage; E.1.2 is shared with 1.02 and closed by the Module 1 supplementary assignment.</div>
 </div>
 
 <div class="lesson-card">
@@ -117,8 +120,8 @@
 <div class="lesson-card">
   <div class="lesson-num">Lesson 2.03</div>
   <div class="lesson-title">Price and Competition</div>
-  <span class="standard-pill">SS.912.E.1.8</span> <span class="gap-pill">SS.912.E.1.9 &mdash; gap</span>
-  <div class="items-row">Assignment from source. Full for E.1.8. <b>Known gap:</b> the source's own Module Map indexes E.1.9 (wage determination) to this lesson, but the lesson never discusses it. Deferred, not fixed this build &mdash; needs new content on labor supply/demand and productivity-based pay.</div>
+  <span class="standard-pill">SS.912.E.1.8</span> <span class="standard-pill">SS.912.E.1.9</span> <span class="added-pill">closed by supplementary assignment</span>
+  <div class="items-row">Assignment from source. Full for E.1.8. <b>Closed:</b> the source's own Module Map indexes E.1.9 (wage determination) to this lesson, but the lesson never discusses it. The Module 2 supplementary assignment, "How Are Workers' Earnings Determined?", covers it with a labor supply and demand diagram and guided analysis.</div>
 </div>
 
 <div class="lesson-card">
@@ -139,7 +142,7 @@
   <div class="lesson-num">Lesson 2.06</div>
   <div class="lesson-title">Contributions of Entrepreneurs and Innovators</div>
   <span class="standard-pill">SS.912.E.2.3</span>
-  <div class="items-row">Assignment: <b>Innovation Nation</b> (newly authored this build to match a surviving rubric). Full standard coverage. Closes Module 2 &mdash; Module Test and Project follow. Quarter 1 ends here in the sample fall-semester pacing.</div>
+  <div class="items-row">Assignment: <b>Innovation Nation</b> (newly authored this build to match a surviving rubric). Full standard coverage. Closes Module 2 &mdash; Module Test and Project follow. </div>
 </div>
 
 <div class="module-header">Module 3 &middot; Money, Banking, and Financial Markets</div>
@@ -199,12 +202,10 @@
   <div class="lesson-num">Lesson 4.04</div>
   <div class="lesson-title">Economic Policymaking and Externalities</div>
   <span class="standard-pill">SS.912.E.2.2</span> <span class="standard-pill">SS.912.E.2.4</span> <span class="standard-pill">SS.912.E.2.11</span> <span class="standard-pill">SS.912.E.3.4</span> <span class="added-pill">SS.912.G.3.3 &mdash; added</span>
-  <div class="items-row">Assignment from source. Full coverage for the E-strand standards. <b>G.3.3 (renewable/non-renewable resources, geographic/comparative treatment) was confirmed and a short dedicated passage was added this build</b> &mdash; previously only scattered examples inside the externalities discussion. Closes Module 4 &mdash; Module Test and Project follow.</div>
+  <div class="items-row">Assignment from source. Full coverage for the E-strand standards. <b>G.3.3 (renewable/non-renewable resources, geographic/comparative treatment) was confirmed and a short dedicated passage was added this build</b> &mdash; previously only scattered examples inside the externalities discussion. Closes Module 4 &mdash; Module Test, Project, and the Quarter 1 Exam follow.</div>
 </div>
 
 <div class="module-header">Module 5 &middot; International Economics and Trade</div>
-
-<div class="note-box" style="margin-bottom:16px;"><b>Module 5 quiz status:</b> the Reading Quizzes for 5.01&ndash;5.05 and the Module 5 Test exist as empty, unpublished shells &mdash; the source itself never authored any questions for them. This is not something this build broke; it's inherited exactly as found.</div>
 
 <div class="lesson-card">
   <div class="lesson-num">Lesson 5.01</div>
@@ -238,40 +239,155 @@
   <div class="lesson-num">Lesson 5.05</div>
   <div class="lesson-title">Historical Economic Thought</div>
   <span class="standard-pill">SS.912.E.3.6</span>
-  <div class="items-row">Assignment from source. Full standard coverage. Closes Module 5 &mdash; Module Test (empty shell, see note above) and the "Great Depression and New Deal" Project follow. Course ends here in the sample fall-semester pacing.</div>
+  <div class="items-row">Assignment from source. Full standard coverage. Closes Module 5 &mdash; Module Test and the "Great Depression and New Deal" Project follow.</div>
 </div>
 
+<div class="module-header">Module 6 &middot; The Great Depression</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 6.01</div>
+  <div class="lesson-title">Boom on Borrowed Money</div>
+  <span class="standard-pill">SS.912.E.1.12</span> <span class="standard-pill">SS.912.E.2.7</span> <span class="standard-pill">SS.912.HC.11.4</span>
+  <div class="items-row">Assignment: <b>Who Pays When the Payments Stop?</b> (completion-scored). Reading quiz and assignment.</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 6.02</div>
+  <div class="lesson-title">The Crash of 1929 and the Banking Panics</div>
+  <span class="standard-pill">SS.912.E.1.12</span> <span class="standard-pill">SS.912.E.1.11</span> <span class="standard-pill">SS.912.E.2.10</span> <span class="standard-pill">SS.912.E.2.7</span>
+  <div class="items-row">Assignment: <b>From Paper Loss to Empty Vault</b> (completion-scored).</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 6.03</div>
+  <div class="lesson-title">Hard Times</div>
+  <span class="standard-pill">SS.912.E.1.12</span> <span class="standard-pill">SS.912.E.2.7</span>
+  <div class="items-row">Assignment: <b>Two Numbers for One Year</b> (completion-scored). Two unemployment estimates, neither a mistake.</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 6.04</div>
+  <div class="lesson-title">The Dust Bowl</div>
+  <span class="standard-pill">SS.912.HC.11.4</span> <span class="standard-pill">SS.912.E.1.12</span>
+  <div class="items-row">Assignment: <b>The Dust, the Debt, and the Deed</b> (completion-scored). Primary-source exercise: Bennett and Chapline, <i>Soil Erosion: A National Menace</i> (USDA, 1928).</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 6.05</div>
+  <div class="lesson-title">Hoover, Roosevelt, and the New Deal</div>
+  <span class="standard-pill">SS.912.E.1.10</span> <span class="standard-pill">SS.912.E.2.9</span> <span class="standard-pill">SS.912.E.1.11</span> <span class="standard-pill">SS.912.E.2.10</span> <span class="standard-pill">SS.912.E.2.4</span>
+  <div class="items-row">Assignment: <b>Which Lever for Which Problem?</b> (completion-scored). Primary-source exercise: Roosevelt, First Inaugural Address (1933).</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 6.06</div>
+  <div class="lesson-title">The Legacy of the Depression</div>
+  <span class="standard-pill">SS.912.E.1.12</span> <span class="standard-pill">SS.912.E.2.4</span> <span class="standard-pill">SS.912.HC.11.4</span>
+  <div class="items-row">Assignment: <b>Compared With What?</b> (rubric-graded, 5 criteria &times; 2 points). Closes Module 6 &mdash; Module Test and the Project "The Fork in the Road" follow. <b>Overlap note:</b> the Module 5 Project is also titled "Great Depression and New Deal"; students meet that content in Module 6, after Module 5. Decide whether to revise the Module 5 Project.</div>
+</div>
+<div class="module-header">Module 7 &middot; Communism</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 7.01</div>
+  <div class="lesson-title">Marx and Engels: The Theory of Communism</div>
+  <span class="standard-pill">SS.912.E.3.6</span> <span class="standard-pill">SS.912.E.1.3</span>
+  <div class="items-row">Assignment: <b>The Argument, Stated Fairly</b> (completion-scored). Primary-source exercise: Marx and Engels, <i>Manifesto of the Communist Party</i> (1848).</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 7.02</div>
+  <div class="lesson-title">From Theory to Revolution</div>
+  <span class="standard-pill">SS.912.E.1.3</span> <span class="standard-pill">SS.912.E.2.4</span> <span class="standard-pill">SS.912.E.1.9</span>
+  <div class="items-row">Assignment: <b>The Farmer's Choice</b> (completion-scored). Lenin, War Communism, and the NEP.</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 7.03</div>
+  <div class="lesson-title">The Command Economy in Practice</div>
+  <span class="standard-pill">SS.912.E.1.3</span> <span class="standard-pill">SS.912.E.1.9</span> <span class="standard-pill">SS.912.HC.11.4</span>
+  <div class="items-row">Assignment: <b>What the Plan Could Not Count</b> (completion-scored). Stalin, Five-Year Plans, and collectivization.</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 7.04</div>
+  <div class="lesson-title">Why Command Economies Fail</div>
+  <span class="standard-pill">SS.912.E.1.3</span> <span class="standard-pill">SS.912.E.1.9</span> <span class="standard-pill">SS.912.E.3.6</span> <span class="standard-pill">SS.912.HC.11.4</span>
+  <div class="items-row">Assignment: <b>Prices, Knowledge, and the Two Koreas</b> (rubric-graded). Closes Module 7 &mdash; Module Test and the Project "A Fair Hearing" follow.</div>
+</div>
+<div class="module-header">Module 8 &middot; Personal Finance and the Price of Money</div>
+
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 8.01</div>
+  <div class="lesson-title">Treasury Securities</div>
+  <span class="standard-pill">SS.912.E.1.15</span> <span class="standard-pill">SS.912.E.1.13</span>
+  <div class="items-row">Assignment: <b>Pricing the Promise</b> (completion-scored). Yield calculations on a $1,000 bill.</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 8.02</div>
+  <div class="lesson-title">Fractional-Reserve Banking and How the Fed Sets Interest Rates</div>
+  <span class="standard-pill">SS.912.E.1.11</span> <span class="standard-pill">SS.912.E.2.10</span> <span class="standard-pill">SS.912.E.1.13</span> <span class="standard-pill">SS.912.E.2.7</span>
+  <div class="items-row">Assignment: <b>From a Vote to a Payment</b> (completion-scored). Primary-source exercise: FOMC statement of March 16, 2022.</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 8.03</div>
+  <div class="lesson-title">How an Amortized Loan Works and What Sets Your Rate</div>
+  <span class="standard-pill">SS.912.E.1.14</span> <span class="standard-pill">SS.912.E.1.16</span>
+  <div class="items-row">Assignment: <b>Build the Schedule</b> (rubric-graded; the student builds an Excel amortization schedule and uploads the .xlsx). A teacher key workbook exists in the build folder. Primary-source exercise: the CFPB Loan Estimate (this is the lesson that carries it; 8.04 only refers back).</div>
+</div>
+<div class="lesson-card">
+  <div class="lesson-num">Lesson 8.04</div>
+  <div class="lesson-title">The Tipping Point</div>
+  <span class="standard-pill">SS.912.E.1.16</span> <span class="standard-pill">SS.912.E.1.14</span>
+  <div class="items-row">Assignment: <b>A Plan Before the Promise</b> (rubric-graded). Closes Module 8 &mdash; Module Test, the Project "The Borrower's Brief," the Quarter 2 Exam, and the Final Exam follow.</div>
+</div>
+
+<h2>Suggested Schedule (teacher reference only)</h2>
+<p style="font-size:13px; color:#5B6472;">This is the idealized week-by-week sequence from the course map. It is a suggestion for planning your section and never appears to students. Modules govern how everything is named and referenced; weeks do not. Module Tests and Projects fall in each module's last week unless you choose otherwise. <b>Week 18 is the heaviest week</b> (Lessons 8.03 and 8.04, the Module 8 Test and Project, the Quarter 2 Exam, and the Final Exam), so consider due-dating the Module 8 Test and Project earlier in the week and the exams last.</p>
+<table>
+<tr><th>Week</th><th>Lessons</th><th>Assessments to schedule</th></tr>
+<tr><td>1</td><td>1.01; 1.02, 1.03</td><td></td></tr>
+<tr><td>2</td><td>1.04; 1.05</td><td>Module 1 Test and Project</td></tr>
+<tr><td>3</td><td>2.01; 2.02, 2.03</td><td></td></tr>
+<tr><td>4</td><td>2.04; 2.05, 2.06</td><td>Module 2 Test and Project</td></tr>
+<tr><td>5</td><td>3.01; 3.02</td><td></td></tr>
+<tr><td>6</td><td>3.03; 3.04</td><td>Module 3 Test and Project</td></tr>
+<tr><td>7</td><td>4.01; 4.02</td><td></td></tr>
+<tr><td>8</td><td>4.03; 4.04</td><td>Module 4 Test and Project</td></tr>
+<tr><td>9</td><td>No new lessons</td><td>Quarter 1 Exam (Modules 1&ndash;4); catch-up</td></tr>
+<tr><td>10</td><td>5.01; 5.02, 5.03</td><td></td></tr>
+<tr><td>11</td><td>5.04; 5.05</td><td>Module 5 Test and Project</td></tr>
+<tr><td>12</td><td>6.01; 6.02</td><td></td></tr>
+<tr><td>13</td><td>6.03; 6.04</td><td>Primary-source exercise (6.04)</td></tr>
+<tr><td>14</td><td>6.05; 6.06</td><td>Primary-source exercise (6.05); Module 6 Test and Project</td></tr>
+<tr><td>15</td><td>7.01; 7.02</td><td>Primary-source exercise (7.01)</td></tr>
+<tr><td>16</td><td>7.03; 7.04</td><td>Module 7 Test and Project</td></tr>
+<tr><td>17</td><td>8.01; 8.02</td><td>Primary-source exercise (8.02)</td></tr>
+<tr><td>18</td><td>8.03; 8.04</td><td>Primary-source exercise (8.03); Module 8 Test and Project; Quarter 2 Exam (Modules 5&ndash;8); Final Exam</td></tr>
+</table>
+
 <h2>Comprehensive Standards Index</h2>
-<p style="font-size:13px; color:#5B6472;">Every benchmark this course touches, and every lesson that satisfies it. Two benchmarks (marked) were added to the state standard after the source course was built and required new content this build; two others (marked gap) remain open.</p>
+<p style="font-size:13px; color:#5B6472;">Every benchmark this course touches, and every lesson that satisfies it. Two benchmarks (HC.11.4 and G.3.3) were added to the state standard after the source course was built and required new content; the two original gaps (E.1.2 and E.1.9) are closed by supplementary assignments. Modules 6&ndash;8 reinforce benchmarks first taught earlier. For the full benchmark-to-assessment index for Modules 6&ndash;8, including exam items, see <code>standards-assessment-index-m6-m8.md</code> in the build folder.</p>
 
 <table>
 <tr><th>Standard</th><th>Lesson(s)</th><th>Status</th></tr>
 <tr><td>SS.912.E.1.1</td><td>1.03</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.2</td><td>1.02, 1.03</td><td class="gap">Gap &mdash; deferred</td></tr>
-<tr><td>SS.912.E.1.3</td><td>1.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.2</td><td>1.02, 1.03</td><td>Closed (supplementary assignment)</td></tr>
+<tr><td>SS.912.E.1.3</td><td>1.04, 7.01, 7.02, 7.03, 7.04</td><td>Full</td></tr>
 <tr><td>SS.912.E.1.4</td><td>2.01</td><td>Full</td></tr>
 <tr><td>SS.912.E.1.5</td><td>2.04</td><td>Full</td></tr>
 <tr><td>SS.912.E.1.6</td><td>2.02</td><td>Full</td></tr>
 <tr><td>SS.912.E.1.7</td><td>2.05</td><td>Full</td></tr>
 <tr><td>SS.912.E.1.8</td><td>2.03</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.9</td><td>2.03</td><td>Gap &mdash; deferred</td></tr>
-<tr><td>SS.912.E.1.10</td><td>4.01</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.11</td><td>3.02</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.12</td><td>4.03</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.13</td><td>3.01</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.14</td><td>3.03</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.15</td><td>3.03</td><td>Full</td></tr>
-<tr><td>SS.912.E.1.16</td><td>3.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.9</td><td>2.03, 7.02, 7.03, 7.04</td><td>Closed (supplementary assignment)</td></tr>
+<tr><td>SS.912.E.1.10</td><td>4.01, 6.05</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.11</td><td>3.02, 6.02, 6.05, 8.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.12</td><td>4.03, 6.01, 6.02, 6.03, 6.04, 6.06</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.13</td><td>3.01, 8.01, 8.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.14</td><td>3.03, 8.03, 8.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.15</td><td>3.03, 8.01</td><td>Full</td></tr>
+<tr><td>SS.912.E.1.16</td><td>3.04, 8.03, 8.04</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.1</td><td>1.01, 1.05</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.2</td><td>4.04</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.3</td><td>2.06</td><td>Full</td></tr>
-<tr><td>SS.912.E.2.4</td><td>4.04</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.4</td><td>4.04, 6.05, 6.06, 7.02</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.5</td><td>1.03, 2.05</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.6</td><td>2.02</td><td>Full</td></tr>
-<tr><td>SS.912.E.2.7</td><td>4.03</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.7</td><td>4.03, 6.01, 6.02, 6.03, 8.02</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.8</td><td>4.01</td><td>Full</td></tr>
-<tr><td>SS.912.E.2.9</td><td>4.02</td><td>Full</td></tr>
-<tr><td>SS.912.E.2.10</td><td>3.02</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.9</td><td>4.02, 6.05</td><td>Full</td></tr>
+<tr><td>SS.912.E.2.10</td><td>3.02, 6.02, 6.05, 8.02</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.11</td><td>4.04</td><td>Full</td></tr>
 <tr><td>SS.912.E.2.12</td><td>5.03</td><td>Full</td></tr>
 <tr><td>SS.912.E.3.1</td><td>4.03</td><td>Full</td></tr>
@@ -279,25 +395,25 @@
 <tr><td>SS.912.E.3.3</td><td>5.02</td><td>Full</td></tr>
 <tr><td>SS.912.E.3.4</td><td>4.04</td><td>Full</td></tr>
 <tr><td>SS.912.E.3.5</td><td>5.04</td><td>Full</td></tr>
-<tr><td>SS.912.E.3.6</td><td>5.05</td><td>Full</td></tr>
+<tr><td>SS.912.E.3.6</td><td>5.05, 7.01, 7.04</td><td>Full</td></tr>
 <tr><td>SS.912.G.2.2</td><td>5.04</td><td>Full</td></tr>
 <tr><td>SS.912.G.3.3</td><td>4.04</td><td>Added this build</td></tr>
 <tr><td>SS.912.G.4.4</td><td>5.02, 5.04</td><td>Full</td></tr>
-<tr><td>SS.912.HC.11.4</td><td>5.04</td><td>Added this build</td></tr>
+<tr><td>SS.912.HC.11.4</td><td>5.04, 6.01, 6.04, 6.06, 7.03, 7.04</td><td>Added this build</td></tr>
 </table>
 
 <h2>Teacher Resources Inventory (per module, hidden modules)</h2>
-<p style="font-size:13px; color:#5B6472;">Each "Module N - Teacher Resources (DO NOT PUBLISH)" module carries a Module Map, a 10-question Socratic Discussion set, reading-quiz answer keys, and rubric attachments &mdash; all rebuilt intact from the source. Nothing was dropped. Two orphaned files in the source (an abandoned draft revision, referencing no real module) were correctly excluded.</p>
+<p style="font-size:13px; color:#5B6472;">Each "Module N - Teacher Resources (DO NOT PUBLISH)" module for Modules 1&ndash;5 carries a Module Map, a 10-question Socratic Discussion set, reading-quiz answer keys, and rubric attachments &mdash; all rebuilt intact from the source. Nothing was dropped. Two orphaned files in the source (an abandoned draft revision, referencing no real module) were correctly excluded. The Teacher Resources modules for Modules 6&ndash;8 carry a Module Map, answer-key pages for every quiz, test, and exam, and an assignments-and-project key.</p>
 
 <h2>Assignment Groups &amp; Weighting</h2>
 <table>
 <tr><th>Group</th><th>Weight</th><th>Holds</th></tr>
-<tr><td>Module Tests</td><td>40%</td><td>5 tests, one per module (renamed from source's "Exams")</td></tr>
-<tr><td>Reading Quizzes</td><td>25%</td><td>24 quizzes, one per lesson (renamed from source's "Quizzes"; Module 5's are empty shells, see above)</td></tr>
-<tr><td>Writing Assignments</td><td>25%</td><td>24 assignments, one per lesson, individually rubric-graded</td></tr>
-<tr><td>Module Projects</td><td>10%</td><td>5 culminating projects, one per module</td></tr>
+<tr><td>Module Tests</td><td>40%</td><td>8 module tests, plus the Quarter 1, Quarter 2, and Final exams</td></tr>
+<tr><td>Reading Quizzes</td><td>25%</td><td>38 lesson reading quizzes and 5 primary-source exercises</td></tr>
+<tr><td>Writing Assignments</td><td>25%</td><td>38 lesson assignments and 2 supplementary assignments (rubric-graded or completion-scored)</td></tr>
+<tr><td>Module Projects</td><td>10%</td><td>8 culminating projects, one per module</td></tr>
 </table>
-<p style="font-size:12px; color:#5B6472;">Rebuilt from the source's own weighting scheme (weights summed to exactly 100% in the source, strong evidence weighting was intentional there too). <code>apply_assignment_group_weights</code> is turned on for this course.</p>
+<p style="font-size:12px; color:#5B6472;">Weighting rebuilt from the source's own scheme (weights summed to exactly 100% in the source, strong evidence weighting was intentional there too). <code>apply_assignment_group_weights</code> is turned on for this course.</p>
 
 <p style="font-size:12px; color:#5B6472; margin-top:30px;">Full detail behind every item above, including the Canvas build session's decision log and known API quirks for this Canvas instance, lives in this build's <code>plan.md</code> and <code>CLAUDE.md</code> (course folder <code>11CivicsEconomicsHonors/03_Build/</code>).</p>
 
