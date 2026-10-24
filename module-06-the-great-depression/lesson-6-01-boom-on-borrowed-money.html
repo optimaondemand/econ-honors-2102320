@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 6.01</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 6</div>
+        <div style="font-size: 12px; color: #666;">The Great Depression</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 6.01</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Boom on Borrowed Money</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 6.01</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Boom on Borrowed Money: The 1920s, Farm Debt, and the Great Plow-Up</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Was the crash of 1929 already built into the boom that came before it?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">The 1920s felt like the start of a new age. Cars, radios, and stock tickers promised that prosperity was now permanent. This lesson looks under the paint. You will see how borrowing held up the boom, why farmers were left out of it, and why a drought that had not yet arrived was already waiting for the Great Plains.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how <a class="gl" href="#g-installment-credit" title="installment credit: Buying something now and paying for it in regular payments over time. (/in-STAWL-ment KRED-it/)"><strong>installment credit</strong></a> and buying on <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a> made the 1920s boom fragile.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe why farm families did not share in the boom, and how debt and plowing set the stage for later trouble on the Plains.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> argue that the boom of the 1920s could have ended in more than one way.</div>
+        </div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-collateral" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Collateral</strong> <span style="color: #6b7a99; font-size: 14px;">/kuh-LAT-er-ul/</span><button class="gl-speak" type="button" data-say="collateral" aria-label="Hear how to say Collateral" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Something of value that a borrower promises to give up if the loan is not paid back.</div></div>
+            <div id="g-discount-rate" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Discount Rate</strong> <span style="color: #6b7a99; font-size: 14px;">/DIS-kount rayt/</span><button class="gl-speak" type="button" data-say="discount rate" aria-label="Hear how to say Discount Rate" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The interest rate the Federal Reserve charges banks when they borrow from it.</div></div>
+            <div id="g-gold-standard" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Gold Standard</strong> <span style="color: #6b7a99; font-size: 14px;">/gohld STAN-derd/</span><button class="gl-speak" type="button" data-say="gold standard" aria-label="Hear how to say Gold Standard" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A system in which a country promises to exchange its paper money for a fixed amount of gold.</div></div>
+            <div id="g-installment-credit" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Installment Credit</strong> <span style="color: #6b7a99; font-size: 14px;">/in-STAWL-ment KRED-it/</span><button class="gl-speak" type="button" data-say="installment credit" aria-label="Hear how to say Installment Credit" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Buying something now and paying for it in regular payments over time.</div></div>
+            <div id="g-margin" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Margin (buying on margin)</strong> <span style="color: #6b7a99; font-size: 14px;">/MAR-jin/</span><button class="gl-speak" type="button" data-say="margin" aria-label="Hear how to say Margin (buying on margin)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Buying stock with borrowed money, so that you put down only part of the price yourself.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; A COUNTRY THAT LEARNED TO BUY TOMORROW TODAY</div>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">Think about the last time you bought something big, or watched a family member do it. Did it come with a payment plan, a loan, or a credit card? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="Then you already know the feeling this lesson is about. A payment plan makes the price look small today. The bill still shows up later.">&#128179; Yes, a plan or a loan</button>
+                <button data-response="That is the older way, and it is worth keeping in mind. In the 1920s, paying cash started to look old-fashioned. Watch how that changed.">&#128176; No, it was paid in cash</button>
+                <button data-response="That is fine. By the end of this lesson you will be able to spot the difference between paying now and paying later, and why it matters for a whole economy.">&#129300; I am not sure</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Boom Was Real</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Start with what was true. By the end of the 1920s, the American economy was producing more than it ever had. Factories turned out cars and radios. Cities built skyscrapers. In 1929, unemployment was only about 3 percent. Most workers who wanted a job had one.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That matters, because it would be easy to treat the 1920s as a fake. They were not. People really did live better than their parents had. The question is not whether the boom was real. The question is what held it up, and how strong those supports were.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">How Households Paid for the Boom</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Many of the new goods cost more than a family could save in a few months. A car or a radio could be a year of careful saving, or more. So sellers offered another way. Buy now, take it home today, and pay a little each month. This is called <a class="gl" href="#g-installment-credit" title="installment credit: Buying something now and paying for it in regular payments over time. (/in-STAWL-ment KRED-it/)"><strong>installment credit</strong></a>.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><a class="gl" href="#g-installment-credit" title="Installment credit: Buying something now and paying for it in regular payments over time. (/in-STAWL-ment KRED-it/)"><strong>Installment credit</strong></a> is not evil. It is a tool. A family that buys a car on payments may get to work and earn more. But the tool has a rule built into it. Every payment you owe next year comes out of next year's income. If that income stops, the payments do not stop. They just pile up.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In the 1920s, millions of households took on payments like these at the same time. As long as jobs held and paychecks kept coming, the system looked solid. Nobody had tested what would happen if the paychecks shrank. That was the weak spot. It would stay hidden until something pressed on it.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economists often separate two kinds of borrowing. When a business borrows to buy a machine, the machine can earn the income that pays the loan back. When a household borrows to buy something it will use up, the payments must come out of income earned somewhere else. Neither kind is wrong. But an economy with a lot of the second kind is more exposed when incomes drop. In the 1920s there was plenty of both, and in any single case it is not always easy to tell which was which.</p>
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; LOOK BACK</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">In Module 3 you learned how banks and credit work. In Module 4 you studied the business cycle. Keep both in mind. A boom that rests on borrowing is more sensitive to a downturn, because borrowers owe fixed payments no matter what happens to their income.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128200; PART 2 &middot; THE STOCK MARKET AND THE TEN PERCENT DOWN PAYMENT</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Buying Stock With Borrowed Money</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Borrowing did not stop at cars. It reached the stock market too. Prices of stocks climbed through the 1920s, and more and more people wanted a piece of it. The Federal Reserve's own history of this period describes how people bought stock on <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a>. A buyer typically put down about 10 percent of the price and borrowed the rest. The stock itself served as <a class="gl" href="#g-collateral" title="collateral: Something of value that a borrower promises to give up if the loan is not paid back. (/kuh-LAT-er-ul/)"><strong>collateral</strong></a> for the loan. If the buyer could not repay, the lender kept the stock.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Fed's history also notes that other lenders put "increasing sums" into loans to brokers. In other words, the more stock prices rose, the more money flowed in to lend for buying stock. That fed the rise. And the rise made the loans look safer. It was a loop.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why Ten Percent Down Is a Dangerous Number</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is a simple example. Imagine you want $1,000 worth of stock. You put down $100 of your own money and borrow $900. Now watch what happens when the price moves.</p>
+        <table class="ow-table"><thead><tr><th>If the stock price...</th><th>Your stock is worth...</th><th>Your own $100 becomes...</th></tr></thead><tbody><tr><td>rises 10 percent</td><td>$1,100</td><td>$200. You doubled your money.</td></tr><tr><td>stays the same</td><td>$1,000</td><td>$100. You owe the loan, but you are even.</td></tr><tr><td>falls 10 percent</td><td>$900</td><td>$0. Your money is gone, and the stock is worth exactly what you owe.</td></tr></tbody></table>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A 10 percent rise doubled your money. A 10 percent fall erased it. That is why <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a> buying felt like magic on the way up and like a trapdoor on the way down. The same borrowing that multiplied the gains multiplied the losses by the same amount.</p>
+        <details class="ow-reveal"><summary>Try this in your notebook before you click: what happens to the $1,000 example if the stock price falls 20 percent? Work out what the stock is worth and what you still owe.</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">The stock is now worth $800. You still owe the lender $900. You have lost your whole $100 and the stock no longer covers the loan. A lender in that spot would demand more money from you right away, which was called a <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a> call. If you could not pay it, the lender sold your stock to get its money back. Millions of small sales like that could push prices down further.</div></details>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Fed Faced a Hard Choice</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The leaders of the Federal Reserve saw the speculation, and they did not agree on what to do about it. In February 1929, the Federal Reserve Board wrote that the Federal Reserve Act did not "contemplate the use of the resources of the Federal Reserve Banks for the creation or extension of speculative credit." The Board wanted to pressure member banks directly not to lend to stock speculators.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The New York Fed, led by its governor George Harrison, wanted something different. It wanted to raise the <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a>. That is the interest rate the Fed charges banks that borrow from it. The Board turned down several of New York's requests. In August 1929, it finally gave in, and the New York <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a> reached 6 percent.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Both sides had a point. A higher rate makes all borrowing cost more, not just stock borrowing, so it can slow honest businesses along with the gamblers. Direct pressure is hard to carry out when banks can find other ways to lend. The Fed's history also says that rate increases in 1928 and 1929 slowed the economy. Because the United States was on the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>, that slowdown spread to other countries too. Hold onto that idea. It returns in the next lesson.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127806; PART 3 &middot; THE FARM WAS NOT INVITED</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Boom That Skipped the Countryside</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">While cities boomed, many farmers were already in trouble. Farm prices dropped sharply in the autumn of 1920, and they did not bounce back the way other prices did. Many farmers had borrowed money to buy land or equipment when prices were high. Their loans stayed the same size while the money they earned from crops shrank.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This is the first place in the story where debt meets falling prices. It will not be the last. When you owe a fixed number of dollars and the dollars you earn get smaller, every payment weighs more. An economist named Lee Alston studied the record and found that the number of farms lost to lenders in the 1920s and 1930s reached levels never seen before or since. Notice that the 1920s are in that sentence. The farm crisis started before the crash.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Fixed Debt in a World of Falling Prices</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is the idea in numbers. Suppose a farmer owes the bank $1,000, and in a normal year her grain sells for $1,000. One year of crops clears the debt. Now suppose prices fall by a quarter. The same crop sells for $750. The debt did not shrink. It is still $1,000. She now needs about a third more grain to pay the same bill, because $1,000 divided by $750 is about 1.33. Nothing about the farmer changed. The prices did.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That is why economists worry about borrowers when prices fall. A fixed debt gets heavier in real terms as prices drop. Keep this example in your head. In the next lesson, prices fall across the whole economy by a quarter or more, and millions of borrowers face the same problem at once.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Great Plow-Up</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The southern Plains of Kansas, Oklahoma, Texas, Colorado, and New Mexico were covered by native grass. Its roots were thick and deep. They held the soil in place through droughts and through wind. Then the machines arrived.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">PBS's American Experience describes the difference. With a team of horses, a farmer could barely turn three acres of prairie sod in a day. With a tractor, he could plow fifty. Add the one-way disc plow and the combine, and a family could farm land that would have been impossible a generation earlier. A historian writing in American Heritage reports that wheat acreage rose about 200 percent between 1925 and 1931, and in many counties by 400 to 1,000 percent.</p>
+        <div class="ow-chain"><div class="step">Machines let one farmer plow far more land.</div><div class="arrow">&#10145;</div><div class="step">More wheat reached the market, and wheat prices fell.</div><div class="arrow">&#10145;</div><div class="step">To earn the same income, farmers plowed even more land.</div><div class="arrow">&#10145;</div><div class="step">Native grass, which had held the soil for centuries, was gone.</div></div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Kansas Historical Society says it plainly: the new machines raised productivity, but that caused prices to fall, and farmers made up for it by breaking even more land for wheat. Look at the logic from a farmer's side. Every single decision made sense. A lower price meant you needed more bushels to pay the bank. More plowing meant more bushels. Nothing about it was foolish.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Now look from the side of the whole Plains. A thousand farmers made the same sensible choice at once. The result was more wheat than the market wanted and soil with nothing holding it down. You studied supply and price signals in Module 2. Here is a case where the signal said "plow more" to every farmer, and nobody was in charge of adding up what that meant. It took years to find out.</p>
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; DID YOU NOTICE?</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Both of the weak spots in this lesson, the borrowed stock money and the borrowed farm money, have the same shape. People took on fixed debts, counting on a future that kept rising. Neither group was acting out of wickedness. They were responding to the incentives in front of them. That is exactly why economists study incentives so carefully.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129517; PART 4 &middot; THE BOOM HAD MORE THAN ONE POSSIBLE ENDING</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Nothing Here Was Inevitable</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">It is tempting to read the 1920s backward. We know the crash is coming, so every sign of trouble looks like a flashing light. But the people living in 1927 or 1928 did not have our map. They saw a prosperous country with a few soft spots, and they argued about what to do.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A careful historian looks for the forks in the road. The Fed leaders disagreed about whether to raise rates or lean on banks directly. Different choices would have produced a different 1929. Lenders could have required more than 10 percent down. Farmers could have kept more of the grass. Prices of land and wheat could have steadied. None of these things was certain to happen, and none was impossible.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This is called contingency, and it is one of the most important habits of mind in history. It means that the past was open when it was the present. Real people made real choices, and different choices were available. If you remember nothing else from this lesson, remember that the Great Depression was not scheduled in advance. It grew out of decisions, and decisions can be studied.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Question of Habits</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">There is also a question about character. The founders of the United States believed that a free people needed certain habits to stay free, and one of them was self-government: the ability to restrain your own appetites. A nation that borrows more every year to buy what it cannot yet afford is testing that habit at a very large scale.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Be careful with this thought. It does not mean that every borrower in the 1920s was greedy. A farmer who borrowed to feed his family was not a speculator. It means that when habits of prudence weaken across a whole society, the economy has less room to absorb a shock. Whether that was the main cause of the Depression is something economists still argue about. We will return to that debate honestly in Lesson 6.06.</p>
+        <div class="optima-widget ow-check">
+            <div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div>
+            <div class="ow-row" data-correct="1" data-fb="Right. A 10 percent fall wipes out the whole $100, because the borrowed money magnifies the loss by the same factor it magnified the gain." data-hint="Not quite. Think about which change in price would erase the buyer's own $100.">
+                <div class="widget-question">A buyer purchases $1,000 of stock with $100 down and $900 borrowed. Which situation puts the buyer in the most danger?</div>
+                <div class="widget-options">
+                    <button data-i="0">Stock prices rise slowly for a year.</button>
+                    <button data-i="1">Stock prices fall by 10 percent.</button>
+                    <button data-i="2">The buyer holds the stock for twenty years.</button>
+                    <button data-i="3">The lender lowers its interest rate.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="3" data-fb="Yes. Each farmer was making a sensible choice with a loan to pay. Together, those choices put more wheat on the market and stripped the land." data-hint="Not quite. Remember the chain: lower prices meant farmers needed more bushels to earn the same income.">
+                <div class="widget-question">Why did many farmers on the Plains plow up more land even as wheat prices fell?</div>
+                <div class="widget-options">
+                    <button data-i="0">They wanted to destroy the native grass.</button>
+                    <button data-i="1">The government ordered them to.</button>
+                    <button data-i="2">Rain was heavier than ever.</button>
+                    <button data-i="3">More bushels were needed to earn enough to pay their debts.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="0" data-fb="Correct. Contingency means the outcome was open. The Fed leaders really did disagree, and other paths really existed." data-hint="Not quite. Contingency is about whether the future was open or already settled. Reread the first paragraph of this part.">
+                <div class="widget-question">Which statement best fits the idea of contingency?</div>
+                <div class="widget-options">
+                    <button data-i="0">Different choices in the 1920s could have led to a different outcome.</button>
+                    <button data-i="1">The crash was certain once stock prices rose.</button>
+                    <button data-i="2">Farmers caused the entire Depression.</button>
+                    <button data-i="3">The Fed had no choices at all.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.01 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on credit, margin buying, and the farm economy of the 1920s.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.01 Assignment</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will explain how one kind of borrowing shaped the boom.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.01 VR Lesson Resources</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that puts the 1920s economy in front of you.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">The first lesson of a hard story is that the trouble rarely begins on the day the bad news arrives. It begins earlier, in habits that look fine while everything is going well. In the next lesson, a falling stock market becomes a falling banking system, and you will see how one kind of loss became another.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 6.01 &middot; Boom on Borrowed Money</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

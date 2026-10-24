@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 6.03</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 6</div>
+        <div style="font-size: 12px; color: #666;">The Great Depression</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 6.03</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Hard Times</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 6.03</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Hard Times: Unemployment, Hoovervilles, and Daily Life</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">What does it mean when one worker in four has no job?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Numbers can describe a disaster, but they cannot make you feel it. This lesson does both. You will learn how big the downturn was, how economists measure it, and what it looked like in a real place. Then you will ask who was supposed to help, and why help was so slow to arrive.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe the phases of the business cycle as they appeared between 1929 and 1933, and name the trough.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why economists give different unemployment figures for the same year.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why <a class="gl" href="#g-relief" title="relief: Money, food, or other help given to people in need. (/rih-LEEF/)"><strong>relief</strong></a> before 1933 fell mostly on local governments and charities, and why that was not enough.</div>
+        </div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-rfc" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Reconstruction Finance Corporation</strong> <span style="color: #6b7a99; font-size: 14px;">/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/</span><button class="gl-speak" type="button" data-say="Reconstruction Finance Corporation" aria-label="Hear how to say Reconstruction Finance Corporation" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble.</div></div>
+            <div id="g-relief" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Relief</strong> <span style="color: #6b7a99; font-size: 14px;">/rih-LEEF/</span><button class="gl-speak" type="button" data-say="relief" aria-label="Hear how to say Relief" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Money, food, or other help given to people in need.</div></div>
+            <div id="g-shantytown" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Shantytown</strong> <span style="color: #6b7a99; font-size: 14px;">/SHAN-tee-town/</span><button class="gl-speak" type="button" data-say="shantytown" aria-label="Hear how to say Shantytown" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A group of crude shelters, built from scrap wood, metal, and cardboard, where people with no other housing live.</div></div>
+            <div id="g-work-relief" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Work Relief</strong> <span style="color: #6b7a99; font-size: 14px;">/werk rih-LEEF/</span><button class="gl-speak" type="button" data-say="work relief" aria-label="Hear how to say Work Relief" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Help that takes the form of a paid job on a public project instead of a handout.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128202; PART 1 &middot; THE SIZE OF THE DROP</div>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">Imagine your school, with every fourth person suddenly unable to find work or income. What do you think happens to the other three? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That is part of the story. Fear spreads faster than layoffs. People who still had jobs spent less because they did not know how long the jobs would last.">&#128560; They worry about their own jobs</button>
+                <button data-response="Many did. But a family that is barely getting by cannot support a neighbor for very long. That limit is a central problem in this lesson.">&#129309; They try to help</button>
+                <button data-response="Good economic thinking. Falling spending pulls prices down and pushes firms to cut costs, and that can mean more layoffs. Watch for that loop below.">&#128260; Prices and wages shift for everyone</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Tour of the Numbers</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1929, only about 3 percent of the workforce was unemployed. By 1933, the most commonly cited estimate is about 25 percent. That is roughly one worker in every four, and about 12.8 million people by the figure kept at the FDR Presidential Library.</p>
+        <div class="ow-stats"><div class="stat"><div class="big">3% &#10145; 25%</div><div class="lbl">unemployment, 1929 to 1933 (the most commonly cited estimate)</div></div><div class="stat"><div class="big">More than a quarter</div><div class="lbl">how far real output fell, 1929 to 1933 (exact figure depends on the data)</div></div><div class="stat"><div class="big">25% to 33%</div><div class="lbl">how far prices fell, depending on which prices you count</div></div><div class="stat"><div class="big">About 9,000</div><div class="lbl">banks that suspended operations, 1930 to 1933</div></div></div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Look at the last three tiles together. The economy was producing less, prices were sinking, and thousands of banks had closed. Any one of those would be a bad year. All of them at once, year after year, is what makes this the Great Depression.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Reading the Business Cycle at the Bottom</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Module 4 you learned the phases of the business cycle. The Depression is the most extreme example in American history. Economists who date the cycle place the peak in August 1929. The contraction lasted until March 1933, a total of 43 months. March 1933 is the trough, the lowest point.</p>
+        <div class="ow-chain"><div class="step"><strong>Peak.</strong> August 1929. Output is at its highest.</div><div class="arrow">&#10145;</div><div class="step"><strong>Contraction.</strong> 43 months of falling output, falling prices, and rising unemployment.</div><div class="arrow">&#10145;</div><div class="step"><strong>Trough.</strong> March 1933. The lowest point, with the banking system in collapse.</div><div class="arrow">&#10145;</div><div class="step"><strong>Expansion.</strong> 50 months of recovery, until a new peak in May 1937.</div></div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A normal recession lasts months. This one lasted more than three and a half years. A normal recession is also followed by a recovery that brings people back to work quickly. The recovery after 1933 was real, but it was long and uneven, and it stalled again in 1937. We will look at that in Lesson 6.06.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Spiral</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Why did the numbers keep getting worse for so long? One reason is that each loss caused the next one. Economists call this a spiral, and it looks like this.</p>
+        <div class="ow-chain"><div class="step">Workers lose their jobs and spend less.</div><div class="arrow">&#10145;</div><div class="step">Businesses sell less and cut their prices.</div><div class="arrow">&#10145;</div><div class="step">Falling prices squeeze profits, so businesses cut costs.</div><div class="arrow">&#10145;</div><div class="step">Cutting costs means laying off more workers.</div></div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Then the loop starts again from the top. This is why economists fear a steady fall in prices in a way they do not fear a small rise. When prices rise a little, people tend to spend. When prices are falling, people wait, because things will be cheaper next month. If everyone waits, sales fall further. Add the fixed debts from Lessons 6.01 and 6.02, and you can see why the spiral was so hard to stop.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why There Is No Single Number</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You might expect to find one clear unemployment rate for 1933. You will not. The 24.9 percent figure comes from an economist named Stanley Lebergott, who counted people on government work projects as unemployed. A different economist, Michael Darby, counted those workers as employed, and his figure for 1933 is about 20.6 percent. Neither one is making a mistake. They answer slightly different questions.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">There is a second reason. Nobody was publishing a monthly national unemployment rate in the way the government does today. The numbers economists use now are reconstructions, built later from census records and other data. That is worth knowing. It means the people living through 1933 knew how bad things were in their own town, but not exactly how bad they were everywhere.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">There is also a question of who counts. Today, a person is counted as unemployed only if they have no job and are looking for one. Someone who stops looking is not counted, even though they are out of work. Economists call this person a discouraged worker. In a deep downturn, some people stop looking because there is nothing to find. So even a careful count can miss part of the damage.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">And the national figure hides big differences between places. In Utah, for example, unemployment reached 35.8 percent, the fourth highest rate in the nation, according to the state's history site. A town that depended on one mine or one factory could lose nearly everything at once.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This is a good place to notice honesty in scholarship. When two careful researchers disagree by several points, the right response is to report both and explain why. Either number tells the same story: a huge share of American workers had no regular job, and the loss was spread across the whole country.</p>
+        <details class="ow-reveal"><summary>Try this in your notebook before you click: a town has 4,000 workers. Using the 25 percent figure, how many are out of work? Now ask yourself how that number changes what a store owner, a landlord, and a school principal in that town can expect.</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">Out of 4,000 workers, 1,000 would have no job. The store owner would see customers disappear and prices sink. The landlord would see rent go unpaid. The school would see families unable to pay for books, shoes, and sometimes lunch. Each of those losses reduces someone else's income, which is how a job loss in one place spreads to many.</div></details>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127962;&#65039; PART 2 &middot; WHAT HARD TIMES LOOKED LIKE</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Hooverville</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">When people could no longer pay rent, some of them built their own homes out of what they could find. These camps of scrap wood, tin, and cardboard were called <a class="gl" href="#g-shantytown" title="shantytowns: A group of crude shelters, built from scrap wood, metal, and cardboard, where people with no other housing live. (/SHAN-tee-town/)"><strong>shantytowns</strong></a>. Across the country, people named them Hoovervilles, after President Herbert Hoover, whom many blamed for the Depression.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The name had a political origin. According to HistoryLink, the Washington State history site, the term first appeared in print in 1930. Charles Michelson, the publicity director of the Democratic National Committee, used it in a New York Times article about a homeless camp in Chicago. It was a partisan label from the start. Whether the blame was fair is a question for Lesson 6.05. For now, notice that people were already naming their misery after a person.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">One of the best documented was in Seattle. It began in October 1931, when about twenty men, led by an unemployed logger named Jesse Jackson, built shacks on a vacant lot that had once been a shipyard. It grew to as many as 1,200 people. At one point, Seattle had eight <a class="gl" href="#g-shantytown" title="shantytowns: A group of crude shelters, built from scrap wood, metal, and cardboard, where people with no other housing live. (/SHAN-tee-town/)"><strong>shantytowns</strong></a>. City officials tried twice to tear the shacks down, and each time the residents built them again. Over time, residents dug into the ground and built roofs of tin and steel to make them last.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Read that once more. These were not people who had given up. They were building, repairing, and rebuilding. They organized themselves into something like a community because they had nowhere else to go. This is perseverance, and it is worth saying clearly. It is also a sign of a system that had failed them.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Not Everyone Lost the Same Amount</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A fair account has to say that the Depression did not hit everyone equally. A worker with a steady paycheck found that falling prices stretched the same wages further. A family with money in a bank that stayed open was in much better shape than a family whose bank had closed. A farm family with no debt was better off than one that owed the bank.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That is not a defense of the period. It is a reminder to ask a good economic question: what were people's starting positions? Debt, savings, and type of work made a big difference. The people who were hurt most had the least cushion to begin with, and they had the fewest ways to protect themselves.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129309; PART 3 &middot; WHO WAS SUPPOSED TO HELP?</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A System Built for Small Problems</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the 1930s, most help for poor and jobless people came from local sources. Local governments, churches, and charities ran soup kitchens and gave food and shelter. This is <a class="gl" href="#g-relief" title="relief: Money, food, or other help given to people in need. (/rih-LEEF/)"><strong>relief</strong></a>. It is how Americans had handled hard times in the past, and for ordinary downturns it was often enough.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A depression is not an ordinary downturn. Local charities and churches ran out of money at the same moment that more families needed help than ever before. Many cities and states were close to bankruptcy from trying to cope. Their own tax income was falling, because people with no jobs paid no taxes. The institutions that were supposed to catch people could not catch this many.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">What about the federal government? In this period, federal help for <a class="gl" href="#g-relief" title="relief: Money, food, or other help given to people in need. (/rih-LEEF/)"><strong>relief</strong></a> arrived mostly as loans. Under President Hoover, the <a class="gl" href="#g-rfc" title="Reconstruction Finance Corporation: A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble. (/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/)"><strong>Reconstruction Finance Corporation</strong></a> lent money to states so they could run their own <a class="gl" href="#g-relief" title="relief: Money, food, or other help given to people in need. (/rih-LEEF/)"><strong>relief</strong></a> programs. A loan has to be repaid, and states with falling incomes did not want to take on more debt. That gap led to the next step. In May 1933, soon after Franklin Roosevelt took office, Congress created the Federal Emergency <a class="gl" href="#g-relief" title="Relief: Money, food, or other help given to people in need. (/rih-LEEF/)"><strong>Relief</strong></a> Administration. It gave grants to states and cities instead of loans. According to the Living New Deal project, it distributed about $3.1 billion between May 1933 and December 1935. Harry Hopkins ran it.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Handouts and Work</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">There is an old argument about the best form of help. Some people worry that giving money for nothing can wear down a person's habit of working. Others say that no one can search for a job on an empty stomach. Many officials came to prefer <a class="gl" href="#g-work-relief" title="work relief: Help that takes the form of a paid job on a public project instead of a handout. (/werk rih-LEEF/)"><strong>work relief</strong></a>, which pays unemployed people to do useful jobs on public projects. <a class="gl" href="#g-work-relief" title="Work relief: Help that takes the form of a paid job on a public project instead of a handout. (/werk rih-LEEF/)"><strong>Work relief</strong></a> keeps a worker's skills and dignity, and it leaves something behind, such as a road or a school.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">President Roosevelt put it directly in his First Inaugural Address on March 4, 1933. He said, "Our greatest primary task is to put people to work." You will read more of that speech in Lesson 6.05. The idea fits a deeper American belief that a job is more than income. It is a place in the community.</p>
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; LOOK AHEAD</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">In 1935, Congress passed the Social Security Act, which included a system of unemployment insurance. That is something your family can rely on today. Before it, nothing like it existed at the national level. You will study what it covered, and who it left out, in Lesson 6.06.</div></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Question of Responsibility</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Americans had long believed that help should start close to home. Your family comes first, then your neighbors, your church, your town, your state, and only last the nation. There is wisdom in that order. People closest to a problem know the most about it, and help given by a neighbor comes with a face and a name.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Depression tested how far that idea could stretch. When the problem is too big for the nearest circle, the next circle has to step in. The hard question is when. Move too soon, and you weaken the habit of looking after one another. Move too late, and families go hungry while the institutions closest to them run dry. Reasonable people drew that line in different places in 1932, and they still do.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What the Lesson Leaves You With</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The first-order economic problem of any society is to produce and share enough that most people live decently. In 1933, the American economy was failing that test. Many people who were willing and able to work could not find any, and the old ways of helping had been outrun by the size of the problem.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A thoughtful student does not leap straight to blaming one person. Hoover and Roosevelt both faced a situation with few good options and many unknowns. The question to carry into the next lessons is more useful: what tools did leaders have, which ones did they use, and what did those tools actually do?</p>
+        <div class="optima-widget ow-check">
+            <div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div>
+            <div class="ow-row" data-correct="1" data-fb="Correct. Lebergott counted workers on government projects as unemployed. Darby counted them as employed. Both approaches are defensible." data-hint="Not quite. Reread &quot;Why There Is No Single Number.&quot; The difference is about how work-relief jobs are counted.">
+                <div class="widget-question">Why do two careful economists give different unemployment rates for 1933?</div>
+                <div class="widget-options">
+                    <button data-i="0">One of them made an arithmetic mistake.</button>
+                    <button data-i="1">They count workers on government work projects differently.</button>
+                    <button data-i="2">One counted only men.</button>
+                    <button data-i="3">The government hid the real data.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="1" data-fb="Yes. March 1933 is the low point, which is the trough." data-hint="Not quite. The trough is the lowest point, at the end of the contraction.">
+                <div class="widget-question">What was the trough of the business cycle in this period?</div>
+                <div class="widget-options">
+                    <button data-i="0">August 1929</button>
+                    <button data-i="1">March 1933</button>
+                    <button data-i="2">May 1937</button>
+                    <button data-i="3">January 1932</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="2" data-fb="Right. Charities and local governments were swamped, and falling tax income left them with less to give just when they needed more." data-hint="Not quite. Think about what happens to a city's tax income when many workers lose their jobs.">
+                <div class="widget-question">Why did <a class="gl" href="#g-relief" title="relief: Money, food, or other help given to people in need. (/rih-LEEF/)"><strong>relief</strong></a> from local governments and charities fall short?</div>
+                <div class="widget-options">
+                    <button data-i="0">Local officials refused to help.</button>
+                    <button data-i="1">People did not want help.</button>
+                    <button data-i="2">Need rose sharply just as their own funds were running out.</button>
+                    <button data-i="3">Federal law forbade local relief.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.03 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the business cycle, unemployment, and relief.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.03 Assignment</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will explain why the same year can produce two different unemployment numbers.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.03 VR Lesson Resources</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that lets you walk through a shantytown and a relief line.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Courage and perseverance are easy to praise from a distance. The people who built the Hoovervilles were practicing both, without any audience. As you read the rest of this module, keep asking what the people in these events could actually do, and what they could not.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 6.03 &middot; Hard Times</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

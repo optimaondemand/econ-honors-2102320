@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 8.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 8</div>
+        <div style="font-size: 12px; color: #666;">Personal Finance and the Price of Money</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 8.04</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">The Tipping Point: Interest vs. Principal, Total Cost, and Smart Decisions</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 8.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">The Tipping Point: Interest vs. Principal, Total Cost, and Smart Decisions</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">If the payment never changes, when does the loan start working for you instead of for the lender?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">You now know how to find a payment and open it up. This lesson asks the practical questions. When does most of each payment finally go to the loan itself? What happens to the total cost if you choose a shorter term, a larger down payment, or an extra payment now and then? And how do you put it all into a plan for a major purchase?</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> find the <strong><a class="gl" href="#g-tipping-point" title="Tipping Point: In a loan, the payment number after which more of each payment goes to principal than to interest. (/TIP-ing point/)"><strong>tipping point</strong></a></strong> of a loan and explain why early payments are mostly interest.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> compare the total cost of a loan under different choices: term, down payment, and extra payments.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> build a short plan for financing a major purchase, using the <strong><a class="gl" href="#g-total-cost-of-credit" title="Total Cost of Credit: Everything you pay for the privilege of borrowing: the interest, plus fees and required insurance, not counting the amount you borrowed. (/TOH-tul kost uv KRED-it/)"><strong>total cost of credit</strong></a></strong>.</div></div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-loan-estimate" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Loan Estimate</strong> <span style="color: #6b7a99; font-size: 14px;">/lohn ES-tuh-mit/</span><button class="gl-speak" type="button" data-say="loan estimate" aria-label="Hear how to say Loan Estimate" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A three-page form a lender must give you after you apply for a mortgage. It shows the loan's key terms and costs so you can compare offers.</div></div><div id="g-principal" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Principal</strong> <span style="color: #6b7a99; font-size: 14px;">/PRIN-suh-pul/</span><button class="gl-speak" type="button" data-say="principal" aria-label="Hear how to say Principal" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The amount of money you borrowed and still owe, not counting interest.</div></div><div id="g-pmi" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Private Mortgage Insurance (PMI)</strong> <span style="color: #6b7a99; font-size: 14px;">/PRY-vit MOR-gij in-SHUR-uns/</span><button class="gl-speak" type="button" data-say="private mortgage insurance" aria-label="Hear how to say Private Mortgage Insurance (PMI)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small.</div></div><div id="g-refinance" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Refinance</strong> <span style="color: #6b7a99; font-size: 14px;">/ree-FY-nans/</span><button class="gl-speak" type="button" data-say="refinance" aria-label="Hear how to say Refinance" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">To replace an existing loan with a new loan, usually to get a lower rate or different terms.</div></div><div id="g-tipping-point" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Tipping Point</strong> <span style="color: #6b7a99; font-size: 14px;">/TIP-ing point/</span><button class="gl-speak" type="button" data-say="tipping point" aria-label="Hear how to say Tipping Point" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">In a loan, the payment number after which more of each payment goes to principal than to interest.</div></div><div id="g-total-cost-of-credit" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Total Cost of Credit</strong> <span style="color: #6b7a99; font-size: 14px;">/TOH-tul kost uv KRED-it/</span><button class="gl-speak" type="button" data-say="total cost of credit" aria-label="Hear how to say Total Cost of Credit" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Everything you pay for the privilege of borrowing: the interest, plus fees and required insurance, not counting the amount you borrowed.</div></div>
+    </div>
+
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9878;&#65039; PART 1 &middot; THE MONTH THE PAYMENT TURNS</div><div class="optima-widget ow-reflect"><div class="widget-kicker">&#9889; QUICK CHECK-IN</div><div class="widget-question">You borrow $162,000 over 30 years. After 15 years, which is exactly halfway, what share of the original loan do you think you have paid off? (No wrong answer. You may change your mind.)</div><div class="widget-options"><button data-response="That is the common guess, and it is natural. The real number is lower, and the lesson shows why.">&#189; About half</button><button data-response="That is close to the truth. You will see the exact figure in the table below.">&#8531; About a third</button><button data-response="A bit low, but the instinct is sound: early payments do less than you would expect.">&#188; About a quarter</button><button data-response="That is fine. The schedule below answers it.">&#10067; I do not know</button></div><div class="widget-feedback"></div><button class="widget-reset">Reset</button></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In the last lesson, you saw that the first payment of $761.78 was $523.13 interest and $238.65 principal. Keep going month by month, and the balance of power slowly shifts. The chart below is the picture to keep in your head for the rest of the module. Each bar is one payment of $761.78. The gold part is interest. The navy part is principal.</p><div style="background: #F7F9FC; border: 1px solid #D0D9E8; border-radius: 8px; padding: 16px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#9878;&#65039; THE <a class="gl" href="#g-tipping-point" title="Tipping Point: In a loan, the payment number after which more of each payment goes to principal than to interest. (/TIP-ing point/)"><strong>TIPPING POINT</strong></a>: WHERE EACH $761.78 GOES</div><div style="font-size: 13px; color: #4a5575; margin-bottom: 8px;"><span style="display:inline-block;width:12px;height:12px;background:#C7922C;margin-right:4px;vertical-align:middle;"></span>Interest &nbsp; <span style="display:inline-block;width:12px;height:12px;background:#0E1C42;margin:0 4px 0 8px;vertical-align:middle;"></span>Principal</div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 92px; font-size: 13px; color: #4a5575;">Payment 1</div><div style="flex: 1; display: flex; height: 30px; border-radius: 6px; overflow: hidden;"><div style="width: 68.7%; background: #C7922C; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$523.13</div><div style="width: 31.3%; background: #0E1C42; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$238.65</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 92px; font-size: 13px; color: #4a5575;">Payment 60</div><div style="flex: 1; display: flex; height: 30px; border-radius: 6px; overflow: hidden;"><div style="width: 62.1%; background: #C7922C; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$473.12</div><div style="width: 37.9%; background: #0E1C42; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$288.66</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 92px; font-size: 13px; color: #4a5575;">Payment 120</div><div style="flex: 1; display: flex; height: 30px; border-radius: 6px; overflow: hidden;"><div style="width: 54.0%; background: #C7922C; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$411.52</div><div style="width: 46.0%; background: #0E1C42; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$350.26</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 92px; font-size: 13px; color: #4a5575;">Payment 147</div><div style="flex: 1; display: flex; height: 30px; border-radius: 6px; overflow: hidden;"><div style="width: 49.8%; background: #C7922C; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$379.67</div><div style="width: 50.2%; background: #0E1C42; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$382.11</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 92px; font-size: 13px; color: #4a5575;">Payment 240</div><div style="flex: 1; display: flex; height: 30px; border-radius: 6px; overflow: hidden;"><div style="width: 32.3%; background: #C7922C; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$246.07</div><div style="width: 67.7%; background: #0E1C42; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$515.71</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 92px; font-size: 13px; color: #4a5575;">Payment 300</div><div style="flex: 1; display: flex; height: 30px; border-radius: 6px; overflow: hidden;"><div style="width: 17.9%; background: #C7922C; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$136.01</div><div style="width: 82.1%; background: #0E1C42; color: #fff; font-size: 12px; display: flex; align-items: center; justify-content: center;">$625.77</div></div></div><div style="font-size: 13px; color: #4a5575; margin-top: 8px;">Payment 147 is the first month in which more than half of the payment goes to principal.</div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The payment turns at number 147. In payment 146, the interest part is $380.90 and the principal part is $380.88, so interest is still ahead by two cents. In payment 147, principal is ahead: $382.11 against $379.67. That is 12 years and 3 months into the loan. This is the <strong><a class="gl" href="#g-tipping-point" title="Tipping Point: In a loan, the payment number after which more of each payment goes to principal than to interest. (/TIP-ing point/)"><strong>tipping point</strong></a></strong>.</p><table class="ow-table"><tr><th>Payment number</th><th>Interest part</th><th>Principal part</th><th>Balance still owed</th></tr><tr><td>1</td><td>$523.13</td><td>$238.65</td><td>$161,761.35</td></tr><tr><td>60 (5 years)</td><td>$473.12</td><td>$288.66</td><td>$146,227.42</td></tr><tr><td>120 (10 years)</td><td>$411.52</td><td>$350.26</td><td>$127,088.72</td></tr><tr><td>147 (<a class="gl" href="#g-tipping-point" title="Tipping Point: In a loan, the payment number after which more of each payment goes to principal than to interest. (/TIP-ing point/)"><strong>tipping point</strong></a>)</td><td>$379.67</td><td>$382.11</td><td>$117,192.03</td></tr><tr><td>180 (15 years)</td><td>$336.77</td><td>$425.01</td><td>$103,865.60</td></tr><tr><td>240 (20 years)</td><td>$246.07</td><td>$515.71</td><td>$75,686.34</td></tr><tr><td>300 (25 years)</td><td>$136.01</td><td>$625.77</td><td>$41,493.25</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Now answer the opening question. After 15 years, the balance is $103,865.60. The family has paid off $162,000 minus $103,865.60, which is $58,134.40, or about 35.9 percent of the loan, even though they have used half the time. After five years, the balance is $146,227.42, about 90.3 percent of the original loan. The loan is front-loaded with interest. That is not a trick. It is simply what happens when interest is charged on the balance you still owe.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">'Does the schedule hold up? A good habit is to check a result by a second method. There is a closed-form formula for the balance after k payments, and it gives the balance after 60 payments as $146,227.41. The month-by-month schedule gave $146,227.42. The two differ by about a cent, because the schedule rounds every payment to the nearest cent and the formula does not. Two different methods agreeing to within pennies is a good reason to trust the table. If they had differed by hundreds of dollars, the right move would be to look for a mistake.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This matters when life changes. Families sell homes and cars much sooner than the end of the loan. If you sell after five years, you will still owe about nine-tenths of what you borrowed, and the sale price has to cover that before you keep any profit. Understanding the shape of the schedule keeps you from being surprised.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="2" data-fb="Correct. In the example, that is payment 147." data-hint="Not quite. Look again at the chart and the paragraph below it."><div class="widget-question">What is the <a class="gl" href="#g-tipping-point" title="Tipping Point: In a loan, the payment number after which more of each payment goes to principal than to interest. (/TIP-ing point/)"><strong>tipping point</strong></a> of a loan?</div><div class="widget-options"><button data-i="0">The month when the lender changes the rate</button><button data-i="1">The month when the loan is half paid off</button><button data-i="2">The first payment in which more than half goes to principal</button><button data-i="3">The month of the last payment</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="0" data-fb="Yes. The balance after 60 payments is about $146,227, roughly 90 percent of the amount borrowed." data-hint="Not quite. Check the &#x27;Payment 60&#x27; row in the table."><div class="widget-question">After five years of payments on the $162,000 loan, about how much of the original loan is still owed?</div><div class="widget-options"><button data-i="0">About 90 percent</button><button data-i="1">About half</button><button data-i="2">About a quarter</button><button data-i="3">Almost none</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128295; PART 2 &middot; PULLING THE LEVERS</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You cannot control the benchmark rate, but you can control several features of your own loan. Here is what each one does to the payment and to the total interest. Every number below was recomputed from the formula, and each comparison uses the same 3.875 percent rate so that only one thing changes at a time.</p><div style="background: #F7F9FC; border: 1px solid #D0D9E8; border-radius: 8px; padding: 16px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#128200; TOTAL INTEREST ON THE SAME $162,000 AT THE SAME RATE</div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 150px; font-size: 13px; color: #1a2340;">30-year loan</div><div style="flex: 1; background: #EEF1F8; border-radius: 6px;"><div style="width: 100.0%; background: #C7922C; color: #fff; font-size: 13px; padding: 5px 8px; border-radius: 6px; white-space: nowrap;">$112,241</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 150px; font-size: 13px; color: #1a2340;">20-year loan</div><div style="flex: 1; background: #EEF1F8; border-radius: 6px;"><div style="width: 63.3%; background: #2196D0; color: #fff; font-size: 13px; padding: 5px 8px; border-radius: 6px; white-space: nowrap;">$71,052</div></div></div><div style="display: flex; align-items: center; gap: 10px; margin: 6px 0;"><div style="width: 150px; font-size: 13px; color: #1a2340;">15-year loan</div><div style="flex: 1; background: #EEF1F8; border-radius: 6px;"><div style="width: 46.2%; background: #0E1C42; color: #fff; font-size: 13px; padding: 5px 8px; border-radius: 6px; white-space: nowrap;">$51,871</div></div></div><div style="font-size: 13px; color: #4a5575; margin-top: 8px;">Same rate for all three, to show only the effect of the term. In real life, shorter loans often carry lower rates.</div></div><table class="ow-table"><tr><th>Choice</th><th>Monthly payment</th><th>Total interest</th><th>What changes</th></tr><tr><td>Base case: 30 years, $162,000</td><td>$761.78</td><td>$112,240.80</td><td>The loan from Lesson 8.03</td></tr><tr><td>20-year term</td><td>$971.05</td><td>$71,052.00</td><td>Payment up $209.27 a month; interest down $41,188.80</td></tr><tr><td>15-year term</td><td>$1,188.17</td><td>$51,870.60</td><td>Payment up $426.39 a month; interest down $60,370.20</td></tr><tr><td>20 percent down: $36,000 down, $144,000 borrowed</td><td>$677.14</td><td>$99,770.40</td><td>Payment down $84.64 a month; interest down $12,470.40</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Look at the pattern. A shorter loan raises the payment but cuts the total interest sharply, because you owe the balance for fewer months. A bigger down payment lowers both the payment and the interest, since you are borrowing less. And a larger down payment may also remove the need for <a class="gl" href="#g-pmi" title="Private Mortgage Insurance (PMI): Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small. (/PRY-vit MOR-gij in-SHUR-uns/)"><strong>mortgage insurance</strong></a>, which in the sample costs $82 a month, although lenders set their own rules about that.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">'Rate matters just as much as the term. If the same family had found a rate one full percentage point lower, 2.875 percent, the payment would have been $672.13 instead of $761.78, and the total interest would have been $79,967 instead of $112,241. That is a difference of about $32,274 over the life of the loan. This is why Lessons 8.01 and 8.02 mattered. A rate is not just a number on a form. It is thousands of dollars.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; A TOOL FOR CHECKING YOUR WORK</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">A spreadsheet can do all of this arithmetic for you, and it will not get tired. In Excel, the function PMT takes the monthly rate, the number of payments, and the amount borrowed, and returns the payment. Use it to check the numbers on this page, then build the full schedule one row at a time. A calculator you built yourself is the best way to understand what the formula is doing.</div></div><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Paying a little extra</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Extra payments go straight to principal, which is why they are so powerful early in a loan. Suppose the family makes one extra payment of $761.78 each year. The loan is paid off in 313 months, which is 26 years and 1 month, instead of 360, and the total interest falls by about $16,430. Suppose instead they add $100 to every payment. The loan is paid off in 290 months, and they save about $24,576 in interest.</p><details class="ow-reveal"><summary>Try this in your notebook before you click: if a family adds $100 to every monthly payment and the loan is paid off after 290 months instead of 360, how many months, and how many years and months, does that save?</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">360 minus 290 is 70 months. Seventy months is 5 years and 10 months. A small monthly habit shortens a thirty-year loan by almost six years. Check your own loan's terms first. The sample <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a> has a prepayment penalty during the first two years, so a borrower should know exactly what the lender counts as a penalty before sending extra money.</div></details><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">One more thing a careful borrower does is shop. The same family, with the same credit and the same down payment, can be offered different rates and different fees by different lenders. A difference of one quarter of a percentage point on a loan this size can be worth thousands of dollars over its life. The few hours it takes to collect two or three Loan Estimates may be the best-paid hours of the whole process.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;"><a class="gl" href="#g-refinance" title="Refinance: To replace an existing loan with a new loan, usually to get a lower rate or different terms. (/ree-FY-nans/)"><strong>Refinancing</strong></a></h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">To <strong><a class="gl" href="#g-refinance" title="Refinance: To replace an existing loan with a new loan, usually to get a lower rate or different terms. (/ree-FY-nans/)"><strong>refinance</strong></a></strong> is to replace your loan with a new one, usually to get a lower rate. It is not free. The new loan has its own costs. A simple test is the break-even point: divide the cost of <a class="gl" href="#g-refinance" title="Refinance: To replace an existing loan with a new loan, usually to get a lower rate or different terms. (/ree-FY-nans/)"><strong>refinancing</strong></a> by what you save each month. Say, as a made-up case, that a <a class="gl" href="#g-refinance" title="Refinance: To replace an existing loan with a new loan, usually to get a lower rate or different terms. (/ree-FY-nans/)"><strong>refinance</strong></a> costs $3,000 and cuts the payment by $60 a month. Then it takes 50 months, a little over four years, to earn back the cost. If you expect to move or pay off the loan sooner than that, you lose money by <a class="gl" href="#g-refinance" title="Refinance: To replace an existing loan with a new loan, usually to get a lower rate or different terms. (/ree-FY-nans/)"><strong>refinancing</strong></a>.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Right. Interest is charged on the balance for each month you owe it, so a shorter loan accumulates less." data-hint="Not quite. Think about how long you owe a balance in each case."><div class="widget-question">Why does a 15-year loan at the same rate cost much less in total interest than a 30-year loan?</div><div class="widget-options"><button data-i="0">The rate is always lower</button><button data-i="1">You owe the balance for fewer months, so less interest builds up</button><button data-i="2">The lender forgives part of it</button><button data-i="3">The principal is smaller</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="3" data-fb="Correct. 4,000 divided by 80 is 50 months." data-hint="Not quite. Divide the total cost by the monthly savings."><div class="widget-question">A <a class="gl" href="#g-refinance" title="Refinance: To replace an existing loan with a new loan, usually to get a lower rate or different terms. (/ree-FY-nans/)"><strong>refinance</strong></a> costs $4,000 and saves $80 a month. After how many months does it break even?</div><div class="widget-options"><button data-i="0">25 months</button><button data-i="1">40 months</button><button data-i="2">80 months</button><button data-i="3">50 months</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Yes. Reducing the balance early shrinks every later interest charge." data-hint="Not quite. Remember that interest is charged on what you still owe."><div class="widget-question">Why are extra payments especially powerful early in a loan?</div><div class="widget-options"><button data-i="0">The lender removes the interest</button><button data-i="1">They reduce the principal while it is large, so less interest builds up afterward</button><button data-i="2">They change the interest rate</button><button data-i="3">They lengthen the loan</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 3 &middot; A CREDIT PLAN FOR A MAJOR PURCHASE</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Plans beat hopes. Before you borrow for something large, such as a car, a first apartment's furniture, a computer for a business, or a home, you should write down a short plan. Here is the order that careful borrowers follow. The steps do not guarantee a good result, but they make a bad surprise far less likely.</p><table class="ow-table"><tr><th>Step</th><th>The question to answer</th><th>Where you learned it</th></tr><tr><td>1. Purpose</td><td>Is this a need or a want, and what happens if I wait?</td><td>Module 1</td></tr><tr><td>2. Price and down payment</td><td>How much can I put down, and how much will I need to borrow?</td><td>Lesson 8.03</td></tr><tr><td>3. Rate</td><td>What is my credit history, and what offers can I get from at least two lenders?</td><td>Lessons 8.01 and 8.03</td></tr><tr><td>4. Term</td><td>How long will I be paying, and what does that do to the total cost?</td><td>This lesson</td></tr><tr><td>5. <a class="gl" href="#g-total-cost-of-credit" title="Total Cost of Credit: Everything you pay for the privilege of borrowing: the interest, plus fees and required insurance, not counting the amount you borrowed. (/TOH-tul kost uv KRED-it/)"><strong>Total cost of credit</strong></a></td><td>What will I pay beyond the price, once interest and fees are counted?</td><td>This lesson</td></tr><tr><td>6. Budget</td><td>Can I make the payment each month and still handle surprises?</td><td>Lesson 3.04</td></tr><tr><td>7. Risks</td><td>What if my income falls, or the rate on a variable loan rises?</td><td>Lesson 8.02</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">'Here is a smaller example, with made-up numbers, to practice the plan. A student wants to buy a used car and needs to borrow $20,000 at 6 percent. She compares a 48-month loan with a 60-month loan. The 48-month payment is $469.70 and the total interest is $2,545.60. The 60-month payment is $386.66 and the total interest is $3,199.60. The longer loan is easier on the monthly budget. It also costs $654.00 more in interest, and it keeps her in debt for another year, while the car loses value. Neither choice is simply right. The plan makes the tradeoff visible, so that she chooses it, rather than drifting into it.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Step five deserves a number. The <strong><a class="gl" href="#g-total-cost-of-credit" title="Total Cost of Credit: Everything you pay for the privilege of borrowing: the interest, plus fees and required insurance, not counting the amount you borrowed. (/TOH-tul kost uv KRED-it/)"><strong>total cost of credit</strong></a></strong> is everything you pay for the privilege of borrowing, apart from the amount you borrowed. For the sample loan, add up what the <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a> and our schedule show. Interest over 30 years is $112,240.80. Loan costs on the form are $5,672. <a class="gl" href="#g-pmi" title="Private Mortgage Insurance (PMI): Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small. (/PRY-vit MOR-gij in-SHUR-uns/)"><strong>Mortgage insurance</strong></a>, at $82 a month for 84 months, is $6,888.00. The total is about $124,801. Some costs on the form, such as property taxes and homeowner's insurance, are real but are not costs of credit, so we have left them out. Decide what belongs in the total by asking one question: would I pay this if I did not need to borrow?</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That figure is almost as large as the price of the home. It does not mean that borrowing was a mistake. For most families, a loan is the only way to buy a home at all, and a home can be a sound investment and a place to build a life. It means the borrower should know the number, and should choose the loan with open eyes. A careful borrower asks not only "Can I afford the payment?" but also "What am I paying for the privilege of borrowing?"</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; WHAT YOUR ASSIGNMENT WILL ASK</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">In this week's assignment, you will choose one major purchase and write a short financing plan that follows these seven steps. You will show your arithmetic, compare at least two options, and explain which one you would choose and why. You may build the schedule in a spreadsheet.</div></div><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Correct. It is what you pay beyond the amount you borrow, in order to borrow." data-hint="Not quite. Reread the definition in the paragraph beginning &#x27;Step five deserves a number.&#x27;"><div class="widget-question">What does the <a class="gl" href="#g-total-cost-of-credit" title="Total Cost of Credit: Everything you pay for the privilege of borrowing: the interest, plus fees and required insurance, not counting the amount you borrowed. (/TOH-tul kost uv KRED-it/)"><strong>total cost of credit</strong></a> include?</div><div class="widget-options"><button data-i="0">The price of the thing you are buying</button><button data-i="1">Interest and required fees and insurance, but not the amount borrowed</button><button data-i="2">Only the interest rate</button><button data-i="3">Property taxes and furniture</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Yes. The risks step asks what you would do if your income dropped or a variable rate rose." data-hint="Not quite. Look at the last row of the table."><div class="widget-question">Which step in the plan helps protect you if your income falls?</div><div class="widget-options"><button data-i="0">Purpose</button><button data-i="1">Risks</button><button data-i="2">Price and down payment</button><button data-i="3">Rate</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.04 Reading Quiz</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the tipping point, total cost, and the choices that change it.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.04 Assignment</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will build a financing plan for one major purchase.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.04 VR Lesson Resources</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that lets you compare three loan choices side by side.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Module 8 Test and Project</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">At the end of the module you will take the Module 8 Test and complete the Module 8 Project.</div></div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Responsibility looks ahead. The loan you sign today is a promise your future self will keep for years. Write down the whole cost before you promise.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 8.04 &middot; The Tipping Point: Interest vs. Principal, Total Cost, and Smart Decisions</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

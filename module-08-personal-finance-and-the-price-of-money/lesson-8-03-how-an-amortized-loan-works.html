@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 8.03</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+<script>window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] } };</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 8</div>
+        <div style="font-size: 12px; color: #666;">Personal Finance and the Price of Money</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 8.03</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">How an Amortized Loan Works and What Sets Your Rate</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 8.03</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">How an Amortized Loan Works and What Sets Your Rate</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">What is hiding inside a monthly payment of $761.78, and how would you know if a lender's offer was fair?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">A loan can look simple: you borrow a sum, then pay a fixed amount every month. Underneath, each payment is two different things at once. This lesson opens the payment and shows you the arithmetic inside. Then you will read a real lender form, the way a careful borrower should, with every number checked.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> compute a fixed monthly payment with the standard formula, and show how the first payment splits into interest and <strong><a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a></strong>.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain what sets the interest rate a lender offers: the benchmark, your credit, the term, and the down payment.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> read the key boxes of a <strong><a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a></strong> and say what each one means, including the <strong><a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a></strong>.</div></div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-amortization" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Amortization</strong> <span style="color: #6b7a99; font-size: 14px;">/am-or-tih-ZAY-shun/</span><button class="gl-speak" type="button" data-say="amortization" aria-label="Hear how to say Amortization" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Paying off a loan gradually with regular, equal payments, so that each payment covers interest and also reduces the amount owed.</div></div><div id="g-apr" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Annual Percentage Rate (APR)</strong> <span style="color: #6b7a99; font-size: 14px;">/AN-yoo-ul per-SEN-tij rayt/</span><button class="gl-speak" type="button" data-say="annual percentage rate" aria-label="Hear how to say Annual Percentage Rate (APR)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate.</div></div><div id="g-escrow" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Escrow</strong> <span style="color: #6b7a99; font-size: 14px;">/ES-kroh/</span><button class="gl-speak" type="button" data-say="escrow" aria-label="Hear how to say Escrow" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">An account where a lender holds part of your payment to pay your property taxes and home insurance for you.</div></div><div id="g-loan-estimate" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Loan Estimate</strong> <span style="color: #6b7a99; font-size: 14px;">/lohn ES-tuh-mit/</span><button class="gl-speak" type="button" data-say="loan estimate" aria-label="Hear how to say Loan Estimate" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A three-page form a lender must give you after you apply for a mortgage. It shows the loan's key terms and costs so you can compare offers.</div></div><div id="g-principal" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Principal</strong> <span style="color: #6b7a99; font-size: 14px;">/PRIN-suh-pul/</span><button class="gl-speak" type="button" data-say="principal" aria-label="Hear how to say Principal" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The amount of money you borrowed and still owe, not counting interest.</div></div><div id="g-pmi" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Private Mortgage Insurance (PMI)</strong> <span style="color: #6b7a99; font-size: 14px;">/PRY-vit MOR-gij in-SHUR-uns/</span><button class="gl-speak" type="button" data-say="private mortgage insurance" aria-label="Hear how to say Private Mortgage Insurance (PMI)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small.</div></div>
+    </div>
+
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129518; PART 1 &middot; THE IDEA OF AMORTIZATION</div><div class="optima-widget ow-reflect"><div class="widget-kicker">&#9889; QUICK CHECK-IN</div><div class="widget-question">A family borrows $162,000 and repays it in equal monthly payments over 30 years. About how much will they have paid back in total? (No wrong answer. You may change your mind.)</div><div class="widget-options"><button data-response="Many people guess low. The real total is a good deal higher. You will see the exact figure, and why, below.">&#128178; About $165,000, a little more</button><button data-response="That is closer, but still low. Keep reading and check it against your own arithmetic.">&#128176; About $200,000</button><button data-response="That is very near the real answer. You will see the exact total soon, and what makes it so large.">&#128181; About $275,000</button><button data-response="That is fine. By the end of the lesson you will be able to work it out yourself.">&#10067; I have no idea</button></div><div class="widget-feedback"></div><button class="widget-reset">Reset</button></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A loan is <strong><a class="gl" href="#g-amortization" title="Amortization: Paying off a loan gradually with regular, equal payments, so that each payment covers interest and also reduces the amount owed. (/am-or-tih-ZAY-shun/)"><strong>amortized</strong></a></strong> when it is paid off gradually in equal payments. The word comes from an old term meaning "to kill off." Each month, part of your payment pays the interest that has built up, and the rest chips away at the <strong><a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a></strong>, which is the amount you still owe. The payment stays the same, but the split between interest and <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> changes every month.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is why the split changes. Interest is charged on what you still owe. At the beginning you owe a lot, so the interest is large. As you pay down the <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a>, you owe less, so the interest shrinks. The payment is fixed, so the part left over for <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> grows. Early payments are mostly interest. Late payments are mostly <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a>. Keep that picture in mind, because the next lesson is built on it.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The formula</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">For a fixed-rate loan, the monthly payment comes from one formula. Here it is, with the symbols explained below it.</p><div data-ra-skip="true" style="background: #F7F9FC; border: 1px solid #D0D9E8; border-radius: 8px; padding: 14px 20px; margin: 14px 0; font-size: 20px; color: #0e1c42; text-align: center; overflow-x: auto;">\[ M \;=\; P \cdot \frac{i}{1-(1+i)^{-n}} \]</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In words: the payment equals the amount borrowed, times the monthly rate divided by one minus the discount factor. You do not need to be afraid of it. You only need to plug in three numbers.</p><table class="ow-table"><tr><th>Symbol</th><th>Meaning</th><th>In our example</th></tr><tr><td>M</td><td>The monthly payment</td><td>What we are finding</td></tr><tr><td>P</td><td>The <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a>, the amount borrowed</td><td>$162,000</td></tr><tr><td>i</td><td>The monthly interest rate: the yearly rate divided by 12</td><td>3.875% a year, so 0.03875 divided by 12</td></tr><tr><td>n</td><td>The number of monthly payments</td><td>30 years times 12 months, which is 360</td></tr></table></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 2 &middot; A WORKED EXAMPLE, CHECKED</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Our example is the sample loan on the government's model <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a>, which you will read in Part 4. The borrower is buying a home for $180,000 and borrowing $162,000 for 30 years at a fixed rate of 3.875 percent. Let us compute the payment from scratch.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Step one is the monthly rate. Divide 0.03875 by 12 and you get \(i = 0.0032292\). Step two is the discount factor. Raise \(1 + i\) to the power of negative 360, which means one divided by \((1+i)\) multiplied by itself 360 times, and you get \((1+i)^{-360} = 0.313290\). Step three: one minus that number is 0.686710. Step four: divide the monthly rate by it, and you get 0.00470237. Step five: multiply by $162,000, and the result is $761.78 after rounding to the nearest cent.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That matches the monthly <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> and interest printed on the lender's form, $761.78. When a calculation agrees with an independent source, you can trust it. If it did not, the right move is to find the mistake before going further.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Opening up the first payment</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In month one, the interest is the full balance times the monthly rate: $162,000 times 0.0032292, which is $523.13 to the nearest cent. The other part of the payment, $761.78 minus $523.13, is $238.65. That is the only part that reduces what you owe. The new balance is $162,000 minus $238.65, which is $161,761.35.</p><div style="display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0;">
+ <div style="flex: 2; min-width: 240px; background: #EEF1F8; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px;"><div style="font-size: 12px; color: #4a5575;">YOUR FIRST $761.78 PAYMENT</div>
+  <div style="display: flex; height: 34px; margin: 8px 0; border-radius: 6px; overflow: hidden;"><div style="width: 68.7%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center;">Interest $523.13</div><div style="width: 31.3%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center;"><a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>Principal</strong></a> $238.65</div></div>
+  <div style="font-size: 13px; color: #4a5575;">More than two-thirds of the first payment is interest.</div></div>
+</div><details class="ow-reveal"><summary>Try this in your notebook before you click: find the interest part of the second payment. Use the new balance after month one, and the same monthly rate. Then find the <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> part.</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">The new balance is $161,761.35. Multiply by the monthly rate 0.0032292, and the interest is $522.35. The <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> part is $761.78 minus $522.35, which is $239.43. Notice that the interest went down a little and the <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> went up a little. That is the <a class="gl" href="#g-amortization" title="Amortization: Paying off a loan gradually with regular, equal payments, so that each payment covers interest and also reduces the amount owed. (/am-or-tih-ZAY-shun/)"><strong>amortization</strong></a> at work, one month at a time.</div></details><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Now the answer to the opening question. Over 360 months, the family will pay 360 times $761.78, which is $274,240.80. They borrowed $162,000, so the total interest is $112,240.80. That is about 69.3 percent of the amount borrowed. The total they repay is about 1.69 times what they received. Borrowing is not free, and a long loan is expensive in a way that is easy to miss when you only look at the monthly number.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Correct. As you pay down the principal, there is less balance to charge interest on." data-hint="Not quite. Reread the second paragraph of Part 1."><div class="widget-question">Why does the interest part of each payment shrink over time on an <a class="gl" href="#g-amortization" title="Amortization: Paying off a loan gradually with regular, equal payments, so that each payment covers interest and also reduces the amount owed. (/am-or-tih-ZAY-shun/)"><strong>amortized</strong></a> loan?</div><div class="widget-options"><button data-i="0">The lender lowers the rate each year</button><button data-i="1">Interest is charged on a balance that keeps getting smaller</button><button data-i="2">The payment gets smaller</button><button data-i="3">The principal grows</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="3" data-fb="Yes. $162,000 times the monthly rate gives $523.13. The remaining $238.65 reduces the principal." data-hint="Not quite. Multiply the balance by the monthly rate: 162,000 times 0.0032291667."><div class="widget-question">In the example, what is the interest part of the first payment?</div><div class="widget-options"><button data-i="0">$238.65</button><button data-i="1">$162.00</button><button data-i="2">$761.78</button><button data-i="3">$523.13</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; PART 3 &middot; WHAT SETS YOUR RATE</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Where did 3.875 percent come from? Lenders build a rate in layers, as you saw in Lesson 8.01. The base is the benchmark, which follows Treasury yields and responds to the Fed's decisions from Lesson 8.02. On top of it, the lender adds a premium based on how risky you look and how risky the loan is.</p><table class="ow-table"><tr><th>Factor</th><th>How it can change your rate</th><th>Who controls it</th></tr><tr><td>The benchmark</td><td>Rises and falls with Treasury yields and the economy</td><td>Markets and the Fed, not you</td></tr><tr><td>Your credit history</td><td>A strong history of on-time payments lowers the premium</td><td>You, over time</td></tr><tr><td>The term of the loan</td><td>Longer loans carry more uncertainty and often a higher rate</td><td>You, when you choose the term</td></tr><tr><td>Your down payment</td><td>A bigger one lowers the lender's risk and can lower the rate</td><td>You, when you save</td></tr><tr><td>The type of loan and its features</td><td>Fixed or variable, and whether there are penalties</td><td>You and the lender</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Your credit history shows up in a number. The Consumer Financial Protection Bureau describes a credit score as "a prediction of your credit behavior," and says most scores run from 300 to 850. Scoring models look at things like your record of paying bills, how much debt you carry, how long your accounts have been open, how much of your available credit you are using, and recent applications for new credit. The Bureau also points out that you do not have just one score. It can vary by scoring model, by the kind of loan, and by the date.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">One more choice shapes the rate. A fixed-rate loan keeps the same rate for its whole life, so your payment never changes because of the market. A variable-rate loan has a rate that moves with a benchmark, so the payment can rise or fall. Fixed rates are usually a little higher at the start in exchange for certainty. Variable rates can start lower but leave you exposed to the kind of rate increases you saw in Lesson 8.02. Neither is wrong. The question is which risk you are better able to carry.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The down payment matters in our example. The home costs $180,000 and the loan is $162,000, so the down payment is $18,000. That is 10 percent. Lenders usually see a loan as safer when the borrower has put in more of their own money. In the sample, the lender requires <strong><a class="gl" href="#g-pmi" title="Private Mortgage Insurance (PMI): Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small. (/PRY-vit MOR-gij in-SHUR-uns/)"><strong>private mortgage insurance</strong></a></strong>, which protects the lender, not the borrower, and which adds $82 a month for the first seven years. You will see it in the form below.</p></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128220; PART 4 &middot; READING THE LOAN ESTIMATE</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Federal rules require a lender to give you a <strong><a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a></strong> within a few days of applying for a mortgage. It is three pages long, and its purpose is to let you compare offers from different lenders on the same layout. Below are the key lines from the Consumer Financial Protection Bureau's own sample, "H-24(B)," dated February 7, 2014. The names and the lender on it are made up. The numbers are exactly as printed.</p><table class="ow-table"><tr><th>Line on the form</th><th>What the sample says</th><th>What it means</th></tr><tr><td>Loan Amount</td><td>$162,000</td><td>How much you borrow (the sale price is $180,000)</td></tr><tr><td>Interest Rate</td><td>3.875%, fixed</td><td>The rate used to compute interest. It cannot change after closing.</td></tr><tr><td>Monthly <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>Principal</strong></a> and Interest</td><td>$761.78</td><td>The part of your payment that pays the loan itself</td></tr><tr><td>Prepayment Penalty</td><td>Yes. "As high as $3,240 if you pay off the loan during the first 2 years"</td><td>A fee for paying the loan off early. The sample sets it at 2 percent of the balance for two years.</td></tr><tr><td>Balloon Payment</td><td>No</td><td>There is no large lump-sum payment due at the end</td></tr><tr><td>Projected payments, years 1 to 7</td><td>$1,050 a month</td><td><a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>Principal</strong></a> and interest $761.78, plus <a class="gl" href="#g-pmi" title="Private Mortgage Insurance (PMI): Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small. (/PRY-vit MOR-gij in-SHUR-uns/)"><strong>mortgage insurance</strong></a> $82, plus <a class="gl" href="#g-escrow" title="Escrow: An account where a lender holds part of your payment to pay your property taxes and home insurance for you. (/ES-kroh/)"><strong>escrow</strong></a> $206</td></tr><tr><td>Projected payments, years 8 to 30</td><td>$968 a month</td><td><a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>Principal</strong></a> and interest $761.78 plus <a class="gl" href="#g-escrow" title="Escrow: An account where a lender holds part of your payment to pay your property taxes and home insurance for you. (/ES-kroh/)"><strong>escrow</strong></a> $206 (the <a class="gl" href="#g-pmi" title="Private Mortgage Insurance (PMI): Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small. (/PRY-vit MOR-gij in-SHUR-uns/)"><strong>mortgage insurance</strong></a> has ended)</td></tr><tr><td>Estimated Closing Costs</td><td>$8,054</td><td>Fees and prepaid items due when the loan is signed</td></tr><tr><td>Estimated Cash to Close</td><td>$16,054</td><td>Closing costs $8,054, plus the $18,000 down payment, minus the $10,000 deposit already paid</td></tr></table><div style="background: #F7F9FC; border-left: 5px solid #C7922C; border-radius: 6px; padding: 16px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#128220; PRIMARY SOURCE</div><div style="font-size: 18px; color: #0e1c42; line-height: 1.65; font-style: italic;">"<a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>Annual Percentage Rate</strong></a> (<a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a>) 4.274%. Your costs over the loan term expressed as a rate. This is not your interest rate."<br /><br />"In 5 Years: $56,582. Total you will have paid in <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a>, interest, <a class="gl" href="#g-pmi" title="Private Mortgage Insurance (PMI): Insurance that protects the lender, not you, if you stop paying. Lenders often require it when your down payment is small. (/PRY-vit MOR-gij in-SHUR-uns/)"><strong>mortgage insurance</strong></a>, and loan costs. $15,773. <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>Principal</strong></a> you will have paid off."</div><div style="font-size: 14px; color: #4a5575; margin-top: 8px;">Consumer Financial Protection Bureau, TILA-RESPA Integrated Disclosure, sample <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a> H-24(B), Mortgage Loan Transaction <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a>, Fixed Rate Loan, February 7, 2014 (page 3, "Comparisons").</div><!-- BUILD NOTE: text extracted from a third-party copy of the CFPB sample PDF and reformatted. Replace the typeset blocks and table with page images from the official CFPB sample (optima-hs-social-studies IV.1); check the official file for a newer form edition. --></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Two items on the sample are easy to skip and worth understanding. The first is the <strong><a class="gl" href="#g-escrow" title="Escrow: An account where a lender holds part of your payment to pay your property taxes and home insurance for you. (/ES-kroh/)"><strong>escrow</strong></a></strong> account. Rather than send your tax bill and insurance bill yourself, you pay a monthly amount, $206 in the sample, and the lender saves it up and pays the bills when they are due. That is convenient, and it protects the lender, since an unpaid tax bill can put a claim on the house. The second is closing costs, which are fees for things like the appraisal, the title search, and recording the sale. They are often forgotten when families plan a purchase, and they were $8,054 here, which is nearly 45 percent of the $18,000 down payment.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Study the two quotations. The <a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a>, 4.274 percent, is higher than the 3.875 percent interest rate. The form tells you why in a single sentence: the <a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a> expresses your costs over the loan term as a rate, and it is "not your interest rate." It folds in the loan's fees and other costs, so it is a fairer way to compare two lenders who charge different fees. If one lender offers a lower interest rate but charges high fees, the <a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a> can show you which loan actually costs less.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Now the second quotation. After five years of payments, the family will have paid $56,582 in total, and only $15,773 of it will have gone to reduce the <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a>. That is about 28 percent. The rest went to interest, insurance, and loan costs. You can check the <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> figure yourself with the <a class="gl" href="#g-amortization" title="Amortization: Paying off a loan gradually with regular, equal payments, so that each payment covers interest and also reduces the amount owed. (/am-or-tih-ZAY-shun/)"><strong>amortization</strong></a> schedule: the <a class="gl" href="#g-principal" title="Principal: The amount of money you borrowed and still owe, not counting interest. (/PRIN-suh-pul/)"><strong>principal</strong></a> paid in 60 months comes to about $15,773. The form and the formula agree.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">How would you use the form to shop? Ask at least two lenders for a <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a> on the same loan. Put the forms side by side. Compare the interest rate, the <a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a>, the monthly payment, the cash to close, and any penalty for paying early. If one lender has a lower rate and a much higher <a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a>, ask why. A careful borrower asks questions until the answers make sense, and does not sign anything while a number is still unexplained.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; A NOTE ABOUT ONE LINE WE DID NOT USE</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">The form's page 3 also lists a Total Interest Percentage of 69.45 percent. A straight calculation, total interest divided by the loan amount, gives about 69.3 percent. The two figures are close but not identical. The <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a> has its own rules for counting, and we have not traced them here, so use this line only to compare loans on the same form. When two honest numbers disagree slightly, say so and keep working, rather than pretending they match.</div></div><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="0" data-fb="Correct. The APR folds in certain fees and costs, so it is usually higher than the interest rate." data-hint="Not quite. Reread the paragraph after the quotations."><div class="widget-question">Why is the <a class="gl" href="#g-apr" title="Annual Percentage Rate (APR): The yearly cost of a loan, written as a percent, that includes the interest rate plus certain fees. It is not the same as the interest rate. (/AN-yoo-ul per-SEN-tij rayt/)"><strong>APR</strong></a> on the sample higher than the interest rate?</div><div class="widget-options"><button data-i="0">The APR includes the loan's fees and other costs</button><button data-i="1">The lender made a mistake</button><button data-i="2">The APR ignores interest</button><button data-i="3">The APR is always exactly 0.4 more</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Yes. $8,054 plus $18,000 minus $10,000 equals $16,054." data-hint="Not quite. Look at the last row of the table, and check the arithmetic."><div class="widget-question">How is the $16,054 'Estimated Cash to Close' built?</div><div class="widget-options"><button data-i="0">The loan amount minus the down payment</button><button data-i="1">Closing costs plus the down payment, minus the deposit already paid</button><button data-i="2">The monthly payment times 12</button><button data-i="3">Closing costs times 2</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="3" data-fb="Right. The $82 a month for mortgage insurance stops, and the other parts stay the same." data-hint="Not quite. Compare the two projected payment rows and see which item disappears."><div class="widget-question">Why does the monthly payment drop from $1,050 to $968 after year 7?</div><div class="widget-options"><button data-i="0">The interest rate falls</button><button data-i="1">The loan is paid off</button><button data-i="2">The escrow account ends</button><button data-i="3">The mortgage insurance ends</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="0" data-fb="Correct. The standard layout helps you compare the key terms and costs of different offers." data-hint="Not quite. Reread the opening paragraph of Part 4."><div class="widget-question">Why is a <a class="gl" href="#g-loan-estimate" title="Loan Estimate: A three-page form a lender must give you after you apply for a mortgage. It shows the loan&#x27;s key terms and costs so you can compare offers. (/lohn ES-tuh-mit/)"><strong>Loan Estimate</strong></a> useful when you are shopping for a loan?</div><div class="widget-options"><button data-i="0">It lets you compare offers from different lenders on the same layout</button><button data-i="1">It guarantees the lowest rate</button><button data-i="2">It replaces the loan contract</button><button data-i="3">It is the same for every borrower</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.03 Reading Quiz</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on amortization, the payment formula, and the Loan Estimate.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.03 Primary Source Exercise</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Four questions on the Loan Estimate above. This is part of your weekly work.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.03 Assignment</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will compute a payment and explain what each part of it does.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 8.03 VR Lesson Resources</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that lets you step inside a mortgage as it is paid down.</div></div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Honesty applies to arithmetic too. Check your answer against a second method, and when two good numbers disagree, report the gap instead of hiding it.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 8.03 &middot; How an Amortized Loan Works and What Sets Your Rate</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

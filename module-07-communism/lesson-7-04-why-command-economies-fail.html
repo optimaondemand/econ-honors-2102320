@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 7.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 7</div>
+        <div style="font-size: 12px; color: #666;">Communism</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.04</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Why Command Economies Fail: Prices, Knowledge, Incentives, and the Soviet Collapse</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Why Command Economies Fail: Prices, Knowledge, Incentives, and the Soviet Collapse</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Can any group of experts, however smart, gather what millions of people know about their own needs and circumstances?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">You have now followed an idea from a London pamphlet to a Soviet plan. This final lesson of Module 7 asks the question underneath it all: why did central planning run into trouble again and again? You will learn one of the best-known answers in economics, test it against the evidence, and look at how the Soviet Union ended.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain the <strong><a class="gl" href="#g-knowledge-problem" title="Knowledge Problem: The difficulty that the knowledge needed to run an economy is scattered among millions of people and cannot all be gathered in one place. (/NOL-ij PROB-lum/)"><strong>knowledge problem</strong></a></strong> and describe how prices carry information that no single planner could collect.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how incentives for workers and managers differ between a market and a command economy.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> use the two Koreas to evaluate the link between property rights and prosperity, and describe how the Soviet Union came to an end in 1991.</div></div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-collectivization" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Collectivization</strong> <span style="color: #6b7a99; font-size: 14px;">/kuh-lek-tih-vih-ZAY-shun/</span><button class="gl-speak" type="button" data-say="collectivization" aria-label="Hear how to say Collectivization" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Forcing many small, privately owned farms to join together into large farms run as a group under state direction.</div></div><div id="g-dissolution" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Dissolution</strong> <span style="color: #6b7a99; font-size: 14px;">/dis-uh-LOO-shun/</span><button class="gl-speak" type="button" data-say="dissolution" aria-label="Hear how to say Dissolution" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The breaking up of a group or a union, so that it no longer exists.</div></div><div id="g-five-year-plan" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Five-Year Plan</strong> <span style="color: #6b7a99; font-size: 14px;">/fyv-yeer plan/</span><button class="gl-speak" type="button" data-say="five year plan" aria-label="Hear how to say Five-Year Plan" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A national plan, set by the government, that lists production targets for every major part of the economy over five years.</div></div><div id="g-heavy-industry" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Heavy Industry</strong> <span style="color: #6b7a99; font-size: 14px;">/HEV-ee IN-dus-tree/</span><button class="gl-speak" type="button" data-say="heavy industry" aria-label="Hear how to say Heavy Industry" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Industry that makes big, basic goods such as steel, coal, machines, and electric power, rather than goods for families to buy.</div></div><div id="g-international-dollar" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">International Dollar</strong> <span style="color: #6b7a99; font-size: 14px;">/in-ter-NASH-uh-nul DOL-er/</span><button class="gl-speak" type="button" data-say="international dollar" aria-label="Hear how to say International Dollar" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A made-up unit economists use to compare incomes in different countries. It adjusts for how much money can actually buy in each place.</div></div><div id="g-knowledge-problem" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Knowledge Problem</strong> <span style="color: #6b7a99; font-size: 14px;">/NOL-ij PROB-lum/</span><button class="gl-speak" type="button" data-say="knowledge problem" aria-label="Hear how to say Knowledge Problem" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The difficulty that the knowledge needed to run an economy is scattered among millions of people and cannot all be gathered in one place.</div></div>
+    </div>
+
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128161; PART 1 &middot; THE KNOWLEDGE PROBLEM</div><div class="optima-widget ow-reflect"><div class="widget-kicker">&#9889; QUICK CHECK-IN</div><div class="widget-question">A school cafeteria has to decide how many slices of pizza to make for Friday. Who is best placed to know how many slices will be eaten? (No wrong answer. You may change your mind.)</div><div class="widget-options"><button data-response="A principal knows the rules and the budget. Ask whether a principal knows what students feel like eating this Friday.">&#127979; The principal</button><button data-response="A strong answer. Their knowledge comes from watching real choices week after week, and it is hard to write down.">&#128105;&#8205;&#127859; The cafeteria staff, who watch what sells</button><button data-response="Also strong. Each student knows his or her own appetite. No one else does.">&#127829; Students, through the choices they actually make</button><button data-response="A good question. Today a computer can help. But a computer needs data, and the data has to come from somewhere.">&#128187; A computer</button></div><div class="widget-feedback"></div><button class="widget-reset">Reset</button></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is a puzzle that is easy to say and hard to solve. An economy contains millions of people who each know something that nobody else knows. A shop owner knows that a new family moved into the apartment above her store. A farmer knows that his north field floods in spring. A truck driver knows that a bridge is closed. None of this appears in any official report. Yet an economy works well only if decisions are made with that kind of knowledge.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1945, the economist F. A. Hayek published an essay called "The Use of Knowledge in Society." Its argument is the heart of what economists call the <strong><a class="gl" href="#g-knowledge-problem" title="Knowledge Problem: The difficulty that the knowledge needed to run an economy is scattered among millions of people and cannot all be gathered in one place. (/NOL-ij PROB-lum/)"><strong>knowledge problem</strong></a></strong>. Hayek said the economic problem of society is not simply how to use resources that everyone knows about. It is how to make use of knowledge that is spread across millions of minds and that no one person or committee will ever hold in full. An earlier economist, Ludwig von Mises, had made a related argument in 1920: without real market prices for tools and materials, planners cannot calculate which plans are sensible. Hayek shared the 1974 Nobel Memorial Prize in economics.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A note on honesty: this lesson explains Hayek's argument in plain words and quotes none of his text. If you read the essay yourself, judge for yourself whether this summary is fair.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Prices as messages</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Hayek's answer to the puzzle is the price system. A price is a message, and it carries information to everyone who needs it without telling them why. He used the example of tin. Suppose that somewhere in the world a new use for tin is found, or one of the sources of tin dries up. A buyer of tin does not need to know which one happened. All the buyer sees is that the price has risen. That is enough. The buyer uses less tin or switches to a substitute, and so do millions of others. Together, they adjust, and no commission had to give an order.</p><div class="ow-chain"><div class="step">Something happens far away: a tin source is lost.</div><div class="arrow">&#10145;</div><div class="step">Sellers see a shortage and raise the price.</div><div class="arrow">&#10145;</div><div class="step">Buyers everywhere see the higher price.</div><div class="arrow">&#10145;</div><div class="step">Each buyer, knowing only that price, uses less tin or switches materials.</div><div class="arrow">&#10145;</div><div class="step">The shortage is eased without anyone giving an order.</div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You have seen pieces of this idea already. In Module 2, you studied how prices rise when something is scarce and fall when it is plentiful. In Lesson 4.04, you saw what happens when the price signal is blocked, as in gasoline lines under a price cap. Hayek takes the idea one step further. The price is not just a number. It is a way of passing knowledge from people who have it to people who need it.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Now return to the Soviet planners. They had to set the prices, set the targets, and issue the orders, and they had to do it for a country of many millions of people and a huge variety of goods. They could collect statistics. What they could not easily collect was the local, changing knowledge that Hayek describes. That knowledge is in the heads of the shop owner, the farmer, and the truck driver. By the time a report climbed up to Moscow and an order came back down, the situation had changed.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; A FAIR QUESTION: WHAT ABOUT COMPUTERS?</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">In 1945 there were no computers like ours. Today, companies and governments can collect and process far more data than any planner of the 1930s could dream of. Economists still disagree about how much that changes the problem. Some argue that the <a class="gl" href="#g-knowledge-problem" title="Knowledge Problem: The difficulty that the knowledge needed to run an economy is scattered among millions of people and cannot all be gathered in one place. (/NOL-ij PROB-lum/)"><strong>knowledge problem</strong></a> is now smaller. Others argue that the most useful knowledge is still local, changing, and often unspoken, and that no database holds it. Be ready to defend whichever side you find stronger.</div></div><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="2" data-fb="Correct. The price carries the information. The buyer can act on it without knowing the cause." data-hint="Not quite. Look at the five-step chain above."><div class="widget-question">In Hayek's tin example, what does the buyer need to know in order to do the right thing?</div><div class="widget-options"><button data-i="0">Why the supply of tin fell</button><button data-i="1">Which country lost its tin mine</button><button data-i="2">Only that the price has risen</button><button data-i="3">The exact government plan for tin</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="0" data-fb="Right. A lot of the knowledge is local and moves faster than reports can travel." data-hint="Not quite. Reread the paragraph beginning &#x27;Now return to the Soviet planners.&#x27;"><div class="widget-question">Why can't a central planner simply collect all the relevant knowledge?</div><div class="widget-options"><button data-i="0">Knowledge is scattered, local, and always changing</button><button data-i="1">People refuse to speak to planners</button><button data-i="2">There is too little paper</button><button data-i="3">Planners never study economics</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128176; PART 2 &middot; INCENTIVES: WHO GAINS WHEN THINGS GO WELL?</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Knowledge is one problem. Motivation is another. People respond to what a choice costs and what it earns them, which economists call incentives. In a market economy, a worker's earnings tend to follow what the worker contributes, and a firm that serves customers well makes a profit while a firm that does not takes a loss. You studied this in Module 2, in the work on workers' earnings. Pay signals where workers are most needed, and workers respond.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In a command economy, those links are cut or weakened. The state sets wages, the state sets prices, and the state sets the targets a manager must reach. A manager's reward comes from meeting the plan, not from pleasing buyers. So the manager's best strategy is to make sure the plan is easy to meet. Ask for generous supplies, promise less than you can do, and avoid risks. You have already seen what happens when a target is judged on the wrong measure, as with the boots in Lesson 7.03. A worker also has little reason to work harder when the paycheck stays the same.</p><table class="ow-table"><tr><th>Where we saw incentives at work</th><th>What the incentive was</th><th>What people did</th></tr><tr><td>War Communism, 1918 to 1921</td><td>No reward for a surplus of grain</td><td>Farmers planted less or hid grain</td></tr><tr><td>The NEP, 1921 to 1928</td><td>A tax, then the right to sell the rest</td><td>Farm output recovered</td></tr><tr><td><a class="gl" href="#g-collectivization" title="Collectivization: Forcing many small, privately owned farms to join together into large farms run as a group under state direction. (/kuh-lek-tih-vih-ZAY-shun/)"><strong>Collectivization</strong></a>, 1929 to 1933</td><td>No reward for caring for an animal or a field</td><td>Reports of animals slaughtered and farms in distress</td></tr><tr><td><a class="gl" href="#g-five-year-plan" title="Five-Year Plan: A national plan, set by the government, that lists production targets for every major part of the economy over five years. (/fyv-yeer plan/)"><strong>Five-Year Plan</strong></a> targets</td><td>Reward for hitting a target, not for serving a buyer</td><td>Goods made to meet the count, not the need</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This pattern is why economists treat incentives as a first principle. You do not have to assume people are selfish. You only have to notice that when effort goes unrewarded and failure goes unpunished, over time less effort is made and fewer risks are taken. The market has its own flaws, and you have studied several in this course, including externalities and unequal outcomes. But the market has a built-in way to reward good guesses and to punish bad ones, and the command economy had a much harder time doing either.</p></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127937; PART 3 &middot; HOW THE SOVIET UNION ENDED</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">By the 1980s the Soviet Union had a huge army, a vast territory, and an economy that had stopped keeping pace with the West. Mikhail Gorbachev became the Communist Party's leader in 1985. He did not set out to end the Soviet Union. He wanted to repair it. He launched two reforms, <strong><a class="gl" href="#g-perestroika" title="Perestroika: A Russian word meaning &quot;restructuring.&quot; It was Mikhail Gorbachev&#x27;s effort to reform the Soviet economy. (/pair-uh-STROY-kuh/)"><em>perestroika</em></a></strong>, meaning restructuring, and <strong><a class="gl" href="#g-glasnost" title="Glasnost: A Russian word meaning &quot;openness.&quot; It was Mikhail Gorbachev&#x27;s policy of allowing more public discussion and criticism. (/GLAHZ-nohst/)"><em>glasnost</em></a></strong>, meaning openness. The first loosened some of the central controls on the economy. The second allowed more public criticism than the country had known in decades.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Reform and openness did not rescue the system. Instead they let long-hidden problems and long-held grievances come out in the open. In the republics that made up the union, from the Baltic states to Ukraine, calls for independence grew. The end came quickly. On December 8, 1991, the leaders of Russia, Ukraine, and Belarus signed the Belovezha Accords, declaring that the Soviet Union was ending. On December 25, Gorbachev resigned. On December 26, the Soviet parliament formally voted the Union out of existence, and the red flag came down from the Kremlin. We call that last event the <strong><a class="gl" href="#g-dissolution" title="Dissolution: The breaking up of a group or a union, so that it no longer exists. (/dis-uh-LOO-shun/)"><strong>dissolution</strong></a></strong> of the Soviet Union.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Why did it happen? Be careful here, because historians do not agree on one cause. Most point to several at once: an economy that grew slowly and wasted resources, the cost of the arms race and a long war in Afghanistan, falling oil prices in the 1980s, and strong feelings of national identity in the republics. Others stress the role of particular decisions, since a different leader or a different set of reforms might have produced a different result. A good student of history says what the evidence supports and resists a single tidy explanation. The economic problems you have studied in this module were part of the story, but they were not the whole of it.</p><div style="background: #FDF3E3; border-left: 5px solid #C7922C; border-radius: 7px; padding: 16px 22px; margin: 16px 0;"><div style="font-size: 11px; color: #9a6a12; margin-bottom: 6px;">&#127760; FOREIGN LANGUAGE VOCABULARY</div><div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">Two Russian words from Gorbachev's reforms. They are in italics and dotted underline in the text above.</div><div id="g-glasnost" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Glasnost</em></strong> <span style="color: #6b7a99; font-size: 14px;">/GLAHZ-nohst/</span><button class="gl-speak" type="button" data-say="glahz nohst" aria-label="Hear how to say Glasnost" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A Russian word meaning "openness." It was Mikhail Gorbachev's policy of allowing more public discussion and criticism.</div></div><div id="g-perestroika" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Perestroika</em></strong> <span style="color: #6b7a99; font-size: 14px;">/pair-uh-STROY-kuh/</span><button class="gl-speak" type="button" data-say="pair uh stroy kuh" aria-label="Hear how to say Perestroika" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A Russian word meaning "restructuring." It was Mikhail Gorbachev's effort to reform the Soviet economy.</div></div></div><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="3" data-fb="Yes. Slow growth, costly commitments, falling oil prices, and national feeling all played a part, and historians weigh them differently." data-hint="Not quite. Reread the third paragraph of Part 3."><div class="widget-question">Why does the lesson say a single-cause explanation of the Soviet collapse is not enough?</div><div class="widget-options"><button data-i="0">Because nobody knows when it happened</button><button data-i="1">Because it happened in a single day</button><button data-i="2">Because the Soviet economy was perfect</button><button data-i="3">Because several factors, economic and political, worked together</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Correct. He sought to reform the system, though the reforms helped open the way to its end." data-hint="Not quite. Look at the first paragraph of Part 3."><div class="widget-question">What did Gorbachev originally intend with <a class="gl" href="#g-perestroika" title="Perestroika: A Russian word meaning &quot;restructuring.&quot; It was Mikhail Gorbachev&#x27;s effort to reform the Soviet economy. (/pair-uh-STROY-kuh/)"><em>perestroika</em></a> and <a class="gl" href="#g-glasnost" title="Glasnost: A Russian word meaning &quot;openness.&quot; It was Mikhail Gorbachev&#x27;s policy of allowing more public discussion and criticism. (/GLAHZ-nohst/)"><em>glasnost</em></a>?</div><div class="widget-options"><button data-i="0">To end the Soviet Union</button><button data-i="1">To repair and reform it</button><button data-i="2">To give independence to the republics</button><button data-i="3">To restore the tsar</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127472;&#127479; PART 4 &middot; PROPERTY RIGHTS AND PROSPERITY: THE TWO KOREAS</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Lesson 5.04 you read about the Korean peninsula as a kind of natural experiment. After World War II, the peninsula was divided into two countries. The people had the same language, history, and culture. The two governments chose very different systems. North Korea built a command economy under a single ruling party. South Korea built an economy based on private property, contracts, and trade. Today, we can measure what happened.</p><div class="ow-stats"><div class="stat"><div class="big">$41,321</div><div class="lbl">South Korea, GDP per person, 2022</div></div><div class="stat"><div class="big">$1,569</div><div class="lbl">North Korea, GDP per person, 2022</div></div><div class="stat"><div class="big">about 26 to 1</div><div class="lbl">the ratio between the two figures</div></div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Those numbers come from the Maddison Project Database (2023 edition), posted by Our World in Data. They are measured in 2011 <strong><a class="gl" href="#g-international-dollar" title="International Dollar: A made-up unit economists use to compare incomes in different countries. It adjusts for how much money can actually buy in each place. (/in-ter-NASH-uh-nul DOL-er/)"><strong>international dollars</strong></a></strong>, a unit that adjusts for what money buys in each place. Per person means the country's total output divided by its population. By this measure, the average person in South Korea has about 26 times the output of the average person in North Korea.</p><details class="ow-reveal"><summary>Try this in your notebook before you click: divide 41,321 by 1,569. What do you get, and what does it mean?</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">41,321 divided by 1,569 is about 26.3. It means that the output per person in South Korea is roughly 26 times larger. Notice that this compares averages, not every person. It also tells you nothing by itself about why the gap exists.</div></details><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Be careful with that last point. A responsible economist adds three cautions. First, North Korea's figure is an estimate, because the government releases little reliable data. Second, the two countries differ in many ways beyond property rights. They fought a destructive war, received different foreign help, and had different political systems. Historians also note that much of the peninsula's <a class="gl" href="#g-heavy-industry" title="Heavy Industry: Industry that makes big, basic goods such as steel, coal, machines, and electric power, rather than goods for families to buy. (/HEV-ee IN-dus-tree/)"><strong>heavy industry</strong></a> in 1945 sat in the north, which makes the gap more striking, not less. Third, one comparison cannot prove a rule.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">But the comparison fits a pattern you have now seen in many places. Where people can own what they produce, sign contracts that will be enforced, and keep the reward of their effort, they tend to work, invest, and take risks. Where those protections are weak, they tend not to. The Korean gap, the Soviet harvests, and the NEP rebound all point the same way. That is the benchmark your standards ask you to understand: the link between secure property rights and prosperity.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A balanced verdict</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Let us finish the module with the test Optima uses. Did the command economy solve the first-order problems? On defense and <a class="gl" href="#g-heavy-industry" title="Heavy Industry: Industry that makes big, basic goods such as steel, coal, machines, and electric power, rather than goods for families to buy. (/HEV-ee IN-dus-tree/)"><strong>heavy industry</strong></a>, it showed real results for a time. On producing and distributing enough that the whole population prospers, the evidence is poor, and the price in human lives in the 1930s was enormous. That is not the same as saying markets are perfect. They produce unequal outcomes and costs that fall on third parties, and Marx's question about whether working people share in a society's wealth is still worth asking. The honest conclusion is narrower. Whatever its goals, a system that cannot gather knowledge, reward effort, or hear bad news will struggle to feed its people.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The next module changes direction. You have spent two weeks studying how whole economies are organized. In Module 8, you will turn to a question that is personal, and urgent for any adult: what does it cost to borrow money, and how do you make a wise decision about it?</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Correct. A single comparison fits the pattern but cannot isolate one cause, and North Korea&#x27;s figure is itself an estimate." data-hint="Not quite. Reread the paragraph that begins &#x27;Be careful with that last point.&#x27;"><div class="widget-question">Why is the Korean comparison described as strong evidence but not proof?</div><div class="widget-options"><button data-i="0">The data is perfectly reliable</button><button data-i="1">Many things besides property rights differ between the two countries</button><button data-i="2">South Korea is smaller</button><button data-i="3">North Korea has no economy</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Right. Where effort is rewarded and failure is felt, people tend to try harder and take wiser risks." data-hint="Not quite. Reread the closing paragraph of Part 2."><div class="widget-question">Which of these is a best summary of the lesson's argument about incentives?</div><div class="widget-options"><button data-i="0">Workers do the same amount of work regardless of reward</button><button data-i="1">A system tends to work better when effort is rewarded and failure is felt</button><button data-i="2">Only managers respond to incentives</button><button data-i="3">Incentives matter only in the United States</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.04 Reading Quiz</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the knowledge problem, incentives, and the end of the Soviet Union.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.04 Assignment</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will use the Korea data and the knowledge problem to evaluate central planning.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.04 VR Lesson Resources</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that lets you run a small planned economy and a small market, side by side.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Module 7 Test and Project</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">At the end of the module you will take the Module 7 Test and complete the Module 7 Project.</div></div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Courage in thinking includes holding a view you like up against evidence that cuts against it. A good scholar can say, "This is the strongest case against what I believe." Practice saying that about both sides.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.04 &middot; Why Command Economies Fail: Prices, Knowledge, Incentives, and the Soviet Collapse</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

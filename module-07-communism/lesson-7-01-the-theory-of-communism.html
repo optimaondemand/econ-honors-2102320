@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 7.01</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 7</div>
+        <div style="font-size: 12px; color: #666;">Communism</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.01</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Marx and Engels: The Theory of Communism</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.01</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Marx and Engels: The Theory of Communism</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">If one class owns the factories and another class works in them, is that a fair arrangement, and what would you have to change to fix it?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">In 1848, two young men in Europe published a short pamphlet that went on to shape the lives of hundreds of millions of people. This lesson reads what they actually wrote, in their own words, before anyone else interpreted it. Your job is to understand the argument well enough to state it fairly, and then to test it the way an economist would.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> state the main argument of <em>The Communist <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a></em> in your own words, using the terms <strong><a class="gl" href="#g-class-struggle" title="Class Struggle: In Marx&#x27;s view, the long conflict between groups, such as owners and workers, over who controls production and who gets its rewards. (/klas STRUG-ul/)"><strong>class struggle</strong></a></strong>, <strong><a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a></strong>, and <strong><a class="gl" href="#g-proletariat" title="Proletariat: In Marx&#x27;s writing, the class of workers who own no factories or land and who live by selling their labor for wages. (/proh-leh-TAIR-ee-ut/)"><strong>proletariat</strong></a></strong>.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain what Marx and Engels meant by "abolition of private property" and describe the ten measures they proposed.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> evaluate the theory fairly by asking what it explains well and what it leaves unanswered about how an economy would actually run.</div></div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-bourgeoisie" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Bourgeoisie</strong> <span style="color: #6b7a99; font-size: 14px;">/boor-zhwah-ZEE/</span><button class="gl-speak" type="button" data-say="boor zhwah zee" aria-label="Hear how to say Bourgeoisie" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">In Marx's writing, the class of people who own factories, land, and other capital and who hire others to work for them.</div></div><div id="g-class-struggle" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Class Struggle</strong> <span style="color: #6b7a99; font-size: 14px;">/klas STRUG-ul/</span><button class="gl-speak" type="button" data-say="class struggle" aria-label="Hear how to say Class Struggle" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">In Marx's view, the long conflict between groups, such as owners and workers, over who controls production and who gets its rewards.</div></div><div id="g-communism" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Communism</strong> <span style="color: #6b7a99; font-size: 14px;">/KOM-yuh-niz-um/</span><button class="gl-speak" type="button" data-say="communism" aria-label="Hear how to say Communism" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea.</div></div><div id="g-manifesto" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Manifesto</strong> <span style="color: #6b7a99; font-size: 14px;">/man-ih-FES-toh/</span><button class="gl-speak" type="button" data-say="manifesto" aria-label="Hear how to say Manifesto" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A public statement that explains the goals and beliefs of a person or a group.</div></div><div id="g-proletariat" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Proletariat</strong> <span style="color: #6b7a99; font-size: 14px;">/proh-leh-TAIR-ee-ut/</span><button class="gl-speak" type="button" data-say="proh leh tair ee ut" aria-label="Hear how to say Proletariat" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">In Marx's writing, the class of workers who own no factories or land and who live by selling their labor for wages.</div></div>
+    </div>
+
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128220; PART 1 &middot; TWO MEN AND A PAMPHLET</div><div class="optima-widget ow-reflect"><div class="widget-kicker">&#9889; QUICK CHECK-IN</div><div class="widget-question">Before you read, think about a simple question. Why do some families end up owning the factory, the farm, or the shop, while others work for a paycheck? (No wrong answer. You may change your mind.)</div><div class="widget-options"><button data-response="That is a common answer, and it has real truth in it. Keep it in mind as you read. Marx and Engels thought it explained far less than most people believe.">&#128170; Hard work and good choices</button><button data-response="Many people feel this way. Marx and Engels would partly agree, though their reason was different from luck. Watch for it.">&#127922; Luck and where you were born</button><button data-response="A strong answer. One of their ten proposals, which you will meet below, was aimed straight at inheritance.">&#127968; Inheritance and family</button><button data-response="That is an honest place to start. A good economist holds a mixed answer and then looks for evidence.">&#10067; A mix, and I am not sure</button></div><div class="widget-feedback"></div><button class="widget-reset">Reset</button></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Karl Marx and Friedrich Engels were two German thinkers who became friends in the 1840s. Marx was a journalist and philosopher who had been forced to move from country to country because of his political writing. Engels came from a family that owned a cotton mill, so he had seen factory life up close from the owner's side. Together they wrote a pamphlet for a small group called the Communist League. It was published in London in 1848 and is known today as <em>The Communist <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a></em>.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong><a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>manifesto</strong></a></strong> is a public statement of aims, and this one does not start timidly. It begins by telling the reader that the thing people call "<a class="gl" href="#g-communism" title="Communism: The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea. (/KOM-yuh-niz-um/)"><strong>communism</strong></a>" has become a European worry, and that the authors mean to answer the rumors by stating the party's views openly. It is short, vivid, and written to persuade. Keep that in mind. This is a work of argument, and it was meant to move readers, not just inform them.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; WHY SLOW DOWN FOR AN IDEA YOU MAY END UP REJECTING?</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">You will meet many opinions about Marx in your life, from people who love him and people who hate him. Very few of them have read the pamphlet. Honest scholars state a view so well that its own supporters would say, "Yes, that is what we mean." Only then do they test it.</div></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9878;&#65039; PART 2 &middot; THE ARGUMENT: HISTORY AS CLASS STRUGGLE</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Marx and Engels open the first chapter with a sweeping claim about the past. In their English translation, it reads: "The history of all hitherto existing society is the history of <a class="gl" href="#g-class-struggle" title="Class Struggle: In Marx&#x27;s view, the long conflict between groups, such as owners and workers, over who controls production and who gets its rewards. (/klas STRUG-ul/)"><strong>class struggles</strong></a>." Hitherto means "up to now." They are saying that if you look at any society in recorded history, you will find groups pulling against each other. They list pairs that you already know from your history classes: "Freeman and slave, patrician and plebeian, lord and serf, guild-master and journeyman, in a word, oppressor and oppressed."</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That is the core idea of <strong><a class="gl" href="#g-class-struggle" title="Class Struggle: In Marx&#x27;s view, the long conflict between groups, such as owners and workers, over who controls production and who gets its rewards. (/klas STRUG-ul/)"><strong>class struggle</strong></a></strong>. In every age, they argue, one group controls the main ways of making a living, and another group works under that control. The ancient world had masters and slaves. The medieval world had lords and serfs. They believed their own age had simplified things further. Here is how they put it: "Society as a whole is more and more splitting up into two great hostile camps, into two great classes directly facing each other." They named the two classes the <strong><a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a></strong> and the <strong><a class="gl" href="#g-proletariat" title="Proletariat: In Marx&#x27;s writing, the class of workers who own no factories or land and who live by selling their labor for wages. (/proh-leh-TAIR-ee-ut/)"><strong>proletariat</strong></a></strong>.</p><table class="ow-table"><tr><th>Class</th><th>Who they are, in the Manifesto's terms</th><th>How they make a living</th></tr><tr><td><a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>Bourgeoisie</strong></a></td><td>The owners of factories, land, ships, banks, and other capital</td><td>They own the means of production, meaning the tools, buildings, and land used to make goods, and they hire workers</td></tr><tr><td><a class="gl" href="#g-proletariat" title="Proletariat: In Marx&#x27;s writing, the class of workers who own no factories or land and who live by selling their labor for wages. (/proh-leh-TAIR-ee-ut/)"><strong>Proletariat</strong></a></td><td>The wage workers who own no capital</td><td>They sell their labor for wages, because they have nothing else to sell</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Notice that this is a claim about how people earn their living, not about how rich they are. A wealthy doctor who owns no factory would not fit neatly into either box. The theory sorts people by their relationship to capital.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What the authors admired, and what they charged</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is a surprise for many students. Marx and Engels did not simply hate the owners. They wrote with real admiration about what the <a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a> had done. Modern industry, they say, had "established the world market," and they describe a class that built cities, ships, railroads, and factories faster than any ruling group before it. They saw capitalism as a force of astonishing productive power.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Their complaint was about what that power did to people. They charged that the <a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a> had "resolved personal worth into exchange value," meaning that everything, including a worker's time and effort, had been reduced to a price. And they argued that the workers who ran the machines did not share in what the machines produced. The owner kept the profit. The worker kept a wage that, in their view, was just enough to live on.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economists have argued over that last claim for more than a century. For now, just see the shape of the argument. If one side holds the tools and the other side holds nothing, Marx and Engels thought, the struggle must end in revolution.</p><div style="background: #F7F9FC; border-left: 5px solid #C7922C; border-radius: 6px; padding: 16px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#128220; PRIMARY SOURCE</div><div style="font-size: 18px; color: #0e1c42; line-height: 1.65; font-style: italic;">"The history of all hitherto existing society is the history of <a class="gl" href="#g-class-struggle" title="Class Struggle: In Marx&#x27;s view, the long conflict between groups, such as owners and workers, over who controls production and who gets its rewards. (/klas STRUG-ul/)"><strong>class struggles</strong></a>."<br /><br />"Society as a whole is more and more splitting up into two great hostile camps, into two great classes directly facing each other."</div><div style="font-size: 14px; color: #4a5575; margin-top: 8px;">Karl Marx and Friedrich Engels, <em><a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a> of the Communist Party</em> (1848), Chapter 1, English translation by Samuel Moore, 1888, edited by Frederick Engels. Text from the Marxists Internet Archive.</div><!-- BUILD NOTE: typeset text, not a scan (optima-hs-social-studies IV.1). Replace with a page image from a period edition if one is located, and confirm translator attribution against the edition used. --></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Read those two lines once for what they claim and once for how they sound. The language is bold and total. "All hitherto existing society" is a very large claim, and a careful reader asks what evidence could support it. Wars between nations, religious divisions, and family rivalries do not sort neatly into two classes. You might say the authors found a real pattern and then stretched it to cover everything. That is a fair thing to say, and a fair thing to test.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="2" data-fb="Yes. The theory sorts people by their relationship to the means of production, not by income alone." data-hint="Not quite. Reread the table above and look at the second column."><div class="widget-question">In the <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a>, how are the <a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a> and the <a class="gl" href="#g-proletariat" title="Proletariat: In Marx&#x27;s writing, the class of workers who own no factories or land and who live by selling their labor for wages. (/proh-leh-TAIR-ee-ut/)"><strong>proletariat</strong></a> sorted from each other?</div><div class="widget-options"><button data-i="0">By how much money each person earns</button><button data-i="1">By whether they live in a city or a village</button><button data-i="2">By whether they own capital or live by selling their labor</button><button data-i="3">By which country they were born in</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="0" data-fb="Correct. They praised the productive power while arguing that the benefits flowed to owners." data-hint="Not quite. Look again at the section called &#x27;What the authors admired, and what they charged.&#x27;"><div class="widget-question">Which statement best describes how Marx and Engels viewed the <a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a>'s economic record?</div><div class="widget-options"><button data-i="0">They admired its productive power but charged that workers did not share in the results</button><button data-i="1">They thought it had produced almost nothing of value</button><button data-i="2">They believed it was a harmless class</button><button data-i="3">They wrote about it only briefly</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128220; PART 3 &middot; ABOLISH PRIVATE PROPERTY? WHAT THEY PROPOSED</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Chapter 2 turns from diagnosis to remedy, and it contains the sentence that everyone remembers. "In this sense," the authors write, "the theory of the Communists may be summed up in the single sentence: Abolition of private property." If you stop reading there, it sounds as if they want to take away your house, your phone, and your savings. Read further and the target becomes narrower. Their aim, as they explain it, was the ownership of capital: the factories, the land, and the other productive assets that let one class hire another. The theory called for those assets to be owned in common instead.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That, in short, is <strong><a class="gl" href="#g-communism" title="Communism: The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea. (/KOM-yuh-niz-um/)"><strong>communism</strong></a></strong> as the <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a> describes it. The tools of production belong to everyone through the community, and so no one can build a fortune by hiring others to work them. The authors said the working class would first need to win power. In their words, "The <a class="gl" href="#g-proletariat" title="Proletariat: In Marx&#x27;s writing, the class of workers who own no factories or land and who live by selling their labor for wages. (/proh-leh-TAIR-ee-ut/)"><strong>proletariat</strong></a> will use its political supremacy to wrest, by degrees, all capital from the <a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a>." The phrase "by degrees" matters. They did not expect it to happen in a day.</p><div style="background: #F7F9FC; border-left: 5px solid #C7922C; border-radius: 6px; padding: 16px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#128220; PRIMARY SOURCE</div><div style="font-size: 18px; color: #0e1c42; line-height: 1.65; font-style: italic;">"... the theory of the Communists may be summed up in the single sentence: Abolition of private property."<br /><br />"The <a class="gl" href="#g-proletariat" title="Proletariat: In Marx&#x27;s writing, the class of workers who own no factories or land and who live by selling their labor for wages. (/proh-leh-TAIR-ee-ut/)"><strong>proletariat</strong></a> will use its political supremacy to wrest, by degrees, all capital from the <a class="gl" href="#g-bourgeoisie" title="Bourgeoisie: In Marx&#x27;s writing, the class of people who own factories, land, and other capital and who hire others to work for them. (/boor-zhwah-ZEE/)"><strong>bourgeoisie</strong></a> ..."<br /><br />"Centralisation of credit in the hands of the state ..."</div><div style="font-size: 14px; color: #4a5575; margin-top: 8px;">Marx and Engels, <em><a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a> of the Communist Party</em> (1848), Chapter 2, English translation by Samuel Moore, 1888, edited by Frederick Engels. Text from the Marxists Internet Archive. Ellipses mark words left out.</div><!-- BUILD NOTE: typeset text, not a scan. Replace with a page image if a period edition is located. Quoted text was checked against the retrieved page; exact page boundaries to confirm. --></div><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The ten measures</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">At the end of Chapter 2, the authors list ten steps that they said would be "pretty generally applicable" in the most advanced countries. This table summarizes them in plain words. It is a paraphrase, not a quotation, so check the full list in the original when you do the assignment.</p><table class="ow-table"><tr><th>#</th><th>What they proposed (summary)</th><th>What kind of change it is</th></tr><tr><td>1</td><td>End private ownership of land and use land rents for public purposes</td><td>Ownership of capital</td></tr><tr><td>2</td><td>A steeply progressive income tax</td><td>Taxation</td></tr><tr><td>3</td><td>End the right of inheritance</td><td>Ownership of capital</td></tr><tr><td>4</td><td>Take the property of emigrants and rebels</td><td>Ownership of capital</td></tr><tr><td>5</td><td>Put credit in the hands of the state, through a national bank</td><td>Money and banking</td></tr><tr><td>6</td><td>Put communication and transport under state control</td><td>Ownership of capital</td></tr><tr><td>7</td><td>Expand state-owned factories and improve land by a common plan</td><td>Planning</td></tr><tr><td>8</td><td>Require everyone to work; form labor armies, especially for farming</td><td>Planning</td></tr><tr><td>9</td><td>Combine farming with manufacturing and gradually erase the line between town and country</td><td>Planning</td></tr><tr><td>10</td><td>Free public education for all children, and combine schooling with industrial production</td><td>Education</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Look at the list the way an economist would. Some items change who owns capital. Some change money and banking. Some are plans for what to build and where. A few look familiar: the United States today has a progressive income tax and free public schools. What set the <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a> apart was the combination, and the goal behind it: to move almost all productive property into the hands of the state.</p><details class="ow-reveal"><summary>Try this in your notebook before you click: pick any three of the ten measures and decide whether each one changes who OWNS capital, how much people PAY in taxes, or what a central authority PLANS. Then compare with the note below.</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">There is no single right sorting, since a few measures do more than one thing. The pattern worth noticing is how many items give a central authority a decision that markets normally make: where credit goes, what is built, who works where. That pattern is the reason this lesson ends with a question about knowledge, which you will return to in Lesson 7.04.</div></details></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128269; PART 4 &middot; TESTING THE THEORY</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A theory is not true because it is powerful or because it inspires people. It is true if it explains what happens in the world. So put Marx and Engels through the same test you would give any claim in this course. A great and difficult text is a living argument, and you are entitled to answer it.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What the theory gets right</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">It sees something real. The early factory age produced both enormous wealth and harsh conditions for many workers, and the authors wrote while it was happening. They saw that industry would change politics, family life, and culture. And the question they pose, whether a society's wealth reaches its working people, is a serious one. Reformers who never accepted <a class="gl" href="#g-communism" title="Communism: The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea. (/KOM-yuh-niz-um/)"><strong>communism</strong></a> worked on it with child labor laws, wage laws, and safety rules.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What it leaves unanswered</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Start with the prediction. Marx and Engels expected revolution to arrive first in the most industrial countries. That is not what happened. In much of the industrial world, wages and living standards rose over the next century, and the first communist revolutions came in Russia and China, which were mostly farming countries at the time. A failed prediction does not erase a theory, but it deserves to be noticed.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Now the deeper problem, and it is an economic one. Suppose the revolution succeeded and the community owned all productive capital. Someone would still have to decide how many shoes to make, where to build the next steel mill, and how much wheat to plant. In a market, prices and profits guide those decisions, and millions of people take part. The <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a>'s remedy leans on a central authority and on planning, but it says very little about how that authority would know what to do. In Module 1 you met the three questions every society must answer: what to produce, how to produce it, and for whom.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Notice too that history does not follow a script. Marx wrote as if each stage of history led surely to the next. Events actually turn on choices, accidents, and the characters of particular people. Nothing about the Russian Revolution, as you will see next lesson, was guaranteed by a law of history. Real people made real decisions, and the outcome could have gone another way.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; ONE QUESTION TO CARRY INTO THE NEXT LESSON</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">A theory written in London in 1848 was put into practice in Russia in 1917, in a country that Marx never studied closely. In the next three lessons, you will follow what happened. Keep one question in mind: when the theory met a real economy, did it solve the first-order economic problem, which is producing and distributing enough that the whole population prospers?</div></div><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Right. The remedy depends on planning, but the Manifesto says little about how planners would get the knowledge they need." data-hint="Not quite. Reread the section called &#x27;What it leaves unanswered,&#x27; especially the paragraph about shoes, steel, and wheat."><div class="widget-question">What does the theory leave largely unanswered, according to this lesson?</div><div class="widget-options"><button data-i="0">Whether factories exist</button><button data-i="1">How a central authority would learn what to produce and where</button><button data-i="2">Whether workers earn wages</button><button data-i="3">Whether the bourgeoisie existed in 1848</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="2" data-fb="Yes. A progressive income tax and free public schooling both appear in the U.S. system today, though the Manifesto paired them with far larger changes." data-hint="Not quite. Look at the ten-measure table and ask which items you studied in Module 4."><div class="widget-question">Which of Marx and Engels's ten measures has a close relative in the United States today?</div><div class="widget-options"><button data-i="0">Ending all inheritance</button><button data-i="1">State control of all transport</button><button data-i="2">A progressive income tax</button><button data-i="3">Labor armies for farming</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Correct. A theory is judged by how well it explains events. A failed prediction tells you where to look more closely." data-hint="Not quite. Reread the opening of Part 4."><div class="widget-question">Why does the lesson say a failed prediction still matters?</div><div class="widget-options"><button data-i="0">It proves the authors were dishonest</button><button data-i="1">It shows a theory should be tested against what actually happened</button><button data-i="2">It means no one should read the Manifesto</button><button data-i="3">It means communism was never tried</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.01 Reading Quiz</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on class struggle, the bourgeoisie and the proletariat, and the ten measures.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.01 Primary Source Exercise</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Four questions on the Manifesto passages above. This is part of your weekly work.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.01 Assignment</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will state the Manifesto's argument fairly and then test it.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.01 VR Lesson Resources</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that puts you in a nineteenth-century factory town.</div></div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Honesty begins with fairness to the view you doubt. You cannot answer an argument you have not understood, and you cannot trust a conclusion you have only heard about. Make a habit of reading the thing itself.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.01 &middot; Marx and Engels: The Theory of Communism</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

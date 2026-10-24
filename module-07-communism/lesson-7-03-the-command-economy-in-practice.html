@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 7.03</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 7</div>
+        <div style="font-size: 12px; color: #666;">Communism</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.03</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">The Command Economy in Practice: Stalin, Five-Year Plans, and Collectivization</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.03</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">The Command Economy in Practice: Stalin, Five-Year Plans, and Collectivization</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Who decides how many boots, tractors, and loaves of bread a huge country will make next year, and what happens when that person is wrong?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">After Lenin, the Soviet Union tried something no large country had tried before: planning almost every part of the economy from the center. This lesson looks at how that plan worked, what it built, and what it cost. As always, the aim is to report the evidence fairly, including the parts that are still argued over.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe how a command economy answers the three basic economic questions, using the Soviet <strong><a class="gl" href="#g-five-year-plan" title="Five-Year Plan: A national plan, set by the government, that lists production targets for every major part of the economy over five years. (/fyv-yeer plan/)"><strong>Five-Year Plan</strong></a></strong> and <strong><a class="gl" href="#g-gosplan" title="Gosplan: The Soviet state planning commission. The name is a short form of a Russian title meaning State Planning Committee. (/GOHS-plahn/)"><em>Gosplan</em></a></strong> as an example.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain what <strong><a class="gl" href="#g-collectivization" title="Collectivization: Forcing many small, privately owned farms to join together into large farms run as a group under state direction. (/kuh-lek-tih-vih-ZAY-shun/)"><strong>collectivization</strong></a></strong> was and why it led to a <strong><a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a></strong>.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> judge the plan against the first-order economic problem, naming what it achieved and what it failed to deliver.</div></div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-collectivization" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Collectivization</strong> <span style="color: #6b7a99; font-size: 14px;">/kuh-lek-tih-vih-ZAY-shun/</span><button class="gl-speak" type="button" data-say="collectivization" aria-label="Hear how to say Collectivization" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Forcing many small, privately owned farms to join together into large farms run as a group under state direction.</div></div><div id="g-famine" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Famine</strong> <span style="color: #6b7a99; font-size: 14px;">/FAM-in/</span><button class="gl-speak" type="button" data-say="famine" aria-label="Hear how to say Famine" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A severe shortage of food that leaves many people hungry and causes many deaths.</div></div><div id="g-five-year-plan" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Five-Year Plan</strong> <span style="color: #6b7a99; font-size: 14px;">/fyv-yeer plan/</span><button class="gl-speak" type="button" data-say="five year plan" aria-label="Hear how to say Five-Year Plan" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A national plan, set by the government, that lists production targets for every major part of the economy over five years.</div></div><div id="g-heavy-industry" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Heavy Industry</strong> <span style="color: #6b7a99; font-size: 14px;">/HEV-ee IN-dus-tree/</span><button class="gl-speak" type="button" data-say="heavy industry" aria-label="Hear how to say Heavy Industry" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Industry that makes big, basic goods such as steel, coal, machines, and electric power, rather than goods for families to buy.</div></div><div id="g-new-economic-policy" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">New Economic Policy (NEP)</strong> <span style="color: #6b7a99; font-size: 14px;">/noo ek-uh-NOM-ik POL-ih-see/</span><button class="gl-speak" type="button" data-say="new economic policy" aria-label="Hear how to say New Economic Policy (NEP)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit.</div></div>
+    </div>
+
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128197; PART 1 &middot; STALIN BUILDS THE PLAN</div><div class="optima-widget ow-reflect"><div class="widget-kicker">&#9889; QUICK CHECK-IN</div><div class="widget-question">Imagine you are the single planner for a whole country. You have limited steel, workers, and farmland. Which would you put first? (No wrong answer. You may change your mind.)</div><div class="widget-options"><button data-response="This is the choice the Soviet planners made. Notice what it required the rest of the country to give up.">&#127981; Factories and steel</button><button data-response="A natural answer, and in the long run people have to eat. But a planner who chooses it must explain how the factories will ever get built.">&#127838; Food and clothing</button><button data-response="This was a real concern for Soviet leaders, who feared another invasion. It pulls capital toward industry as well.">&#128737;&#65039; Defense and weapons</button><button data-response="That is what any planner would hope for. The lesson shows how hard it is to know the right balance without prices to tell you.">&#9878;&#65039; A balance of all three</button></div><div class="widget-feedback"></div><button class="widget-reset">Reset</button></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Lenin died in January 1924. A struggle for power followed, and by the late 1920s Joseph Stalin had pushed his rivals aside. The <a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>New Economic Policy</strong></a> was still in place, but trouble was building. In 1927 the state could not buy enough grain at the low prices it was offering, and the cities and the army needed food. Stalin's answer was to move toward force and away from the <a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>NEP</strong></a>. By the fall of 1928 he had decided to end it.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The replacement was a national plan. A state commission called <strong><a class="gl" href="#g-gosplan" title="Gosplan: The Soviet state planning commission. The name is a short form of a Russian title meaning State Planning Committee. (/GOHS-plahn/)"><em>Gosplan</em></a></strong> drew up targets for the whole economy, and its work became the basis of the first <strong><a class="gl" href="#g-five-year-plan" title="Five-Year Plan: A national plan, set by the government, that lists production targets for every major part of the economy over five years. (/fyv-yeer plan/)"><strong>Five-Year Plan</strong></a></strong>, which began in 1928. <a class="gl" href="#g-gosplan" title="Gosplan: The Soviet state planning commission. The name is a short form of a Russian title meaning State Planning Committee. (/GOHS-plahn/)"><em>Gosplan</em></a>'s planners listed how much steel, coal, and machinery the country should produce. Then each factory and farm was told its share.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Was this turn inevitable? Historians say no. Nikolai Bukharin and other leaders argued for keeping the <a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>NEP</strong></a> and letting farmers and markets keep feeding the cities. Stalin and his allies won the argument, and in November 1929 Bukharin was removed from the top leadership. Another outcome was possible, one in which the Soviet Union industrialized more slowly and kept its markets. We cannot know how that road would have gone, but we can see that it existed.</p><div style="background: #FDF3E3; border-left: 5px solid #C7922C; border-radius: 7px; padding: 16px 22px; margin: 16px 0;"><div style="font-size: 11px; color: #9a6a12; margin-bottom: 6px;">&#127760; FOREIGN LANGUAGE VOCABULARY</div><div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">Three Russian words in this lesson. Each one is in italic type and has a dotted underline in the text, so you can hover over it or tap the speaker to hear how it is said.</div><div id="g-gosplan" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Gosplan</em></strong> <span style="color: #6b7a99; font-size: 14px;">/GOHS-plahn/</span><button class="gl-speak" type="button" data-say="gos plan" aria-label="Hear how to say Gosplan" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The Soviet state planning commission. The name is a short form of a Russian title meaning State Planning Committee.</div></div><div id="g-kolkhoz" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Kolkhoz</em></strong> <span style="color: #6b7a99; font-size: 14px;">/kul-KHOHZ/</span><button class="gl-speak" type="button" data-say="kol hoz" aria-label="Hear how to say Kolkhoz" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A Soviet collective farm. It was farmed as a group, under state supervision, instead of by separate families.</div></div><div id="g-kulak" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Kulak</em></strong> <span style="color: #6b7a99; font-size: 14px;">/koo-LAHK/</span><button class="gl-speak" type="button" data-say="koo lahk" aria-label="Hear how to say Kulak" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A Russian word that means "fist." The Soviet government used it as a label for better-off farmers and for anyone it blamed for resisting.</div></div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You met this idea in Module 1. A <strong>command economy</strong> answers the three basic questions, what to produce, how to produce it, and for whom, through orders from the center. Under the <a class="gl" href="#g-five-year-plan" title="Five-Year Plan: A national plan, set by the government, that lists production targets for every major part of the economy over five years. (/fyv-yeer plan/)"><strong>Five-Year Plan</strong></a>, the answer to the first question was <strong><a class="gl" href="#g-heavy-industry" title="Heavy Industry: Industry that makes big, basic goods such as steel, coal, machines, and electric power, rather than goods for families to buy. (/HEV-ee IN-dus-tree/)"><strong>heavy industry</strong></a></strong>: steel, coal, electric power, and machines. The reasoning was that an industrial base would make the country strong, fast. According to Britannica, the cost was a sharp fall in consumer goods, the things families actually buy.</p><table class="ow-table"><tr><th>Question</th><th>In a market economy</th><th>In the Soviet command economy</th></tr><tr><td>What to produce</td><td>Buyers' demand, shown by prices and profits</td><td>Planners' targets, set in Moscow</td></tr><tr><td>How to produce it</td><td>Each firm tries the cheapest method that works</td><td>Planners and ministries issue methods and inputs</td></tr><tr><td>For whom</td><td>Whoever can pay, and wages and prices decide who can</td><td>Whoever the plan assigns goods to</td></tr></table></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128200; PART 2 &middot; WHAT THE PLAN BUILT, AND HOW HARD IT IS TO KNOW</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is a made-up example, to show how a target can go wrong in a small way. Suppose a boot factory is told to produce 10,000 pairs this year, and it is judged on that count. The easiest way to hit the target is to make one size, in one style, from the cheapest leather. The factory meets its quota. But the stores now have thousands of identical boots and no boots for people with narrow feet or large feet. The plan counted pairs. It did not count whether anyone could use them.</p><details class="ow-reveal"><summary>Try this in your notebook before you click: how could a planner change the target so the factory makes useful boots? Then ask what new information the planner would need.</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">The planner could set targets by size and style. But that requires knowing how many people in every town wear every size, and how tastes shift from year to year. In a market, shoe stores report what sells through their orders, and prices on slow sellers fall. A planner must collect that knowledge from the whole country, and that takes time. This is the problem you will study directly in Lesson 7.04.</div></details><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The scale of the effort was real. The number of workers in industry roughly doubled during the first plan, from about 3.1 million in 1928 to about 6 million in 1932, according to the historian Phillip Hansen. New mines and factories went up. The plan's own heavy-industry target was a rise of 350 percent. Stalin announced in 1933 that the plan had been fulfilled in four years and three months.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is where a careful reader slows down. How much did output actually rise? Estimates differ widely. One historian, Keefe, puts the rise in overall industrial output at about 50 percent. Another, Dobb, reports a rise of 118 percent, with capital goods up 158 percent and consumer goods up 87 percent. The gap is not a typo. It comes from different ways of counting, and it shows a problem with planned economies that you should keep in mind. When the people who run the system also report on the system, the numbers can reflect what the system wants to hear. Historians describe 1930 as an era of exaggeration in the official claims.</p><div class="ow-stats"><div class="stat"><div class="big">350%</div><div class="lbl">the plan's target for heavy-industry output</div></div><div class="stat"><div class="big">50% to 118%</div><div class="lbl">range of estimates for total industrial growth</div></div><div class="stat"><div class="big">3.1M to 6.0M</div><div class="lbl">industrial workers, 1928 to 1932</div></div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">On the plus side, many historians argue that the industrial base built in these years helped the Soviet Union survive the German invasion of 1941. That is a real first-order result, since defense is one of a regime's first jobs. On the minus side, the same plan left families short of basic goods. Britannica notes that consumer goods fell sharply, and Hansen and other historians report that food became scarce in the cities.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Notice a pattern. Planners could set a target for steel and get steel. What they could not easily do was find out what people wanted, or whether a factory was making the right thing. A manager rewarded for meeting a target will meet the target, even if that means making goods nobody needs. Targets were often raised after they were met, according to the historian Sheila Fitzpatrick. That teaches a manager to hold something back. You will meet this idea again in the final lesson.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="0" data-fb="Correct. In a command economy, the center decides what gets made and how much." data-hint="Not quite. Look at the table in Part 1, middle column versus right column."><div class="widget-question">Which phrase best describes how a command economy answers the question 'What to produce?'</div><div class="widget-options"><button data-i="0">Planners decide, and issue targets</button><button data-i="1">Buyers vote with their dollars</button><button data-i="2">A random drawing</button><button data-i="3">Whatever firms choose to advertise</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Right. Different counting methods, and an incentive to report good news, make the true figure hard to pin down." data-hint="Not quite. Reread the second paragraph of Part 2."><div class="widget-question">Why does the lesson say the gap between 50 percent and 118 percent matters?</div><div class="widget-options"><button data-i="0">It proves the plan completely failed</button><button data-i="1">It shows that even counting output can be hard when the system reports on itself</button><button data-i="2">It means the plan reached its goals exactly</button><button data-i="3">It shows that consumer goods grew fastest</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127806; PART 3 &middot; COLLECTIVIZATION AND THE FAMINE</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Industry needed workers, and cities needed bread. Stalin's government decided to get both from the countryside through <strong><a class="gl" href="#g-collectivization" title="Collectivization: Forcing many small, privately owned farms to join together into large farms run as a group under state direction. (/kuh-lek-tih-vih-ZAY-shun/)"><strong>collectivization</strong></a></strong>. The plan was to gather millions of small family farms into large collective farms, called <strong><a class="gl" href="#g-kolkhoz" title="Kolkhoz: A Soviet collective farm. It was farmed as a group, under state supervision, instead of by separate families. (/kul-KHOHZ/)"><em>kolkhozy</em></a></strong>, run as a group under state supervision. The state would then buy the grain at low prices set by the state, feed the cities, and sell some abroad to pay for imported machines.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Farmers who owned more land or animals than their neighbors were called <strong><a class="gl" href="#g-kulak" title="Kulak: A Russian word that means &quot;fist.&quot; The Soviet government used it as a label for better-off farmers and for anyone it blamed for resisting. (/koo-LAHK/)"><em>kulaks</em></a></strong>. Stalin called for an end to them as a class. The label was stretched to cover anyone who resisted, and one estimate counts about 3.5 million people as stripped of their property between 1929 and 1931. Some historians report that farmers slaughtered their own animals rather than hand them over. Think about that choice in terms of incentives. A farmer who cannot keep the reward for raising an animal may decide that eating it is the better option.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Then the harvests failed in places, and the plan did not bend. The numbers that follow come from a standard reference article and are cited there to specialist historians, so treat them as approximate. In 1930, Ukraine supplied about 38 percent of the state's grain deliveries while producing about 27 percent of the harvest. In 1931 its harvest fell from 23.9 million tons to 18.3 million tons, yet the demand stayed near the earlier year's level of 7.7 million tons.</p><details class="ow-reveal"><summary>Try this in your notebook before you click: if the harvest was 18.3 million tons and the state demanded 7.7 million tons, about what percent of the whole harvest was taken?</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">7.7 divided by 18.3 is about 0.42, so roughly 42 percent. Compare that with the farm family's own needs, seed for next year, and feed for animals. A demand that large leaves very little margin, and it shows how a quota set from the center can ignore what happened in the field.</div></details><div class="ow-stats"><div class="stat"><div class="big">5.8M</div><div class="lbl">tons of grain exported, 1930 to 1931</div></div><div class="stat"><div class="big">4.8M</div><div class="lbl">tons exported, 1931 to 1932</div></div><div class="stat"><div class="big">1.6M</div><div class="lbl">tons exported, 1932 to 1933</div></div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Grain exports did fall sharply, but the damage was already done. The result was a <strong><a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a></strong> in 1932 and 1933 that struck Ukraine, the Volga region, and Kazakhstan hardest. Estimates of the dead range from about 3 million to nearly 9 million, depending on the historian and the way deaths are counted. The government denied the <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a> and refused foreign aid. Peasants who took grain from the fields could be punished. Passports and travel limits kept people from leaving the hungry regions.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Kazakhstan deserves a mention of its own. Many Kazakhs lived by herding animals on open land, and the <a class="gl" href="#g-collectivization" title="Collectivization: Forcing many small, privately owned farms to join together into large farms run as a group under state direction. (/kuh-lek-tih-vih-ZAY-shun/)"><strong>collectivization</strong></a> campaign hit that way of life hard. The historian Sarah Cameron reports that somewhere between 665,000 and 1.1 million Kazakhs fled the <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a>, and that about 30 percent of those refugees died of disease and hunger. A nomadic people lost much of its herd, and with it, much of its way of living.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Numbers like these can slide past us. Try holding one in mind. The low estimate of about 3 million deaths is equal to the crowd in a stadium of 100,000 seats filled thirty times over. Behind each seat is a person who needed bread. That is the weight you are asked to carry into the analysis, not push away from it.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What historians argue about</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Was the <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a> a deliberate act or a catastrophe of policy and rigidity? Scholars disagree, and a fair student reports both sides. J. Arch Getty, R. W. Davies, and Stephen Wheatcroft argue that it came from "bungling and rigidity," as Getty puts it, and not from a plan to kill. Michael Ellman argues that knowingly keeping policies in place that cause mass death can be a form of intent. A third group, writing on Ukraine, argues that the <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a> fell harder on Ukrainians than policy alone explains. All of them agree on the central fact: a government's economic plan, enforced without regard to what it was doing to farmers, was followed by millions of deaths.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; WHEN A SYSTEM CANNOT HEAR BAD NEWS</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">A market has a built-in way to hear bad news: prices rise, profits fall, and firms change what they do. A command economy depends on reports flowing up and orders flowing down. When reporting a failure is dangerous, the center loses its eyes. That is one reason a mistake in a command economy can grow so large before anyone fixes it.</div></div><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Judging the plan by first-order problems</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Use the same test as before. On defense and industrial power, the plan can claim results. On the first-order economic problem, producing and distributing enough that the whole population prospers, the record is poor. The country had less food and fewer consumer goods than its people needed, and millions died in a <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a>. Virtues and vices here are stable traits, not single deeds. A leadership that is determined, but also secretive, rigid, and willing to deny a <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a>, shows traits that make a regime worse at learning from its mistakes.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Correct. Historians weigh these factors differently, which is why the question of causes and intent is still open." data-hint="Not quite. Look at the paragraph beginning &#x27;Was the famine a deliberate act?&#x27;"><div class="widget-question">Why do the grain-export figures not simply explain the <a class="gl" href="#g-famine" title="Famine: A severe shortage of food that leaves many people hungry and causes many deaths. (/FAM-in/)"><strong>famine</strong></a>?</div><div class="widget-options"><button data-i="0">Exports were the only cause</button><button data-i="1">Collectivization, quotas, weather, and rigid enforcement all interacted, and scholars weigh them differently</button><button data-i="2">Exports rose each year</button><button data-i="3">Exports were never recorded</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="1" data-fb="Right. The label stretched to cover resistance, which made it a tool of pressure." data-hint="Not quite. Reread the second paragraph of Part 3."><div class="widget-question">How does the label '<a class="gl" href="#g-kulak" title="Kulak: A Russian word that means &quot;fist.&quot; The Soviet government used it as a label for better-off farmers and for anyone it blamed for resisting. (/koo-LAHK/)"><em>kulak</em></a>' work as an example of a problem in the system?</div><div class="widget-options"><button data-i="0">It was a precise legal category</button><button data-i="1">It was applied broadly enough to include anyone seen as resisting</button><button data-i="2">It meant a government official</button><button data-i="3">It was used only for city workers</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="2" data-fb="Yes. When the reward for caring for an asset is removed, people may choose to consume or destroy it." data-hint="Not quite. Look at the end of the second paragraph of Part 3."><div class="widget-question">What is the main lesson about incentives in the slaughter of livestock?</div><div class="widget-options"><button data-i="0">Farmers like to waste meat</button><button data-i="1">Animals were worthless</button><button data-i="2">If the reward for keeping something is taken, people may destroy it instead</button><button data-i="3">Collectivization raised livestock numbers</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.03 Reading Quiz</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on Gosplan, the Five-Year Plan, collectivization, and the famine.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.03 Assignment</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will judge the Five-Year Plan against the first-order economic problem.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.03 VR Lesson Resources</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that puts you inside a planned factory floor and a collective farm.</div></div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Honesty is a virtue of nations as well as people. A government that cannot admit a failure cannot correct it, and the cost of that silence is paid by ordinary families. Notice the difference between a plan that can hear bad news and one that cannot.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.03 &middot; The Command Economy in Practice: Stalin, Five-Year Plans, and Collectivization</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

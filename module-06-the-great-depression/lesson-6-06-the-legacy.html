@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 6.06</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 6</div>
+        <div style="font-size: 12px; color: #666;">The Great Depression</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 6.06</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">The Legacy of the Depression</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 6.06</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">The Legacy: Who Was Helped, Who Was Left Out, and How the Depression Ended</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">How do you judge a set of policies when the experts still disagree about what worked?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Every explanation of the Depression has to deal with an uncomfortable fact: it did not end the day the New Deal began. This lesson looks at who the new programs protected and who they did not, how the courts limited them, why the economy fell again in 1937, and what economists think finally ended the slump. It asks you to hold two things together, confidence in what is known and honesty about what is not.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain who was covered by the Social Security Act of 1935 and who was left out, and give the competing explanations.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe how Supreme Court decisions limited the NIRA and the AAA, and why the economy fell again in 1937 and 1938.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> compare three explanations for the end of the Depression and evaluate the New Deal against the first-order economic problem.</div>
+        </div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-price-floor" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Price Floor</strong> <span style="color: #6b7a99; font-size: 14px;">/pryse flor/</span><button class="gl-speak" type="button" data-say="price floor" aria-label="Hear how to say Price Floor" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A legal minimum price. Sellers may not charge less than it.</div></div>
+            <div id="g-unconstitutional" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Unconstitutional</strong> <span style="color: #6b7a99; font-size: 14px;">/un-kon-stih-TOO-shun-ul/</span><button class="gl-speak" type="button" data-say="unconstitutional" aria-label="Hear how to say Unconstitutional" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Not allowed by the Constitution.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128737;&#65039; PART 1 &middot; THE SAFETY NET AND ITS HOLES</div>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">When you judge a big policy, which question do you ask first? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="A fair test. But a goal can be reached and still leave people out. Keep an eye on who was counted in this lesson.">&#127919; Did it reach its goal?</button>
+                <button data-response="That is the question the lesson starts with. It will take real care, because the evidence has more than one reading.">&#129309; Who was helped and who was not?</button>
+                <button data-response="Good economics. Every policy has an opportunity cost, even one that works.">&#128176; What did it cost?</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A New Kind of Promise</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1935, Congress passed the Social Security Act. It set up old-age insurance for retired workers and created a national system of unemployment insurance. In Lesson 6.03 you saw that before this, jobless Americans had no national program to turn to. A worker now earned protection as part of the job, and the idea that the national government had a role in a person's security was no longer unusual. This is the system that later became the social safety net you studied in Module 1.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">But the law did not cover everyone. According to the Social Security Administration, it covered wage and salary workers under age 65 who worked in industry and commerce. Left out were agricultural laborers, domestic servants in private homes, and several other categories. Think about how many people that was. In 1935, a large share of the workforce, including a majority of Black workers, worked on farms or in other people's homes.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why Were They Left Out? Two Readings</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Historians have long debated the reason, and it deserves a careful look at both sides.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The first reading comes from the Social Security Administration's own historian, Larry DeWitt. He studied the record and concluded that the exclusion came from questions of administrative feasibility. Farm and household workers were hard to track, and the new payroll tax had to be collected from employers. In his judgment, there is no evidence of an additional policy motive involving racial bias.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The second reading points to the result. Agricultural workers and household servants made up a majority of the African American workforce in 1935. Whatever the motive, many scholars note that excluding them meant that most Black workers were left out of old-age insurance and unemployment insurance when the law began.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">These two views are not as far apart as they first look. One is about why Congress did what it did. The other is about what happened as a result. A careful student can accept that the law was shaped by practical limits, and also that its effect fell heavily on those workers. If a historian tells you the matter is simple, ask for the evidence.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The same question of who bears the cost applies to the farm program you met in Lesson 6.05. The AAA's subsidies were paid for by a tax on processors, such as the owners of cotton mills. A tax like that does not always stay with the person who writes the check. A processor can try to pass it on in higher prices, or to pay farmers less. Who ends up paying is not decided by the law that names the taxpayer. It is decided by how buyers and sellers respond.</p>
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; WHY THIS MATTERS FOR ECONOMICS</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Every program draws a line around who is covered. Where the line falls changes who benefits, who pays, and who must find another way. Economists call this the question of incidence. It is one of the most useful ideas in public policy, and it applies as much to a tax or a tariff as to a pension.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9878;&#65039; PART 2 &middot; THE COURTS AND A SECOND DOWNTURN</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Supreme Court Steps In</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Two of the biggest 1933 programs did not survive. On May 27, 1935, the Supreme Court ruled in <em>A.L.A. Schechter Poultry Corp. v. United States</em> that part of the National Industrial Recovery Act was <a class="gl" href="#g-unconstitutional" title="unconstitutional: Not allowed by the Constitution. (/un-kon-stih-TOO-shun-ul/)"><strong>unconstitutional</strong></a>. That means the Court found it was not allowed by the Constitution. The Court held that the law gave too much lawmaking power to the executive branch, and it said the Constitution did not give Congress authority over a small New York business like Schechter's. The vote was unanimous. Chief Justice Hughes wrote the opinion.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">On January 6, 1936, in <em>United States v. Butler</em>, the Court struck down the tax that paid for the Agricultural Adjustment Act's subsidies. The administration had expected the AAA to survive because it was voluntary, with farmers signing contracts. It did not.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Notice the rule at work. In the American system, the courts can check even popular programs. Some people saw the Court as a roadblock on the way to recovery. Others saw it as the Constitution doing its job. Whichever view you take, the rulings mattered. The NIRA and the AAA, the programs built on <a class="gl" href="#g-price-floor" title="price floors: A legal minimum price. Sellers may not charge less than it. (/pryse flor/)"><strong>price floors</strong></a> and output limits, did not continue in their original form.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Recession Inside the Depression</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">By 1937, the economy had grown for more than four years. Then it turned down again. The business cycle dates show a new peak in May 1937 and a trough in June 1938, a contraction that lasted 13 months. Industrial production fell by roughly 30 percent, according to one study by the National Bureau of Economic Research. Real output fell by about 10 to 11 percent. Unemployment rose again, though the sources give very different numbers, so we will not quote one.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">What caused it? Economists disagree. One argument points to the Federal Reserve. In 1936 and early 1937, because banks were holding a lot of extra reserves, the Fed doubled the minimum reserves banks had to hold. Milton Friedman and Anna Schwartz argued that this forced banks to cut back and made the money supply shrink. Other economists, including Charles Calomiris, Joseph Mason, and David Wheelock, studied bank records and found that the new rules did not bind most banks, so the effect may have been small. The cause of the 1937 recession is still not settled.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The lesson is a hard one. A recovery that looks secure can reverse. The people living through 1937 had just begun to hope, and then they watched the numbers turn around.</p>
+        <div class="flip-grid">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Social Security Act, 1935</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Created old-age insurance and national unemployment insurance. Left out farm laborers and household servants.</div></div><button class="widget-reset">Reset</button></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Schechter, May 27, 1935</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A unanimous Supreme Court ruled that part of the NIRA was <a class="gl" href="#g-unconstitutional" title="unconstitutional: Not allowed by the Constitution. (/un-kon-stih-TOO-shun-ul/)"><strong>unconstitutional</strong></a>.</div></div><button class="widget-reset">Reset</button></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Butler, January 6, 1936</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">The Court struck down the processing tax that paid for the AAA's subsidies.</div></div><button class="widget-reset">Reset</button></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">May 1937 to June 1938</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A 13-month contraction inside the Depression era, with a big drop in industrial production.</div></div><button class="widget-reset">Reset</button></div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128269; PART 3 &middot; HOW DID IT END, AND WHAT DO WE MAKE OF IT?</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Three Explanations</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economists give three main answers to the question of what ended the Depression. They are not completely separate, and each has serious defenders.</p>
+        <table class="ow-table"><thead><tr><th>Explanation</th><th>The argument</th><th>A caution</th></tr></thead><tbody><tr><td>Money</td><td>The economist Christina Romer found that nearly all the recovery before 1942 came from monetary expansion. Gold flowing into the United States swelled the money supply, which lowered real interest rates and encouraged spending on investment and on durable goods like cars.</td><td>It is one economist's analysis. It does not mean spending did nothing.</td></tr><tr><td>Government spending</td><td>Under the Keynesian view you met in Lesson 5.05, government spending can fill the gap when private spending falls.</td><td>Romer concluded that fiscal policy contributed almost nothing before 1942. Critics at the Levy Institute argue that the usual measures of fiscal effects may understate it.</td></tr><tr><td>War mobilization</td><td>The United States entered World War II in December 1941. Military production and the draft changed the labor market in ways peacetime policy had not.</td><td>This lies mostly after the period Romer studied. It raises the harder question of whether war is a good model for peacetime policy.</td></tr></tbody></table>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Why would gold coming in help? Once the dollar was no longer tied tightly to gold, incoming gold could expand the money supply. More money in the banking system meant banks could lend at lower rates. Lower real interest rates make borrowing to build a factory or buy a car look cheaper. That is the chain Romer describes: money, then interest rates, then spending. You do not have to accept her weights to notice the chain.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The point of the table is not to choose a winner. It is to show you how a careful person holds a question that remains open. You can be confident of what is documented. The recession dates, the money supply, the programs, and the court rulings are all part of the record. You can also be honest that the weights to give each cause remain in dispute.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Counterfactual Problem</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">To say a policy worked, you need to know what would have happened without it. That is the hard part, because history runs only once. We cannot go back, remove the FDIC, and watch a second 1933. Economists get around this by comparing. They compare one country with another, one region with another, or one year with a similar year. Each comparison has weaknesses, because no two cases are exactly alike.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">So when you read a claim such as "the New Deal ended the Depression" or "the New Deal prolonged it," ask one question first: compared with what? A claim without a comparison is only an opinion. A claim with a careful comparison is the beginning of an argument you can test.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Judging the New Deal Fairly</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The first-order economic problem is to produce and share enough that the whole population lives well. Measured that way, here is a fair summary. The bank rescue and the FDIC worked quickly, and deposit insurance has lasted for generations. The expansion that began in March 1933 ran for 50 months. Many programs helped real families. Some of the most ambitious ones, the NIRA and the AAA in their original form, were struck down or later reshaped. The economy did not fully recover in the 1930s, and it fell back in 1937. And the safety net, when it first appeared, left out many of the workers who were most exposed.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Notice that this summary does not call the New Deal a triumph or a failure. It reports what happened. That is what honesty in scholarship looks like, and it takes more courage than taking a side. Some readers will want a verdict. A good economist, or a good citizen, learns to say: here is what the evidence supports, here is where it runs out.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What the Depression Taught</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Look back across the six lessons. Debt made the boom fragile. A stock fall was turned into a banking crisis by fear and by a shrinking money supply. People suffered most where they had the least cushion. A government that began with loans and tax increases changed course. Programs that tried to control prices met resistance in the courts. And a recovery that seemed secure stalled when policy turned.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Notice also what kept reappearing. Incentives shaped behavior. Money and credit moved through the whole economy. Trust was a real economic asset. Policy involved real tradeoffs, and different people paid different costs. Those are the central ideas of this course. The Depression is the largest laboratory in American history for testing them.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You are joining a conversation that began in the 1930s and still goes on. Keynes, Friedman and Schwartz, and Romer are not museum pieces. Their arguments are used today in central banks and in Congress. When you take a side on a question like this, and defend it with evidence, you are doing what economists do.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Two very different subjects come next. In Module 7, you will study a response to economic problems that rejected markets altogether, and you will ask how it worked in practice. In Module 8, you will move from the whole economy to your own, and learn how money, loans, and interest rates work when you are the one borrowing.</p>
+        <div class="optima-widget ow-check">
+            <div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div>
+            <div class="ow-row" data-correct="1" data-fb="Yes. Careful history reports both the stated reason and the real-world effect." data-hint="Not quite. Reread &quot;Why Were They Left Out? Two Readings.&quot;">
+                <div class="widget-question">The Social Security Act of 1935 left out agricultural laborers and domestic servants. Which statement is most accurate?</div>
+                <div class="widget-options">
+                    <button data-i="0">Everyone agrees racial bias was the only cause.</button>
+                    <button data-i="1">SSA's historian points to administrative feasibility, while other scholars note the exclusion fell on a majority of Black workers.</button>
+                    <button data-i="2">The law covered every American worker.</button>
+                    <button data-i="3">Historians have never discussed the question.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="1" data-fb="Correct. The Court unanimously ruled that part of the NIRA was unconstitutional." data-hint="Not quite. Look at the opening of Part 2.">
+                <div class="widget-question">What did the Supreme Court decide in Schechter in May 1935?</div>
+                <div class="widget-options">
+                    <button data-i="0">That the NIRA was entirely constitutional.</button>
+                    <button data-i="1">That part of the NIRA was unconstitutional.</button>
+                    <button data-i="2">That the AAA must end.</button>
+                    <button data-i="3">That the Federal Reserve must close.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="1" data-fb="Right. Money, spending, and war mobilization each have evidence behind them, and economists weigh them differently." data-hint="Not quite. Look at the table in Part 3.">
+                <div class="widget-question">Why does the lesson refuse to name a single cause for the end of the Depression?</div>
+                <div class="widget-options">
+                    <button data-i="0">Because it does not matter.</button>
+                    <button data-i="1">Because the evidence supports more than one explanation, and experts weigh them differently.</button>
+                    <button data-i="2">Because the government has not published any data.</button>
+                    <button data-i="3">Because everyone agrees on war mobilization.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.06 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on Social Security, the court rulings, the 1937 recession, and the three explanations.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.06 Assignment</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will judge the New Deal on the first-order economic problem and report where the evidence runs out.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.06 VR Lesson Resources</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that lets you compare the three explanations side by side.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Module 6 Test and Module 6 Project</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">The test covers all six lessons. The project asks you to put the whole module to work.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Honesty is a habit you practice when the answer is inconvenient. It would be easier to say the New Deal saved America, or that it failed. The truth is harder and more interesting, and the habit of saying it plainly is worth more than either verdict. In Module 7, you will turn to a very different response to economic crisis.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 6.06 &middot; The Legacy of the Depression</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

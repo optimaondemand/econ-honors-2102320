@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 6.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 6</div>
+        <div style="font-size: 12px; color: #666;">The Great Depression</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 6.02</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">The Crash of 1929 and the Banking Panics</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 6.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">The Crash of 1929 and the Banking Panics</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A stock market can fall without ruining a country. So how did this one fall into a depression?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Most people remember October 1929. Fewer remember that the worst of the Depression came later, when the banking system itself began to fail. This lesson follows the money. You will see how a loss on paper became a loss of money in circulation, and why economists still argue about who could have stopped it.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why a stock market crash is not the same thing as a depression.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe how bank runs and the lack of <a class="gl" href="#g-deposit-insurance" title="deposit insurance: A promise that if a bank fails, the government will repay depositors up to a set amount. (/dih-POZ-it in-SHUR-ans/)"><strong>deposit insurance</strong></a> turned bank failures into a national crisis.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> trace how the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>, the money supply, and falling prices fed each other, and name two views of what went wrong.</div>
+        </div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-bank-run" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Bank Run</strong> <span style="color: #6b7a99; font-size: 14px;">/bank run/</span><button class="gl-speak" type="button" data-say="bank run" aria-label="Hear how to say Bank Run" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">What happens when many customers rush to take their money out of a bank at the same time because they fear it will fail.</div></div>
+            <div id="g-deposit-insurance" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Deposit Insurance</strong> <span style="color: #6b7a99; font-size: 14px;">/dih-POZ-it in-SHUR-ans/</span><button class="gl-speak" type="button" data-say="deposit insurance" aria-label="Hear how to say Deposit Insurance" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A promise that if a bank fails, the government will repay depositors up to a set amount.</div></div>
+            <div id="g-discount-rate" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Discount Rate</strong> <span style="color: #6b7a99; font-size: 14px;">/DIS-kount rayt/</span><button class="gl-speak" type="button" data-say="discount rate" aria-label="Hear how to say Discount Rate" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The interest rate the Federal Reserve charges banks when they borrow from it.</div></div>
+            <div id="g-gold-standard" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Gold Standard</strong> <span style="color: #6b7a99; font-size: 14px;">/gohld STAN-derd/</span><button class="gl-speak" type="button" data-say="gold standard" aria-label="Hear how to say Gold Standard" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A system in which a country promises to exchange its paper money for a fixed amount of gold.</div></div>
+            <div id="g-margin" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Margin (buying on margin)</strong> <span style="color: #6b7a99; font-size: 14px;">/MAR-jin/</span><button class="gl-speak" type="button" data-say="margin" aria-label="Hear how to say Margin (buying on margin)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Buying stock with borrowed money, so that you put down only part of the price yourself.</div></div>
+            <div id="g-rfc" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Reconstruction Finance Corporation</strong> <span style="color: #6b7a99; font-size: 14px;">/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/</span><button class="gl-speak" type="button" data-say="Reconstruction Finance Corporation" aria-label="Hear how to say Reconstruction Finance Corporation" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128201; PART 1 &middot; OCTOBER 1929: THE FALL OF THE DOW</div>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">When you hear "the Great Depression," what do you picture first? (No wrong answer.)</div>
+            <div class="widget-options">
+                <button data-response="That is the most common answer. By the end of this lesson you will see why it is only the first act, and why many economists think it was not the main cause of what followed.">&#128202; A stock market crash</button>
+                <button data-response="That picture belongs to this lesson. The bank panics, more than the crash, are what many economists blame for the depth of the disaster.">&#127970; Long lines outside a bank</button>
+                <button data-response="That comes next, in Lesson 6.03. First you need to see how the money behind jobs started to vanish.">&#128188; People without jobs</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Peak, Then a Slide</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Dow Jones Industrial Average is a measure of stock prices. It closed at 381.17 on September 3, 1929. That was the top. Then prices began to slip, and many of the people who had bought stock on <a class="gl" href="#g-margin" title="margin: Buying stock with borrowed money, so that you put down only part of the price yourself. (/MAR-jin/)"><strong>margin</strong></a> started to feel the trapdoor from Lesson 6.01.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">On Monday, October 28, the Dow fell nearly 13 percent in one day. On Tuesday, October 29, it dropped nearly 12 percent more. That second day came to be called Black Tuesday. By mid-November, the Dow had lost almost half its value. It kept falling for years. On July 8, 1932, it closed at 41.22, which was 89 percent below the peak. It did not climb back to its 1929 high until November 23, 1954.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Those are the numbers the Federal Reserve's own history reports. They are worth sitting with. A person who put $1,000 into the average stock in September 1929 would have seen it shrink to roughly $110 by the summer of 1932. That is a very hard thing to live through.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why a Crash Is Not Automatically a Depression</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is the puzzle. Stock prices have fallen sharply before, and the country did not sink into a decade of misery. A stock crash destroys wealth that exists on paper. Some people lose their savings. Others stop spending because they are afraid. That hurts, but it does not by itself shut down factories and banks.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Something more has to happen. The economy has to lose its ability to lend, to pay, and to move money from one hand to another. That is what separates a bad year from a catastrophe.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">One more fact complicates the story. Economists who date the business cycle put the peak of the economy in August 1929, which is two months before the crash. The economy had already started to turn down. The crash did not start the downturn from a standing start. It landed on an economy that was already slowing.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">What the Fed Did in October</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In the first panic, the New York Fed acted. It bought government securities on the open market, made it easier for banks to borrow, and lowered the <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a>. It told the big banks it would supply the reserves they needed. Those were good instincts, and they kept the first wave from spreading right away. The harder test came later.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127974; PART 2 &middot; WHEN BANKS RUN OUT OF TRUST</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">How a Bank Can Fail With Honest Management</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Module 3 you learned that banks do not keep all your deposits in a vault. They lend most of it out. This is how banks earn money and how businesses get loans. It works as long as depositors do not all ask for their money on the same day.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">When they do, the bank has a problem. This is a <a class="gl" href="#g-bank-run" title="bank run: What happens when many customers rush to take their money out of a bank at the same time because they fear it will fail. (/bank run/)"><strong>bank run</strong></a>. Even a sound bank cannot hand back everyone's money at once, because it has lent it. If you hear that your bank is in trouble, the smart move for you is to get your money out now. But if everyone does that, the bank collapses. Your fear is reasonable and it also helps cause the disaster. That is the trap.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Today, you are protected from this. If your bank fails, the government repays you up to a set amount, which is <a class="gl" href="#g-deposit-insurance" title="deposit insurance: A promise that if a bank fails, the government will repay depositors up to a set amount. (/dih-POZ-it in-SHUR-ans/)"><strong>deposit insurance</strong></a>. In 1930 that protection did not exist. A family that lost its bank lost its savings. Everybody knew it, and everybody acted on it.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">A Bank Run in Numbers</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here is a simple model. A small bank holds $100 in deposits. It keeps $10 in cash and lends out $90. In an ordinary week, a few customers withdraw and a few deposit, and the $10 is plenty. Now suppose 20 percent of depositors want their money on the same day. That is $20. The bank has $10. It can try to call in its loans, but borrowers cannot repay overnight. It can try to sell its loans, but if every bank is selling at once, buyers offer very little. So the bank closes, even though many of its loans may be good ones.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The lesson is that a bank can be sound and still run out of cash at the moment people demand it. When it closes, the harm spreads beyond its depositors. A business that counted on a loan from that bank cannot get one, so it cuts jobs. Those workers spend less, so other businesses sell less. That is how one failure becomes many.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Remember the farmer with the $1,000 debt in Lesson 6.01. When prices fell by a quarter or more across the whole economy, millions of borrowers, not only farmers, found their fixed debts growing heavier. That made loans harder to repay, which made banks weaker, which made runs more likely. The loop closed on itself.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Panics Begin</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Federal Reserve's history gives the first dates. On November 7, 1930, the Bank of Tennessee in Nashville closed its doors. It was a major part of a company called Caldwell and Company. Within days, related banks in Knoxville and Louisville failed too. On December 11, 1930, the Bank of United States closed. It was the fourth-largest bank in New York City.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">"Within a few weeks, hundreds of banks suspended operations," the Fed's account says. About a third of them reopened within a few months. Most were closed for good. Fear spread faster than facts. A depositor in one town read about a failure in another and went to check on a bank that was perfectly healthy.</p>
+        <table class="ow-table"><thead><tr><th>Date</th><th>What happened</th></tr></thead><tbody><tr><td>Nov. 7, 1930</td><td>The Bank of Tennessee in Nashville closes. Related banks fail within days.</td></tr><tr><td>Dec. 11, 1930</td><td>The Bank of United States, the fourth-largest bank in New York City, closes.</td></tr><tr><td>Sept. 21, 1931</td><td>Great Britain leaves the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>. Foreigners start swapping dollars for gold.</td></tr><tr><td>Jan. 1932</td><td>Congress creates the <a class="gl" href="#g-rfc" title="Reconstruction Finance Corporation: A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble. (/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/)"><strong>Reconstruction Finance Corporation</strong></a> to lend to troubled banks.</td></tr><tr><td>Oct. 31, 1932</td><td>Nevada orders its banks closed, the first state to do so.</td></tr><tr><td>Feb. 14, 1933</td><td>Michigan closes its banks after Detroit banks cannot get help.</td></tr><tr><td>Mar. 6, 1933</td><td>By presidential order, banks across the country close.</td></tr></tbody></table>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Size of the Collapse</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Federal <a class="gl" href="#g-deposit-insurance" title="Deposit Insurance: A promise that if a bank fails, the government will repay depositors up to a set amount. (/dih-POZ-it in-SHUR-ans/)"><strong>Deposit Insurance</strong></a> Corporation reports that from 1930 to 1933, approximately 9,000 banks suspended operations. For comparison, there were fewer than 25,000 banks in the whole country, so this was a very large share of them.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The money supply is the total amount of money people can spend. A big part of it is not paper cash. It is the money sitting in checking accounts. When a bank closes, that money stops working. And when frightened people pull cash out of banks and stuff it in a mattress, the banking system has less to lend. The Fed's history says the money supply fell by nearly 30 percent from the fall of 1930 to the winter of 1933. Prices fell by about the same proportion. Other measures show a drop of roughly a quarter to a third, depending on which prices you count.</p>
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; THE FED WAS MEANT TO PREVENT THIS</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">In Lesson 3.02 you learned that a central bank can act as a lender of last resort, lending to solvent banks in a panic so they can meet withdrawals. That was the Federal Reserve's job. As you will see below, how well it did that job in the early 1930s is one of the biggest arguments in American economic history.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129689; PART 3 &middot; GOLD, MONEY, AND THE QUESTION OF BLAME</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Gold Standard</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1929, the dollar was on the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>. A dollar could be traded for a fixed amount of gold, and the Fed had to hold enough gold to back the money it issued. Many countries did the same. That tied their economies together. If one country raised interest rates to keep its gold, others felt the pull.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Fed's history says the international <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a> linked interest rates and monetary policy among the countries that used it. That is one reason the Depression became worldwide. It is also why the Fed's choices in 1931 look so troubling to many historians.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">On September 21, 1931, Great Britain left the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>. Foreign holders of dollars began converting them into gold, and gold flowed out of the United States. In early October, the New York Fed responded by raising its <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a>. That made borrowing more expensive in the middle of a banking crisis. The gold drain stopped by late October. But bank failures kept going. Some Fed leaders, the history says, preferred to defend the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a> over helping banks that were failing.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Put yourself in the place of a Fed official in October 1931. Gold is leaving the country. If it keeps leaving, the Fed may not have enough to meet its legal requirement. Raising interest rates is the textbook way to attract gold. But banks are failing, and higher rates make borrowing harder for them. You can protect the gold or you can protect the banks. Which would you choose, and what would you need to know first? There is no neat answer. That is what makes it a real dilemma, and not a mistake that was obvious to everyone at the time.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Was It Too Little, Too Late?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Fed's own history is blunt about its record. It says the Fed's most serious failure was its "failure to stem the decline in the supply of money." Fed leaders disagreed about how to respond, and the history judges their efforts "too little and too late."</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">There were attempts. Congress created the <a class="gl" href="#g-rfc" title="Reconstruction Finance Corporation: A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble. (/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/)"><strong>Reconstruction Finance Corporation</strong></a>, known as the <a class="gl" href="#g-rfc" title="RFC: A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble. (/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/)"><strong>RFC</strong></a>, in January 1932 to lend to banks and railroads. Between April and August of 1932, the Fed bought about $1 billion in government securities. Bank failures eased in the first half of that year. Then they rose again, especially in the Midwest and West, and a national panic followed in early 1933. In spring 1932, the Fed expanded aggressively, then reversed course. A different pattern of choices might have made a difference. That is contingency again.</p>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Two Ways of Reading the Same Story</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Economists do not agree on how to weigh the causes. Here are two views, stated fairly.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">One view focuses on money. Milton Friedman and Anna Schwartz argued that the Fed let the money supply collapse, and that this turned an ordinary recession into a depression. A more recent study by Kris Mitchener and Gary Richardson found that money supply and bank lending fell by more than 30 percent between 1929 and 1932, and that much of the drop followed depositor runs. On this view, the crash was a spark, and the banking collapse was the fire.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Another view focuses on spending and confidence. When households and businesses became afraid, they stopped buying and investing, and an economy that does not spend cannot employ people. You met this argument from John Maynard Keynes in Lesson 5.05. Many economists today combine both views. They see the money collapse and the collapse in spending as one linked disaster.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The honest conclusion is that this is still debated, and we should not pretend otherwise. What nobody debates is the result. According to the Federal Reserve, the Depression hit bottom in March 1933, when the commercial banking system collapsed. Real output, the total amount the country produced, fell by more than a quarter between 1929 and 1933, though the exact figure depends on whose data you use. That is the setting for the next lesson, which asks what life was like at the bottom.</p>
+        <div class="flip-grid">
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Caldwell and Company</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A Southern financial company. When its subsidiary the Bank of Tennessee closed in November 1930, fear spread to other banks.</div></div><button class="widget-reset">Reset</button></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Bank of United States</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">The fourth-largest bank in New York City. Its closing in December 1930 shook trust in banks across the country.</div></div><button class="widget-reset">Reset</button></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">September 21, 1931</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Great Britain left the <a class="gl" href="#g-gold-standard" title="gold standard: A system in which a country promises to exchange its paper money for a fixed amount of gold. (/gohld STAN-derd/)"><strong>gold standard</strong></a>. Foreigners began trading dollars for gold, and the Fed raised its <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a> in response.</div></div><button class="widget-reset">Reset</button></div>
+            <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">The <a class="gl" href="#g-rfc" title="RFC: A government lender created in 1932 to make loans to banks, railroads, and other businesses in trouble. (/ree-kon-STRUK-shun fy-NAN-ss kor-por-AY-shun/)"><strong>RFC</strong></a></div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">A government lender created in January 1932 to make loans to banks, railroads, and other institutions in trouble.</div></div><button class="widget-reset">Reset</button></div>
+        </div>
+        <div class="optima-widget ow-check">
+            <div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div>
+            <div class="ow-row" data-correct="1" data-fb="Yes. Lending is how banks work, and it means no bank can pay every depositor on the same day." data-hint="Not quite. Think about what banks do with the money you deposit.">
+                <div class="widget-question">Why did a <a class="gl" href="#g-bank-run" title="bank run: What happens when many customers rush to take their money out of a bank at the same time because they fear it will fail. (/bank run/)"><strong>bank run</strong></a> hurt even banks that had been managed honestly?</div>
+                <div class="widget-options">
+                    <button data-i="0">Honest banks keep all deposits in the vault.</button>
+                    <button data-i="1">Banks lend out most deposits, so they cannot repay everyone at once.</button>
+                    <button data-i="2">The Fed told them to close.</button>
+                    <button data-i="3">Deposit insurance made them careless.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="2" data-fb="Correct. Higher rates were meant to keep gold from leaving, but they also made borrowing harder for banks in trouble." data-hint="Not quite. Check the table in Part 2 for what happened on September 21, 1931.">
+                <div class="widget-question">In October 1931, the New York Fed raised its <a class="gl" href="#g-discount-rate" title="discount rate: The interest rate the Federal Reserve charges banks when they borrow from it. (/DIS-kount rayt/)"><strong>discount rate</strong></a>. Which pressure was it responding to?</div>
+                <div class="widget-options">
+                    <button data-i="0">Too much stock market speculation.</button>
+                    <button data-i="1">A drop in farm prices.</button>
+                    <button data-i="2">Gold flowing out of the country after Britain left the gold standard.</button>
+                    <button data-i="3">A federal tax increase.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <div class="ow-row" data-correct="2" data-fb="Right. Good history reports where experts agree and where they do not." data-hint="Not quite. Look again at &quot;Two Ways of Reading the Same Story.&quot;">
+                <div class="widget-question">Which statement fairly describes the debate among economists?</div>
+                <div class="widget-options">
+                    <button data-i="0">Everyone agrees the crash alone caused the Depression.</button>
+                    <button data-i="1">Everyone agrees the Fed did nothing wrong.</button>
+                    <button data-i="2">Economists disagree about how to weigh money, spending, and confidence, though many link them.</button>
+                    <button data-i="3">Economists have never studied the banking panics.</button>
+                </div>
+                <div class="widget-feedback"></div>
+            </div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.02 Reading Quiz</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the crash, the bank runs, and the gold standard.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.02 Assignment</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will explain how a stock market loss became a banking crisis.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 6.02 VR Lesson Resources</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that follows the sequence of bank failures.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Trust is a kind of capital. A bank, a currency, and a promise all depend on it, and it takes years to build and days to lose. Notice how much of this lesson was about what people believed would happen next, and how those beliefs changed what did happen.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 6.02 &middot; The Crash of 1929 and the Banking Panics</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>

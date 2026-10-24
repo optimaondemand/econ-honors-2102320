@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Economics Honors &mdash; Lesson 7.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.right { background: #E6F4EA; border-color: #2E7D4F; color: #14432a; }
+    .widget-options button.wrong { background: #FBEAEA; border-color: #B84A4A; color: #5c1b1b; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-row { padding: 12px 0; border-top: 1px solid #C5DCE5; }
+    .ow-row:first-of-type { border-top: none; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .flip-grid { grid-template-columns: 1fr; } }
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; }
+    .ow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0; }
+    .ow-chain .step { flex: 1; min-width: 150px; background: #EEF1F8; border: 1px solid #D0D9E8; border-top: 4px solid #0E1C42; border-radius: 6px; padding: 10px 12px; font-size: 14px; color: #1a2340; line-height: 1.5; }
+    .ow-chain .arrow { align-self: center; color: #C7922C; font-size: 20px; }
+    .ow-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .ow-stats .stat { flex: 1; min-width: 150px; background: #FDF3E3; border: 1px solid #E8D2A6; border-radius: 8px; padding: 12px 14px; text-align: center; }
+    .ow-stats .big { font-size: 28px; color: #0E1C42; line-height: 1.1; }
+    .ow-stats .lbl { font-size: 13px; color: #4a5575; margin-top: 4px; line-height: 1.4; }
+    table.ow-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 15px; color: #1a2340; }
+    table.ow-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 9px 12px; font-size: 14px; font-weight: normal; }
+    table.ow-table td { border: 1px solid #D0D9E8; padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    table.ow-table tr:nth-child(even) td { background: #F7F9FC; }
+</style>
+
+</head>
+<body>
+<div class="canvas-frame">
+
+
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD: LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- ═══ END OPTIMA READ-ALOUD PLAYER ═══ -->
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">ECONOMICS HONORS</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Module 7</div>
+        <div style="font-size: 12px; color: #666;">Communism</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.02</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">From Theory to Revolution: Lenin, War Communism, and the NEP</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Course</div>
+        <div style="font-size: 16px; color: #0e1c42;">Economics Honors</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">From Theory to Revolution: Lenin, War Communism, and the NEP</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">What happens when a theory written for factory towns meets a country of farmers at war?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Marx expected communism to arrive first in the most industrial nations. Instead it arrived in Russia, a huge farming country in the middle of a world war. This lesson follows what Lenin and his party did with the theory, why their first economic plan nearly wrecked the country, and why Lenin himself turned back.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how World War I and the fall of the tsar opened the door for the <a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a> in 1917.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe the main policies of War <a class="gl" href="#g-communism" title="Communism: The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea. (/KOM-yuh-niz-um/)"><strong>Communism</strong></a> and trace how they changed what farmers and factory managers chose to do.</div></div><div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0px;"><div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why Lenin introduced the <strong><a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>New Economic Policy</strong></a></strong> in 1921 and what that choice shows about incentives.</div></div>
+    </div>
+
+    <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-communism" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Communism</strong> <span style="color: #6b7a99; font-size: 14px;">/KOM-yuh-niz-um/</span><button class="gl-speak" type="button" data-say="communism" aria-label="Hear how to say Communism" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea.</div></div><div id="g-famine" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Famine</strong> <span style="color: #6b7a99; font-size: 14px;">/FAM-in/</span><button class="gl-speak" type="button" data-say="famine" aria-label="Hear how to say Famine" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A severe shortage of food that leaves many people hungry and causes many deaths.</div></div><div id="g-manifesto" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Manifesto</strong> <span style="color: #6b7a99; font-size: 14px;">/man-ih-FES-toh/</span><button class="gl-speak" type="button" data-say="manifesto" aria-label="Hear how to say Manifesto" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A public statement that explains the goals and beliefs of a person or a group.</div></div><div id="g-nationalize" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Nationalize</strong> <span style="color: #6b7a99; font-size: 14px;">/NASH-uh-nuh-lyz/</span><button class="gl-speak" type="button" data-say="nationalize" aria-label="Hear how to say Nationalize" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">To take over private businesses or property and make them owned by the government.</div></div><div id="g-new-economic-policy" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">New Economic Policy (NEP)</strong> <span style="color: #6b7a99; font-size: 14px;">/noo ek-uh-NOM-ik POL-ih-see/</span><button class="gl-speak" type="button" data-say="new economic policy" aria-label="Hear how to say New Economic Policy (NEP)" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit.</div></div><div id="g-provisional-government" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Provisional Government</strong> <span style="color: #6b7a99; font-size: 14px;">/pruh-VIZH-uh-nul GUV-ern-ment/</span><button class="gl-speak" type="button" data-say="provisional government" aria-label="Hear how to say Provisional Government" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A temporary government set up to rule until a lasting one can be chosen.</div></div><div id="g-requisition" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Requisition</strong> <span style="color: #6b7a99; font-size: 14px;">/rek-wih-ZISH-un/</span><button class="gl-speak" type="button" data-say="requisition" aria-label="Hear how to say Requisition" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">To demand and take goods, such as grain, for the government's use, often with little or no payment.</div></div>
+    </div>
+
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127479;&#127482; PART 1 &middot; A COUNTRY AT BREAKING POINT</div><div class="optima-widget ow-reflect"><div class="widget-kicker">&#9889; QUICK CHECK-IN</div><div class="widget-question">You are a farmer in 1918. A government agent arrives and says the state will take your surplus grain at a price the state has set, and that price is low. What would you plant next year? (No wrong answer. You may change your mind.)</div><div class="widget-options"><button data-response="Maybe. But think about what you would tell your neighbor who also lost the grain. Hold onto this question: who benefits from planting extra?">&#127806; The same amount as always</button><button data-response="This is the choice an economist would predict. When extra work earns nothing, people do less of it. You will see this very pattern in the lesson.">&#128201; Less, only what my family needs</button><button data-response="Many real farmers did exactly this. The state called it a crime. The farmers called it feeding their families.">&#129754; Plant as usual, then hide some</button><button data-response="Some people did. Cities had troubles of their own, as you will see.">&#128694; Leave for the city</button></div><div class="widget-feedback"></div><button class="widget-reset">Reset</button></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the war story, a puzzle. Marx wrote for an industrial world, and Russia was not one. It had some large factories in cities such as Petrograd and Moscow, but most Russians were farmers. A strict reading of the <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a> would have told Lenin to wait. He chose not to. He argued that a small, disciplined party could lead the city workers and win the farmers' support, and he gave the farmers a promise in three words: "Peace, land, and bread." Whether that was a bold adaptation of the theory or a break from it is a question historians still debate.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Russia entered World War I in 1914. By 1917 the war had drained the country. Food was short in the cities, millions of soldiers had died or been wounded, and many people had lost faith in the ruler, Tsar Nicholas II. In March 1917, by the calendar the Russians used then it was February, the tsar gave up his throne. A <strong><a class="gl" href="#g-provisional-government" title="Provisional Government: A temporary government set up to rule until a lasting one can be chosen. (/pruh-VIZH-uh-nul GUV-ern-ment/)"><strong>provisional government</strong></a></strong> took charge. It promised elections and a new constitution, and it kept Russia in the war.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That last choice mattered. Soldiers and city workers wanted peace and bread. The <a class="gl" href="#g-provisional-government" title="Provisional Government: A temporary government set up to rule until a lasting one can be chosen. (/pruh-VIZH-uh-nul GUV-ern-ment/)"><strong>provisional government</strong></a> was weak and divided, and it could give them neither. Into that gap stepped a small, disciplined party led by Vladimir Lenin: the <strong><a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a></strong>. In November 1917, again by our calendar, they took control of the capital, Petrograd, and declared themselves the new government.</p><div style="background: #FDF3E3; border-left: 5px solid #C7922C; border-radius: 7px; padding: 16px 22px; margin: 16px 0;"><div style="font-size: 11px; color: #9a6a12; margin-bottom: 6px;">&#127760; FOREIGN LANGUAGE VOCABULARY</div><div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">Two Russian words you will meet in this lesson. The first names Lenin's party. The second names its secret police. Italic type and a dotted underline mark each one in the text.</div><div id="g-bolshevik" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Bolshevik</em></strong> <span style="color: #6b7a99; font-size: 14px;">/BOHL-shuh-vik/</span><button class="gl-speak" type="button" data-say="bolshevik" aria-label="Hear how to say Bolshevik" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A member of the Russian party led by Lenin. The name comes from a Russian word meaning "majority."</div></div><div id="g-cheka" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;"><em>Cheka</em></strong> <span style="color: #6b7a99; font-size: 14px;">/CHEK-uh/</span><button class="gl-speak" type="button" data-say="cheka" aria-label="Hear how to say Cheka" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The secret police the Bolsheviks created in December 1917. The name is a short form of a longer Russian title.</div></div></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Pause here, because historians insist on one point. None of this was certain. The <a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a> were not a large party. Had the <a class="gl" href="#g-provisional-government" title="Provisional Government: A temporary government set up to rule until a lasting one can be chosen. (/pruh-VIZH-uh-nul GUV-ern-ment/)"><strong>provisional government</strong></a> made peace, or acted on the farmers' hunger for land, or held its election on better terms, the story could have gone another way. Lenin saw an opening and moved fast. That is decisiveness, and in a crisis it can decide a nation's fate. It is also a trait that cuts both ways, since it can serve a good cause or a bad one.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Once in power, the <a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a> did not leave their rule to chance. In December 1917 they created a secret police, the <strong><a class="gl" href="#g-cheka" title="Cheka: The secret police the Bolsheviks created in December 1917. The name is a short form of a longer Russian title. (/CHEK-uh/)"><em>Cheka</em></a></strong>. In January 1918 their forces broke up the elected assembly after a single meeting. They made peace with Germany in March 1918. Then a civil war began between the <a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a>, called the Reds, and a patchwork of opponents, called the Whites. It raged for about three years. A government that has to feed its army, its cities, and its allies, with its country in ruins, has a first-order economic problem as well as a political one.</p></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9881;&#65039; PART 2 &middot; WAR COMMUNISM, 1918 TO 1921</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Lenin's government now tried to run a country's economy by decree. Historians call the policy War <a class="gl" href="#g-communism" title="Communism: The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea. (/KOM-yuh-niz-um/)"><strong>Communism</strong></a>, and it had three main parts.</p><table class="ow-table"><tr><th>Policy</th><th>What it did</th><th>Date given</th></tr><tr><td>Grain <a class="gl" href="#g-requisition" title="Requisition: To demand and take goods, such as grain, for the government&#x27;s use, often with little or no payment. (/rek-wih-ZISH-un/)"><strong>requisition</strong></a></td><td>Armed squads were sent to take grain from farm families. Central planners set the quotas.</td><td>A decree in May 1918 gave the food agency power to seize grain by force</td></tr><tr><td><a class="gl" href="#g-nationalize" title="Nationalize: To take over private businesses or property and make them owned by the government. (/NASH-uh-nuh-lyz/)"><strong>Nationalization</strong></a> of industry</td><td>The state took over large factories, then mines, and later small workshops.</td><td>June 1918 for large industry; November 1920 for small workshops</td></tr><tr><td>Ban on private trade</td><td>Buying and selling for profit was outlawed, and markets were closed.</td><td>November 1918</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Each of these made sense to its authors. If the economy was a war machine, the army and the cities had to be fed, and the state would take what it needed. If capitalists were the enemy, <strong><a class="gl" href="#g-nationalize" title="Nationalize: To take over private businesses or property and make them owned by the government. (/NASH-uh-nuh-lyz/)"><strong>nationalizing</strong></a></strong> their factories removed them. And if profit was the sickness, then ending trade ended the sickness. Notice that the policy fit the <a class="gl" href="#g-manifesto" title="Manifesto: A public statement that explains the goals and beliefs of a person or a group. (/man-ih-FES-toh/)"><strong>Manifesto</strong></a>'s goals, since the state took ownership of the means of production and put planning in the place of markets.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">But think about the farmer's choices again. A farmer who knows that any surplus will be taken has no reason to grow one. So the policy created the very shortage it was meant to solve. This is the chain you studied in Module 2, when price controls and fixed prices pushed producers to supply less.</p><div class="ow-chain"><div class="step">The state takes grain at a low fixed price.</div><div class="arrow">&#10145;</div><div class="step">Farmers see no reward for growing extra.</div><div class="arrow">&#10145;</div><div class="step">Farmers plant less, or hide what they grow.</div><div class="arrow">&#10145;</div><div class="step">Less grain reaches the cities and the army.</div><div class="arrow">&#10145;</div><div class="step">The state <a class="gl" href="#g-requisition" title="Requisition: To demand and take goods, such as grain, for the government&#x27;s use, often with little or no payment. (/rek-wih-ZISH-un/)"><strong>requisitions</strong></a> harder, which repeats the cycle.</div></div><div class="ow-stats"><div class="stat"><div class="big">80.1</div><div class="lbl">million tons of grain harvested in 1913, before the war</div></div><div class="stat"><div class="big">46.5</div><div class="lbl">million tons harvested in 1920, near the end of War Communism</div></div><div class="stat"><div class="big">about 42%</div><div class="lbl">drop between those two years (a calculation from the first two numbers)</div></div></div><details class="ow-reveal"><summary>Try this in your notebook before you click: the harvest fell from 80.1 million tons to 46.5 million tons. By how many tons did it fall, and what percent of the 1913 harvest is that?</summary><div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px;">80.1 minus 46.5 is 33.6 million tons. Divide 33.6 by 80.1 and you get about 0.42, so the harvest fell by roughly 42 percent. Notice that this is a fall in what farmers produced, not a change in how many people needed to eat.</div></details><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Those harvest figures come from the historian David Christian, and they tell a plain story. Of course, the war and the civil war also wrecked fields, railroads, and farms, so the policy was not the only cause. Honest historians weigh the causes differently. But a famine that followed in 1921 and 1922 is usually estimated to have killed about five million people, and the range of estimates runs wider than that. War, drought along the Volga River, and the policy itself all played a part.</p><div style="background: #F7F9FC; border-left: 5px solid #C7922C; border-radius: 6px; padding: 16px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#128220; PRIMARY SOURCE</div><div style="font-size: 18px; color: #0e1c42; line-height: 1.65; font-style: italic;">"Our too hasty, rigid, unprepared '<a class="gl" href="#g-communism" title="Communism: The idea that the main tools of production should belong to everyone together instead of to private owners. It is also the name of the political movement built on that idea. (/KOM-yuh-niz-um/)"><strong>communism</strong></a>' ... was necessitated by the war and the impossibility of either obtaining commodities or setting the factories going."</div><div style="font-size: 14px; color: #4a5575; margin-top: 8px;">V. I. Lenin, notes for a speech at the Tenth Congress of the Russian Communist Party (<a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a>), March 1921, on replacing grain <a class="gl" href="#g-requisition" title="Requisition: To demand and take goods, such as grain, for the government&#x27;s use, often with little or no payment. (/rek-wih-ZISH-un/)"><strong>requisition</strong></a> with a tax. Marxists Internet Archive, Lenin Collected Works. Ellipsis marks words left out.</div><!-- BUILD NOTE: typeset text, not a scan. Quote was returned by a fetch summary of the Marxists Internet Archive page; re-read the page itself and confirm the exact wording and the translation credit before publishing. --></div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Read that quotation slowly. Lenin himself, in March 1921, called the policy "too hasty, rigid, unprepared." He also defends it as something the war required. Both parts matter. A leader who can say his own policy was too rigid has a useful quality, the willingness to look at results. A leader who blames the war for everything has an excuse that historians should test, not accept.</p></div>
+<div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;"><div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128260; PART 3 &middot; THE RETREAT: THE NEW ECONOMIC POLICY</div><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">By early 1921, the cost of the policy was impossible to ignore. Peasants in some provinces rose up against the grain squads. In early March, sailors at the Kronstadt naval base near Petrograd rebelled too. These sailors had once been strong supporters of the <a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a>. Accounts agree that they were unhappy with the food policy, and many also say they demanded free elections. The Red Army crushed the rising, and thousands were killed.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Within days, at the Tenth Party Congress in March 1921, Lenin changed course. The grain squads would stop. In their place, farmers would pay a fixed tax, paid in grain, and after paying it they could sell what was left on the open market. That is the <strong><a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>New Economic Policy</strong></a></strong>, or <strong><a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>NEP</strong></a></strong>. Small shops and trade came back. The state kept its hold on the largest industries and on the banks, but the bargain with the farmer had changed.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Lenin knew exactly what this meant. In his own working notes he wrote down the question, "Back to capitalism?" He also described freedom of turnover for peasants as "freedom to trade," which in his words meant "freedom of capitalism." He called it a "breathing space." He did not claim it was a victory for the theory. He was admitting that the theory, run at full strength, had been too much for the country to bear.</p><div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 14px 20px; margin: 16px 0;"><div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128161; INCENTIVES ARE NOT A TRICK</div><div style="font-size: 16px; color: #1a2340; line-height: 1.6;">When Lenin let farmers keep the surplus, farm output began to recover. You do not have to like markets to see what happened: people work harder when they keep some of the reward. The economist's idea of an incentive is simply the observation that people respond to what a choice costs and what it earns them. A government can ignore that idea, but it cannot make the idea go away.</div></div><table class="ow-table"><tr><th></th><th>War Communism (1918 to 1921)</th><th>New Economic Policy (1921 to 1928)</th></tr><tr><td>Grain</td><td>Seized by armed squads at quotas set from the center</td><td>A fixed tax, then the farmer sells the rest</td></tr><tr><td>Trade</td><td>Private buying and selling banned</td><td>Small private trade allowed</td></tr><tr><td>Industry</td><td>Large and small business taken over by the state</td><td>The state keeps the largest industries and banks</td></tr><tr><td>Farmer's incentive</td><td>No reward for growing extra</td><td>A reward for growing extra</td></tr></table><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Behind the numbers are people. A famine that kills about five million people is not a statistic to move past quickly. Each of those deaths was a person with a name, a family, and a village. Optima asks you to hold the arithmetic and the human weight together. The numbers tell you how big the failure was. They do not tell you what it felt like to live inside it.</p><h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">How to judge Lenin: first-order problems</h3><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Optima asks you to judge a regime by whether it solves the first-order problems of any society. The first political problems are peace and order at home and defense against enemies. The first economic problem is producing and distributing enough that the whole population prospers.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">By that standard, the record is mixed, and it should be reported that way. On defense, the <a class="gl" href="#g-bolshevik" title="Bolshevik: A member of the Russian party led by Lenin. The name comes from a Russian word meaning &quot;majority.&quot; (/BOHL-shuh-vik/)"><em>Bolsheviks</em></a> won the civil war, and that took organization and will. On order, they built a state that lasted, but they did it with a secret police and with force against their own sailors and farmers. On the economy, the first plan failed badly, and Lenin had the clear-sightedness to turn back. The traits that appear in this story are decisiveness, adaptability, and a hard ruthlessness toward opponents. A fair account names all three.</p><p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">One more point about the shape of history. The <a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>NEP</strong></a> lasted from 1921 until 1928, and nobody at the time knew whether it was a permanent change or a pause. Lenin died in January 1924. Which way the country went after that, whether toward markets or back toward command, turned partly on who won a struggle for power. In the next lesson you will see how Joseph Stalin settled that question, and what it cost.</p><div class="optima-widget ow-check"><div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING</div><div class="ow-row" data-correct="1" data-fb="Correct. The government could not deliver what many people most wanted, which opened a gap that the Bolsheviks used." data-hint="Not quite. Reread the second paragraph of Part 1."><div class="widget-question">Why does the lesson say the <a class="gl" href="#g-provisional-government" title="Provisional Government: A temporary government set up to rule until a lasting one can be chosen. (/pruh-VIZH-uh-nul GUV-ern-ment/)"><strong>provisional government</strong></a>'s choice to stay in the war mattered?</div><div class="widget-options"><button data-i="0">It made the army stronger</button><button data-i="1">It kept soldiers and city workers wanting peace and bread that the government could not provide</button><button data-i="2">It ended the civil war early</button><button data-i="3">It led directly to the NEP</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="0" data-fb="Yes. When any extra grain is taken, the incentive to grow extra disappears, so output falls." data-hint="Not quite. Look at the five-step chain in Part 2."><div class="widget-question">Why did <a class="gl" href="#g-requisition" title="Requisition: To demand and take goods, such as grain, for the government&#x27;s use, often with little or no payment. (/rek-wih-ZISH-un/)"><strong>requisitioning</strong></a> grain at low fixed prices tend to shrink the harvest?</div><div class="widget-options"><button data-i="0">Farmers had no reward for growing a surplus</button><button data-i="1">Farmers loved the policy</button><button data-i="2">Seeds became cheaper</button><button data-i="3">Rain increased every year</button></div><div class="widget-feedback"></div></div><div class="ow-row" data-correct="3" data-fb="Right. After paying the tax in grain, farmers could sell any surplus, which restored the incentive to grow it." data-hint="Not quite. Reread the second paragraph of Part 3."><div class="widget-question">What did the <a class="gl" href="#g-new-economic-policy" title="New Economic Policy (NEP): The Soviet policy that began in 1921. It ended forced grain seizures and allowed small private trade and farming for profit. (/noo ek-uh-NOM-ik POL-ih-see/)"><strong>New Economic Policy</strong></a> change for farmers?</div><div class="widget-options"><button data-i="0">It banned all farming</button><button data-i="1">It placed all farms in the hands of the army</button><button data-i="2">It required farmers to give all their grain to the state</button><button data-i="3">It replaced seizure with a fixed tax and let farmers sell the rest</button></div><div class="widget-feedback"></div></div><button class="widget-reset">Reset</button></div></div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.02 Reading Quiz</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short auto-graded check on the Bolshevik rise, War Communism, and the NEP.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.02 Assignment</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A short written response. You will explain how incentives shaped the results of War Communism and the NEP.</div></div></div><div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 16px;"><div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div><div><div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Lesson 7.02 VR Lesson Resources</strong></div><div style="font-size: 16px; color: #1a2340; line-height: 1.55;">An optional immersive activity in your VR headset that puts you in a Russian grain market in 1921.</div></div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128170; A THOUGHT TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Self-government includes the habit of looking at results. Lenin changed course when the evidence arrived, which is a rare strength, and it came after enormous cost. Ask yourself what evidence you would have to see before you changed your own mind.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; ECONOMICS HONORS &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.02 &middot; From Theory to Revolution: Lenin, War Communism, and the NEP</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function scope(el) { return el.closest('.optima-widget'); }
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (say) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      }
+      return;
+    }
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = scope(reset);
+      if (!w) return;
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'right', 'wrong'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = scope(rBtn);
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.getAttribute('data-response') || '';
+      fb.classList.add('show');
+      return;
+    }
+    var cBtn = e.target.closest('.ow-check .ow-row .widget-options button');
+    if (cBtn) {
+      var row = cBtn.closest('.ow-row');
+      var good = parseInt(row.getAttribute('data-correct'), 10) === parseInt(cBtn.getAttribute('data-i'), 10);
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('right', 'wrong'); });
+      cBtn.classList.add(good ? 'right' : 'wrong');
+      var rf = row.querySelector('.widget-feedback');
+      rf.innerHTML = good ? row.getAttribute('data-fb') : (row.getAttribute('data-hint') || 'Not quite. Try again.');
+      rf.classList.add('show');
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>
