@@ -27,6 +27,12 @@
     .ow-scale .widget-options { justify-content: space-between; }
     .ow-scale .widget-options button { flex: 1; text-align: center; }
 </style>
+<style>
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -322,7 +328,22 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; SPENDING, DEFICITS, AND DEBT</div>
+        
+    <div data-gl-box="1" style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin: 0 0 20px 0;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-aggregate-demand" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Aggregate Demand</strong> <span style="color: #6b7a99; font-size: 14px;">/AG-rih-git dih-MAND/</span><button class="gl-speak" type="button" data-say="aggregate demand" aria-label="Hear how to say Aggregate Demand" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The total amount of goods and services that everyone in an economy wants to buy.</div></div>
+            <div id="g-budget-deficit" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Budget Deficit</strong> <span style="color: #6b7a99; font-size: 14px;">/BUJ-it DEF-ih-sit/</span><button class="gl-speak" type="button" data-say="budget deficit" aria-label="Hear how to say Budget Deficit" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">What happens when the government spends more than it collects in a year.</div></div>
+            <div id="g-debt-to-gdp-ratio" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Debt-to-GDP Ratio</strong> <span style="color: #6b7a99; font-size: 14px;">/det too jee-dee-PEE RAY-shee-oh/</span><button class="gl-speak" type="button" data-say="debt to G D P ratio" aria-label="Hear how to say Debt-to-GDP Ratio" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The national debt compared with the size of the economy, shown as a percentage.</div></div>
+            <div id="g-fiscal-policy" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Fiscal Policy</strong> <span style="color: #6b7a99; font-size: 14px;">/FIS-kul POL-ih-see/</span><button class="gl-speak" type="button" data-say="fiscal policy" aria-label="Hear how to say Fiscal Policy" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The government's use of spending and taxes to affect the economy.</div></div>
+            <div id="g-full-employment" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Full Employment</strong> <span style="color: #6b7a99; font-size: 14px;">/ful em-PLOY-ment/</span><button class="gl-speak" type="button" data-say="full employment" aria-label="Hear how to say Full Employment" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A situation in which nearly everyone who wants a job at the going wage can find one.</div></div>
+            <div id="g-national-debt" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">National Debt</strong> <span style="color: #6b7a99; font-size: 14px;">/NASH-un-ul det/</span><button class="gl-speak" type="button" data-say="national debt" aria-label="Hear how to say National Debt" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The total of all past deficits that have not yet been paid back.</div></div>
+            <div id="g-progressive-tax" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Progressive Tax</strong> <span style="color: #6b7a99; font-size: 14px;">/pruh-GRES-iv taks/</span><button class="gl-speak" type="button" data-say="progressive tax" aria-label="Hear how to say Progressive Tax" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A tax that takes a higher percentage from people with higher incomes.</div></div>
+            <div id="g-regressive-tax" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Regressive Tax</strong> <span style="color: #6b7a99; font-size: 14px;">/rih-GRES-iv taks/</span><button class="gl-speak" type="button" data-say="regressive tax" aria-label="Hear how to say Regressive Tax" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A tax that takes a larger share of income from people with lower incomes.</div></div>
+            <div id="g-transfer-payment" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Transfer Payment</strong> <span style="color: #6b7a99; font-size: 14px;">/TRANS-fur PAY-ment/</span><button class="gl-speak" type="button" data-say="transfer payment" aria-label="Hear how to say Transfer Payment" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Money the government moves to people without getting a good or service in return.</div></div>
+    </div>
+<!-- gl-added-m1-m5 -->
+<div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; SPENDING, DEFICITS, AND DEBT</div>
 
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
@@ -337,7 +358,7 @@
         </div>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Government Spending's Three Buckets</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Operations (military, federal salaries, agencies) keep the government running day to day. <strong>Transfer payments</strong> (Social Security, Medicare, unemployment insurance) move income to individuals without requiring a good or service in return, and act as <strong>automatic stabilizers</strong> that cushion recessions. Public investments (highways, schools, research) build long-term productive capacity through <strong>multiplier effects</strong> that ripple beyond their initial cost. Revenue comes mostly from income taxes and <strong>payroll taxes</strong>, supplemented by excise taxes and tariffs.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Operations (military, federal salaries, agencies) keep the government running day to day. <strong><a class="gl" href="#g-transfer-payment" title="transfer payment: Money the government moves to people without getting a good or service in return. (/TRANS-fur PAY-ment/)">Transfer payments</a></strong> (Social Security, Medicare, unemployment insurance) move income to individuals without requiring a good or service in return, and act as <strong>automatic stabilizers</strong> that cushion recessions. Public investments (highways, schools, research) build long-term productive capacity through <strong>multiplier effects</strong> that ripple beyond their initial cost. Revenue comes mostly from income taxes and <strong>payroll taxes</strong>, supplemented by excise taxes and tariffs.</p>
 
         <div class="optima-widget ow-select">
             <div class="widget-kicker">&#9889; SORT IT &middot; WHICH BUCKET?</div>
@@ -384,10 +405,10 @@
 <!-- ow-added-m1-m5 -->
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Deficits, Surpluses, and Where the Debt Comes From</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong>budget deficit</strong> happens when spending exceeds revenue in a given year, financed by issuing <strong>Treasury securities</strong>; a <strong>budget surplus</strong> happens when revenue exceeds spending, as in the late 1990s tech-boom years, before deficits returned in the early 2000s from tax cuts, post-9/11 defense spending, and slower growth. The <strong>national debt</strong> is the running total of all past deficits not yet repaid, split between debt held by the public (individuals, foreign governments, pension funds) and <strong>intragovernmental</strong> debt (the government borrowing from its own trust funds like Social Security). Unlike a household loan, sovereign debt is <strong>perpetually</strong> rolled over: maturing securities get replaced with new ones rather than fully paid off.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong><a class="gl" href="#g-budget-deficit" title="budget deficit: What happens when the government spends more than it collects in a year. (/BUJ-it DEF-ih-sit/)">budget deficit</a></strong> happens when spending exceeds revenue in a given year, financed by issuing <strong>Treasury securities</strong>; a <strong>budget surplus</strong> happens when revenue exceeds spending, as in the late 1990s tech-boom years, before deficits returned in the early 2000s from tax cuts, post-9/11 defense spending, and slower growth. The <strong><a class="gl" href="#g-national-debt" title="national debt: The total of all past deficits that have not yet been paid back. (/NASH-un-ul det/)">national debt</a></strong> is the running total of all past deficits not yet repaid, split between debt held by the public (individuals, foreign governments, pension funds) and <strong>intragovernmental</strong> debt (the government borrowing from its own trust funds like Social Security). Unlike a household loan, sovereign debt is <strong>perpetually</strong> rolled over: maturing securities get replaced with new ones rather than fully paid off.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why the Debt-to-GDP Ratio Matters More Than the Raw Number</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A $20 trillion debt against a $25 trillion economy (80% <strong>debt-to-GDP ratio</strong>) is far more manageable than the same $20 trillion against a $10 trillion economy (200%). After World War II, U.S. debt-to-GDP exceeded 100 percent, but rapid postwar growth brought the ratio down without a crisis &mdash; proof that strong growth, not just repayment, can shrink the burden. The 1970s stagflation and the slow 2008 recovery show the opposite: weak growth makes existing debt feel heavier even if the dollar amount doesn't change.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A $20 trillion debt against a $25 trillion economy (80% <strong><a class="gl" href="#g-debt-to-gdp-ratio" title="debt-to-gdp ratio: The national debt compared with the size of the economy, shown as a percentage. (/det too jee-dee-PEE RAY-shee-oh/)">debt-to-GDP ratio</a></strong>) is far more manageable than the same $20 trillion against a $10 trillion economy (200%). After World War II, U.S. debt-to-GDP exceeded 100 percent, but rapid postwar growth brought the ratio down without a crisis &mdash; proof that strong growth, not just repayment, can shrink the burden. The 1970s stagflation and the slow 2008 recovery show the opposite: weak growth makes existing debt feel heavier even if the dollar amount doesn't change.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Real Cost: Interest and Crowding Out</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Interest payments on the debt are non-negotiable, unlike <strong>discretionary spending</strong> Congress can adjust yearly; missing them would mean a <strong>default</strong>, damaging U.S. <strong>creditworthiness</strong> globally. As debt and interest rates both rise, more of the budget goes to servicing old borrowing instead of current needs. Heavy government borrowing can also raise interest rates economy-wide by competing with households and businesses for credit, a phenomenon called <strong>"crowding out"</strong> that can make mortgages and business loans more expensive. There's also an <strong>intergenerational</strong> question: borrowing for infrastructure or education leaves future taxpayers a debt but also a lasting benefit; borrowing for short-term consumption leaves them the debt with little to show for it.</p>
@@ -522,6 +543,20 @@
     var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
     rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
     rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (!say) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+      u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
   });
 })();
 </script>

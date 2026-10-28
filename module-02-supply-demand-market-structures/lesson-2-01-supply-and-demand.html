@@ -31,6 +31,12 @@
     .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
     .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
 </style>
+<style>
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -326,7 +332,22 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; MOVEMENT ALONG A CURVE VS. A SHIFT OF THE CURVE</div>
+        
+    <div data-gl-box="1" style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin: 0 0 20px 0;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-allocative-efficiency" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Allocative Efficiency</strong> <span style="color: #6b7a99; font-size: 14px;">/AL-uh-kay-tiv ih-FISH-un-see/</span><button class="gl-speak" type="button" data-say="allocative efficiency" aria-label="Hear how to say Allocative Efficiency" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Using resources to make the things people want most.</div></div>
+            <div id="g-complement" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Complement</strong> <span style="color: #6b7a99; font-size: 14px;">/KOM-plih-ment/</span><button class="gl-speak" type="button" data-say="complement" aria-label="Hear how to say Complement" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A good that is used together with another good.</div></div>
+            <div id="g-determinant-of-demand" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Determinant of Demand</strong> <span style="color: #6b7a99; font-size: 14px;">/dih-TUR-mih-nunt uv dih-MAND/</span><button class="gl-speak" type="button" data-say="determinant of demand" aria-label="Hear how to say Determinant of Demand" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A factor other than price, such as income or tastes, that shifts the whole demand curve.</div></div>
+            <div id="g-equilibrium" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Equilibrium</strong> <span style="color: #6b7a99; font-size: 14px;">/ee-kwuh-LIB-ree-um/</span><button class="gl-speak" type="button" data-say="equilibrium" aria-label="Hear how to say Equilibrium" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The price and quantity at which what buyers want to buy matches what sellers want to sell.</div></div>
+            <div id="g-gdp" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">GDP</strong> <span style="color: #6b7a99; font-size: 14px;">/jee-dee-PEE/</span><button class="gl-speak" type="button" data-say="gross domestic product" aria-label="Hear how to say GDP" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Gross domestic product: the total value of all goods and services a country produces in a period of time.</div></div>
+            <div id="g-inflation" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Inflation</strong> <span style="color: #6b7a99; font-size: 14px;">/in-FLAY-shun/</span><button class="gl-speak" type="button" data-say="inflation" aria-label="Hear how to say Inflation" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A general rise in prices over time, which means each dollar buys less.</div></div>
+            <div id="g-productive-efficiency" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Productive Efficiency</strong> <span style="color: #6b7a99; font-size: 14px;">/pruh-DUK-tiv ih-FISH-un-see/</span><button class="gl-speak" type="button" data-say="productive efficiency" aria-label="Hear how to say Productive Efficiency" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Making something at the lowest possible cost.</div></div>
+            <div id="g-quantity-demanded" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Quantity Demanded</strong> <span style="color: #6b7a99; font-size: 14px;">/KWON-tih-tee dih-MAN-did/</span><button class="gl-speak" type="button" data-say="quantity demanded" aria-label="Hear how to say Quantity Demanded" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">How much of a good buyers are willing and able to buy at one particular price.</div></div>
+            <div id="g-substitute" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Substitute</strong> <span style="color: #6b7a99; font-size: 14px;">/SUB-stih-toot/</span><button class="gl-speak" type="button" data-say="substitute" aria-label="Hear how to say Substitute" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A good that can take the place of another good.</div></div>
+    </div>
+<!-- gl-added-m1-m5 -->
+<div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; MOVEMENT ALONG A CURVE VS. A SHIFT OF THE CURVE</div>
 
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
@@ -344,7 +365,7 @@
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Supply</strong> is producers' willingness and ability to offer a good at different prices; <strong>demand</strong> is consumers' willingness and ability to buy it at different prices. Neither operates alone: supply decisions anticipate demand, and demand responds to what is available and at what price. Price is the signal that keeps the two in conversation &mdash; rising prices tell producers "make more," falling prices tell them "make less," while doing the opposite for how much consumers are willing to buy.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Quantity Demanded vs. Demand Itself</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A change in <strong>quantity demanded</strong> is movement along the existing <strong>demand curve</strong>, caused only by a change in the good's own price &mdash; coffee drops from $3 to $2 and people buy more of it, full stop. A change in <strong>demand</strong> is a shift of the entire curve, caused by a <strong>determinant of demand</strong> other than price: income, tastes, expectations, population, or the price of a <strong>substitute</strong> or <strong>complement</strong>. Rising income shifts the whole curve right (more bought at every price); a trendy new competitor product can shift it left. A business that misreads a demand shift as a price problem, or vice versa, will pick the wrong fix.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A change in <strong><a class="gl" href="#g-quantity-demanded" title="quantity demanded: How much of a good buyers are willing and able to buy at one particular price. (/KWON-tih-tee dih-MAN-did/)">quantity demanded</a></strong> is movement along the existing <strong>demand curve</strong>, caused only by a change in the good's own price &mdash; coffee drops from $3 to $2 and people buy more of it, full stop. A change in <strong>demand</strong> is a shift of the entire curve, caused by a <strong><a class="gl" href="#g-determinant-of-demand" title="determinant of demand: A factor other than price, such as income or tastes, that shifts the whole demand curve. (/dih-TUR-mih-nunt uv dih-MAND/)">determinant of demand</a></strong> other than price: income, tastes, expectations, population, or the price of a <strong><a class="gl" href="#g-substitute" title="substitute: A good that can take the place of another good. (/SUB-stih-toot/)">substitute</a></strong> or <strong><a class="gl" href="#g-complement" title="complement: A good that is used together with another good. (/KOM-plih-ment/)">complement</a></strong>. Rising income shifts the whole curve right (more bought at every price); a trendy new competitor product can shift it left. A business that misreads a demand shift as a price problem, or vice versa, will pick the wrong fix.</p>
 
         <div class="optima-widget ow-select">
             <div class="widget-kicker">&#9889; SORT IT &middot; ALONG THE CURVE OR A SHIFT?</div>
@@ -390,7 +411,7 @@
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The same logic applies to producers. A change in <strong>quantity supplied</strong> is movement along the existing supply curve from a price change alone &mdash; wheat prices rise, so farmers plant more <strong>acreage</strong>. A change in <strong>supply</strong> is a shift of the whole curve from a <strong>determinant of supply</strong>: technology, production costs, government policy, or a <strong>negative shock</strong> like drought. New farm technology shifts supply right (more at every price); a drought or a new tax shifts it left, a <strong>contraction</strong> in what producers can offer regardless of price.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Equilibrium: Where the Market Settles</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Equilibrium</strong> is the price and quantity where what buyers want to buy exactly matches what sellers want to sell &mdash; no built-in pressure to move. Markets rarely sit still there for long: a <strong>shortage</strong> (quantity demanded exceeds quantity supplied) pushes prices up, which both discourages some buyers and rewards producers for expanding output. A <strong>surplus</strong> (quantity supplied exceeds quantity demanded, risking <strong>overstocking</strong>) pushes prices down, clearing unsold inventory while discouraging overproduction. This is what makes supply and demand <strong>disequilibrium</strong> self-correcting &mdash; no central planner has to intervene for the market to find its way back toward balance.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong><a class="gl" href="#g-equilibrium" title="equilibrium: The price and quantity at which what buyers want to buy matches what sellers want to sell. (/ee-kwuh-LIB-ree-um/)">Equilibrium</a></strong> is the price and quantity where what buyers want to buy exactly matches what sellers want to sell &mdash; no built-in pressure to move. Markets rarely sit still there for long: a <strong>shortage</strong> (<a class="gl" href="#g-quantity-demanded" title="quantity demanded: How much of a good buyers are willing and able to buy at one particular price. (/KWON-tih-tee dih-MAN-did/)"><strong>quantity demanded</strong></a> exceeds quantity supplied) pushes prices up, which both discourages some buyers and rewards producers for expanding output. A <strong>surplus</strong> (quantity supplied exceeds <a class="gl" href="#g-quantity-demanded" title="quantity demanded: How much of a good buyers are willing and able to buy at one particular price. (/KWON-tih-tee dih-MAN-did/)"><strong>quantity demanded</strong></a>, risking <strong>overstocking</strong>) pushes prices down, clearing unsold inventory while discouraging overproduction. This is what makes supply and demand <strong>disequilibrium</strong> self-correcting &mdash; no central planner has to intervene for the market to find its way back toward balance.</p>
 
         <div class="optima-widget ow-slider">
             <div class="widget-kicker">&#9889; TRY IT &middot; FIND EQUILIBRIUM</div>
@@ -511,6 +532,20 @@
     var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
     rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
     rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (!say) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+      u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
   });
 })();
 </script>

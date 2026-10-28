@@ -36,6 +36,12 @@
     .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
     .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
 </style>
+<style>
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -331,7 +337,21 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; INNOVATION HAS ALWAYS HAD TWO SIDES</div>
+        
+    <div data-gl-box="1" style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin: 0 0 20px 0;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-agrarian" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Agrarian</strong> <span style="color: #6b7a99; font-size: 14px;">/uh-GRAIR-ee-un/</span><button class="gl-speak" type="button" data-say="agrarian" aria-label="Hear how to say Agrarian" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Based on farming and the use of land.</div></div>
+            <div id="g-almanac" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Almanac</strong> <span style="color: #6b7a99; font-size: 14px;">/AWL-muh-nak/</span><button class="gl-speak" type="button" data-say="almanac" aria-label="Hear how to say Almanac" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A yearly book of calendars, weather, and other information, often used by farmers.</div></div>
+            <div id="g-cotton-gin" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Cotton Gin</strong> <span style="color: #6b7a99; font-size: 14px;">/KOT-un jin/</span><button class="gl-speak" type="button" data-say="cotton gin" aria-label="Hear how to say Cotton Gin" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A machine invented by Eli Whitney in 1793 that quickly separates cotton fibers from seeds.</div></div>
+            <div id="g-diminishing-returns" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Diminishing Returns</strong> <span style="color: #6b7a99; font-size: 14px;">/dih-MIN-ish-ing rih-TURNZ/</span><button class="gl-speak" type="button" data-say="diminishing returns" aria-label="Hear how to say Diminishing Returns" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The point where each added unit of input brings a smaller increase in output.</div></div>
+            <div id="g-marginal-cost" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Marginal Cost</strong> <span style="color: #6b7a99; font-size: 14px;">/MAR-jih-nul kawst/</span><button class="gl-speak" type="button" data-say="marginal cost" aria-label="Hear how to say Marginal Cost" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The extra cost of making one more unit.</div></div>
+            <div id="g-marginal-revenue" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Marginal Revenue</strong> <span style="color: #6b7a99; font-size: 14px;">/MAR-jih-nul REV-uh-noo/</span><button class="gl-speak" type="button" data-say="marginal revenue" aria-label="Hear how to say Marginal Revenue" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The extra income from selling one more unit.</div></div>
+            <div id="g-nativism" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Nativism</strong> <span style="color: #6b7a99; font-size: 14px;">/NAY-tiv-iz-um/</span><button class="gl-speak" type="button" data-say="nativism" aria-label="Hear how to say Nativism" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A political attitude that favors people born in a country over immigrants.</div></div>
+            <div id="g-piece-rate-pay" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Piece-Rate Pay</strong> <span style="color: #6b7a99; font-size: 14px;">/PEES rayt pay/</span><button class="gl-speak" type="button" data-say="piece rate pay" aria-label="Hear how to say Piece-Rate Pay" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Pay based on how many items a worker produces.</div></div>
+    </div>
+<!-- gl-added-m1-m5 -->
+<div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; INNOVATION HAS ALWAYS HAD TWO SIDES</div>
 
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
@@ -346,7 +366,7 @@
         </div>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Cotton Gin: Productivity and Its Cost</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1793, the United States was a mostly <strong>agrarian</strong> economy. Eli Whitney's <strong>cotton gin</strong> let one worker clean as much cotton in a day as dozens could by hand, making cotton America's most valuable export and tying the young economy into global trade with Britain's textile mills. But the gin did not reduce the demand for enslaved labor as some hoped &mdash; it increased it. Rising cotton profits pushed planters to expand plantations and enslave more people; the enslaved population nearly tripled between 1790 and 1860. One invention accelerated economic growth and deepened one of the gravest moral wrongs in U.S. history at the same time. Studying economics honestly means holding both facts together, not choosing the comfortable half.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1793, the United States was a mostly <strong><a class="gl" href="#g-agrarian" title="agrarian: Based on farming and the use of land. (/uh-GRAIR-ee-un/)">agrarian</a></strong> economy. Eli Whitney's <strong><a class="gl" href="#g-cotton-gin" title="cotton gin: A machine invented by Eli Whitney in 1793 that quickly separates cotton fibers from seeds. (/KOT-un jin/)">cotton gin</a></strong> let one worker clean as much cotton in a day as dozens could by hand, making cotton America's most valuable export and tying the young economy into global trade with Britain's textile mills. But the gin did not reduce the demand for enslaved labor as some hoped &mdash; it increased it. Rising cotton profits pushed planters to expand plantations and enslave more people; the enslaved population nearly tripled between 1790 and 1860. One invention accelerated economic growth and deepened one of the gravest moral wrongs in U.S. history at the same time. Studying economics honestly means holding both facts together, not choosing the comfortable half.</p>
 
         <div class="optima-widget ow-select">
             <div class="widget-kicker">&#9889; SORT IT &middot; THE COTTON GIN LEDGER</div>
@@ -389,16 +409,16 @@
 <!-- ow-added-m1-m5 -->
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Knowledge as Innovation: Benjamin Banneker</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Not every contribution was mechanical. Benjamin Banneker, a free Black mathematician and astronomer, published <strong>almanacs</strong> (1792 to 1797) that farmers relied on for planting and harvest timing, and helped survey the boundaries of the new capital, Washington, D.C. His work is a reminder that economic progress has always depended on knowledge and civic contribution as much as on machines.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Not every contribution was mechanical. Benjamin Banneker, a free Black mathematician and astronomer, published <strong><a class="gl" href="#g-almanac" title="almanac: A yearly book of calendars, weather, and other information, often used by farmers. (/AWL-muh-nak/)">almanacs</a></strong> (1792 to 1797) that farmers relied on for planting and harvest timing, and helped survey the boundaries of the new capital, Washington, D.C. His work is a reminder that economic progress has always depended on knowledge and civic contribution as much as on machines.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Immigrant Labor and Industrial Leadership</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Andrew Carnegie arrived from Scotland as a child and built Carnegie Steel into the backbone of American railroads, bridges, and skyscrapers, later funding libraries and universities <strong>philanthropically</strong>. But industrial leadership alone could not have built the country's infrastructure: thousands of Chinese laborers, working under brutal conditions, built the transcontinental railroad through mountains and desert, alongside Irish laborers on the eastern segments, often facing discrimination and <strong>nativist</strong> hostility even as their work physically connected the nation's markets for the first time.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Andrew Carnegie arrived from Scotland as a child and built Carnegie Steel into the backbone of American railroads, bridges, and skyscrapers, later funding libraries and universities <strong>philanthropically</strong>. But industrial leadership alone could not have built the country's infrastructure: thousands of Chinese laborers, working under brutal conditions, built the transcontinental railroad through mountains and desert, alongside Irish laborers on the eastern segments, often facing discrimination and <strong><a class="gl" href="#g-nativism" title="nativism: A political attitude that favors people born in a country over immigrants. (/NAY-tiv-iz-um/)">nativist</a></strong> hostility even as their work physically connected the nation's markets for the first time.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Entrepreneurs and Inventors Who Built American Industry</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Madam C.J. Walker built a beauty and haircare company for African American women, becoming one of the nation's first self-made female millionaires while employing and training thousands of women. Henry Ford's assembly line made automobiles affordable to ordinary Americans. Granville Woods, holder of over 50 patents, invented the <strong>multiplex telegraph</strong> that let train stations communicate with moving trains, improving railway safety. Thomas Edison and Alexander Graham Bell's inventions defined how people would work and communicate for a century. Later, Roberto Goizueta's leadership at Coca-Cola showed that innovation can also mean strategic global expansion, not just a new machine.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Modern Parallel: Digital Entrepreneurship</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Steve Jobs combined <strong>aesthetics</strong> and function to redefine computing, music, and communication through Apple. Sheryl Sandberg helped build Facebook into a global advertising and data platform; Susan Wojcicki grew YouTube into a dominant force in entertainment and education. A <strong>proliferation</strong> of start-ups, coding bootcamps, and business <strong>incubators</strong> continues this pattern today. The parallel to Whitney's cotton gin or Carnegie's steel is direct: new technology restructures commerce and daily life, creates new markets, and raises new questions all over again &mdash; the pattern of American economic history repeats, even as the technology changes.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Steve Jobs combined <strong>aesthetics</strong> and function to redefine computing, music, and communication through Apple. Sheryl Sandberg helped build Facebook into a global advertising and data platform; Susan Wojcicki grew YouTube into a dominant force in entertainment and education. A <strong>proliferation</strong> of start-ups, coding bootcamps, and business <strong>incubators</strong> continues this pattern today. The parallel to Whitney's <a class="gl" href="#g-cotton-gin" title="cotton gin: A machine invented by Eli Whitney in 1793 that quickly separates cotton fibers from seeds. (/KOT-un jin/)"><strong>cotton gin</strong></a> or Carnegie's steel is direct: new technology restructures commerce and daily life, creates new markets, and raises new questions all over again &mdash; the pattern of American economic history repeats, even as the technology changes.</p>
 
         <div class="flip-grid" style="margin-top: 18px;">
             <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:16px;color:#0E1C42;">Eli Whitney</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">Invented the cotton gin (1793), which boosted cotton production but deepened reliance on enslaved labor.</div></div></div>
@@ -498,6 +518,20 @@
     var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
     rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
     rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (!say) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+      u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
   });
 })();
 </script>

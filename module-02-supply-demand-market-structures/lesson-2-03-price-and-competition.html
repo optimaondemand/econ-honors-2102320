@@ -36,6 +36,12 @@
     .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
     .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
 </style>
+<style>
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -331,7 +337,21 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; TWO WAYS TO WIN A CUSTOMER</div>
+        
+    <div data-gl-box="1" style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin: 0 0 20px 0;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-collusion" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Collusion</strong> <span style="color: #6b7a99; font-size: 14px;">/kuh-LOO-zhun/</span><button class="gl-speak" type="button" data-say="collusion" aria-label="Hear how to say Collusion" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A secret or illegal agreement among competing firms to control prices or output.</div></div>
+            <div id="g-economies-of-scale" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Economies of Scale</strong> <span style="color: #6b7a99; font-size: 14px;">/ih-KON-uh-meez uv skayl/</span><button class="gl-speak" type="button" data-say="economies of scale" aria-label="Hear how to say Economies of Scale" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Lower cost per unit that comes when a firm produces more.</div></div>
+            <div id="g-natural-monopoly" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Natural Monopoly</strong> <span style="color: #6b7a99; font-size: 14px;">/NACH-er-ul muh-NOP-uh-lee/</span><button class="gl-speak" type="button" data-say="natural monopoly" aria-label="Hear how to say Natural Monopoly" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A market where one firm can serve everyone at a lower cost than several competing firms could.</div></div>
+            <div id="g-nonprice-competition" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Nonprice Competition</strong> <span style="color: #6b7a99; font-size: 14px;">/non-PRYSS kom-puh-TISH-un/</span><button class="gl-speak" type="button" data-say="nonprice competition" aria-label="Hear how to say Nonprice Competition" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Trying to win customers with quality, design, service, or brand instead of a lower price.</div></div>
+            <div id="g-patent" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Patent</strong> <span style="color: #6b7a99; font-size: 14px;">/PAT-ent/</span><button class="gl-speak" type="button" data-say="patent" aria-label="Hear how to say Patent" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A government-granted right that gives an inventor the sole use of an invention for a limited time.</div></div>
+            <div id="g-price-ceiling" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Price Ceiling</strong> <span style="color: #6b7a99; font-size: 14px;">/pryss SEE-ling/</span><button class="gl-speak" type="button" data-say="price ceiling" aria-label="Hear how to say Price Ceiling" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A legal limit on how high a price can be.</div></div>
+            <div id="g-price-competition" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Price Competition</strong> <span style="color: #6b7a99; font-size: 14px;">/pryss kom-puh-TISH-un/</span><button class="gl-speak" type="button" data-say="price competition" aria-label="Hear how to say Price Competition" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Trying to win customers mainly by charging less.</div></div>
+            <div id="g-profit-margin" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Profit Margin</strong> <span style="color: #6b7a99; font-size: 14px;">/PROF-it MAR-jin/</span><button class="gl-speak" type="button" data-say="profit margin" aria-label="Hear how to say Profit Margin" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">The share of each sale that is left as profit after costs are paid.</div></div>
+    </div>
+<!-- gl-added-m1-m5 -->
+<div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; TWO WAYS TO WIN A CUSTOMER</div>
 
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
@@ -346,10 +366,10 @@
         </div>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Price Competition</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Price competition</strong> means winning customers mainly by charging less. It thrives where products are standardized and buyers are price-sensitive: grocery chains built on <strong>bulk purchasing</strong> and minimal <strong>frills</strong>, budget airlines that strip services to the essentials, e-commerce platforms using pricing <strong>algorithms</strong> to stay cheapest in real time. It democratizes access to goods, but it also compresses <strong>profit margins</strong> and can push firms toward under-investment in quality or workers if pursued too aggressively.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong><a class="gl" href="#g-price-competition" title="price competition: Trying to win customers mainly by charging less. (/pryss kom-puh-TISH-un/)">Price competition</a></strong> means winning customers mainly by charging less. It thrives where products are standardized and buyers are price-sensitive: grocery chains built on <strong>bulk purchasing</strong> and minimal <strong>frills</strong>, budget airlines that strip services to the essentials, e-commerce platforms using pricing <strong>algorithms</strong> to stay cheapest in real time. It democratizes access to goods, but it also compresses <strong><a class="gl" href="#g-profit-margin" title="profit margin: The share of each sale that is left as profit after costs are paid. (/PROF-it MAR-jin/)">profit margins</a></strong> and can push firms toward under-investment in quality or workers if pursued too aggressively.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Nonprice Competition</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Nonprice competition</strong> means winning customers through quality, design, service, or brand identity instead of a lower price &mdash; a tech company built on design and ecosystem rather than being the cheapest, a coffee chain <strong>curating</strong> an in-store experience rather than competing on the price of a cup. It builds loyalty that survives a price increase, and it drives innovation, but it requires sustained investment in brand and product, not just cost-cutting.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong><a class="gl" href="#g-nonprice-competition" title="nonprice competition: Trying to win customers with quality, design, service, or brand instead of a lower price. (/non-PRYSS kom-puh-TISH-un/)">Nonprice competition</a></strong> means winning customers through quality, design, service, or brand identity instead of a lower price &mdash; a tech company built on design and ecosystem rather than being the cheapest, a coffee chain <strong>curating</strong> an in-store experience rather than competing on the price of a cup. It builds loyalty that survives a price increase, and it drives innovation, but it requires sustained investment in brand and product, not just cost-cutting.</p>
 
         <div class="optima-widget ow-select">
             <div class="widget-kicker">&#9889; SORT IT &middot; PRICE OR NONPRICE?</div>
@@ -392,7 +412,7 @@
 <!-- ow-added-m1-m5 -->
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Most Firms Blend Both</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In practice, price is often the "hook" that gets a customer's attention, and nonprice differentiation is what keeps them. Streaming services set an accessible subscription price, then compete on original content and recommendations. Retailers combine weekly discounts with a distinct store experience. Fast food chains run value menus while investing in loyalty apps and brand personality. Firms often shift the balance with conditions: price competition tends to matter more when consumers are cautious (a downturn); nonprice <strong>prestige</strong> and <strong>precedence</strong> tend to matter more when the economy is growing and customers have more to spend.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In practice, price is often the "hook" that gets a customer's attention, and nonprice differentiation is what keeps them. Streaming services set an accessible subscription price, then compete on original content and recommendations. Retailers combine weekly discounts with a distinct store experience. Fast food chains run value menus while investing in loyalty apps and brand personality. Firms often shift the balance with conditions: <a class="gl" href="#g-price-competition" title="price competition: Trying to win customers mainly by charging less. (/pryss kom-puh-TISH-un/)"><strong>price competition</strong></a> tends to matter more when consumers are cautious (a downturn); nonprice <strong>prestige</strong> and <strong>precedence</strong> tend to matter more when the economy is growing and customers have more to spend.</p>
 
         <div class="flip-grid" style="margin-top: 18px;">
             <div class="optima-widget"><div class="widget-kicker">&#9889; TAP TO REVEAL</div><div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:17px;color:#0E1C42;">Market Share</div><div class="ow-flip-back" style="font-size:14px;line-height:1.5;">The portion of total sales in a market controlled by one company or product.</div></div></div>
@@ -503,6 +523,20 @@
     var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
     rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
     rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (!say) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+      u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
   });
 })();
 </script>

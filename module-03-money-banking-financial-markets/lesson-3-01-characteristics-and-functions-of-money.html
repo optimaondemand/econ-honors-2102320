@@ -44,6 +44,12 @@
     .ow-order ol.ow-line li:before { content: counter(ow); min-width: 24px; height: 24px; border-radius: 50%; background: #2A9D5C; color: #FFFFFF; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .ow-order .ow-when { display: block; font-size: 13px; color: #2d6a47; margin-top: 2px; }
 </style>
+<style>
+    a.gl { color: #0E1C42; text-decoration: none; border-bottom: 1.5px dotted #1B6A94; cursor: help; }
+    a.gl:hover { background: #E8F6FB; }
+    .gl-speak { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; cursor: pointer; margin-left: 6px; padding: 0; line-height: 1; }
+    .gl-speak:hover { background: #E8F6FB; border-color: #55C8E8; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -339,7 +345,22 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; WHAT MAKES SOMETHING WORK AS MONEY</div>
+        
+    <div data-gl-box="1" style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 7px; padding: 16px 22px; margin: 0 0 20px 0;">
+        <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">&#128218; GLOSSARY OF SUBJECT VOCABULARY</div>
+        <div style="font-size: 15px; color: #1a2340; line-height: 1.55; margin-bottom: 8px;">A few words in this lesson are worth a look before you read. Each one is bold and underlined in the text. Hover over it for a quick definition, or tap the speaker to hear it said.</div>
+            <div id="g-agrarian" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Agrarian</strong> <span style="color: #6b7a99; font-size: 14px;">/uh-GRAIR-ee-un/</span><button class="gl-speak" type="button" data-say="agrarian" aria-label="Hear how to say Agrarian" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Based on farming and the use of land.</div></div>
+            <div id="g-almanac" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Almanac</strong> <span style="color: #6b7a99; font-size: 14px;">/AWL-muh-nak/</span><button class="gl-speak" type="button" data-say="almanac" aria-label="Hear how to say Almanac" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A yearly book of calendars, weather, and other information, often used by farmers.</div></div>
+            <div id="g-commodity-money" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Commodity Money</strong> <span style="color: #6b7a99; font-size: 14px;">/kuh-MOD-ih-tee MUN-ee/</span><button class="gl-speak" type="button" data-say="commodity money" aria-label="Hear how to say Commodity Money" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Money that has value because the material itself is worth something, such as gold or silver.</div></div>
+            <div id="g-cotton-gin" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Cotton Gin</strong> <span style="color: #6b7a99; font-size: 14px;">/KOT-un jin/</span><button class="gl-speak" type="button" data-say="cotton gin" aria-label="Hear how to say Cotton Gin" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A machine invented by Eli Whitney in 1793 that quickly separates cotton fibers from seeds.</div></div>
+            <div id="g-fiat-money" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Fiat Money</strong> <span style="color: #6b7a99; font-size: 14px;">/FEE-aht MUN-ee/</span><button class="gl-speak" type="button" data-say="fiat money" aria-label="Hear how to say Fiat Money" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Money that has value because a government declares it legal tender, not because of the material it is made from.</div></div>
+            <div id="g-hyperinflation" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Hyperinflation</strong> <span style="color: #6b7a99; font-size: 14px;">/hy-per-in-FLAY-shun/</span><button class="gl-speak" type="button" data-say="hyperinflation" aria-label="Hear how to say Hyperinflation" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Extremely fast price increases that make money nearly worthless.</div></div>
+            <div id="g-legal-tender" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Legal Tender</strong> <span style="color: #6b7a99; font-size: 14px;">/LEE-gul TEN-der/</span><button class="gl-speak" type="button" data-say="legal tender" aria-label="Hear how to say Legal Tender" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Money that a government says must be accepted as payment for debts.</div></div>
+            <div id="g-medium-of-exchange" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Medium of Exchange</strong> <span style="color: #6b7a99; font-size: 14px;">/MEE-dee-um uv iks-CHAYNJ/</span><button class="gl-speak" type="button" data-say="medium of exchange" aria-label="Hear how to say Medium of Exchange" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">Something people accept in return for goods and services, so they do not have to barter.</div></div>
+            <div id="g-nativism" style="padding: 8px 0; border-top: 1px solid #D6E6EC;"><strong style="color: #0E1C42; font-size: 17px;">Nativism</strong> <span style="color: #6b7a99; font-size: 14px;">/NAY-tiv-iz-um/</span><button class="gl-speak" type="button" data-say="nativism" aria-label="Hear how to say Nativism" title="Hear the pronunciation">&#128266;</button><div style="font-size: 16px; color: #1a2340; line-height: 1.55; margin-top: 2px;">A political attitude that favors people born in a country over immigrants.</div></div>
+    </div>
+<!-- gl-added-m1-m5 -->
+<div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; WHAT MAKES SOMETHING WORK AS MONEY</div>
 
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
@@ -354,7 +375,7 @@
         </div>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Six Characteristics of Good Money</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Money needs <strong>durability</strong> (it must survive years of handling without <strong>corrosion</strong> or damage &mdash; U.S. bills use a cotton-linen blend; some countries use tear-resistant polymer notes), <strong>portability</strong> (the giant <strong>Rai stones</strong> of Yap could show wealth but could not be moved to pay for anything; today's <strong>banknotes</strong>, cards, and mobile payments solve this completely), <strong>divisibility</strong> (breaking into small <strong>denominations</strong>, down to fractional shares or cryptocurrency "satoshis"), <strong>uniformity</strong> (every $10 bill must be worth exactly the same, protected by <strong>watermarks</strong> and security features against <strong>counterfeit</strong>), a <strong>limited supply</strong> (unlimited money collapses in value &mdash; Zimbabwe and Venezuela both suffered <strong>hyperinflation</strong> when this broke down), and <strong>acceptability</strong> (people must actually trust and use it; the U.S. dollar functions as a <strong>global reserve currency</strong> precisely because of this trust).</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Money needs <strong>durability</strong> (it must survive years of handling without <strong>corrosion</strong> or damage &mdash; U.S. bills use a cotton-linen blend; some countries use tear-resistant polymer notes), <strong>portability</strong> (the giant <strong>Rai stones</strong> of Yap could show wealth but could not be moved to pay for anything; today's <strong>banknotes</strong>, cards, and mobile payments solve this completely), <strong>divisibility</strong> (breaking into small <strong>denominations</strong>, down to fractional shares or cryptocurrency "satoshis"), <strong>uniformity</strong> (every $10 bill must be worth exactly the same, protected by <strong>watermarks</strong> and security features against <strong>counterfeit</strong>), a <strong>limited supply</strong> (unlimited money collapses in value &mdash; Zimbabwe and Venezuela both suffered <strong><a class="gl" href="#g-hyperinflation" title="hyperinflation: Extremely fast price increases that make money nearly worthless. (/hy-per-in-FLAY-shun/)">hyperinflation</a></strong> when this broke down), and <strong>acceptability</strong> (people must actually trust and use it; the U.S. dollar functions as a <strong>global reserve currency</strong> precisely because of this trust).</p>
 
         <div class="optima-widget ow-match">
             <div class="widget-kicker">&#9889; MATCH IT &middot; WHICH CHARACTERISTIC?</div>
@@ -367,10 +388,10 @@
 <!-- ow-added-m1-m5 -->
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Commodity Money vs. Fiat Money</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Commodity money</strong> (gold, silver, cattle, salt) has value because the material itself is worth something, independent of its use as currency &mdash; but it is heavy, and its supply can <strong>fluctuate</strong> unpredictably with mining or harvests. <strong>Fiat money</strong> (a modern dollar bill) has no <strong>intrinsic</strong> value; it works purely because a government declares it <strong>legal tender</strong> and people trust the system behind it. Fiat money is far more practical to manage, but that trust has to be actively protected &mdash; which is exactly what central banks exist to do.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong><a class="gl" href="#g-commodity-money" title="commodity money: Money that has value because the material itself is worth something, such as gold or silver. (/kuh-MOD-ih-tee MUN-ee/)">Commodity money</a></strong> (gold, silver, cattle, salt) has value because the material itself is worth something, independent of its use as currency &mdash; but it is heavy, and its supply can <strong>fluctuate</strong> unpredictably with mining or harvests. <strong><a class="gl" href="#g-fiat-money" title="fiat money: Money that has value because a government declares it legal tender, not because of the material it is made from. (/FEE-aht MUN-ee/)">Fiat money</a></strong> (a modern dollar bill) has no <strong>intrinsic</strong> value; it works purely because a government declares it <strong><a class="gl" href="#g-legal-tender" title="legal tender: Money that a government says must be accepted as payment for debts. (/LEE-gul TEN-der/)">legal tender</a></strong> and people trust the system behind it. <a class="gl" href="#g-fiat-money" title="fiat money: Money that has value because a government declares it legal tender, not because of the material it is made from. (/FEE-aht MUN-ee/)"><strong>Fiat money</strong></a> is far more practical to manage, but that trust has to be actively protected &mdash; which is exactly what central banks exist to do.</p>
 
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Four Functions of Money</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Money works as a <strong>medium of exchange</strong> (replacing <strong>barter</strong> and its "double coincidence of wants" problem), a <strong>unit of account</strong> (a common measuring stick so a $50 pair of shoes and $2-per-pound apples are instantly comparable), a <strong>store of value</strong> (letting you save today's <strong>purchasing power</strong> for tomorrow, though inflation erodes this over time), and a <strong>standard of deferred payment</strong> (making mortgages, <strong>credit</strong> cards, and student loans possible by letting people promise future money for something today).</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Money works as a <strong><a class="gl" href="#g-medium-of-exchange" title="medium of exchange: Something people accept in return for goods and services, so they do not have to barter. (/MEE-dee-um uv iks-CHAYNJ/)">medium of exchange</a></strong> (replacing <strong>barter</strong> and its "double coincidence of wants" problem), a <strong>unit of account</strong> (a common measuring stick so a $50 pair of shoes and $2-per-pound apples are instantly comparable), a <strong>store of value</strong> (letting you save today's <strong>purchasing power</strong> for tomorrow, though inflation erodes this over time), and a <strong>standard of deferred payment</strong> (making mortgages, <strong>credit</strong> cards, and student loans possible by letting people promise future money for something today).</p>
 
         <div class="optima-widget ow-select">
             <div class="widget-kicker">&#9889; TRY IT &middot; NAME THE FUNCTION</div>
@@ -572,6 +593,20 @@
     if (!r) return;
     var w = r.closest('.optima-widget');
     if (w) w.querySelectorAll('details.ow-reveal').forEach(function (d) { d.open = false; });
+  });
+})();
+</script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var say = e.target.closest('.gl-speak');
+    if (!say) return;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(say.getAttribute('data-say'));
+      u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
   });
 })();
 </script>
