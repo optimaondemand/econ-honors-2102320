@@ -27,6 +27,24 @@
     .ow-scale .widget-options { justify-content: space-between; }
     .ow-scale .widget-options button { flex: 1; text-align: center; }
 </style>
+<style>
+    details.ow-reveal { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    details.ow-reveal summary { cursor: pointer; font-size: 16px; color: #0E1C42; line-height: 1.5; }
+    details.ow-reveal .ow-reveal-body { margin-top: 10px; font-size: 15px; color: #1a2340; line-height: 1.6; border-left: 3px solid #C7922C; padding-left: 12px; }
+    .ow-match .ow-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; margin: 10px 0; }
+    @media (max-width: 640px) { .ow-match .ow-cols { grid-template-columns: 1fr; } }
+    .ow-match .ow-col { display: flex; flex-direction: column; gap: 8px; }
+    .ow-match .ow-col button, .ow-order .ow-pool button { text-align: left; background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 10px 14px; font-size: 15px; color: #0E1C42; cursor: pointer; font-family: inherit; line-height: 1.45; transition: all 0.15s; }
+    .ow-match .ow-col button:hover:enabled, .ow-order .ow-pool button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .ow-match .ow-col button.picked { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .ow-match .ow-col button.done { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; cursor: default; }
+    .ow-match .ow-col button.shake, .ow-order .ow-pool button.shake { background: #FDECEC; border-color: #C0392B; }
+    .ow-order .ow-pool { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+    .ow-order ol.ow-line { margin: 10px 0 0 0; padding: 0; list-style: none; counter-reset: ow; }
+    .ow-order ol.ow-line li { counter-increment: ow; display: flex; gap: 12px; align-items: flex-start; background: #D8F0DD; border: 1px solid #2A9D5C; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 15px; color: #1A6B3D; line-height: 1.45; }
+    .ow-order ol.ow-line li:before { content: counter(ow); min-width: 24px; height: 24px; border-radius: 50%; background: #2A9D5C; color: #FFFFFF; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ow-order .ow-when { display: block; font-size: 13px; color: #2d6a47; margin-top: 2px; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -339,6 +357,17 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Why the Fed Exists</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Congress created the Federal Reserve in 1913 after decades of financial panics, including the severe panic of 1907, when banks collapsed and credit froze. The Fed does not serve individual customers the way a commercial bank does; instead it supervises the banking system and acts as the "lender of last resort" &mdash; stepping in with emergency loans when banks cannot find funding elsewhere, as it did during the 2008 financial crisis. Its structure blends public and private, national and regional: a seven-member <strong>Board of Governors</strong> in Washington (14-year terms, designed to <strong>insulate</strong> them from short-term politics) plus twelve regional Reserve Banks that process payments and supervise local banks. The Fed doesn't need Congress's approval for its interest-rate decisions, but its Chair testifies before Congress and its meeting minutes are published &mdash; independence balanced against <strong>transparency</strong>.</p>
 
+        <div class="optima-widget ow-commit">
+            <div class="widget-kicker">&#9889; COMMIT, THEN CHECK &middot; INDEPENDENT BUT ACCOUNTABLE</div>
+            <div class="widget-question">The Fed sets interest rates for the whole country without asking Congress to approve each decision. How can a body like that be independent and still answer to the public?</div>
+            <details class="ow-reveal">
+                <summary>In your notebook, write one way the public can still hold it accountable. Then click here to check your thinking.</summary>
+                <div class="ow-reveal-body">Board of Governors members serve 14-year terms, which insulates them from short-term politics. But the Fed's Chair testifies before Congress, and its meeting minutes are published. That is independence balanced against transparency.</div>
+            </details>
+            <button class="widget-reset">Reset</button>
+        </div>
+<!-- ow-added-m1-m5 -->
+
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Monetary Policy: The Fed's Steering Wheel</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Monetary policy</strong> is how the Fed manages the <strong>money supply</strong> and <strong>interest rates</strong> to pursue maximum employment and stable prices at once. Its main tools: the <strong>federal funds rate</strong> (the rate banks charge each other overnight, which ripples out to every other interest rate in the economy), <strong>open market operations</strong> (buying or selling government <strong>securities</strong> to add or remove money from circulation &mdash; the Fed bought trillions in bonds during COVID-19, called "quantitative easing"), and <strong>reserve requirements</strong> (the share of deposits banks were once required to hold back rather than lend; the Fed reduced this requirement to zero percent in March 2020, so it no longer limits bank lending).</p>
 
@@ -467,5 +496,71 @@
 })();
 </script>
 
+<script>
+(function () {
+  function data(w) { return JSON.parse(w.querySelector('script.ow-data').textContent); }
+  function shake(b) { b.classList.add('shake'); setTimeout(function () { b.classList.remove('shake'); }, 500); }
+
+  document.querySelectorAll('.optima-widget.ow-match').forEach(function (w) {
+    var d = data(w), L = w.querySelector('.ow-left'), R = w.querySelector('.ow-right'), fb = w.querySelector('.widget-feedback');
+    var picked = null, done = 0;
+    function say(t) { fb.textContent = t; fb.classList.add('show'); }
+    function build() {
+      picked = null; done = 0; L.innerHTML = ''; R.innerHTML = ''; fb.textContent = ''; fb.classList.remove('show');
+      d.pairs.forEach(function (p, i) { var b = document.createElement('button'); b.type = 'button'; b.textContent = p.l; b.setAttribute('data-k', i); L.appendChild(b); });
+      d.order.forEach(function (i) { var b = document.createElement('button'); b.type = 'button'; b.textContent = d.pairs[i].r; b.setAttribute('data-k', i); R.appendChild(b); });
+    }
+    L.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b || b.classList.contains('done')) return;
+      L.querySelectorAll('button').forEach(function (x) { x.classList.remove('picked'); });
+      b.classList.add('picked'); picked = b;
+    });
+    R.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b || b.classList.contains('done')) return;
+      if (!picked) { say('Pick an item on the left first.'); return; }
+      if (picked.getAttribute('data-k') === b.getAttribute('data-k')) {
+        picked.classList.remove('picked'); picked.classList.add('done'); b.classList.add('done'); picked = null; done++;
+        say(done === d.pairs.length ? d.done : 'That pair fits.');
+      } else {
+        shake(b); say('Not that one. Reread the section above and try another.');
+      }
+    });
+    w.querySelector('.widget-reset').addEventListener('click', function () { setTimeout(build, 0); });
+    build();
+  });
+
+  document.querySelectorAll('.optima-widget.ow-order').forEach(function (w) {
+    var d = data(w), pool = w.querySelector('.ow-pool'), line = w.querySelector('.ow-line'), fb = w.querySelector('.widget-feedback');
+    var next = 0;
+    function say(t) { fb.textContent = t; fb.classList.add('show'); }
+    function build() {
+      next = 0; pool.innerHTML = ''; line.innerHTML = ''; fb.textContent = ''; fb.classList.remove('show');
+      d.shown.forEach(function (n) { var b = document.createElement('button'); b.type = 'button'; b.textContent = d.events[n].t; b.setAttribute('data-n', n); pool.appendChild(b); });
+    }
+    pool.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      var n = parseInt(b.getAttribute('data-n'), 10);
+      if (n === next) {
+        var li = document.createElement('li'), s = document.createElement('span');
+        s.appendChild(document.createTextNode(d.events[n].t));
+        if (d.events[n].w) { var wh = document.createElement('span'); wh.className = 'ow-when'; wh.textContent = d.events[n].w; s.appendChild(wh); }
+        li.appendChild(s); line.appendChild(li); pool.removeChild(b); next++;
+        if (next >= d.events.length) { say(d.done); } else { fb.classList.remove('show'); }
+      } else {
+        shake(b); say('Not the next one yet. Ask what has to come first.');
+      }
+    });
+    w.querySelector('.widget-reset').addEventListener('click', function () { setTimeout(build, 0); });
+    build();
+  });
+
+  document.addEventListener('click', function (e) {
+    var r = e.target.closest('.widget-reset');
+    if (!r) return;
+    var w = r.closest('.optima-widget');
+    if (w) w.querySelectorAll('details.ow-reveal').forEach(function (d) { d.open = false; });
+  });
+})();
+</script>
 </body>
 </html>

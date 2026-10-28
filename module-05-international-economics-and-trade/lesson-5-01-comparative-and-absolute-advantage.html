@@ -26,6 +26,17 @@
     .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
     .widget-reset:hover { background: #FDF3E3; }
 </style>
+<style>
+    .ow-ricardo .rc-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 10px 14px; margin-bottom: 10px; }
+    .ow-ricardo .rc-row label { display: block; font-size: 15px; color: #0E1C42; margin-bottom: 6px; }
+    .ow-ricardo .rc-row input[type=range] { width: 100%; }
+    .ow-ricardo .rc-row output { display: block; font-size: 14px; color: #1B6A94; margin-top: 4px; }
+    .ow-ricardo table.rc-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; color: #1a2340; background: #FFFFFF; }
+    .ow-ricardo table.rc-table th { background: #0E1C42; color: #FFFFFF; text-align: left; padding: 8px 12px; font-size: 14px; font-weight: normal; }
+    .ow-ricardo table.rc-table td { border: 1px solid #D0D9E8; padding: 8px 12px; }
+    .ow-ricardo table.rc-table tr.rc-total td { background: #E8F6FB; }
+    .ow-ricardo table.rc-table tr.rc-base td { color: #4a5575; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -341,6 +352,23 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Comparative Advantage: Who Gives Up the Least</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Comparative advantage</strong> is based on <strong>opportunity cost</strong>, not raw output. David Ricardo's classic 1800s example: Portugal is more efficient than England at producing both wine and cloth, but its edge is bigger in wine. England gives up less by making cloth than by making wine. So both countries gain when Portugal specializes in wine and England specializes in cloth and they trade &mdash; even though Portugal could out-produce England at everything. Comparative advantage means being the "least bad" at something relative to your own alternatives, not the literal best at anything.</p>
 
+        <div class="optima-widget ow-ricardo">
+            <div class="widget-kicker">&#9889; TRY IT &middot; WHO SHOULD MAKE WHAT?</div>
+            <div class="widget-question">These numbers are made up for practice. In one day, Country A can make 12 wine or 6 cloth. Country B can make 4 wine or 4 cloth. Country A is better at both. Each slider sets what share of that country's day goes to cloth; the rest goes to wine. The 50/50 plan is the starting point. Can the two countries together make more of both?</div>
+            <div class="rc-row"><label for="rc-a">Country A: share of its day spent on cloth</label><input type="range" id="rc-a" min="0" max="100" step="25" value="50" /><output id="rc-a-out"></output></div>
+            <div class="rc-row"><label for="rc-b">Country B: share of its day spent on cloth</label><input type="range" id="rc-b" min="0" max="100" step="25" value="50" /><output id="rc-b-out"></output></div>
+            <table class="rc-table">
+                <tr><th></th><th>Wine</th><th>Cloth</th></tr>
+                <tr><td>Country A makes</td><td id="rc-aw"></td><td id="rc-ac"></td></tr>
+                <tr><td>Country B makes</td><td id="rc-bw"></td><td id="rc-bc"></td></tr>
+                <tr class="rc-total"><td>Together</td><td id="rc-tw"></td><td id="rc-tc"></td></tr>
+                <tr class="rc-base"><td>Together at 50/50</td><td>8</td><td>5</td></tr>
+            </table>
+            <div class="widget-feedback show" id="rc-msg"></div>
+            <button class="widget-reset" id="rc-reset">Reset</button>
+        </div>
+<!-- ow-added-m1-m5 -->
+
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Real Nations, Real Specialization</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The U.S. specializes in high-tech goods thanks to <strong>capital investment</strong> and an educated workforce; India in software services thanks to a large pool of English-speaking, lower-cost labor; Brazil in agriculture thanks to climate. Japan is the sharpest example: it imports almost all its own oil and raw materials, yet became one of the world's most advanced economies by finding its <strong>niche</strong> in automobiles, electronics, and precision machinery, then trading manufactured goods for the resources it lacks. Singapore, with almost no land or raw materials at all, became a global trading hub through <strong>specialization</strong> in shipping, finance, and technology &mdash; proof that comparative advantage is about efficiency and focus, not natural endowment.</p>
 
@@ -460,5 +488,35 @@
 })();
 </script>
 
+<script>
+(function () {
+  var a = document.getElementById('rc-a'), b = document.getElementById('rc-b');
+  if (!a || !b) return;
+  function el(id) { return document.getElementById(id); }
+  function fmt(n) { return (Math.round(n * 10) / 10).toString(); }
+  function render() {
+    var xa = parseInt(a.value, 10) / 100, xb = parseInt(b.value, 10) / 100;
+    var aw = 12 * (1 - xa), ac = 6 * xa, bw = 4 * (1 - xb), bc = 4 * xb;
+    var tw = aw + bw, tc = ac + bc;
+    el('rc-a-out').textContent = a.value + '% cloth';
+    el('rc-b-out').textContent = b.value + '% cloth';
+    el('rc-aw').textContent = fmt(aw); el('rc-ac').textContent = fmt(ac);
+    el('rc-bw').textContent = fmt(bw); el('rc-bc').textContent = fmt(bc);
+    el('rc-tw').textContent = fmt(tw); el('rc-tc').textContent = fmt(tc);
+    var msg;
+    if (tw >= 8 && tc >= 5 && (tw > 8 || tc > 5)) {
+      msg = 'More than the 50/50 plan in at least one good, and no less of the other. Notice who makes the cloth. Country B gives up 1 wine for each cloth. Country A gives up 2 wine for each cloth. The country that gives up less should make the cloth.';
+    } else if (tw === 8 && tc === 5) {
+      msg = 'This is the 50/50 plan: 8 wine and 5 cloth together. Try moving a slider.';
+    } else {
+      msg = 'Less than the 50/50 plan in at least one good. Ask which country gives up less wine to make a cloth, and try giving that country more of the cloth work.';
+    }
+    el('rc-msg').textContent = msg; el('rc-msg').classList.add('show');
+  }
+  a.addEventListener('input', render); b.addEventListener('input', render);
+  el('rc-reset').addEventListener('click', function () { a.value = 50; b.value = 50; render(); setTimeout(render, 0); });
+  render();
+})();
+</script>
 </body>
 </html>

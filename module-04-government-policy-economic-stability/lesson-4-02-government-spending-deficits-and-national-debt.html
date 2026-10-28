@@ -339,6 +339,50 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Government Spending's Three Buckets</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Operations (military, federal salaries, agencies) keep the government running day to day. <strong>Transfer payments</strong> (Social Security, Medicare, unemployment insurance) move income to individuals without requiring a good or service in return, and act as <strong>automatic stabilizers</strong> that cushion recessions. Public investments (highways, schools, research) build long-term productive capacity through <strong>multiplier effects</strong> that ripple beyond their initial cost. Revenue comes mostly from income taxes and <strong>payroll taxes</strong>, supplemented by excise taxes and tariffs.</p>
 
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; SORT IT &middot; WHICH BUCKET?</div>
+            <div class="widget-question">Decide which of the three spending buckets each item belongs in.</div>
+
+            <div class="widget-row" data-correct="2" data-fb="Yes. A transfer payment moves income to people without requiring a good or service in return." data-hint="Does the government get a good or service back, or does it just move income to a person?">
+                <div class="widget-row-prompt">1. Monthly Social Security payments to retirees.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Operations</button>
+                    <button data-choice="1">Public investment</button>
+                    <button data-choice="2">Transfer payment</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Salaries and agencies keep the government running day to day." data-hint="Is this keeping the government running, or building something for later?">
+                <div class="widget-row-prompt">2. The salary of a federal agency employee.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Operations</button>
+                    <button data-choice="1">Transfer payment</button>
+                    <button data-choice="2">Public investment</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="2" data-fb="Yes. Highways, schools, and research build long-term productive capacity." data-hint="This lasts for decades and raises what the economy can produce. Which bucket does that describe?">
+                <div class="widget-row-prompt">3. Building a new highway.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Transfer payment</button>
+                    <button data-choice="1">Operations</button>
+                    <button data-choice="2">Public investment</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. It is a transfer payment, and it also acts as an automatic stabilizer that cushions a recession." data-hint="The checks go straight to people who lost work. Which bucket moves income to individuals?">
+                <div class="widget-row-prompt">4. Unemployment insurance checks during a recession.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Public investment</button>
+                    <button data-choice="1">Transfer payment</button>
+                    <button data-choice="2">Operations</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+<!-- ow-added-m1-m5 -->
+
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Deficits, Surpluses, and Where the Debt Comes From</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <strong>budget deficit</strong> happens when spending exceeds revenue in a given year, financed by issuing <strong>Treasury securities</strong>; a <strong>budget surplus</strong> happens when revenue exceeds spending, as in the late 1990s tech-boom years, before deficits returned in the early 2000s from tax cuts, post-9/11 defense spending, and slower growth. The <strong>national debt</strong> is the running total of all past deficits not yet repaid, split between debt held by the public (individuals, foreign governments, pension funds) and <strong>intragovernmental</strong> debt (the government borrowing from its own trust funds like Social Security). Unlike a household loan, sovereign debt is <strong>perpetually</strong> rolled over: maturing securities get replaced with new ones rather than fully paid off.</p>
 
@@ -457,5 +501,29 @@
 })();
 </script>
 
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var rw = reset.closest('.ow-select');
+      if (rw) {
+        rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+        rw.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      }
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (!sBtn) return;
+    var row = sBtn.closest('.widget-row');
+    var right = sBtn.dataset.choice === row.dataset.correct;
+    row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+    sBtn.classList.add(right ? 'correct' : 'incorrect');
+    var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+    rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+    rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
 </body>
 </html>

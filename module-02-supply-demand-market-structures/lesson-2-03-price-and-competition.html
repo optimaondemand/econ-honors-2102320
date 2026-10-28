@@ -24,6 +24,18 @@
     .ow-flip.flipped .ow-flip-back { display: block; }
     .flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 </style>
+<style>
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -339,6 +351,46 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Nonprice Competition</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Nonprice competition</strong> means winning customers through quality, design, service, or brand identity instead of a lower price &mdash; a tech company built on design and ecosystem rather than being the cheapest, a coffee chain <strong>curating</strong> an in-store experience rather than competing on the price of a cup. It builds loyalty that survives a price increase, and it drives innovation, but it requires sustained investment in brand and product, not just cost-cutting.</p>
 
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; SORT IT &middot; PRICE OR NONPRICE?</div>
+            <div class="widget-question">Decide whether each firm is winning customers mainly by charging less or by something other than price.</div>
+
+            <div class="widget-row" data-correct="1" data-fb="Yes. Cutting frills to lower the fare is price competition." data-hint="Is the airline winning customers by charging less, or by offering something extra?">
+                <div class="widget-row-prompt">1. A budget airline strips services down to the essentials so it can charge less.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Nonprice competition</button>
+                    <button data-choice="1">Price competition</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Winning customers with experience and atmosphere is nonprice competition." data-hint="Is the draw the price of the cup, or something else?">
+                <div class="widget-row-prompt">2. A coffee chain designs its stores to create a certain experience.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Nonprice competition</button>
+                    <button data-choice="1">Price competition</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Yes. Bulk buying and minimal frills are tools of price competition." data-hint="Which one is the grocery chain trying to win on: price, or something else?">
+                <div class="widget-row-prompt">3. A grocery chain buys in bulk and skips the extras to keep prices low.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Price competition</button>
+                    <button data-choice="1">Nonprice competition</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. Design and an ecosystem that keeps customers loyal are nonprice competition." data-hint="The company is not trying to be the cheapest. So what is it selling?">
+                <div class="widget-row-prompt">4. A tech company wins customers with its design and the way its products work together, not by being cheapest.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Price competition</button>
+                    <button data-choice="1">Nonprice competition</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+<!-- ow-added-m1-m5 -->
+
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Most Firms Blend Both</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In practice, price is often the "hook" that gets a customer's attention, and nonprice differentiation is what keeps them. Streaming services set an accessible subscription price, then compete on original content and recommendations. Retailers combine weekly discounts with a distinct store experience. Fast food chains run value menus while investing in loyalty apps and brand personality. Firms often shift the balance with conditions: price competition tends to matter more when consumers are cautious (a downturn); nonprice <strong>prestige</strong> and <strong>precedence</strong> tend to matter more when the economy is growing and customers have more to spend.</p>
 
@@ -430,5 +482,29 @@
 })();
 </script>
 
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var rw = reset.closest('.ow-select');
+      if (rw) {
+        rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+        rw.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      }
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (!sBtn) return;
+    var row = sBtn.closest('.widget-row');
+    var right = sBtn.dataset.choice === row.dataset.correct;
+    row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+    sBtn.classList.add(right ? 'correct' : 'incorrect');
+    var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+    rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+    rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
 </body>
 </html>

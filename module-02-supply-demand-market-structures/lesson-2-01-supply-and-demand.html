@@ -19,6 +19,18 @@
     .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
     .widget-reset:hover { background: #FDF3E3; }
 </style>
+<style>
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
@@ -334,6 +346,46 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Quantity Demanded vs. Demand Itself</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A change in <strong>quantity demanded</strong> is movement along the existing <strong>demand curve</strong>, caused only by a change in the good's own price &mdash; coffee drops from $3 to $2 and people buy more of it, full stop. A change in <strong>demand</strong> is a shift of the entire curve, caused by a <strong>determinant of demand</strong> other than price: income, tastes, expectations, population, or the price of a <strong>substitute</strong> or <strong>complement</strong>. Rising income shifts the whole curve right (more bought at every price); a trendy new competitor product can shift it left. A business that misreads a demand shift as a price problem, or vice versa, will pick the wrong fix.</p>
 
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; SORT IT &middot; ALONG THE CURVE OR A SHIFT?</div>
+            <div class="widget-question">For each event, decide whether it moves buyers along the existing demand curve or shifts the whole curve.</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Yes. A change in the good's own price moves buyers along the same curve." data-hint="Is the change coming from the good's own price, or from something else?">
+                <div class="widget-row-prompt">1. Coffee drops from $3 to $2, and people buy more of it.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Movement along the curve</button>
+                    <button data-choice="1">Shift of the whole curve</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. Income is a determinant of demand. More is bought at every price, so the whole curve shifts right." data-hint="The price did not change. Something else did, and it affects every price.">
+                <div class="widget-row-prompt">2. Incomes rise across the city, so people buy more of the good at every price.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Movement along the curve</button>
+                    <button data-choice="1">Shift of the whole curve</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Yes. The good's own price changed, so buyers move along the curve to a smaller quantity." data-hint="Which thing changed: the good's own price, or something behind demand?">
+                <div class="widget-row-prompt">3. A store raises the price of a sandwich, and fewer sandwiches sell.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Shift of the whole curve</button>
+                    <button data-choice="1">Movement along the curve</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. A new substitute changes tastes and choices, so the whole curve shifts left." data-hint="Fewer people want it at every price. Is that a move along the curve or a new curve?">
+                <div class="widget-row-prompt">4. A trendy new competing product appears, and fewer people want this one at any price.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Shift of the whole curve</button>
+                    <button data-choice="1">Movement along the curve</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+<!-- ow-added-m1-m5 -->
+
         <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Quantity Supplied vs. Supply Itself</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The same logic applies to producers. A change in <strong>quantity supplied</strong> is movement along the existing supply curve from a price change alone &mdash; wheat prices rise, so farmers plant more <strong>acreage</strong>. A change in <strong>supply</strong> is a shift of the whole curve from a <strong>determinant of supply</strong>: technology, production costs, government policy, or a <strong>negative shock</strong> like drought. New farm technology shifts supply right (more at every price); a drought or a new tax shifts it left, a <strong>contraction</strong> in what producers can offer regardless of price.</p>
 
@@ -438,5 +490,29 @@
 })();
 </script>
 
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var rw = reset.closest('.ow-select');
+      if (rw) {
+        rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+        rw.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      }
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (!sBtn) return;
+    var row = sBtn.closest('.widget-row');
+    var right = sBtn.dataset.choice === row.dataset.correct;
+    row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+    sBtn.classList.add(right ? 'correct' : 'incorrect');
+    var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+    rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+    rf.textContent = right ? (row.dataset.fb || 'Right.') : (row.dataset.hint || 'Not quite. Try again.');
+  });
+})();
+</script>
 </body>
 </html>
